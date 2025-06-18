@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
         <div className="max-w-5xl mx-auto text-center">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-100">
             <span className="inline-block px-3 py-1 text-xs font-medium text-blue-400 bg-blue-900/30 rounded-full mb-6 border border-blue-800">
-              A New Way to Build
+              A New Way to Work
             </span>
           </div>
           

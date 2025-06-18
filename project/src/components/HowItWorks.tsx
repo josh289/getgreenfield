@@ -39,7 +39,7 @@ const HowItWorks: React.FC = () => {
     {
       icon: <Workflow className="w-8 h-8 text-purple-500" />,
       title: "Structure Emerges",
-      description: "Golden Paths guide ideas into living structures — Projects, Cycles, Relays, and Legs.",
+      description: "Golden Paths guide ideas into living structures — Projects, Cycles, Relays, and Work.",
       systemComponent: {
         icon: <CircuitBoard className="w-6 h-6 text-purple-400" />,
         title: "Best Practice Layer",
@@ -53,7 +53,7 @@ const HowItWorks: React.FC = () => {
       systemComponents: [
         {
           icon: <LayoutList className="w-6 h-6 text-teal-400" />,
-          title: "Relay & Leg Orchestration",
+          title: "Relay & Work Orchestration",
           description: "Seamless handoffs between human and AI executors."
         },
         {
