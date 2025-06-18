@@ -42,7 +42,7 @@ const Philosophy: React.FC = () => {
             </blockquote>
             
             <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-              cntxtl builds the system that catches you — and carries you. We believe that the right operating 
+              RelayMCP builds the system that catches you — and carries you. We believe that the right operating 
               system doesn't just organize tasks but transforms how humans and AI work together.
             </p>
           </div>

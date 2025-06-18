@@ -1,4 +1,4 @@
-# vite-react-typescript-starter (Cntxtl Landing Page)
+# vite-react-typescript-starter (RelayMCP Landing Page)
 
 This project is a landing page built with Vite, React, and TypeScript, using Tailwind CSS for styling.
 

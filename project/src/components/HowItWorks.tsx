@@ -80,7 +80,7 @@ const HowItWorks: React.FC = () => {
       <div ref={howItWorksRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle 
-            title="From idea to execution, cntxtl ensures humans and AI work with shared, evolving context"
+            title="From idea to execution, RelayMCP ensures humans and AI work with shared, evolving context"
             subtitle="A living system where knowledge flows seamlessly between human and AI collaborators, growing stronger with every interaction."
             align="center"
             accent="blue"

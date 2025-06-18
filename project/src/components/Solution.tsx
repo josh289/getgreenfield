@@ -31,7 +31,7 @@ const Solution: React.FC = () => {
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle 
             title="Context is the New Unit of Work."
-            subtitle="cntxtl introduces a new way of working where context flows seamlessly between humans and AI, evolving with each step."
+            subtitle="RelayMCP introduces a new way of working where context flows seamlessly between humans and AI, evolving with each step."
             align="center"
             accent="teal"
           />

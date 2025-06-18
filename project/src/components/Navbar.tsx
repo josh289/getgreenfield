@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import Button from './ui/Button';
-import logo from '../../assets/logo.png';
+import logo from '@/assets/logo.png';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center">
-          <img src={logo} alt="Relay OS Logo" className="h-28 w-auto" />
+          <img src={logo} alt="Relay OS Logo" className="h-56 w-auto" />
         </div>
         
         <div className="hidden md:flex items-center space-x-8">
