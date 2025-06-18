@@ -54,7 +54,7 @@ const Problem: React.FC = () => {
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle 
             title="Sprints are Dead."
-            subtitle="Traditional two-week timeboxes can't keep up with AI-augmented teams. RelayMCP's Relay Engine powers continuous, context-driven work that evolves as you do."
+            subtitle="Traditional two-week timeboxes can't keep up with AI-augmented teams. RelayMCP powers continuous, context-driven work that evolves as you do."
             align="center"
             accent="purple"
           />

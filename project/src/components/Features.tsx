@@ -58,7 +58,7 @@ const Features: React.FC = () => {
       <div ref={featuresRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle 
-            title="How contxtl's Relay Engine Powers Evolution"
+            title="How RelayMCP Powers Evolution"
             subtitle="This isn't a tool. It's a living system. Here's how the pieces flow together to evolve your work naturally."
             align="center"
             accent="purple"
