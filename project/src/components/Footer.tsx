@@ -1,6 +1,6 @@
 import React from 'react';
 import { Twitter, Linkedin, Github } from 'lucide-react';
-import logo from '../../assets/logo.png';
+import logo from '@/assets/logo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <img src={logo} alt="Relay OS Logo" className="h-20 w-auto" />
+              <img src={logo} alt="Relay OS Logo" className="h-40 w-auto" />
             </div>
             <p className="text-slate-400 mb-6 max-w-md">
               The next-generation project operating system for context-driven development and planning.

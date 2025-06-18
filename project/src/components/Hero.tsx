@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
           </h1>
           
           <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Build better software by preserving and evolving knowledge across your team. Seamlessly collaborate with AI to turn insights into outcomes.
+          From kickoff to commit, RelayMCP keeps your specs, code, and decisions in sync—so you can guide any model you trust, stay in flow, and never lose the thread.
           </p>
           
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 flex flex-col sm:flex-row items-center justify-center gap-4">
