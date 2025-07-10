@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Section from './ui/Section';
 import SectionTitle from './ui/SectionTitle';
 import { 
   FileText, Users, Bug, ArrowRight, User, Bot, Lightbulb, Target, Zap
 } from 'lucide-react';
 
-const UseCases: React.FC = () => {
+const UseCases = () => {
   const useCasesRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState('onboarding');
+  const [activeTab, setActiveTab] = useState<'onboarding' | 'content' | 'development'>('onboarding');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,15 +26,15 @@ const UseCases: React.FC = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [activeTab]); // Re-run when activeTab changes
 
   const tabs = [
-    { id: 'onboarding', label: 'Customer Onboarding', icon: <Users className="w-4 h-4" /> },
-    { id: 'content', label: 'Content Creation', icon: <FileText className="w-4 h-4" /> },
-    { id: 'development', label: 'Bug Resolution', icon: <Bug className="w-4 h-4" /> }
+    { id: 'onboarding' as const, label: 'Customer Onboarding', icon: <Users className="w-4 h-4" /> },
+    { id: 'content' as const, label: 'Content Creation', icon: <FileText className="w-4 h-4" /> },
+    { id: 'development' as const, label: 'Bug Resolution', icon: <Bug className="w-4 h-4" /> }
   ];
 
-  const useCasesByTab = {
+  const useCasesByTab: Record<'onboarding' | 'content' | 'development', any[]> = {
     content: [
       {
         icon: <FileText className="w-6 h-6" />,
@@ -249,7 +249,7 @@ const UseCases: React.FC = () => {
             {useCasesByTab[activeTab]?.map((useCase, index) => (
               <div
                 key={`${activeTab}-${index}`}
-                className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700"
+                className="animate-on-scroll opacity-100 translate-y-0 transition-all duration-700"
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className={`
