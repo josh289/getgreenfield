@@ -28,6 +28,12 @@ const UseCases = () => {
     return () => observer.disconnect();
   }, [activeTab]); // Re-run when activeTab changes
 
+  // Debug useEffect to track activeTab changes
+  useEffect(() => {
+    console.log('Active tab changed to:', activeTab);
+    console.log('Available use cases:', useCasesByTab[activeTab]?.length || 0);
+  }, [activeTab]);
+
   const tabs = [
     { id: 'onboarding' as const, label: 'Customer Onboarding', icon: <Users className="w-4 h-4" /> },
     { id: 'content' as const, label: 'Content Creation', icon: <FileText className="w-4 h-4" /> },
@@ -249,8 +255,11 @@ const UseCases = () => {
             {useCasesByTab[activeTab]?.map((useCase, index) => (
               <div
                 key={`${activeTab}-${index}`}
-                className="animate-on-scroll opacity-100 translate-y-0 transition-all duration-700"
-                style={{ transitionDelay: `${index * 100}ms` }}
+                className="opacity-100 translate-y-0 transition-all duration-500 ease-out"
+                style={{ 
+                  animationDelay: `${index * 100}ms`,
+                  animation: 'fadeInUp 0.6s ease-out forwards'
+                }}
               >
                 <div className={`
                   relative overflow-hidden rounded-2xl border border-slate-700/50 
