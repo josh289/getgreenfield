@@ -27,24 +27,24 @@ const Problem: React.FC = () => {
 
   const problems = [
     {
-      icon: <Clock className="w-8 h-8 text-orange-500" />,
-      title: "Fixed Time Boxes",
-      description: "Two-week sprints create artificial constraints that slow down AI-augmented teams."
+      icon: <Clock className="w-8 h-8 text-red-500" />,
+      title: "Every AI Conversation Is Groundhog Day",
+      description: "Starting from zero. Every. Single. Time."
     },
     {
-      icon: <Layers className="w-8 h-8 text-orange-500" />,
-      title: "Context Fragmentation",
-      description: "Sprint boundaries break the natural flow of knowledge evolution."
+      icon: <Layers className="w-8 h-8 text-red-500" />,
+      title: "Your Best Practices Live in People's Heads",
+      description: "When they leave, the knowledge leaves."
     },
     {
-      icon: <GitBranch className="w-8 h-8 text-orange-500" />,
-      title: "Rigid Workflows",
-      description: "Traditional sprint cycles can't adapt to the fluid nature of AI collaboration."
+      icon: <GitBranch className="w-8 h-8 text-red-500" />,
+      title: "Tasks Get Done. Nothing Gets Smarter.",
+      description: "You finish projects but lose the insights that made them successful."
     },
     {
-      icon: <XCircle className="w-8 h-8 text-orange-500" />,
-      title: "Lost Momentum",
-      description: "Sprint transitions create artificial stops that break the flow of progress."
+      icon: <XCircle className="w-8 h-8 text-red-500" />,
+      title: "AI Tools Are Disconnected",
+      description: "Powerful but isolated. No memory of your business context."
     }
   ];
 
@@ -53,8 +53,8 @@ const Problem: React.FC = () => {
       <div ref={problemRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle 
-            title="Sprints are Dead."
-            subtitle="Traditional two-week timeboxes can't keep up with AI-augmented teams. RelayMCP powers continuous, context-driven work that evolves as you do."
+            title="Knowledge Dies in Task Lists"
+            subtitle="Teams waste knowledge by starting every AI interaction from scratch, losing context between projects, and treating AI as a tool instead of a learning system."
             align="center"
             accent="purple"
           />
@@ -74,6 +74,12 @@ const Problem: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-16 text-center">
+          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            What if every project made your entire organization smarter?
+          </p>
         </div>
       </div>
     </Section>

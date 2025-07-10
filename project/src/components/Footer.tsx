@@ -1,18 +1,18 @@
 import React from 'react';
-import { Twitter, Linkedin, Github } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import { Box, Twitter, Linkedin, Github } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-950 border-t border-slate-800 py-12">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div className="flex items-center mb-4">
-              <img src={logo} alt="Relay OS Logo" className="h-40 w-auto" />
-            </div>
+                      <div className="md:col-span-2">
+              <div className="flex items-center mb-4">
+                <img src={logo.src || logo} alt="RelayMCP Logo" className="h-40 w-auto" />
+              </div>
             <p className="text-slate-400 mb-6 max-w-md">
-              The next-generation project operating system for context-driven development and planning.
+              The AI-native workspace where every project builds organizational intelligence.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-slate-400 hover:text-white transition-colors">
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
         
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} Relay OS. All rights reserved.
+            &copy; {new Date().getFullYear()} RelayMCP. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0">
             <a href="#" className="text-sm text-slate-500 hover:text-slate-400 transition-colors">

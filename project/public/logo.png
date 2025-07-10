@@ -1,0 +1,1 @@
+<command>curl -o logo.png https://raw.githubusercontent.com/yourusername/yourrepo/main/logo.png</command>

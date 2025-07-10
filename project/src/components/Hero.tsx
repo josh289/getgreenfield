@@ -1,7 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import Button from './ui/Button';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onEarlyAccess: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onEarlyAccess }) => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,6 +28,13 @@ const Hero: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const scrollToHowItWorks = () => {
+    const howItWorksSection = document.getElementById('how-it-works');
+    if (howItWorksSection) {
+      howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div ref={heroRef} className="relative min-h-screen flex items-center pt-20 pb-16">
       <div className="absolute inset-0 overflow-hidden">
@@ -35,7 +46,7 @@ const Hero: React.FC = () => {
         <div className="max-w-5xl mx-auto text-center">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-100">
             <span className="inline-block px-3 py-1 text-xs font-medium text-blue-400 bg-blue-900/30 rounded-full mb-6 border border-blue-800">
-              A New Way to Work
+              The AI-Native Workspace
             </span>
           </div>
           
@@ -47,19 +58,19 @@ const Hero: React.FC = () => {
           </h1>
           
           <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-          From kickoff to commit, RelayMCP keeps your specs, code, and decisions in sync—so you can guide any model you trust, stay in flow, and never lose the thread.
+            RelayMCP is the AI-native workspace where every project builds organizational intelligence. Your team's knowledge becomes your AI's capability.
           </p>
           
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg">Request Early Access</Button>
-            <Button variant="outline" size="lg">Learn More</Button>
+            <Button size="lg" onClick={onEarlyAccess}>Join the Waitlist</Button>
+            <Button variant="outline" size="lg" onClick={scrollToHowItWorks}>See How It Works</Button>
           </div>
           
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-500 mt-16 md:mt-24 flex justify-center">
             <div className="p-1 border border-slate-800 rounded-md bg-slate-900/50 backdrop-blur-sm">
               <div className="animate-pulse flex items-center text-sm">
                 <span className="h-2 w-2 rounded-full bg-teal-500 mr-2"></span>
-                <span className="text-slate-400">Built for modern engineering teams</span>
+                <span className="text-slate-400">The workspace for organizational context engineering</span>
               </div>
             </div>
           </div>

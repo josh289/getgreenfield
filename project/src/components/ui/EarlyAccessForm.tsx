@@ -5,7 +5,8 @@ interface FormData {
   email: string;
   name: string;
   company?: string;
-  role?: string;
+  teamSize?: string;
+  currentAIUse?: string;
 }
 
 const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
@@ -14,7 +15,8 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
     email: '',
     name: '',
     company: '',
-    role: ''
+    teamSize: '',
+    currentAIUse: ''
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -39,7 +41,8 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
               'Full Name': formData.name,
               'Email': formData.email,
               'Company': formData.company || '',
-              'Role': formData.role || ''
+              'Team Size': formData.teamSize || '',
+              'Current AI Use': formData.currentAIUse || ''
             }
           }]
         })
@@ -51,7 +54,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         throw new Error(errorData.error?.message || 'Failed to submit form');
       }
       
-      toast.success('Thanks for your interest! We\'ll be in touch soon.');
+      toast.success('You\'re on the waitlist! We\'ll notify you when beta access is available.');
       onClose?.();
     } catch (error) {
       console.error('Form submission error:', error);
@@ -93,11 +96,12 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
       
       <div>
         <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-1">
-          Company (Optional)
+          Company
         </label>
         <input
           type="text"
           id="company"
+          required
           className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={formData.company}
           onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
@@ -105,15 +109,36 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
       </div>
       
       <div>
-        <label htmlFor="role" className="block text-sm font-medium text-slate-300 mb-1">
-          Role (Optional)
+        <label htmlFor="teamSize" className="block text-sm font-medium text-slate-300 mb-1">
+          Team Size
         </label>
-        <input
-          type="text"
-          id="role"
+        <select
+          id="teamSize"
+          required
           className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          value={formData.role}
-          onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+          value={formData.teamSize}
+          onChange={(e) => setFormData(prev => ({ ...prev, teamSize: e.target.value }))}
+        >
+          <option value="">Select team size</option>
+          <option value="1-5">1-5 people</option>
+          <option value="6-10">6-10 people</option>
+          <option value="11-20">11-20 people</option>
+          <option value="21+">21+ people</option>
+        </select>
+      </div>
+      
+      <div>
+        <label htmlFor="currentAIUse" className="block text-sm font-medium text-slate-300 mb-1">
+          Current AI Use
+        </label>
+        <textarea
+          id="currentAIUse"
+          required
+          rows={3}
+          placeholder="Tell us how your team currently uses AI tools..."
+          className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          value={formData.currentAIUse}
+          onChange={(e) => setFormData(prev => ({ ...prev, currentAIUse: e.target.value }))}
         />
       </div>
       
@@ -122,7 +147,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         disabled={isSubmitting}
         className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {isSubmitting ? 'Submitting...' : 'Request Early Access'}
+        {isSubmitting ? 'Joining Waitlist...' : 'Join the Waitlist'}
       </button>
     </form>
   );

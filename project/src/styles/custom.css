@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sl-color-accent: theme(colors.blue.500);
+  --sl-color-accent-low: theme(colors.blue.900);
+  --sl-color-accent-high: theme(colors.blue.300);
+  --sl-color-white: theme(colors.white);
+  --sl-color-gray-1: theme(colors.slate.100);
+  --sl-color-gray-2: theme(colors.slate.200);
+  --sl-color-gray-3: theme(colors.slate.300);
+  --sl-color-gray-4: theme(colors.slate.400);
+  --sl-color-gray-5: theme(colors.slate.500);
+  --sl-color-gray-6: theme(colors.slate.600);
+  --sl-color-black: theme(colors.slate.950);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-white;
+}
