@@ -3,7 +3,7 @@ import Section from './ui/Section';
 import SectionTitle from './ui/SectionTitle';
 import {
   Zap, MessageSquare, Package, CreditCard, Bell, BarChart,
-  Search, CheckCircle, Play, Pause, ArrowRight,
+  Search, CheckCircle, Play, Pause,
   Brain, Sparkles, Code, GitBranch
 } from 'lucide-react';
 
@@ -251,20 +251,42 @@ export class InventoryHandler {
                 <div className="mb-4 p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/50 rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full text-white font-bold">
+                      <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold shadow-lg">
                         {currentStep + 1}
                       </div>
-                      <div>
-                        <div className="text-lg text-white font-semibold">
-                          {currentFlow.steps[currentStep]?.event || "Ready to start"}
+                      <Zap className="w-5 h-5 text-purple-400 animate-pulse" />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <div className="text-lg text-white font-semibold">
+                            {currentFlow.steps[currentStep]?.event || "Ready to start"}
+                          </div>
+                          {currentFlow.steps[currentStep]?.event?.includes('broadcast') && (
+                            <span className="px-2 py-0.5 bg-purple-500/30 text-purple-300 text-xs rounded-full font-medium">
+                              Broadcast
+                            </span>
+                          )}
                         </div>
-                        <div className="text-sm text-slate-400">
-                          {currentStep === currentFlow.steps.length - 1 ? "Final step" : `Next: ${currentFlow.steps[currentStep + 1]?.event || "Complete"}`}
+                        <div className="text-sm text-slate-400 mt-1">
+                          {currentStep === currentFlow.steps.length - 1
+                            ? "✓ Final step - Flow complete"
+                            : `→ Next: ${currentFlow.steps[currentStep + 1]?.event?.split(' ').slice(0, 3).join(' ') || "Complete"}...`}
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm text-slate-400">
-                      Step {currentStep + 1} of {currentFlow.steps.length}
+                    <div className="flex flex-col items-end gap-1">
+                      <div className="text-sm font-medium text-slate-300">
+                        Step {currentStep + 1} of {currentFlow.steps.length}
+                      </div>
+                      <div className="flex gap-1">
+                        {currentFlow.steps.map((_, idx) => (
+                          <div
+                            key={idx}
+                            className={`w-2 h-2 rounded-full transition-colors ${
+                              idx <= currentStep ? 'bg-blue-400' : 'bg-slate-600'
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -290,7 +312,7 @@ export class InventoryHandler {
               <div className="relative h-96 bg-slate-900/30 rounded-lg border border-slate-700/50 overflow-hidden">
 
                 {/* Trigger Node (Left Side) */}
-                <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10">
+                <div className="absolute left-8 top-1/2 -translate-y-1/2 z-10">
                   <div className={`relative p-6 rounded-xl shadow-lg transition-all duration-500 ${
                     currentStep >= 0 ? 'scale-105' : ''
                   } ${
@@ -313,44 +335,10 @@ export class InventoryHandler {
                   </div>
                 </div>
 
-                {/* Central Event Display */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                  {currentStep < currentFlow.steps.length && (
-                    <div className="relative">
-                      {/* Connection Lines */}
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-96 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
-                      </div>
-
-                      {/* Event Message Box */}
-                      <div className="relative bg-slate-800/95 backdrop-blur-sm border border-blue-500/50 rounded-lg px-6 py-4 shadow-2xl max-w-sm">
-                        <div className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse mt-2"></div>
-                          <div className="flex-1">
-                            <div className="text-white font-medium leading-relaxed">
-                              {currentFlow.steps[currentStep].event.split('→').map((part, idx, arr) => (
-                                <span key={idx}>
-                                  {part.trim()}
-                                  {idx < arr.length - 1 && (
-                                    <>
-                                      <br />
-                                      <span className="text-blue-400 text-sm">→</span>{' '}
-                                    </>
-                                  )}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-blue-400 animate-pulse mt-2" />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
 
                 {/* Actor Nodes (Right Side - Grid layout) */}
-                <div className="absolute right-8 top-1/2 -translate-y-1/2">
-                  <div className="grid grid-cols-2 gap-3" style={{ width: '400px' }}>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                  <div className="grid grid-cols-2 gap-2" style={{ width: '320px' }}>
                     {currentFlow.actors.map((actor, index) => {
                       const isHighlighted = activeSteps.some(step =>
                         step.highlight?.includes(actor.id) ||
@@ -392,7 +380,7 @@ export class InventoryHandler {
                       return (
                         <div
                           key={actor.id}
-                          className={`relative p-4 rounded-lg border-2 transition-all duration-500 ${
+                          className={`relative p-3 rounded-lg border-2 transition-all duration-500 ${
                             getActorColors(actor.color, isHighlighted)
                           } ${isHighlighted ? 'scale-105 shadow-2xl z-10 ring-4 ring-opacity-50' : ''}`}
                           style={{
@@ -401,9 +389,9 @@ export class InventoryHandler {
                             boxShadow: isHighlighted ? `0 0 30px ${actor.color === 'blue' ? '#3b82f6' : actor.color === 'green' ? '#10b981' : actor.color === 'purple' ? '#8b5cf6' : '#f59e0b'}40` : 'none'
                           }}
                         >
-                          <div className="flex items-center gap-3">
-                            {React.createElement(actor.icon, { className: `w-6 h-6 ${getIconColor(actor.color)} flex-shrink-0 ${isHighlighted ? 'animate-pulse' : ''}` })}
-                            <div className="text-sm text-white font-medium">{actor.label}</div>
+                          <div className="flex items-center gap-2">
+                            {React.createElement(actor.icon, { className: `w-5 h-5 ${getIconColor(actor.color)} flex-shrink-0 ${isHighlighted ? 'animate-pulse' : ''}` })}
+                            <div className="text-xs text-white font-medium">{actor.label}</div>
                           </div>
                           {isHighlighted && (
                             <div className="absolute -top-1 -right-1">
@@ -423,14 +411,14 @@ export class InventoryHandler {
                 {currentStep > 0 && (
                   <div className="absolute inset-0 pointer-events-none">
                     {/* Animated dots showing flow direction */}
-                    <div className="absolute left-44 top-1/2 -translate-y-1/2">
+                    <div className="absolute left-32 top-1/2 -translate-y-1/2">
                       <div className="flex gap-2">
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></div>
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></div>
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></div>
                       </div>
                     </div>
-                    <div className="absolute right-1/3 top-1/2 -translate-y-1/2">
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                       <div className="flex gap-2">
                         <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '600ms' }}></div>
                         <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '800ms' }}></div>
