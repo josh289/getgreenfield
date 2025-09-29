@@ -24,9 +24,17 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
     setIsSubmitting(true);
 
     try {
-      const apiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
+      // For Astro, client-side env vars need PUBLIC_ prefix
+      const apiKey = import.meta.env.PUBLIC_AIRTABLE_API_KEY;
+
+      // Log for debugging (remove in production)
+      console.log('Environment check:', {
+        hasApiKey: !!apiKey,
+        envKeys: Object.keys(import.meta.env)
+      });
+
       if (!apiKey) {
-        throw new Error('Airtable API key is missing');
+        throw new Error('Airtable API key is missing. Please set PUBLIC_AIRTABLE_API_KEY in Railway.');
       }
 
       const response = await fetch(`https://api.airtable.com/v0/app1Ls9AR0d1AeOo5/Table%201`, {
@@ -49,9 +57,19 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Airtable API Error:', errorData);
-        throw new Error(errorData.error?.message || 'Failed to submit form');
+        const errorText = await response.text();
+        let errorData;
+        try {
+          errorData = JSON.parse(errorText);
+        } catch {
+          errorData = { error: { message: errorText } };
+        }
+        console.error('Airtable API Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: errorData
+        });
+        throw new Error(errorData.error?.message || `Failed to submit form (Status: ${response.status})`);
       }
       
       toast.success('Welcome to the Greenfield Platform waitlist! We\'ll notify you when early access is available.');
