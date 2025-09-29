@@ -399,62 +399,106 @@ export class InventoryHandler {
                   {activeSteps.map((step, stepIndex) => {
                     // Calculate positions for each highlighted actor
                     const highlighted = step.highlight || [];
-                    return highlighted.map((actorId, index) => {
-                      const actorIndex = currentFlow.actors.findIndex(a => a.id === actorId);
-                      if (actorIndex === -1) return null;
 
-                      // Grid position calculation
-                      const row = actorIndex % 3;
-                      const col = Math.floor(actorIndex / 3);
+                    // If highlighting all actors, just show one event label
+                    const isAllHighlighted = highlighted.includes('all');
 
-                      // Calculate end position based on grid
-                      const endX = 500 + (col * 200); // Right side actors start at x=500, spaced 200px per column
-                      const endY = 100 + (row * 65); // Vertically spaced 65px apart
-
-                      // Start position (trigger node)
-                      const startX = 150;
-                      const startY = 192;
-
-                      // Control point for curved path
-                      const controlX = (startX + endX) / 2;
-                      const controlY = startY + (index * 25) - 50;
-
+                    if (isAllHighlighted) {
+                      // Draw simplified arrows fanning out to all actors with single label
                       return (
-                        <g key={`${stepIndex}-${index}`}>
-                          <path
-                            d={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
-                            stroke="url(#gradient)"
-                            strokeWidth="3"
-                            fill="none"
-                            markerEnd="url(#arrowhead)"
-                            className="animate-pulse"
-                            strokeDasharray="5,5"
-                          />
+                        <g key={`${stepIndex}-all`}>
+                          {/* Single event label in the middle */}
                           <text
-                            x={controlX}
-                            y={controlY - 5}
+                            x="350"
+                            y="150"
                             fill="#cbd5e1"
-                            className="text-xs font-medium"
+                            className="text-sm font-medium"
                             textAnchor="middle"
                           >
                             {step.event}
                           </text>
 
-                          {/* Animated message dot */}
-                          <circle
-                            r="4"
-                            fill="#60a5fa"
-                            className="animate-pulse"
-                          >
-                            <animateMotion
-                              dur="2s"
-                              repeatCount="indefinite"
-                              path={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
-                            />
-                          </circle>
+                          {/* Draw arrow to each actor */}
+                          {currentFlow.actors.map((actor, actorIndex) => {
+                            if (actor.id === 'order' || actor.id === 'collab') return null;
+
+                            const row = actorIndex % 3;
+                            const col = Math.floor(actorIndex / 3);
+                            const endX = 500 + (col * 200);
+                            const endY = 100 + (row * 65);
+
+                            return (
+                              <g key={`${stepIndex}-${actorIndex}`}>
+                                <path
+                                  d={`M 150 192 Q 350 ${180 + (row * 10)} ${endX} ${endY}`}
+                                  stroke="url(#gradient)"
+                                  strokeWidth="2"
+                                  fill="none"
+                                  markerEnd="url(#arrowhead)"
+                                  className="animate-pulse"
+                                  strokeDasharray="5,5"
+                                  opacity="0.8"
+                                />
+                                <circle r="3" fill="#60a5fa" className="animate-pulse">
+                                  <animateMotion
+                                    dur="2s"
+                                    repeatCount="indefinite"
+                                    path={`M 150 192 Q 350 ${180 + (row * 10)} ${endX} ${endY}`}
+                                  />
+                                </circle>
+                              </g>
+                            );
+                          })}
                         </g>
                       );
-                    });
+                    } else {
+                      // For specific actor highlighting, draw individual paths
+                      return highlighted.map((actorId, index) => {
+                        const actorIndex = currentFlow.actors.findIndex(a => a.id === actorId);
+                        if (actorIndex === -1) return null;
+
+                        const row = actorIndex % 3;
+                        const col = Math.floor(actorIndex / 3);
+                        const endX = 500 + (col * 200);
+                        const endY = 100 + (row * 65);
+                        const startX = 150;
+                        const startY = 192;
+
+                        // Spread out control points for multiple arrows
+                        const controlX = (startX + endX) / 2;
+                        const controlY = startY - 30 + (index * 40);
+
+                        return (
+                          <g key={`${stepIndex}-${index}`}>
+                            <path
+                              d={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
+                              stroke="url(#gradient)"
+                              strokeWidth="3"
+                              fill="none"
+                              markerEnd="url(#arrowhead)"
+                              className="animate-pulse"
+                              strokeDasharray="5,5"
+                            />
+                            <text
+                              x={controlX}
+                              y={controlY - 5}
+                              fill="#cbd5e1"
+                              className="text-xs font-medium"
+                              textAnchor="middle"
+                            >
+                              {step.event}
+                            </text>
+                            <circle r="4" fill="#60a5fa" className="animate-pulse">
+                              <animateMotion
+                                dur="2s"
+                                repeatCount="indefinite"
+                                path={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
+                              />
+                            </circle>
+                          </g>
+                        );
+                      });
+                    }
                   }).flat()}
 
                   <defs>
