@@ -258,9 +258,11 @@ export class InventoryHandler {
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <div className="text-lg text-white font-semibold">
-                            {currentFlow.steps[currentStep]?.event || "Ready to start"}
+                            {currentStep >= 0 && currentFlow.steps[currentStep]
+                              ? currentFlow.steps[currentStep].event
+                              : "Ready to start"}
                           </div>
-                          {currentFlow.steps[currentStep]?.event?.includes('broadcast') && (
+                          {currentStep >= 0 && currentFlow.steps[currentStep]?.event?.includes('broadcast') && (
                             <span className="px-2 py-0.5 bg-purple-500/30 text-purple-300 text-xs rounded-full font-medium">
                               Broadcast
                             </span>
