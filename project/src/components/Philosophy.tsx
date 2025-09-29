@@ -29,7 +29,7 @@ const Philosophy: React.FC = () => {
       <div ref={philosophyRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle
-            title="Built for how both AI and developers actually think"
+            title="Built to unlock AI's true capabilities"
             align="center"
             accent="teal"
           />
@@ -38,42 +38,41 @@ const Philosophy: React.FC = () => {
         <div className="mt-12 flex flex-col items-center text-center">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-100 max-w-3xl">
             <blockquote className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-white mb-8">
-              "If AI or humans can't understand it,<br/>it's wrong."
+              "If AI loses context,<br/>it fails."
             </blockquote>
 
             <p className="text-xl text-slate-300 mb-12 leading-relaxed">
-              Greenfield Platform respects the cognitive limits of both AI and human intelligence. We build software that keeps
-              both within their optimal operating range. Every design decision starts with one question: can both AI and developers
-              understand this completely without losing accuracy?
+              Greenfield Platform eliminates AI hallucinations through perfect context boundaries. We architect software
+              so AI always has complete understanding. Every design decision enables AI to build with 100% accuracy.
             </p>
           </div>
           
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mt-8">
             <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3 text-blue-400">Dual Cognitive Limits</h3>
+              <h3 className="text-xl font-semibold mb-3 text-blue-400">AI Context Perfection</h3>
               <p className="text-slate-300">
-                Both AI and humans have context limits. Exceeding them causes AI hallucinations and human confusion. Respect both.
+                Keep AI within perfect context boundaries. No hallucinations, no confusion, just accurate code generation.
               </p>
             </div>
 
             <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3 text-purple-400">Patterns Over Code</h3>
+              <h3 className="text-xl font-semibold mb-3 text-purple-400">AI Pattern Learning</h3>
               <p className="text-slate-300">
-                Solve problems once, reuse everywhere. Build libraries of understanding, not just libraries of functions.
+                AI learns what works and reuses it. Every solution becomes part of AI's knowledge base.
               </p>
             </div>
 
             <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3 text-teal-400">Context Is Everything</h3>
+              <h3 className="text-xl font-semibold mb-3 text-teal-400">Bounded AI Power</h3>
               <p className="text-slate-300">
-                Maintain understanding across time and teams. Knowledge should accumulate, not evaporate with personnel changes.
+                AI operates at maximum capability within boundaries. Perfect context equals perfect output.
               </p>
             </div>
 
             <div className="p-6 rounded-xl bg-slate-800/30 border border-slate-700">
-              <h3 className="text-xl font-semibold mb-3 text-orange-400">Simplicity Scales</h3>
+              <h3 className="text-xl font-semibold mb-3 text-orange-400">Unlimited AI Scale</h3>
               <p className="text-slate-300">
-                Small contexts keep AI accurate and humans productive. Scale through multiplication, not expansion.
+                AI builds massive systems through perfect small contexts. No size limits when AI never loses focus.
               </p>
             </div>
           </div>

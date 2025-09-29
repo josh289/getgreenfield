@@ -28,23 +28,23 @@ const Problem: React.FC = () => {
   const problems = [
     {
       icon: <Brain className="w-8 h-8 text-red-500" />,
-      title: "AI Context Collapse: Too much context degrades AI performance",
-      description: "AI hallucinations and errors multiply with larger contexts"
+      title: "AI Hallucinations: Large contexts break AI accuracy",
+      description: "AI invents functions, misunderstands architecture, creates bugs"
     },
     {
       icon: <AlertTriangle className="w-8 h-8 text-red-500" />,
-      title: "Human Review Bottleneck: Can't validate AI output fast enough",
-      description: "AI generates changes 100x faster than humans can verify"
+      title: "Context Overflow: AI can't handle real codebases",
+      description: "Production systems exceed AI's ability to maintain coherence"
     },
     {
       icon: <TrendingUp className="w-8 h-8 text-red-500" />,
-      title: "Cascading Failures: Mistakes compound exponentially",
-      description: "Confused AI creates bad code that overwhelms human capacity"
+      title: "Compounding Errors: AI mistakes cascade through systems",
+      description: "One hallucination breaks ten things, creating more confusion"
     },
     {
       icon: <Zap className="w-8 h-8 text-red-500" />,
-      title: "Dual Overload: Both AI and humans max out",
-      description: "Neither artificial nor human intelligence can handle the chaos"
+      title: "Unreliable Output: AI can't be trusted with critical code",
+      description: "Without boundaries, AI generates plausible-looking disasters"
     }
   ];
 
@@ -53,8 +53,8 @@ const Problem: React.FC = () => {
       <div ref={problemRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle
-            title="Why software development has been fundamentally broken"
-            subtitle="Both AI and human brains hit cognitive limits with modern software complexity. AI loses accuracy with large contexts while humans can't review fast enough, creating a cascade of compounding errors."
+            title="Why AI can't build software that works"
+            subtitle="Current AI fails with large codebases. It hallucinates, loses context, and generates broken code. The promise of AI development remains locked behind fundamental architectural problems."
             align="center"
             accent="purple"
           />
@@ -78,7 +78,7 @@ const Problem: React.FC = () => {
         
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-16 text-center">
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            What if software could be built to respect the cognitive limits of both AI and humans?
+            What if we could architect software so AI never loses context or hallucinates?
           </p>
         </div>
       </div>

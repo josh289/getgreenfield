@@ -30,8 +30,8 @@ const Solution: React.FC = () => {
       <div ref={solutionRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle
-            title="The Cognitive Architecture Breakthrough"
-            subtitle="Greenfield solves the dual overload problem: keeping both AI and humans within their cognitive limits for maximum accuracy and productivity."
+            title="Unlock AI's Full Potential"
+            subtitle="Greenfield gives AI perfect context boundaries. No hallucinations. No confusion. Just AI that builds production-ready systems with 100% accuracy."
             align="center"
             accent="teal"
           />
@@ -44,7 +44,7 @@ const Solution: React.FC = () => {
               <div className="absolute top-0 right-0 h-full w-1/2 overflow-hidden rounded-r-xl opacity-20">
                 <div className="absolute top-0 -right-12 w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-6 relative z-10">The Four Pillars of Cognitive Architecture:</h3>
+              <h3 className="text-2xl font-bold mb-6 relative z-10">How We Make AI Development Actually Work:</h3>
 
               <div className="space-y-6 relative z-10">
                 <div className="flex items-start">
@@ -54,8 +54,8 @@ const Solution: React.FC = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-xl font-semibold text-blue-400">Bounded Contexts</h4>
-                    <p className="text-slate-300 mt-1">Every piece under 1,000 lines. Small enough for AI to stay accurate, humans to fully understand.</p>
+                    <h4 className="text-xl font-semibold text-blue-400">Perfect AI Context</h4>
+                    <p className="text-slate-300 mt-1">Every piece under 1,000 lines. AI never loses track, never hallucinates.</p>
                   </div>
                 </div>
 
@@ -66,8 +66,8 @@ const Solution: React.FC = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-xl font-semibold text-purple-400">Perfect Comprehension</h4>
-                    <p className="text-slate-300 mt-1">Limited scope prevents AI hallucinations. Clear boundaries enable human validation.</p>
+                    <h4 className="text-xl font-semibold text-purple-400">Zero Hallucinations</h4>
+                    <p className="text-slate-300 mt-1">Bounded contexts eliminate AI confusion. Every output is accurate and reliable.</p>
                   </div>
                 </div>
 
@@ -78,8 +78,8 @@ const Solution: React.FC = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-xl font-semibold text-teal-400">Pattern Library</h4>
-                    <p className="text-slate-300 mt-1">Solutions that compound over time. Every solved problem becomes reusable wisdom.</p>
+                    <h4 className="text-xl font-semibold text-teal-400">AI Memory Bank</h4>
+                    <p className="text-slate-300 mt-1">AI learns patterns that work. Reuses proven solutions automatically.</p>
                   </div>
                 </div>
 
@@ -90,8 +90,8 @@ const Solution: React.FC = () => {
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-xl font-semibold text-orange-400">Universal Scale</h4>
-                    <p className="text-slate-300 mt-1">Scales by division, not addition. More contexts, not bigger ones.</p>
+                    <h4 className="text-xl font-semibold text-orange-400">Infinite AI Scale</h4>
+                    <p className="text-slate-300 mt-1">AI builds systems of any size by working in perfect chunks.</p>
                   </div>
                 </div>
               </div>

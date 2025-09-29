@@ -53,19 +53,19 @@ const Hero: React.FC<HeroProps> = ({ onEarlyAccess }) => {
 
           <h1 className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
-              The software development
+              Unlock AI's full potential
             </span><br />
-            breakthrough
+            for software development
           </h1>
 
           <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300 text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-12 leading-relaxed">
-            Production-ready SaaS in a week. Legacy systems become greenfield projects.
-            Any developer becomes 1000x more productive.
+            AI can finally build complete systems. Bounded contexts prevent hallucinations.
+            Ship production-ready software 100x faster with AI that actually works.
           </p>
 
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
             <Button size="lg" onClick={onEarlyAccess} className="px-8 py-4 text-lg">
-              Experience the Breakthrough
+              Unlock AI Development
             </Button>
             <Button variant="outline" size="lg" onClick={scrollToProof} className="px-8 py-4 text-lg">
               See the Proof

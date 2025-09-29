@@ -30,8 +30,8 @@ const Features: React.FC = () => {
     {
       icon: <Box className="w-8 h-8" />,
       title: "Bounded Contexts",
-      description: "Every piece perfectly understandable",
-      longDescription: "Each feature lives in its own isolated boundary with clear interfaces. No more hunting through tangled codebases.",
+      description: "AI never loses focus or hallucinates",
+      longDescription: "Perfect context boundaries keep AI accurate. Every piece is complete and isolated, eliminating hallucinations.",
       gradient: "from-blue-500 to-cyan-500",
       iconColor: "text-blue-400",
       bgGradient: "from-blue-500/10 to-cyan-500/10"
@@ -39,8 +39,8 @@ const Features: React.FC = () => {
     {
       icon: <Zap className="w-8 h-8" />,
       title: "Event-Driven Architecture",
-      description: "Seamless component communication",
-      longDescription: "Contexts communicate through clean events, making your system predictable and easy to debug.",
+      description: "AI builds loosely coupled systems",
+      longDescription: "AI automatically creates clean event flows between contexts. Perfect decoupling, zero dependencies.",
       gradient: "from-purple-500 to-pink-500",
       iconColor: "text-purple-400",
       bgGradient: "from-purple-500/10 to-pink-500/10"
