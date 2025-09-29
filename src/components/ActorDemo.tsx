@@ -245,78 +245,60 @@ export class InventoryHandler {
 
             {/* Main Visualization Area */}
             <div className="p-8">
-              {/* Step Timeline at Top */}
-              <div className="mb-6">
-                {/* Current Step Display */}
-                {currentFlow && currentFlow.steps && currentFlow.steps.length > 0 ? (
-                <div className="mb-4 p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/50 rounded-lg">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold shadow-lg">
-                        {currentStep + 1}
-                      </div>
-                      <Zap className="w-5 h-5 text-purple-400 animate-pulse" />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <div className="text-lg text-white font-semibold">
-                            {currentFlow.steps && currentFlow.steps.length > 0 && currentStep < currentFlow.steps.length
-                              ? currentFlow.steps[currentStep].event
-                              : "Ready to start"}
-                          </div>
-                          {currentFlow.steps && currentFlow.steps[currentStep] && currentFlow.steps[currentStep].event.includes('broadcast') && (
-                            <span className="px-2 py-0.5 bg-purple-500/30 text-purple-300 text-xs rounded-full font-medium">
-                              Broadcast
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-sm text-slate-400 mt-1">
-                          {currentStep === currentFlow.steps.length - 1
-                            ? "✓ Final step - Flow complete"
-                            : `→ Next: ${currentFlow.steps[currentStep + 1]?.event?.split(' ').slice(0, 3).join(' ') || "Complete"}...`}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <div className="text-sm font-medium text-slate-300">
-                        Step {currentStep + 1} of {currentFlow.steps.length}
-                      </div>
-                      <div className="flex gap-1">
-                        {currentFlow.steps.map((_, idx) => (
-                          <div
-                            key={idx}
-                            className={`w-2 h-2 rounded-full transition-colors ${
-                              idx <= currentStep ? 'bg-blue-400' : 'bg-slate-600'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                ) : (
-                  <div className="mb-4 p-4 bg-slate-800/50 border border-slate-700 rounded-lg">
-                    <div className="text-lg text-slate-400 text-center">Loading animation...</div>
-                  </div>
-                )}
 
-                {/* Progress Bar */}
-                <div className="flex gap-2">
+              {/* Side-by-side: Event Timeline + Animation */}
+              <div className="grid grid-cols-[280px,1fr] gap-6">
+
+                {/* Event Timeline - Left Side */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold text-slate-400 mb-4 uppercase tracking-wider px-2">
+                    Event Flow ({currentStep + 1}/{currentFlow.steps.length})
+                  </div>
                   {currentFlow.steps.map((step, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentStep(index)}
-                      className={`flex-1 h-2 rounded-full transition-all duration-300 ${
-                        index <= currentStep
-                          ? 'bg-gradient-to-r from-blue-500 to-purple-500'
-                          : 'bg-slate-700'
+                      className={`w-full text-left p-3 rounded-lg border-2 transition-all duration-300 ${
+                        index === currentStep
+                          ? 'bg-gradient-to-r from-blue-500/30 to-purple-500/30 border-blue-500 shadow-lg shadow-blue-500/20 scale-105'
+                          : index < currentStep
+                          ? 'bg-slate-800/30 border-green-600/50 opacity-70'
+                          : 'bg-slate-800/20 border-slate-700/50 opacity-50'
                       }`}
-                      title={step.event}
-                    />
+                    >
+                      <div className="flex items-start gap-2">
+                        <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 ${
+                          index === currentStep
+                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white animate-pulse'
+                            : index < currentStep
+                            ? 'bg-green-500 text-white'
+                            : 'bg-slate-700 text-slate-500'
+                        }`}>
+                          {index < currentStep ? '✓' : index + 1}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className={`text-xs font-medium leading-snug ${
+                            index === currentStep
+                              ? 'text-white'
+                              : index < currentStep
+                              ? 'text-slate-400'
+                              : 'text-slate-500'
+                          }`}>
+                            {step.event}
+                          </div>
+                          {index === currentStep && (
+                            <div className="flex items-center gap-1 mt-1.5">
+                              <Zap className="w-3 h-3 text-purple-400 animate-pulse" />
+                              <span className="text-[10px] text-purple-300 font-semibold uppercase">Active Now</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </button>
                   ))}
                 </div>
-              </div>
 
-              {/* Animation Container */}
+                {/* Animation Container - Right Side */}
               <div className="relative h-96 bg-slate-900/30 rounded-lg border border-slate-700/50 overflow-hidden">
 
                 {/* Trigger Node (Left Side) */}
@@ -436,6 +418,9 @@ export class InventoryHandler {
                   </div>
                 )}
               </div>
+
+              </div>
+              {/* End of side-by-side grid */}
 
               {/* Metrics Comparison */}
               <div className="mt-8 grid grid-cols-2 gap-6">
