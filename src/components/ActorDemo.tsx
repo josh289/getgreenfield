@@ -248,6 +248,7 @@ export class InventoryHandler {
               {/* Step Timeline at Top */}
               <div className="mb-6">
                 {/* Current Step Display */}
+                {currentFlow && currentFlow.steps && currentFlow.steps.length > 0 ? (
                 <div className="mb-4 p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/50 rounded-lg">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -258,11 +259,11 @@ export class InventoryHandler {
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <div className="text-lg text-white font-semibold">
-                            {currentStep >= 0 && currentFlow.steps[currentStep]
+                            {currentFlow.steps && currentFlow.steps.length > 0 && currentStep < currentFlow.steps.length
                               ? currentFlow.steps[currentStep].event
                               : "Ready to start"}
                           </div>
-                          {currentStep >= 0 && currentFlow.steps[currentStep]?.event?.includes('broadcast') && (
+                          {currentFlow.steps && currentFlow.steps[currentStep] && currentFlow.steps[currentStep].event.includes('broadcast') && (
                             <span className="px-2 py-0.5 bg-purple-500/30 text-purple-300 text-xs rounded-full font-medium">
                               Broadcast
                             </span>
@@ -292,6 +293,11 @@ export class InventoryHandler {
                     </div>
                   </div>
                 </div>
+                ) : (
+                  <div className="mb-4 p-4 bg-slate-800/50 border border-slate-700 rounded-lg">
+                    <div className="text-lg text-slate-400 text-center">Loading animation...</div>
+                  </div>
+                )}
 
                 {/* Progress Bar */}
                 <div className="flex gap-2">
