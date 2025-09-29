@@ -245,93 +245,214 @@ export class InventoryHandler {
 
             {/* Main Visualization Area */}
             <div className="p-8">
-              <div className="relative h-96">
-
-                {/* Trigger Node */}
-                <div className="absolute left-8 top-1/2 -translate-y-1/2">
-                  <div className={`p-4 bg-${currentFlow.trigger.color}-500/20 border-2 border-${currentFlow.trigger.color}-500 rounded-lg`}>
-                    {React.createElement(currentFlow.trigger.icon, { className: "w-8 h-8 text-" + currentFlow.trigger.color + "-400" })}
-                    <div className="text-sm text-white mt-2">{currentFlow.trigger.label}</div>
+              {/* Step Timeline at Top */}
+              <div className="mb-6">
+                {/* Current Step Display */}
+                <div className="mb-4 p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/50 rounded-lg">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full text-white font-bold">
+                        {currentStep + 1}
+                      </div>
+                      <div>
+                        <div className="text-lg text-white font-semibold">
+                          {currentFlow.steps[currentStep]?.event || "Ready to start"}
+                        </div>
+                        <div className="text-sm text-slate-400">
+                          {currentStep === currentFlow.steps.length - 1 ? "Final step" : `Next: ${currentFlow.steps[currentStep + 1]?.event || "Complete"}`}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-sm text-slate-400">
+                      Step {currentStep + 1} of {currentFlow.steps.length}
+                    </div>
                   </div>
                 </div>
 
-                {/* Actor Nodes */}
-                <div className="absolute right-8 top-0 bottom-0 flex flex-col justify-center gap-4">
-                  {currentFlow.actors.map((actor) => {
-                    const isHighlighted = activeSteps.some(step =>
-                      step.highlight?.includes(actor.id) ||
-                      (step.highlight?.includes('all') && actor.id !== 'order' && actor.id !== 'collab')
-                    );
-
-                    return (
-                      <div
-                        key={actor.id}
-                        className={`p-3 rounded-lg border-2 transition-all duration-500 ${
-                          isHighlighted
-                            ? `bg-${actor.color}-500/30 border-${actor.color}-500 scale-110`
-                            : 'bg-slate-800/50 border-slate-600 opacity-50'
-                        }`}
-                      >
-                        {React.createElement(actor.icon, { className: `w-6 h-6 text-${actor.color}-400` })}
-                        <div className="text-xs text-white mt-1">{actor.label}</div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {/* Event Arrows and Labels */}
-                <svg className="absolute inset-0 pointer-events-none">
-                  {activeSteps.map((step, index) => (
-                    <g key={index}>
-                      <defs>
-                        <marker
-                          id={`arrowhead-${index}`}
-                          markerWidth="10"
-                          markerHeight="10"
-                          refX="9"
-                          refY="3"
-                          orient="auto"
-                        >
-                          <polygon
-                            points="0 0, 10 3, 0 6"
-                            fill="#60a5fa"
-                          />
-                        </marker>
-                      </defs>
-                      <line
-                        x1="120"
-                        y1="192"
-                        x2="500"
-                        y2={192 + (index * 30 - 45)}
-                        stroke="#60a5fa"
-                        strokeWidth="2"
-                        markerEnd={`url(#arrowhead-${index})`}
-                        className="animate-pulse"
-                      />
-                      <text
-                        x="310"
-                        y={192 + (index * 30 - 50)}
-                        fill="#94a3b8"
-                        className="text-sm"
-                      >
-                        {step.event}
-                      </text>
-                    </g>
+                {/* Progress Bar */}
+                <div className="flex gap-2">
+                  {currentFlow.steps.map((step, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentStep(index)}
+                      className={`flex-1 h-2 rounded-full transition-all duration-300 ${
+                        index <= currentStep
+                          ? 'bg-gradient-to-r from-blue-500 to-purple-500'
+                          : 'bg-slate-700'
+                      }`}
+                      title={step.event}
+                    />
                   ))}
-                </svg>
+                </div>
               </div>
 
-              {/* Current Step Description */}
-              {currentStep < currentFlow.steps.length && (
-                <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                  <div className="flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-blue-400" />
-                    <span className="text-blue-300 font-medium">
-                      Step {currentStep + 1}: {currentFlow.steps[currentStep].event}
-                    </span>
+              {/* Animation Container */}
+              <div className="relative h-96 bg-slate-900/30 rounded-lg border border-slate-700/50">
+
+                {/* Trigger Node (Left Side) */}
+                <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10">
+                  <div className={`relative p-6 rounded-xl shadow-lg ${
+                    currentStep >= 0 ? 'animate-pulse' : ''
+                  } ${
+                    currentFlow.trigger.color === 'purple'
+                      ? 'bg-gradient-to-br from-purple-500/30 to-purple-600/30 border-2 border-purple-500'
+                      : currentFlow.trigger.color === 'blue'
+                      ? 'bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-2 border-blue-500'
+                      : 'bg-gradient-to-br from-green-500/30 to-green-600/30 border-2 border-green-500'
+                  }`}>
+                    {React.createElement(currentFlow.trigger.icon, {
+                      className: `w-10 h-10 ${
+                        currentFlow.trigger.color === 'purple' ? 'text-purple-400' :
+                        currentFlow.trigger.color === 'blue' ? 'text-blue-400' : 'text-green-400'
+                      }`
+                    })}
+                    <div className="text-sm text-white mt-2 font-medium">{currentFlow.trigger.label}</div>
+                    {currentStep === 0 && (
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full animate-ping"></div>
+                    )}
                   </div>
                 </div>
-              )}
+
+                {/* Actor Nodes (Right Side - Semi-circle layout) */}
+                <div className="absolute right-12 top-1/2 -translate-y-1/2">
+                  <div className="relative w-96 h-80">
+                    {currentFlow.actors.map((actor, index) => {
+                      const angle = (index / (currentFlow.actors.length - 1)) * Math.PI - Math.PI / 2;
+                      const radius = 140;
+                      const x = Math.cos(angle) * radius + radius;
+                      const y = Math.sin(angle) * radius + 140;
+
+                      const isHighlighted = activeSteps.some(step =>
+                        step.highlight?.includes(actor.id) ||
+                        (step.highlight?.includes('all') && actor.id !== 'order' && actor.id !== 'collab')
+                      );
+
+                      const getActorColors = (color: string, isHighlighted: boolean) => {
+                        if (!isHighlighted) return 'bg-slate-800/50 border-slate-600/50 opacity-60';
+
+                        const colorMap: Record<string, string> = {
+                          blue: 'bg-gradient-to-br from-blue-500/40 to-blue-600/40 border-blue-500',
+                          green: 'bg-gradient-to-br from-green-500/40 to-green-600/40 border-green-500',
+                          purple: 'bg-gradient-to-br from-purple-500/40 to-purple-600/40 border-purple-500',
+                          orange: 'bg-gradient-to-br from-orange-500/40 to-orange-600/40 border-orange-500',
+                          red: 'bg-gradient-to-br from-red-500/40 to-red-600/40 border-red-500',
+                          yellow: 'bg-gradient-to-br from-yellow-500/40 to-yellow-600/40 border-yellow-500',
+                          teal: 'bg-gradient-to-br from-teal-500/40 to-teal-600/40 border-teal-500'
+                        };
+                        return colorMap[color] || colorMap.blue;
+                      };
+
+                      const getIconColor = (color: string) => {
+                        const colorMap: Record<string, string> = {
+                          blue: 'text-blue-400',
+                          green: 'text-green-400',
+                          purple: 'text-purple-400',
+                          orange: 'text-orange-400',
+                          red: 'text-red-400',
+                          yellow: 'text-yellow-400',
+                          teal: 'text-teal-400'
+                        };
+                        return colorMap[color] || 'text-blue-400';
+                      };
+
+                      return (
+                        <div
+                          key={actor.id}
+                          className={`absolute p-4 rounded-lg border-2 transition-all duration-500 ${
+                            getActorColors(actor.color, isHighlighted)
+                          } ${isHighlighted ? 'scale-110 shadow-xl z-10' : ''}`}
+                          style={{
+                            left: `${x}px`,
+                            top: `${y}px`,
+                            transform: 'translate(-50%, -50%)'
+                          }}
+                        >
+                          {React.createElement(actor.icon, { className: `w-7 h-7 ${getIconColor(actor.color)}` })}
+                          <div className="text-xs text-white mt-1 whitespace-nowrap">{actor.label}</div>
+                          {isHighlighted && (
+                            <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Dynamic Event Arrows */}
+                <svg className="absolute inset-0 pointer-events-none">
+                  <defs>
+                    <marker
+                      id="arrowhead"
+                      markerWidth="10"
+                      markerHeight="10"
+                      refX="9"
+                      refY="3"
+                      orient="auto"
+                    >
+                      <polygon
+                        points="0 0, 10 3, 0 6"
+                        className="fill-blue-400"
+                      />
+                    </marker>
+                  </defs>
+
+                  {activeSteps.map((step, stepIndex) => {
+                    // Calculate positions for each highlighted actor
+                    const highlighted = step.highlight || [];
+                    return highlighted.map((actorId, index) => {
+                      const actorIndex = currentFlow.actors.findIndex(a => a.id === actorId);
+                      if (actorIndex === -1) return null;
+
+                      const angle = (actorIndex / (currentFlow.actors.length - 1)) * Math.PI - Math.PI / 2;
+                      const radius = 140;
+                      const endX = Math.cos(angle) * radius + radius + 480;
+                      const endY = Math.sin(angle) * radius + 140 + 192;
+
+                      return (
+                        <g key={`${stepIndex}-${index}`}>
+                          <path
+                            d={`M 150 192 Q 350 ${192 + (index * 20)} ${endX} ${endY}`}
+                            stroke="url(#gradient)"
+                            strokeWidth="3"
+                            fill="none"
+                            markerEnd="url(#arrowhead)"
+                            className="animate-pulse"
+                            strokeDasharray="5,5"
+                          />
+                          <text
+                            x="350"
+                            y={192 + (index * 20) - 5}
+                            fill="#cbd5e1"
+                            className="text-xs font-medium"
+                          >
+                            {step.event}
+                          </text>
+
+                          {/* Animated message dot */}
+                          <circle
+                            r="4"
+                            fill="#60a5fa"
+                            className="animate-pulse"
+                          >
+                            <animateMotion
+                              dur="2s"
+                              repeatCount="indefinite"
+                              path={`M 150 192 Q 350 ${192 + (index * 20)} ${endX} ${endY}`}
+                            />
+                          </circle>
+                        </g>
+                      );
+                    });
+                  }).flat()}
+
+                  <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.8" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
 
               {/* Metrics Comparison */}
               <div className="mt-8 grid grid-cols-2 gap-6">
