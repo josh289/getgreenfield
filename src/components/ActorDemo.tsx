@@ -319,15 +319,29 @@ export class InventoryHandler {
                     <div className="relative">
                       {/* Connection Lines */}
                       <div className="absolute inset-0 flex items-center">
-                        <div className="w-64 h-px bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-blue-500/50"></div>
+                        <div className="w-96 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"></div>
                       </div>
 
                       {/* Event Message Box */}
-                      <div className="relative bg-slate-800/90 backdrop-blur-sm border border-blue-500/50 rounded-lg px-6 py-3 shadow-xl">
-                        <div className="flex items-center gap-3">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                          <div className="text-white font-medium">{currentFlow.steps[currentStep].event}</div>
-                          <ArrowRight className="w-4 h-4 text-blue-400 animate-pulse" />
+                      <div className="relative bg-slate-800/95 backdrop-blur-sm border border-blue-500/50 rounded-lg px-6 py-4 shadow-2xl max-w-sm">
+                        <div className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse mt-2"></div>
+                          <div className="flex-1">
+                            <div className="text-white font-medium leading-relaxed">
+                              {currentFlow.steps[currentStep].event.split('→').map((part, idx, arr) => (
+                                <span key={idx}>
+                                  {part.trim()}
+                                  {idx < arr.length - 1 && (
+                                    <>
+                                      <br />
+                                      <span className="text-blue-400 text-sm">→</span>{' '}
+                                    </>
+                                  )}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-blue-400 animate-pulse mt-2" />
                         </div>
                       </div>
                     </div>
