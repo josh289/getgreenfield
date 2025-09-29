@@ -66,8 +66,8 @@ const ActorDemo: React.FC = () => {
         { from: 'handlers', to: 'events', event: 'AI wires up event choreography', highlight: ['events'] },
       ],
       metrics: {
-        traditional: { accuracy: '45%', time: '2 hours', errors: '15-20' },
-        actors: { accuracy: '100%', time: '2 minutes', errors: '0' }
+        traditional: { accuracy: '45%', time: '2 days', errors: '15-20' },
+        actors: { accuracy: '100%', time: '1 hour', errors: '0' }
       }
     },
     order: {
