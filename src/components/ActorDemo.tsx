@@ -117,7 +117,6 @@ const ActorDemo: React.FC = () => {
   };
 
   const currentFlow = flows[activeFlow];
-  const activeSteps = currentFlow.steps.slice(0, currentStep + 1);
 
   const handlePlayPause = () => {
     if (isAnimating) {
@@ -330,9 +329,10 @@ export class InventoryHandler {
                 <div className="absolute right-4 top-1/2 -translate-y-1/2">
                   <div className="grid grid-cols-2 gap-2" style={{ width: '320px' }}>
                     {currentFlow.actors.map((actor, index) => {
-                      const isHighlighted = activeSteps.some(step =>
-                        step.highlight?.includes(actor.id) ||
-                        (step.highlight?.includes('all') && actor.id !== 'order' && actor.id !== 'collab')
+                      const currentStepData = currentFlow.steps[currentStep];
+                      const isHighlighted = currentStepData && (
+                        currentStepData.highlight?.includes(actor.id) ||
+                        (currentStepData.highlight?.includes('all') && actor.id !== 'order' && actor.id !== 'collab')
                       );
 
                       const getActorColors = (color: string, isHighlighted: boolean) => {
