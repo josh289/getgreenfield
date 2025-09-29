@@ -31,35 +31,74 @@ const LiveDemo: React.FC = () => {
 
   const examples = [
     {
-      title: "User Management Business Service",
-      description: "See how Greenfield transforms complex code into simple handlers",
-      input: `// Traditional approach - complex, tightly coupled
-class UserService {
+      title: "Collaboration Actor Service",
+      description: "See how complex workspace management becomes event-driven actors",
+      input: `// Traditional monolithic approach - tightly coupled, complex
+class CollaborationService {
   constructor() {
     this.db = new Database();
-    this.emailService = new EmailService();
     this.notificationService = new NotificationService();
-    this.validationService = new ValidationService();
+    this.searchService = new SearchService();
+    this.analyticsService = new AnalyticsService();
+    this.achievementService = new AchievementService();
     this.auditLogger = new AuditLogger();
-    this.cacheService = new CacheService();
   }
 
-  async createUser(data) {
-    // Complex validation logic
-    if (!data.email || !data.password) throw new Error('Missing fields');
-    if (!this.validationService.isValidEmail(data.email)) throw new Error('Invalid email');
-    if (await this.db.userExists(data.email)) throw new Error('User exists');
+  async postMessage(workspaceId, channelId, userId, content) {
+    // Complex validation and authorization
+    const workspace = await this.db.getWorkspace(workspaceId);
+    if (!workspace) throw new Error('Workspace not found');
+
+    const member = await this.db.getMember(workspaceId, userId);
+    if (!member) throw new Error('Not a member');
+
+    const channel = await this.db.getChannel(channelId);
+    if (!channel || channel.workspaceId !== workspaceId) {
+      throw new Error('Invalid channel');
+    }
 
     // Transaction handling
     const transaction = await this.db.beginTransaction();
     try {
-      const user = await this.db.createUser(data, transaction);
-      await this.emailService.sendWelcome(user.email);
-      await this.notificationService.notifyAdmins(user);
-      await this.auditLogger.logUserCreation(user);
-      await this.cacheService.invalidate('users');
+      // Store message
+      const message = await this.db.createMessage({
+        messageId: uuid(),
+        workspaceId,
+        channelId,
+        userId,
+        content,
+        timestamp: Date.now()
+      }, transaction);
+
+      // Update statistics
+      await this.db.incrementChannelMessageCount(channelId, transaction);
+      await this.db.updateWorkspaceActivity(workspaceId, transaction);
+      await this.db.updateUserMessageCount(userId, transaction);
+
+      // Process mentions
+      const mentions = this.extractMentions(content);
+      for (const mentionedUser of mentions) {
+        await this.notificationService.sendMention(mentionedUser, message);
+        await this.db.addMention(mentionedUser, message.messageId, transaction);
+      }
+
+      // Update search index
+      await this.searchService.indexMessage(message);
+
+      // Check achievements
+      const messageCount = await this.db.getUserMessageCount(userId);
+      if (messageCount === 100) {
+        await this.achievementService.unlock(userId, 'centurion');
+      }
+
+      // Analytics
+      await this.analyticsService.trackMessage(message);
+
+      // Audit log
+      await this.auditLogger.log('message_posted', { userId, messageId: message.messageId });
+
       await transaction.commit();
-      return user;
+      return message;
     } catch (error) {
       await transaction.rollback();
       throw error;
@@ -69,173 +108,417 @@ class UserService {
       output: {
         contexts: [
           {
-            name: "Service Contract",
-            description: "Type-safe API definition",
-            code: `export const UserServiceContract = {
+            name: "Actor Service Contract",
+            description: "Defines Commands, Queries, and Domain Events",
+            code: `export const CollaborationServiceContract = {
+  serviceName: "collaboration",
+
   commands: [{
-    name: 'CreateUser',
-    inputSchema: CreateUserSchema,
-    permissions: ['users:create']
+    name: 'PostMessage',
+    inputSchema: PostMessageSchema,
+    permissions: ['workspace:message:post']
   }],
-  events: [{
-    name: 'UserCreated',
-    broadcast: true
+
+  queries: [{
+    name: 'GetWorkspace',
+    inputSchema: GetWorkspaceSchema,
+    permissions: ['workspace:read']
+  }],
+
+  domainEvents: [{
+    name: 'MessagePosted',
+    broadcast: true,
+    payloadSchema: MessagePostedSchema
   }]
 };`
           },
           {
             name: "Command Handler",
-            description: "Your entire business logic - just a function",
-            code: `@CommandHandler('CreateUser')
-export class CreateUserHandler {
-  async handle(cmd: CreateUser, user: AuthUser) {
-    // Validate business rules
-    if (await this.userExists(cmd.email)) {
-      throw new BusinessError('User exists');
+            description: "Just business logic - no infrastructure",
+            code: `@CommandHandler('PostMessage')
+export class PostMessageHandler {
+  async handle(cmd: PostMessage, user: AuthUser) {
+    // Business rule validation
+    if (!cmd.content || cmd.content.length > 5000) {
+      throw new BusinessError('Invalid message');
     }
 
-    // Create user - that's it!
-    return { userId: newId(), email: cmd.email };
+    // That's it! Just return the result
+    return {
+      messageId: newId(),
+      postedAt: Date.now()
+    };
 
     // Platform automatically:
-    // - Validates input
+    // - Validates input schema
+    // - Checks permissions
     // - Handles transactions
-    // - Emits UserCreated event
-    // - Sends to message bus
+    // - Emits MessagePosted event
   }
 }`
           },
           {
-            name: "Event Handlers",
-            description: "React to changes asynchronously",
-            code: `@EventHandler('UserCreated')
-export class WelcomeEmailHandler {
-  async handle(event: UserCreated) {
-    await this.emailService.sendWelcome(event.email);
+            name: "Event Handlers (Choreography)",
+            description: "Multiple actors react independently",
+            code: `// Statistics Actor
+@EventHandler('MessagePosted')
+async updateStats(event: MessagePosted) {
+  await this.incrementChannelStats(event.channelId);
+  await this.updateWorkspaceActivity(event.workspaceId);
+}
+
+// Notification Actor
+@EventHandler('MessagePosted')
+async sendNotifications(event: MessagePosted) {
+  for (const mention of event.mentions) {
+    await this.sendMentionAlert(mention);
   }
 }
 
-@EventHandler('UserCreated')
-export class NotifyAdminsHandler {
-  async handle(event: UserCreated) {
-    await this.notifyAdmins(event);
+// Search Actor
+@EventHandler('MessagePosted')
+async indexMessage(event: MessagePosted) {
+  await this.searchIndex.add({
+    messageId: event.messageId,
+    content: event.content
+  });
+}
+
+// Achievement Actor
+@EventHandler('MessagePosted')
+async checkAchievements(event: MessagePosted) {
+  const count = await this.getMessageCount(event.userId);
+  if (count === 100) {
+    emit('AchievementUnlocked', {
+      userId: event.userId,
+      achievement: 'centurion'
+    });
+  }
+}`
+          },
+          {
+            name: "Query Handler",
+            description: "Optimized reads with access control",
+            code: `@QueryHandler('GetWorkspace')
+export class GetWorkspaceHandler {
+  async handle(query: GetWorkspace, user: AuthUser) {
+    // Check access
+    if (!await this.canAccess(query.workspaceId, user)) {
+      throw new ForbiddenError();
+    }
+
+    // Return denormalized view
+    return {
+      workspaceId: query.workspaceId,
+      name: workspace.name,
+      memberCount: workspace.memberCount,
+      // Conditionally include based on permissions
+      members: user.canViewMembers ?
+        await this.getMembers(query.workspaceId) : undefined
+    };
   }
 }`
           }
         ],
         events: [
-          "CreateUser command → Message Bus",
-          "Platform validates & authorizes",
-          "Handler executes (5 lines of code)",
-          "UserCreated event broadcast",
-          "All handlers react in parallel"
+          "PostMessage → Message Bus",
+          "Command Handler validates & executes",
+          "MessagePosted event → All actors",
+          "5+ actors process in parallel",
+          "Each actor handles one concern",
+          "Complete in milliseconds"
         ]
       }
     },
     {
-      title: "Order Service (Actor)",
-      description: "Complex order flow becomes simple event choreography",
-      input: `// Traditional monolithic approach
-class OrderProcessor {
-  async processOrder(orderData) {
-    // Check inventory availability
-    const items = await this.inventory.checkAvailability(orderData.items);
-    if (!items.allAvailable) throw new Error('Out of stock');
+      title: "Order Processing Actor",
+      description: "Complex e-commerce workflow becomes event-driven choreography",
+      input: `// Traditional monolithic order processing
+class OrderService {
+  constructor() {
+    this.db = new Database();
+    this.inventoryService = new InventoryService();
+    this.pricingService = new PricingService();
+    this.paymentGateway = new PaymentGateway();
+    this.shippingService = new ShippingService();
+    this.emailService = new EmailService();
+    this.analyticsService = new AnalyticsService();
+  }
 
-    // Calculate pricing with discounts
-    const pricing = await this.pricing.calculate(items, orderData.customerId);
-    const tax = await this.taxService.calculate(pricing, orderData.address);
+  async placeOrder(customerId, items, shippingAddress, paymentMethod) {
+    // Begin transaction
+    const transaction = await this.db.beginTransaction();
+    try {
+      // Validate customer
+      const customer = await this.db.getCustomer(customerId);
+      if (!customer) throw new Error('Customer not found');
 
-    // Process payment
-    const payment = await this.paymentGateway.charge(pricing.total + tax);
-    if (!payment.success) throw new Error('Payment failed');
+      // Check inventory for all items
+      for (const item of items) {
+        const stock = await this.inventoryService.checkStock(item.productId);
+        if (stock < item.quantity) {
+          throw new Error(\`Insufficient stock for \${item.productId}\`);
+        }
+      }
 
-    // Reserve inventory
-    await this.inventory.reserve(items, orderData.id);
+      // Calculate pricing
+      let subtotal = 0;
+      for (const item of items) {
+        const product = await this.db.getProduct(item.productId);
+        subtotal += product.price * item.quantity;
+      }
 
-    // Create order in database
-    const order = await this.db.orders.create({...orderData, payment, status: 'pending'});
+      // Apply discounts
+      const discounts = await this.pricingService.calculateDiscounts(customer, items);
+      const total = subtotal - discounts;
 
-    // Send notifications
-    await this.email.sendOrderConfirmation(order);
-    await this.sms.sendTrackingInfo(order);
+      // Calculate tax
+      const tax = await this.pricingService.calculateTax(total, shippingAddress);
 
-    // Update analytics
-    await this.analytics.trackPurchase(order);
+      // Process payment
+      const payment = await this.paymentGateway.charge({
+        amount: total + tax,
+        customerId,
+        paymentMethod
+      });
 
-    return order;
+      if (!payment.success) {
+        throw new Error('Payment failed: ' + payment.error);
+      }
+
+      // Create order
+      const order = await this.db.createOrder({
+        orderId: uuid(),
+        customerId,
+        items,
+        subtotal,
+        discounts,
+        tax,
+        total: total + tax,
+        paymentId: payment.id,
+        shippingAddress,
+        status: 'confirmed',
+        createdAt: Date.now()
+      }, transaction);
+
+      // Reserve inventory
+      for (const item of items) {
+        await this.inventoryService.reserve(
+          item.productId,
+          item.quantity,
+          order.orderId,
+          transaction
+        );
+      }
+
+      // Calculate shipping
+      const shipping = await this.shippingService.calculateShipping(items, shippingAddress);
+      await this.db.updateOrderShipping(order.orderId, shipping, transaction);
+
+      // Send confirmation email
+      await this.emailService.sendOrderConfirmation(customer.email, order);
+
+      // Update analytics
+      await this.analyticsService.trackPurchase({
+        customerId,
+        orderId: order.orderId,
+        total: order.total,
+        items
+      });
+
+      // Update customer statistics
+      await this.db.incrementCustomerOrderCount(customerId, transaction);
+      await this.db.updateCustomerTotalSpent(customerId, order.total, transaction);
+
+      await transaction.commit();
+      return order;
+    } catch (error) {
+      await transaction.rollback();
+      // Refund payment if it was processed
+      if (payment?.success) {
+        await this.paymentGateway.refund(payment.id);
+      }
+      throw error;
+    }
   }
 }`,
       output: {
         contexts: [
           {
-            name: "Order Service Contract",
-            description: "Define commands and events",
+            name: "Order Actor Contract",
+            description: "Commands, Queries, Events with schemas",
             code: `export const OrderServiceContract = {
+  serviceName: "orders",
+
   commands: [{
     name: 'PlaceOrder',
     inputSchema: PlaceOrderSchema,
-    permissions: ['orders:create']
+    outputSchema: OrderResultSchema,
+    permissions: ['order:create']
   }],
+
   queries: [{
-    name: 'GetOrder',
-    inputSchema: GetOrderSchema
+    name: 'GetOrderStatus',
+    inputSchema: GetOrderSchema,
+    outputSchema: OrderStatusSchema,
+    permissions: ['order:read']
   }],
-  events: [{
+
+  domainEvents: [{
     name: 'OrderPlaced',
+    broadcast: true,
+    payloadSchema: OrderPlacedSchema
+  }, {
+    name: 'OrderShipped',
     broadcast: true
   }]
 };`
           },
           {
             name: "Place Order Command",
-            description: "Just the business logic - that's all",
+            description: "Focus only on order business logic",
             code: `@CommandHandler('PlaceOrder')
 export class PlaceOrderHandler {
-  async handle(cmd: PlaceOrder) {
-    // Validate order
-    if (!cmd.items.length) {
-      throw new BusinessError('No items');
+  async handle(cmd: PlaceOrder, user: AuthUser) {
+    // Business validation
+    if (!cmd.items || cmd.items.length === 0) {
+      throw new BusinessError('Order must have items');
     }
 
-    // Create order - platform handles everything else
+    if (cmd.total < 0) {
+      throw new BusinessError('Invalid order total');
+    }
+
+    // Create order - that's it!
+    const orderId = newId();
+
     return {
-      orderId: newId(),
-      total: cmd.total
+      orderId,
+      status: 'pending',
+      createdAt: Date.now()
     };
 
-    // Platform automatically emits OrderPlaced event
+    // Platform automatically:
+    // - Validates schema
+    // - Checks permissions
+    // - Handles transactions
+    // - Emits OrderPlaced event
+    // - Sends to message bus
   }
 }`
           },
           {
-            name: "Choreographed Event Handlers",
-            description: "Services react independently",
-            code: `// Inventory Service
+            name: "Event-Driven Choreography",
+            description: "Each actor handles one concern independently",
+            code: `// Inventory Actor
 @EventHandler('OrderPlaced')
-async handle(event) {
-  await this.reserveItems(event.items);
+export class ReserveInventoryHandler {
+  async handle(event: OrderPlaced) {
+    for (const item of event.items) {
+      await this.reserveStock(item.productId, item.quantity);
+      emit('InventoryReserved', {
+        orderId: event.orderId,
+        productId: item.productId
+      });
+    }
+  }
 }
 
-// Payment Service
+// Payment Actor
 @EventHandler('OrderPlaced')
-async handle(event) {
-  await this.processPayment(event.total);
+export class ProcessPaymentHandler {
+  async handle(event: OrderPlaced) {
+    const result = await this.chargePayment({
+      amount: event.total,
+      customerId: event.customerId,
+      paymentMethod: event.paymentMethod
+    });
+
+    if (result.success) {
+      emit('PaymentProcessed', {
+        orderId: event.orderId,
+        paymentId: result.paymentId
+      });
+    } else {
+      emit('PaymentFailed', {
+        orderId: event.orderId,
+        reason: result.error
+      });
+    }
+  }
 }
 
-// Notification Service
+// Shipping Actor
+@EventHandler('PaymentProcessed')
+export class CreateShippingHandler {
+  async handle(event: PaymentProcessed) {
+    const label = await this.createShippingLabel(event.orderId);
+    emit('ShippingCreated', {
+      orderId: event.orderId,
+      trackingNumber: label.trackingNumber
+    });
+  }
+}
+
+// Notification Actor
 @EventHandler('OrderPlaced')
-async handle(event) {
-  await this.sendConfirmation(event);
+export class OrderConfirmationHandler {
+  async handle(event: OrderPlaced) {
+    await this.sendEmail({
+      to: event.customerEmail,
+      template: 'order-confirmation',
+      data: { orderId: event.orderId }
+    });
+  }
+}
+
+// Analytics Actor
+@EventHandler('OrderPlaced')
+export class TrackPurchaseHandler {
+  async handle(event: OrderPlaced) {
+    await this.recordPurchase({
+      customerId: event.customerId,
+      total: event.total,
+      items: event.items
+    });
+  }
+}`
+          },
+          {
+            name: "Saga Pattern for Compensation",
+            description: "Handle failures with compensating transactions",
+            code: `// Payment Failed - Trigger compensations
+@EventHandler('PaymentFailed')
+export class OrderFailureHandler {
+  async handle(event: PaymentFailed) {
+    // Release reserved inventory
+    emit('ReleaseInventory', {
+      orderId: event.orderId
+    });
+
+    // Update order status
+    emit('UpdateOrderStatus', {
+      orderId: event.orderId,
+      status: 'failed',
+      reason: event.reason
+    });
+
+    // Notify customer
+    emit('SendFailureNotification', {
+      orderId: event.orderId,
+      customerId: event.customerId
+    });
+  }
 }`
           }
         ],
         events: [
-          "PlaceOrder → Message Bus",
-          "Handler: 5 lines of business logic",
-          "OrderPlaced event → All services",
-          "Parallel processing by actors",
-          "Complete in milliseconds"
+          "PlaceOrder command → Message Bus",
+          "Order Actor validates & creates order",
+          "OrderPlaced event → 5+ actors",
+          "Inventory, Payment, Shipping react in parallel",
+          "Saga handles failures automatically",
+          "Complete distributed transaction"
         ]
       }
     }
@@ -268,7 +551,7 @@ async handle(event) {
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle
             title="See Greenfield in Action"
-            subtitle="Watch how Greenfield transforms complex legacy code into clean, bounded contexts"
+            subtitle="Watch how Greenfield transforms complex monolithic code into event-driven actors with bounded contexts"
             align="center"
           />
         </div>
@@ -361,7 +644,7 @@ async handle(event) {
 
                 {!showOutput && !isProcessing && (
                   <div className="bg-slate-950/30 rounded-lg p-8 text-center">
-                    <p className="text-slate-400 mb-4">Click "Try it yourself" to see the transformation</p>
+                    <p className="text-slate-400 mb-4">Click "Try it yourself" to see the actor transformation</p>
                     <div className="w-16 h-16 mx-auto bg-slate-800/50 rounded-lg flex items-center justify-center">
                       <Play className="w-8 h-8 text-slate-500" />
                     </div>
@@ -373,16 +656,16 @@ async handle(event) {
                     <div className="w-16 h-16 mx-auto bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
                       <RefreshCw className="w-8 h-8 text-blue-400 animate-spin" />
                     </div>
-                    <p className="text-slate-400">Transforming to Business Services...</p>
+                    <p className="text-slate-400">Transforming to Actor Services...</p>
                     <div className="mt-4 space-y-2">
                       <div className="text-sm text-slate-500">
-                        📝 Generating Service Contract
+                        📝 Generating Actor Service Contract
                       </div>
                       <div className="text-sm text-slate-500">
-                        ⚡ Creating Command/Query/Event handlers
+                        ⚡ Creating Command, Query & Event handlers
                       </div>
                       <div className="text-sm text-slate-500">
-                        🚀 Removing all infrastructure code
+                        🚀 Enabling event choreography
                       </div>
                     </div>
                   </div>
@@ -394,7 +677,7 @@ async handle(event) {
                     <div>
                       <h5 className="text-md font-semibold text-green-400 mb-3 flex items-center gap-2">
                         <Box className="w-4 h-4" />
-                        Business Service Components ({currentExample.output.contexts.length})
+                        Actor Service Components ({currentExample.output.contexts.length})
                       </h5>
                       <div className="space-y-3">
                         {currentExample.output.contexts.map((context, index) => (
@@ -427,7 +710,7 @@ async handle(event) {
                     <div>
                       <h5 className="text-md font-semibold text-purple-400 mb-3 flex items-center gap-2">
                         <GitBranch className="w-4 h-4" />
-                        Event Flow
+                        Message Bus Event Flow
                       </h5>
                       <div className="bg-slate-950/50 rounded-lg p-4 border border-purple-500/20">
                         <div className="flex flex-wrap gap-2">
@@ -452,7 +735,7 @@ async handle(event) {
                         </div>
                         <div>
                           <div className="text-blue-400 font-semibold">✓ Event Choreography</div>
-                          <div className="text-slate-400">Services react independently</div>
+                          <div className="text-slate-400">Actors react independently</div>
                         </div>
                         <div>
                           <div className="text-purple-400 font-semibold">✓ Type-Safe Contracts</div>
@@ -474,8 +757,8 @@ async handle(event) {
         {/* CTA */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12 text-center">
           <p className="text-slate-400 mb-6">
-            This is just a preview. The full Greenfield platform includes automated refactoring,
-            pattern library integration, and AI-powered optimization.
+            This is just a preview. The full Greenfield platform includes automated actor generation,
+            service contract creation, and complete event choreography.
           </p>
           <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 font-semibold">
             Get Early Access to Greenfield
