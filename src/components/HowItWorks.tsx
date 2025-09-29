@@ -29,27 +29,27 @@ const HowItWorks: React.FC = () => {
     {
       icon: <Target className="w-12 h-12 text-blue-500" />,
       title: 'Business Services (Actors)',
-      description: 'AI builds perfect microservices under 1,000 lines. Never loses context, never hallucinates.'
+      description: 'Self-contained microservices under 1,000 lines. Each owns a business domain with clear boundaries.'
     },
     {
       icon: <Zap className="w-12 h-12 text-purple-500" />,
       title: 'Three Simple Handlers',
-      description: 'AI generates commands, queries, and events. Clean patterns it can't get wrong.'
+      description: 'Commands change state. Queries read data. Events react asynchronously. That\'s all you write.'
     },
     {
       icon: <Settings className="w-12 h-12 text-teal-500" />,
       title: 'Zero Infrastructure Code',
-      description: 'AI focuses on business logic only. Platform handles everything else automatically.'
+      description: 'Just write handler functions. Platform handles auth, tracing, errors, scaling automatically.'
     },
     {
       icon: <Eye className="w-12 h-12 text-orange-500" />,
       title: 'Type-Safe Contracts',
-      description: 'AI generates perfect type-safe APIs. No confusion, no mistakes, just working contracts.'
+      description: 'Service contracts define APIs. Complete visibility. AI and humans understand every interaction.'
     },
     {
       icon: <Library className="w-12 h-12 text-green-500" />,
       title: 'Reusable Patterns',
-      description: 'AI learns and reuses what works. Every solution becomes part of its knowledge base.'
+      description: 'Every handler becomes a pattern. Solutions compound. Your codebase gets smarter over time.'
     }
   ];
 
@@ -59,8 +59,8 @@ const HowItWorks: React.FC = () => {
         <div ref={howItWorksRef} className="max-w-6xl mx-auto">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
             <SectionTitle
-              title="The Architecture that unlocks AI development"
-              subtitle="Greenfield Platform gives AI perfect boundaries so it can build production systems without hallucinations"
+              title="The Cognitive Architecture that changes everything"
+              subtitle="Greenfield Platform organizes software around how humans think, not how computers process"
               align="center"
             />
           </div>

@@ -1,80 +1,69 @@
-# Banyan Platform
+# Banyan Platform Landing Page
 
-The Software Development Breakthrough - Production-ready SaaS in a week. Legacy systems become greenfield projects. Any developer becomes 1000x more productive.
+This project is a landing page built with Vite, React, and TypeScript, using Tailwind CSS for styling.
 
-## Core Value Proposition
+## Prerequisites
 
-Banyan Platform revolutionizes software development by providing:
-
-- **Ultra-rapid SaaS deployment**: From concept to production-ready SaaS in just one week
-- **Legacy modernization**: Transform outdated systems into modern, scalable applications with minimal effort
-- **Developer productivity multiplier**: Amplify any developer's capabilities by 1000x through intelligent automation and scaffolding
-- **Greenfield freedom**: Experience the joy of greenfield development even when working with legacy constraints
-
-## Key Features
-
-- Intelligent code generation and scaffolding
-- Automated legacy system integration
-- Production-ready templates and components
-- Scalable architecture patterns
-- Developer experience optimization
-- Rapid prototyping to production pipeline
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (which includes npm)
 
 ## Getting Started
 
-### Prerequisites
+1.  **Navigate to the project directory:**
+    If you are in the workspace root, change to the `project` directory:
+    ```bash
+    cd project
+    ```
 
-- Node.js 18 or later
-- npm or yarn package manager
+2.  **Install dependencies:**
+    Install all the necessary project dependencies using npm:
+    ```bash
+    npm install
+    ```
 
-### Installation
+3.  **Run the development server:**
+    To start the Vite development server and view the site locally:
+    ```bash
+    npm run dev
+    ```
+    This will typically start the server on `http://localhost:5173/`. Open this URL in your web browser. The server will automatically reload when you make changes to the code.
 
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd banyand_landing
-   ```
+## Available Scripts
 
-2. Navigate to the project directory:
-   ```bash
-   cd project
-   ```
+In the `project` directory, you can run the following scripts:
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+-   ### `npm run dev`
+    Starts the development server.
 
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+-   ### `npm run build`
+    Builds the application for production to the `dist` folder. It correctly bundles React in production mode and optimizes the build for the best performance.
 
-5. Open your browser and visit `http://localhost:4321`
+-   ### `npm run lint`
+    Lints the project files using ESLint to check for code quality and potential errors. You might also be able to run this with `npx eslint .`.
 
-### Building for Production
+-   ### `npm run preview`
+    Serves the production build locally from the `dist` directory. This is useful for testing the production build before deploying.
 
-```bash
-npm run build
-```
+## Project Structure
 
-### Preview Production Build
+A brief overview of the key directories:
 
-```bash
-npm run preview
-```
+-   `public/`: Contains static assets that are copied directly to the build output directory without processing by Vite.
+-   `src/`: Contains the main source code for the application.
+    -   `assets/`: For static assets like images, fonts, etc., that are imported into your components.
+    -   `components/`: Reusable React components.
+        -   `ui/`: UI-specific components (e.g., buttons, modals).
+    -   `App.tsx`: The main application component.
+    -   `main.tsx`: The entry point of the application, where the React app is mounted to the DOM.
+-   `index.html`: The main HTML page that serves as the entry point for the Vite application.
+-   `vite.config.ts`: Vite configuration file.
+-   `tailwind.config.js`: Tailwind CSS configuration.
+-   `tsconfig.json`: TypeScript configuration for the project.
+-   `eslint.config.js`: ESLint configuration.
 
-## Technology Stack
+## Learn More
 
-- **Astro** - Static site generator
-- **React** - UI components
-- **Tailwind CSS** - Styling
-- **TypeScript** - Type safety
-
-## Contributing
-
-We welcome contributions to the Banyan Platform website. Please feel free to submit issues and pull requests.
-
-## License
-
-This project is proprietary to Banyan Platform.
+-   [Vite Documentation](https://vitejs.dev/guide/)
+-   [React Documentation](https://reactjs.org/docs/getting-started.html)
+-   [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+-   [Tailwind CSS Documentation](https://tailwindcss.com/docs/) 
