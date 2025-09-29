@@ -3,10 +3,16 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import Problem from './Problem';
+import Solution from './Solution';
+import UniversalBenefits from './UniversalBenefits';
+import LiveDemo from './LiveDemo';
 import HowItWorks from './HowItWorks';
 import UseCases from './UseCases';
 import Features from './Features';
-import BetaProgram from './AlphaProgram';
+import PatternShowcase from './PatternShowcase';
+import QuickstartGenerator from './QuickstartGenerator';
+import Philosophy from './Philosophy';
+import AlphaProgram from './AlphaProgram';
 import CallToAction from './CallToAction';
 import Footer from './Footer';
 import Modal from './ui/Modal';
@@ -29,10 +35,16 @@ const App: React.FC = () => {
       <main>
         <Hero onEarlyAccess={handleOpenModal} />
         <Problem />
+        <Solution />
+        <UniversalBenefits />
+        <LiveDemo />
         <HowItWorks />
         <UseCases />
         <Features />
-        <BetaProgram onJoinWaitlist={handleOpenModal} />
+        <PatternShowcase />
+        <QuickstartGenerator />
+        <Philosophy />
+        <AlphaProgram onJoinWaitlist={handleOpenModal} />
         <CallToAction onJoinWaitlist={handleOpenModal} />
       </main>
       <Footer />

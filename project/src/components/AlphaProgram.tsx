@@ -4,12 +4,12 @@ import SectionTitle from './ui/SectionTitle';
 import Button from './ui/Button';
 import { CheckCircle, Users, MessageSquare, Zap, Clock } from 'lucide-react';
 
-interface BetaProgramProps {
+interface AlphaProgramProps {
   onJoinWaitlist: () => void;
 }
 
-const BetaProgram: React.FC<BetaProgramProps> = ({ onJoinWaitlist }) => {
-  const betaProgramRef = useRef<HTMLDivElement>(null);
+const AlphaProgram: React.FC<AlphaProgramProps> = ({ onJoinWaitlist }) => {
+  const alphaProgramRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,39 +24,39 @@ const BetaProgram: React.FC<BetaProgramProps> = ({ onJoinWaitlist }) => {
       { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
     );
 
-    const elements = betaProgramRef.current?.querySelectorAll('.animate-on-scroll');
+    const elements = alphaProgramRef.current?.querySelectorAll('.animate-on-scroll');
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
   const benefits = [
-    "Beta access to RelayMCP",
-    "Weekly office hours with founders",
-    "Your feedback drives our roadmap",
-    "Lifetime early adopter pricing"
+    "Priority access to Greenfield Platform",
+    "Direct access to founders",
+    "Shape the platform's future",
+    "50% lifetime discount"
   ];
 
   const perfectFor = [
-    "Small teams (2-20 people)",
-    "Using AI tools already",
-    "Want better human + AI coordination",
-    "Ready to experiment and give feedback"
+    "Development teams facing cognitive overload",
+    "Organizations using AI tools already",
+    "Teams wanting seamless human + AI collaboration",
+    "Early adopters ready to shape the future"
   ];
 
   const commitment = [
-    "Use RelayMCP for real projects",
-    "Weekly 15-min feedback calls",
-    "Share what works (and what doesn't)"
+    "Use Greenfield Platform for real projects",
+    "Bi-weekly feedback sessions",
+    "Share insights and suggestions"
   ];
 
   return (
-    <Section id="beta-program" className="bg-slate-900">
-      <div ref={betaProgramRef} className="max-w-6xl mx-auto">
+    <Section id="early-access" className="bg-slate-900">
+      <div ref={alphaProgramRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
           <SectionTitle
-            title="Help Shape the Future of Work"
-            subtitle="Join our waitlist and be part of building the first AI-native workspace"
+            title="Join the Early Access Program"
+            subtitle="Be among the first to experience Greenfield Platform and help shape the future of cognitive-aware development"
             align="center"
           />
         </div>
@@ -66,7 +66,7 @@ const BetaProgram: React.FC<BetaProgramProps> = ({ onJoinWaitlist }) => {
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 h-full">
               <div className="flex items-center mb-4">
                 <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
-                <h3 className="text-xl font-semibold text-white">What Beta Users Get</h3>
+                <h3 className="text-xl font-semibold text-white">Early Access Benefits</h3>
               </div>
               <ul className="space-y-3">
                 {benefits.map((benefit, index) => (
@@ -100,7 +100,7 @@ const BetaProgram: React.FC<BetaProgramProps> = ({ onJoinWaitlist }) => {
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700 h-full">
               <div className="flex items-center mb-4">
                 <MessageSquare className="w-6 h-6 text-purple-500 mr-2" />
-                <h3 className="text-xl font-semibold text-white">Beta Commitment</h3>
+                <h3 className="text-xl font-semibold text-white">Your Commitment</h3>
               </div>
               <ul className="space-y-3">
                 {commitment.map((item, index) => (
@@ -125,9 +125,9 @@ const BetaProgram: React.FC<BetaProgramProps> = ({ onJoinWaitlist }) => {
                 <Clock className="w-8 h-8 text-orange-500 mr-3" />
                 <span className="text-orange-400 font-medium">Limited Spots Available</span>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Ready to Build the Future?</h3>
+              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Development Process?</h3>
               <p className="text-slate-300 mb-6">
-                Beta starts next week. Full launch Q2 2025. Be among the first to experience true human + AI collaboration.
+                Early access begins Q1 2025. Limited spots available. Join the waitlist to secure your place in the cognitive revolution.
               </p>
               <Button size="lg" onClick={onJoinWaitlist}>
                 <Zap className="mr-2 h-5 w-5" />
@@ -141,4 +141,4 @@ const BetaProgram: React.FC<BetaProgramProps> = ({ onJoinWaitlist }) => {
   );
 };
 
-export default BetaProgram;
+export default AlphaProgram;

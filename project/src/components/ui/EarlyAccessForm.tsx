@@ -54,7 +54,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         throw new Error(errorData.error?.message || 'Failed to submit form');
       }
       
-      toast.success('You\'re on the waitlist! We\'ll notify you when beta access is available.');
+      toast.success('Welcome to the Greenfield Platform waitlist! We\'ll notify you when early access is available.');
       onClose?.();
     } catch (error) {
       console.error('Form submission error:', error);

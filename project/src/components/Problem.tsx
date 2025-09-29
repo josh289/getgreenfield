@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Section from './ui/Section';
 import SectionTitle from './ui/SectionTitle';
-import { Clock, GitBranch, Layers, XCircle } from 'lucide-react';
+import { Brain, AlertTriangle, TrendingUp, Zap } from 'lucide-react';
 
 const Problem: React.FC = () => {
   const problemRef = useRef<HTMLDivElement>(null);
@@ -27,24 +27,24 @@ const Problem: React.FC = () => {
 
   const problems = [
     {
-      icon: <Clock className="w-8 h-8 text-red-500" />,
-      title: "Every AI Conversation Is Groundhog Day",
-      description: "Starting from zero. Every. Single. Time."
+      icon: <Brain className="w-8 h-8 text-red-500" />,
+      title: "AI Context Collapse: Too much context degrades AI performance",
+      description: "AI hallucinations and errors multiply with larger contexts"
     },
     {
-      icon: <Layers className="w-8 h-8 text-red-500" />,
-      title: "Your Best Practices Live in People's Heads",
-      description: "When they leave, the knowledge leaves."
+      icon: <AlertTriangle className="w-8 h-8 text-red-500" />,
+      title: "Human Review Bottleneck: Can't validate AI output fast enough",
+      description: "AI generates changes 100x faster than humans can verify"
     },
     {
-      icon: <GitBranch className="w-8 h-8 text-red-500" />,
-      title: "Tasks Get Done. Nothing Gets Smarter.",
-      description: "You finish projects but lose the insights that made them successful."
+      icon: <TrendingUp className="w-8 h-8 text-red-500" />,
+      title: "Cascading Failures: Mistakes compound exponentially",
+      description: "Confused AI creates bad code that overwhelms human capacity"
     },
     {
-      icon: <XCircle className="w-8 h-8 text-red-500" />,
-      title: "AI Tools Are Disconnected",
-      description: "Powerful but isolated. No memory of your business context."
+      icon: <Zap className="w-8 h-8 text-red-500" />,
+      title: "Dual Overload: Both AI and humans max out",
+      description: "Neither artificial nor human intelligence can handle the chaos"
     }
   ];
 
@@ -52,9 +52,9 @@ const Problem: React.FC = () => {
     <Section id="problem" dark>
       <div ref={problemRef} className="max-w-6xl mx-auto">
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-          <SectionTitle 
-            title="Knowledge Dies in Task Lists"
-            subtitle="Teams waste knowledge by starting every AI interaction from scratch, losing context between projects, and treating AI as a tool instead of a learning system."
+          <SectionTitle
+            title="Why software development has been fundamentally broken"
+            subtitle="Both AI and human brains hit cognitive limits with modern software complexity. AI loses accuracy with large contexts while humans can't review fast enough, creating a cascade of compounding errors."
             align="center"
             accent="purple"
           />
@@ -78,7 +78,7 @@ const Problem: React.FC = () => {
         
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-16 text-center">
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            What if every project made your entire organization smarter?
+            What if software could be built to respect the cognitive limits of both AI and humans?
           </p>
         </div>
       </div>

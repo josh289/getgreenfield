@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Section from './ui/Section';
 import SectionTitle from './ui/SectionTitle';
-import { PanelTop, GitBranch, CircuitBoard, LayoutList, BookOpen, Lock } from 'lucide-react';
+import { Box, Zap, Library, Settings, Bot, Clock, ArrowRight } from 'lucide-react';
 
 const Features: React.FC = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,34 +28,58 @@ const Features: React.FC = () => {
 
   const features = [
     {
-      icon: <PanelTop className="w-8 h-8 text-blue-500" />,
-      title: "Living Context",
-      description: "Your AI agents understand your projects, not just prompts"
+      icon: <Box className="w-8 h-8" />,
+      title: "Bounded Contexts",
+      description: "Every piece perfectly understandable",
+      longDescription: "Each feature lives in its own isolated boundary with clear interfaces. No more hunting through tangled codebases.",
+      gradient: "from-blue-500 to-cyan-500",
+      iconColor: "text-blue-400",
+      bgGradient: "from-blue-500/10 to-cyan-500/10"
     },
     {
-      icon: <CircuitBoard className="w-8 h-8 text-purple-500" />,
-      title: "Reusable Processes",
-      description: "Build a relay once, use it forever (and it gets smarter)"
+      icon: <Zap className="w-8 h-8" />,
+      title: "Event-Driven Architecture",
+      description: "Seamless component communication",
+      longDescription: "Contexts communicate through clean events, making your system predictable and easy to debug.",
+      gradient: "from-purple-500 to-pink-500",
+      iconColor: "text-purple-400",
+      bgGradient: "from-purple-500/10 to-pink-500/10"
     },
     {
-      icon: <LayoutList className="w-8 h-8 text-teal-500" />,
-      title: "Tool Integration",
-      description: "Works with Claude, Cursor, Slack, and 100+ tools via MCP"
+      icon: <Library className="w-8 h-8" />,
+      title: "Pattern Library",
+      description: "Reusable solutions that compound",
+      longDescription: "Tap into battle-tested patterns for authentication, payments, data processing, and more.",
+      gradient: "from-green-500 to-emerald-500",
+      iconColor: "text-green-400",
+      bgGradient: "from-green-500/10 to-emerald-500/10"
     },
     {
-      icon: <GitBranch className="w-8 h-8 text-green-500" />,
-      title: "True Collaboration",
-      description: "AI agents are team members, not just tools"
+      icon: <Settings className="w-8 h-8" />,
+      title: "Zero Ceremony",
+      description: "No infrastructure complexity",
+      longDescription: "Skip the Docker files, build configs, and deployment scripts. Focus on what matters: your product.",
+      gradient: "from-orange-500 to-red-500",
+      iconColor: "text-orange-400",
+      bgGradient: "from-orange-500/10 to-red-500/10"
     },
     {
-      icon: <BookOpen className="w-8 h-8 text-orange-500" />,
-      title: "Your Data, Your Control",
-      description: "Secure MCP tools, your infrastructure, your rules"
+      icon: <Bot className="w-8 h-8" />,
+      title: "Perfect AI Integration",
+      description: "AI understands everything",
+      longDescription: "Your bounded contexts are perfectly readable by Claude, Cursor, and any AI tool. Maximum productivity.",
+      gradient: "from-teal-500 to-blue-500",
+      iconColor: "text-teal-400",
+      bgGradient: "from-teal-500/10 to-blue-500/10"
     },
     {
-      icon: <Lock className="w-8 h-8 text-red-500" />,
-      title: "See What's Working",
-      description: "Track relay performance, optimize over time"
+      icon: <Clock className="w-8 h-8" />,
+      title: "Instant Onboarding",
+      description: "New developers productive in hours",
+      longDescription: "Clean boundaries mean anyone can understand any part of your system immediately. No more week-long ramp-ups.",
+      gradient: "from-yellow-500 to-orange-500",
+      iconColor: "text-yellow-400",
+      bgGradient: "from-yellow-500/10 to-orange-500/10"
     }
   ];
 
@@ -63,9 +88,9 @@ const Features: React.FC = () => {
       <div id="features" className="scroll-mt-20">
         <div ref={featuresRef} className="max-w-6xl mx-auto">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-            <SectionTitle 
-              title="Everything You Need for Human + AI Work"
-              subtitle="RelayMCP brings together all the capabilities teams need to work effectively with AI agents"
+            <SectionTitle
+              title="Core Features That Actually Matter"
+              subtitle="Greenfield delivers the fundamentals that make software development predictable, scalable, and AI-friendly"
              align="center"
             />
           </div>
@@ -74,19 +99,64 @@ const Features: React.FC = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700"
+                className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 group"
                 style={{ transitionDelay: `${(index + 1) * 100}ms` }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 h-full">
-                  <div className="bg-slate-900/50 rounded-lg p-4 inline-block mb-4">
-                    {feature.icon}
+                <div className={`relative overflow-hidden backdrop-blur-sm rounded-xl p-6 border transition-all duration-500 h-full transform group-hover:scale-105 group-hover:-translate-y-1 ${
+                  hoveredIndex === index
+                    ? `bg-gradient-to-br ${feature.bgGradient} border-${feature.gradient.split(' ')[1].replace('to-', '')}/50 shadow-xl shadow-${feature.gradient.split(' ')[1].replace('to-', '')}/20`
+                    : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50'
+                }`}>
+
+                  {/* Background gradient overlay on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+
+                  <div className="relative z-10">
+                    {/* Icon with gradient background */}
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl mb-6 transition-all duration-500 ${
+                      hoveredIndex === index
+                        ? `bg-gradient-to-br ${feature.gradient} shadow-lg`
+                        : 'bg-slate-900/50'
+                    }`}>
+                      <div className={`transition-colors duration-500 ${
+                        hoveredIndex === index ? 'text-white' : feature.iconColor
+                      }`}>
+                        {feature.icon}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-white transition-colors duration-300">
+                      {feature.title}
+                    </h3>
+
+                    <p className={`text-slate-300 group-hover:text-slate-100 transition-all duration-300 ${
+                      hoveredIndex === index ? 'mb-4' : ''
+                    }`}>
+                      {feature.description}
+                    </p>
+
+                    {/* Extended description on hover */}
+                    <div className={`overflow-hidden transition-all duration-500 ${
+                      hoveredIndex === index ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <p className="text-slate-200 text-sm leading-relaxed">
+                        {feature.longDescription}
+                      </p>
+                    </div>
+
+                    {/* Arrow indicator */}
+                    <div className={`flex items-center mt-4 text-sm font-medium transition-all duration-300 ${
+                      hoveredIndex === index
+                        ? 'opacity-100 translate-x-0'
+                        : 'opacity-0 -translate-x-2'
+                    }`}>
+                      <span className="text-white mr-2">Learn more</span>
+                      <ArrowRight className="w-4 h-4 text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="text-slate-300">
-                    {feature.description}
-                  </p>
                 </div>
               </div>
             ))}

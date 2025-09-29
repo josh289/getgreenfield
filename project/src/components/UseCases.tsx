@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Section from './ui/Section';
 import SectionTitle from './ui/SectionTitle';
-import { 
-  FileText, Users, Bug, ArrowRight, User, Bot, Lightbulb, Target, Zap
+import {
+  Rocket, RefreshCw, TrendingUp, Building, ArrowRight, ExternalLink
 } from 'lucide-react';
 
 const UseCases = () => {
   const useCasesRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<'onboarding' | 'content' | 'development'>('onboarding');
+  const [activeUseCase, setActiveUseCase] = useState<number>(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,160 +26,186 @@ const UseCases = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [activeTab]); // Re-run when activeTab changes
+  }, []);
 
-  // Debug useEffect to track activeTab changes
-  useEffect(() => {
-    console.log('Active tab changed to:', activeTab);
-    console.log('Available use cases:', useCasesByTab[activeTab]?.length || 0);
-  }, [activeTab]);
-
-  const tabs = [
-    { id: 'onboarding' as const, label: 'Customer Onboarding', icon: <Users className="w-4 h-4" /> },
-    { id: 'content' as const, label: 'Content Creation', icon: <FileText className="w-4 h-4" /> },
-    { id: 'development' as const, label: 'Bug Resolution', icon: <Bug className="w-4 h-4" /> }
+  const useCases = [
+    {
+      icon: <Rocket className="w-8 h-8" />,
+      title: 'New Projects',
+      subtitle: 'Start with production-ready architecture',
+      description: 'Skip months of infrastructure setup and architectural decisions. Begin with battle-tested patterns that scale.',
+      benefits: [
+        'Production-ready from day one',
+        'Enterprise-grade security built-in',
+        'Scalable architecture patterns',
+        'Integrated DevOps pipeline'
+      ],
+      outcomes: [
+        'MVP to market in 1 week instead of 6 months',
+        'Zero technical debt from the start',
+        '99.9% uptime from deployment'
+      ],
+      link: '/solutions/new',
+      gradient: 'from-blue-500 to-purple-600'
+    },
+    {
+      icon: <RefreshCw className="w-8 h-8" />,
+      title: 'Legacy Systems',
+      subtitle: 'Transform any codebase into greenfield experience',
+      description: 'Modernize decades-old systems without rewrites. Gradually transform legacy code while maintaining business continuity.',
+      benefits: [
+        'Incremental modernization strategy',
+        'Zero-downtime transformation',
+        'Automated code migration',
+        'Legacy integration bridges'
+      ],
+      outcomes: [
+        '20-year-old systems feel like new projects',
+        '90% reduction in maintenance overhead',
+        'Modern developer experience on legacy code'
+      ],
+      link: '/solutions/legacy',
+      gradient: 'from-teal-500 to-cyan-600'
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: 'Growing Teams',
+      subtitle: 'Scale team productivity linearly',
+      description: 'Add developers without complexity overhead. New team members become productive immediately, regardless of experience level.',
+      benefits: [
+        'Instant onboarding for new developers',
+        'Consistent code quality across team',
+        'Automated knowledge transfer',
+        'Mentorship built into the platform'
+      ],
+      outcomes: [
+        'Junior developers ship like seniors',
+        '1-day onboarding instead of 3 months',
+        'Linear productivity scaling with team size'
+      ],
+      link: '/solutions/teams',
+      gradient: 'from-green-500 to-emerald-600'
+    },
+    {
+      icon: <Building className="w-8 h-8" />,
+      title: 'Enterprise Systems',
+      subtitle: 'Modernize 20-year-old systems safely',
+      description: 'Enterprise-grade transformation with zero business risk. Maintain compliance while achieving startup-like agility.',
+      benefits: [
+        'Compliance-first modernization',
+        'Risk-free transformation process',
+        'Enterprise security standards',
+        'Audit trail for all changes'
+      ],
+      outcomes: [
+        'Enterprise agility without enterprise complexity',
+        'Regulatory compliance maintained throughout',
+        'Cost reduction of 70% on infrastructure'
+      ],
+      link: '/solutions/enterprise',
+      gradient: 'from-orange-500 to-red-600'
+    }
   ];
 
-  const useCasesByTab: Record<'onboarding' | 'content' | 'development', any[]> = {
-    content: [
-      {
-        icon: <FileText className="w-6 h-6" />,
-        title: "Content Creation Relay",
-        problem: "Content teams waste hours re-explaining brand voice, target audience, and style guidelines to AI tools for every single piece of content.",
-        solution: "Create a relay that remembers your brand context and improves with each piece of content created.",
-        steps: [
-          { 
-            name: "Research", 
-            type: "AI", 
-            description: "AI gathers relevant data using your brand guidelines, competitor analysis, and audience insights stored in the workspace"
-          },
-          { 
-            name: "Outline", 
-            type: "Human", 
-            description: "Human reviews research and creates strategic outline, adding context about messaging priorities and business goals"
-          },
-          { 
-            name: "Draft", 
-            type: "AI", 
-            description: "AI writes first draft using approved outline, brand voice, and previous successful content patterns"
-          },
-          { 
-            name: "Edit", 
-            type: "Human", 
-            description: "Human refines content for strategy and nuance, with AI learning from each edit for future improvements"
-          },
-          { 
-            name: "Publish", 
-            type: "AI", 
-            description: "AI handles formatting, SEO optimization, and distribution across channels using learned preferences"
-          }
-        ],
-        outcome: "Context about brand voice, audience, and goals flows through every step. Each piece of content gets better because the AI learns your brand voice, successful patterns, and team preferences.",
-        gradient: "from-blue-500/20 to-purple-500/20"
-      }
-    ],
-    onboarding: [
-      {
-        icon: <Users className="w-6 h-6" />,
-        title: "Customer Onboarding Relay",
-        problem: "New customers get inconsistent onboarding experiences, support teams repeat the same setup steps, and valuable onboarding insights aren't captured for improvement.",
-        solution: "Build a relay that ensures consistent, personalized onboarding while learning what makes customers successful.",
-        steps: [
-          { 
-            name: "Info Gathering", 
-            type: "Human", 
-            description: "Customer success rep conducts discovery call, understanding customer goals, technical setup, and success criteria"
-          },
-          { 
-            name: "Setup", 
-            type: "AI", 
-            description: "AI configures customer environment based on their specific needs and industry best practices from successful onboardings"
-          },
-          { 
-            name: "Training Docs", 
-            type: "AI", 
-            description: "AI creates personalized training materials and documentation tailored to customer's use case and team structure"
-          },
-          { 
-            name: "Check-in", 
-            type: "Human", 
-            description: "Rep conducts follow-up sessions, addresses questions, with AI tracking engagement and identifying success patterns"
-          }
-        ],
-        outcome: "New customers get consistent, personalized onboarding. Your team builds knowledge about what makes customers successful and can replicate those patterns.",
-        gradient: "from-purple-500/20 to-pink-500/20"
-      }
-    ],
-    development: [
-      {
-        icon: <Bug className="w-6 h-6" />,
-        title: "Bug Resolution Relay",
-        problem: "Bug fixes take forever because context gets lost between reporting, reproduction, fixing, and testing. Teams repeat the same debugging steps and don't learn from past resolutions.",
-        solution: "Create a relay that maintains full context throughout the bug lifecycle and learns from each resolution to prevent similar issues.",
-        steps: [
-          { 
-            name: "Report Analysis", 
-            type: "AI", 
-            description: "AI analyzes bug report, checks against known issues, gathers relevant code context, and suggests initial troubleshooting steps"
-          },
-          { 
-            name: "Reproduce", 
-            type: "Human", 
-            description: "Developer follows AI's reproduction steps, adds environment details, and confirms the issue with full context preserved"
-          },
-          { 
-            name: "Fix", 
-            type: "Human", 
-            description: "Developer implements fix with AI providing code suggestions based on similar past issues and codebase patterns"
-          },
-          { 
-            name: "Test", 
-            type: "AI", 
-            description: "AI runs comprehensive tests including edge cases learned from previous similar bugs, ensuring no regressions"
-          },
-          { 
-            name: "Deploy", 
-            type: "AI", 
-            description: "AI handles deployment process, monitors for issues, and updates knowledge base with resolution patterns"
-          }
-        ],
-        outcome: "AI understands codebase context and testing requirements. Bugs get resolved faster with fewer back-and-forth cycles, and your team builds institutional knowledge.",
-        gradient: "from-teal-500/20 to-cyan-500/20"
-      }
-    ]
-  };
-
-  const StepCard = ({ step, index, isLast }: { step: any; index: number; isLast: boolean }) => (
-    <div className="flex flex-col lg:flex-row items-start lg:items-center mb-6 last:mb-0">
-      <div className="flex items-center mb-3 lg:mb-0 lg:mr-6">
-        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-700 text-slate-300 text-sm font-bold mr-3 flex-shrink-0">
-          {index + 1}
-        </div>
+  const UseCaseCard = ({ useCase, index, isActive }: { useCase: any; index: number; isActive: boolean }) => (
+    <div
+      className={`
+        relative cursor-pointer transition-all duration-500 transform
+        ${isActive ? 'scale-105 z-10' : 'scale-100 hover:scale-102'}
+      `}
+      onClick={() => setActiveUseCase(index)}
+    >
+      <div className={`
+        relative overflow-hidden rounded-2xl border transition-all duration-300
+        ${isActive
+          ? 'border-blue-500/50 bg-slate-800/50'
+          : 'border-slate-700/50 bg-slate-800/30 hover:border-slate-600/50'
+        }
+      `}>
+        {/* Background Gradient */}
         <div className={`
-          flex items-center justify-center min-w-[160px] h-12 rounded-lg border transition-all duration-300
-          ${step.type === 'AI' 
-            ? 'bg-blue-500/10 border-blue-500/30 text-blue-300' 
-            : 'bg-green-500/10 border-green-500/30 text-green-300'
-          }
-        `}>
-          <div className="flex items-center space-x-2">
-            {step.type === 'AI' ? (
-              <Bot className="w-4 h-4" />
-            ) : (
-              <User className="w-4 h-4" />
-            )}
-            <span className="text-sm font-medium">{step.name}</span>
-            <span className="text-xs opacity-75">({step.type})</span>
+          absolute inset-0 opacity-10 bg-gradient-to-br ${useCase.gradient}
+          ${isActive ? 'opacity-20' : ''}
+        `}></div>
+
+        <div className="relative z-10 p-6">
+          {/* Icon and Title */}
+          <div className="flex items-center mb-4">
+            <div className={`
+              p-3 rounded-xl bg-gradient-to-br ${useCase.gradient} mr-4
+              ${isActive ? 'shadow-lg' : ''}
+            `}>
+              <div className="text-white">
+                {useCase.icon}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">{useCase.title}</h3>
+              <p className="text-blue-400 text-sm font-medium">{useCase.subtitle}</p>
+            </div>
           </div>
+
+          {/* Description */}
+          <p className="text-slate-300 mb-6 leading-relaxed">{useCase.description}</p>
+
+          {/* Benefits or Outcomes based on active state */}
+          {isActive ? (
+            <div className="space-y-4">
+              <div>
+                <h4 className="text-white font-semibold mb-2 flex items-center">
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Key Benefits
+                </h4>
+                <ul className="space-y-1 text-sm text-slate-300">
+                  {useCase.benefits.map((benefit: string, i: number) => (
+                    <li key={i} className="flex items-center">
+                      <ArrowRight className="w-3 h-3 mr-2 text-blue-400" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-white font-semibold mb-2 flex items-center">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                  Proven Outcomes
+                </h4>
+                <ul className="space-y-1 text-sm text-slate-300">
+                  {useCase.outcomes.map((outcome: string, i: number) => (
+                    <li key={i} className="flex items-center">
+                      <ArrowRight className="w-3 h-3 mr-2 text-green-400" />
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-4">
+                <a
+                  href={useCase.link}
+                  className={`
+                    inline-flex items-center px-4 py-2 rounded-lg font-medium transition-all duration-300
+                    bg-gradient-to-r ${useCase.gradient} text-white hover:shadow-lg
+                  `}
+                >
+                  Learn More
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {useCase.benefits.slice(0, 2).map((benefit: string, i: number) => (
+                <div key={i} className="flex items-center text-sm text-slate-400">
+                  <ArrowRight className="w-3 h-3 mr-2 text-blue-500" />
+                  {benefit}
+                </div>
+              ))}
+              <p className="text-xs text-slate-500 mt-2">Click to see more details</p>
+            </div>
+          )}
         </div>
-        {!isLast && (
-          <ArrowRight className="w-5 h-5 text-slate-500 ml-3 hidden lg:block flex-shrink-0" />
-        )}
-      </div>
-      <div className="flex-1 lg:ml-4">
-        <p className="text-slate-300 text-sm leading-relaxed">
-          {step.description}
-        </p>
       </div>
     </div>
   );
@@ -190,178 +216,62 @@ const UseCases = () => {
         <div ref={useCasesRef} className="max-w-7xl mx-auto">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
             <SectionTitle
-              title="Relays in Action"
-              subtitle="See how teams use RelayMCP to create intelligent workflows where humans and AI collaborate seamlessly"
+              title="The same breakthrough, applied everywhere"
+              subtitle="Greenfield transforms every aspect of software development, from greenfield projects to legacy modernization"
               align="center"
             />
           </div>
 
-          {/* What Makes Relays Different */}
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mb-16">
-            <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700">
-              <div className="text-center mb-8">
-                <Lightbulb className="w-8 h-8 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-4">What Makes Relays Different?</h3>
-                <p className="text-slate-300 text-lg max-w-3xl mx-auto">
-                  Unlike traditional task management, Relays maintain context throughout the entire workflow. 
-                  Each step builds on the previous one, and the system gets smarter with every project.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <Target className="w-6 h-6 text-blue-500 mx-auto mb-3" />
-                  <h4 className="font-semibold text-white mb-2">Context Flows</h4>
-                  <p className="text-slate-400 text-sm">Information and decisions flow seamlessly between human and AI team members</p>
-                </div>
-                <div className="text-center">
-                  <Zap className="w-6 h-6 text-purple-500 mx-auto mb-3" />
-                  <h4 className="font-semibold text-white mb-2">Gets Smarter</h4>
-                  <p className="text-slate-400 text-sm">Each project teaches the system, improving outcomes for future work</p>
-                </div>
-                <div className="text-center">
-                  <Users className="w-6 h-6 text-teal-500 mx-auto mb-3" />
-                  <h4 className="font-semibold text-white mb-2">True Collaboration</h4>
-                  <p className="text-slate-400 text-sm">AI agents are team members with roles, not just tools you prompt</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Tab Navigation */}
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mb-12">
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`
-                    flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all duration-300
-                    ${activeTab === tab.id
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700/50 hover:text-white'
-                    }
-                  `}
-                >
-                  {tab.icon}
-                  <span>{tab.label}</span>
-                </button>
+          {/* Use Cases Grid */}
+          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+              {useCases.map((useCase, index) => (
+                <UseCaseCard
+                  key={index}
+                  useCase={useCase}
+                  index={index}
+                  isActive={activeUseCase === index}
+                />
               ))}
             </div>
           </div>
-          
-          {/* Use Cases for Active Tab */}
-          <div className="space-y-12">
-            {useCasesByTab[activeTab]?.map((useCase, index) => (
-              <div
-                key={`${activeTab}-${index}`}
-                className="opacity-100 translate-y-0 transition-all duration-500 ease-out"
-                style={{ 
-                  animationDelay: `${index * 100}ms`,
-                  animation: 'fadeInUp 0.6s ease-out forwards'
-                }}
-              >
-                <div className={`
-                  relative overflow-hidden rounded-2xl border border-slate-700/50 
-                  bg-gradient-to-br ${useCase.gradient} backdrop-blur-sm
-                `}>
-                  <div className="absolute inset-0 bg-slate-900/70"></div>
-                  
-                  <div className="relative z-10 p-8">
-                    {/* Header */}
-                    <div className="flex items-center mb-6">
-                      <div className="bg-slate-800/50 rounded-xl p-3 mr-4">
-                        {useCase.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2">
-                          {useCase.title}
-                        </h3>
-                        <p className="text-slate-400">
-                          How teams currently struggle → How RelayMCP solves it
-                        </p>
-                      </div>
-                    </div>
 
-                    {/* Problem & Solution */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                      <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
-                        <h4 className="text-red-400 font-semibold mb-2 flex items-center">
-                          <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-                          The Problem
-                        </h4>
-                        <p className="text-slate-300 text-sm">
-                          {useCase.problem}
-                        </p>
-                      </div>
-                      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-4">
-                        <h4 className="text-green-400 font-semibold mb-2 flex items-center">
-                          <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                          RelayMCP Solution
-                        </h4>
-                        <p className="text-slate-300 text-sm">
-                          {useCase.solution}
-                        </p>
-                      </div>
-                    </div>
+          {/* Summary Section */}
+          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300">
+            <div className="text-center bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-blue-500/20">
+              <div className="max-w-4xl mx-auto">
+                <h3 className="text-3xl font-bold mb-4 text-white">
+                  One platform.
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"> Every use case.</span>
+                </h3>
+                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                  Whether you're building the next unicorn startup or modernizing a Fortune 500 enterprise system,
+                  Greenfield provides the same breakthrough development experience.
+                </p>
 
-                    {/* Workflow Steps */}
-                    <div className="mb-6">
-                      <h4 className="text-xl font-semibold text-white mb-4 flex items-center">
-                        <ArrowRight className="w-5 h-5 mr-2 text-blue-500" />
-                        How the Relay Works
-                      </h4>
-                      <div className="bg-slate-800/30 rounded-lg p-6">
-                        {useCase.steps.map((step, stepIndex) => (
-                          <StepCard 
-                            key={stepIndex} 
-                            step={step} 
-                            index={stepIndex}
-                            isLast={stepIndex === useCase.steps.length - 1}
-                          />
-                        ))}
-                      </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                  <div className="bg-slate-800/30 rounded-xl p-6">
+                    <h4 className="text-xl font-semibold text-white mb-3">For Startups</h4>
+                    <p className="text-slate-300 text-sm mb-3">
+                      Build production-ready products in weeks, not months.
+                      Compete with enterprise resources using a small team.
+                    </p>
+                    <div className="text-green-400 text-sm font-medium">
+                      → MVP to market in 1 week
                     </div>
-                    
-                    {/* Outcome */}
-                    <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
-                      <h4 className="text-blue-400 font-semibold mb-2 flex items-center">
-                        <Zap className="w-4 h-4 mr-2" />
-                        The Result
-                      </h4>
-                      <p className="text-slate-300 text-sm">
-                        {useCase.outcome}
-                      </p>
+                  </div>
+
+                  <div className="bg-slate-800/30 rounded-xl p-6">
+                    <h4 className="text-xl font-semibold text-white mb-3">For Enterprise</h4>
+                    <p className="text-slate-300 text-sm mb-3">
+                      Transform legacy systems without business risk.
+                      Achieve startup agility at enterprise scale.
+                    </p>
+                    <div className="text-blue-400 text-sm font-medium">
+                      → 20-year systems feel new
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Legend and CTA */}
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-16">
-            <div className="text-center bg-slate-800/30 rounded-2xl p-8 border border-slate-700">
-              <div className="max-w-3xl mx-auto">
-                <h3 className="text-2xl font-bold mb-4 text-white">Ready to Build Your First Relay?</h3>
-                <p className="text-slate-300 text-lg mb-6">
-                  These are just examples. RelayMCP adapts to any workflow where humans and AI need to collaborate with shared context.
-                </p>
-                <div className="flex items-center justify-center space-x-8 text-sm mb-6">
-                  <div className="flex items-center space-x-2">
-                    <Bot className="w-4 h-4 text-blue-400" />
-                    <span className="text-blue-300">AI Agent</span>
-                    <span className="text-slate-500">- Handles data, automation, analysis</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <User className="w-4 h-4 text-green-400" />
-                    <span className="text-green-300">Human</span>
-                    <span className="text-slate-500">- Provides strategy, creativity, judgment</span>
-                  </div>
-                </div>
-                <p className="text-slate-400 text-sm">
-                  Every relay you build becomes a reusable process that gets smarter with each use.
-                </p>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Button from './ui/Button';
+import ProofGrid from './ProofGrid';
 
 interface HeroProps {
   onEarlyAccess: () => void;
@@ -28,10 +29,10 @@ const Hero: React.FC<HeroProps> = ({ onEarlyAccess }) => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToHowItWorks = () => {
-    const howItWorksSection = document.getElementById('how-it-works');
-    if (howItWorksSection) {
-      howItWorksSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToProof = () => {
+    const proofSection = document.getElementById('proof-section');
+    if (proofSection) {
+      proofSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -41,42 +42,42 @@ const Hero: React.FC<HeroProps> = ({ onEarlyAccess }) => {
         <div className="absolute top-1/3 -left-1/4 w-1/2 h-1/2 bg-blue-600/10 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 right-0 w-1/3 h-1/3 bg-purple-600/10 rounded-full blur-3xl"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-100">
-            <span className="inline-block px-3 py-1 text-xs font-medium text-blue-400 bg-blue-900/30 rounded-full mb-6 border border-blue-800">
-              The AI-Native Workspace
+            <span className="inline-block px-4 py-2 text-sm font-medium text-blue-400 bg-blue-900/30 rounded-full mb-8 border border-blue-800">
+              Greenfield Platform
             </span>
           </div>
-          
-          <h1 className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-6">
-            Stop Managing Tasks.<br />
+
+          <h1 className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
-              Start Evolving Context.
-            </span>
+              The software development
+            </span><br />
+            breakthrough
           </h1>
-          
-          <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            RelayMCP is the AI-native workspace where every project builds organizational intelligence. Your team's knowledge becomes your AI's capability.
+
+          <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300 text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-12 leading-relaxed">
+            Production-ready SaaS in a week. Legacy systems become greenfield projects.
+            Any developer becomes 1000x more productive.
           </p>
-          
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" onClick={onEarlyAccess}>Join the Waitlist</Button>
-            <Button variant="outline" size="lg" onClick={scrollToHowItWorks}>See How It Works</Button>
+
+          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+            <Button size="lg" onClick={onEarlyAccess} className="px-8 py-4 text-lg">
+              Experience the Breakthrough
+            </Button>
+            <Button variant="outline" size="lg" onClick={scrollToProof} className="px-8 py-4 text-lg">
+              See the Proof
+            </Button>
           </div>
-          
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-500 mt-16 md:mt-24 flex justify-center">
-            <div className="p-1 border border-slate-800 rounded-md bg-slate-900/50 backdrop-blur-sm">
-              <div className="animate-pulse flex items-center text-sm">
-                <span className="h-2 w-2 rounded-full bg-teal-500 mr-2"></span>
-                <span className="text-slate-400">The workspace for organizational context engineering</span>
-              </div>
-            </div>
+
+          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-500">
+            <ProofGrid />
           </div>
         </div>
       </div>
-      
+
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent"></div>
     </div>
   );

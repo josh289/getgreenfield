@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from 'lucide-react';
 import Button from './ui/Button';
-import logo from '../assets/logo.png';
+import logo from '../assets/greenfield-logo.png';
 
 interface NavbarProps {
   onEarlyAccess: () => void;
@@ -28,12 +28,13 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
                   <div className="flex items-center">
-            <img 
-              src={logo.src || logo} 
-              alt="RelayMCP Logo" 
-              className={`transition-all duration-300 ${
+            <img
+              src={logo.src || logo}
+              alt="Greenfield Platform"
+              className={`transition-all duration-300 object-contain ${
                 isScrolled ? 'h-24 w-auto' : 'h-32 w-auto'
-              }`} 
+              }`}
+              style={{ maxWidth: '600px' }}
             />
           </div>
         
@@ -41,9 +42,10 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
           <nav>
             <ul className="flex space-x-8">
               {[
-                { name: 'How it works', href: '#how-it-works' },
-                { name: 'Use cases', href: '#use-cases' },
-                { name: 'Features', href: '#features' }
+                { name: 'The Breakthrough', href: '#breakthrough' },
+                { name: 'Platform', href: '#how-it-works' },
+                { name: 'Use Cases', href: '#use-cases' },
+                { name: 'Get Started', href: '#cta' }
               ].map((item) => (
                 <li key={item.name}>
                   <a href={item.href} className="text-slate-300 hover:text-white transition-colors">
@@ -53,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
               ))}
             </ul>
           </nav>
-          <Button onClick={onEarlyAccess}>Join the Waitlist</Button>
+          <Button onClick={onEarlyAccess}>Experience Greenfield</Button>
         </div>
         
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-white">
@@ -67,9 +69,10 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
           <nav className="container mx-auto px-4">
             <ul className="flex flex-col space-y-4">
               {[
-                { name: 'How it works', href: '#how-it-works' },
-                { name: 'Use cases', href: '#use-cases' },
-                { name: 'Features', href: '#features' }
+                { name: 'The Breakthrough', href: '#breakthrough' },
+                { name: 'Platform', href: '#how-it-works' },
+                { name: 'Use Cases', href: '#use-cases' },
+                { name: 'Get Started', href: '#cta' }
               ].map((item) => (
                 <li key={item.name}>
                   <a 
@@ -82,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
                 </li>
               ))}
               <li className="pt-2">
-                <Button fullWidth onClick={onEarlyAccess}>Join the Waitlist</Button>
+                <Button fullWidth onClick={onEarlyAccess}>Experience Greenfield</Button>
               </li>
             </ul>
           </nav>

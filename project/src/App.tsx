@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
-import Solution from './components/Solution';
+import Breakthrough from './components/Breakthrough';
 import HowItWorks from './components/HowItWorks';
 import Philosophy from './components/Philosophy';
 import CallToAction from './components/CallToAction';
@@ -15,7 +15,7 @@ function App() {
       <main>
         <Hero />
         <Problem />
-        <Solution />
+        <Breakthrough />
         <HowItWorks />
         <Philosophy />
         <CallToAction />
