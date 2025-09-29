@@ -5,7 +5,7 @@ import Hero from './Hero';
 import Problem from './Problem';
 import Solution from './Solution';
 import UniversalBenefits from './UniversalBenefits';
-import LiveDemo from './LiveDemo';
+import ActorDemo from './ActorDemo';
 import HowItWorks from './HowItWorks';
 import UseCases from './UseCases';
 import Features from './Features';
@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <Problem />
         <Solution />
         <UniversalBenefits />
-        <LiveDemo />
+        <ActorDemo />
         <HowItWorks />
         <UseCases />
         <Features />
