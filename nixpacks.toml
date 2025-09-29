@@ -1,0 +1,16 @@
+[phases.setup]
+nixPkgs = ["nodejs_18", "npm-9_x"]
+
+[phases.install]
+dependsOn = ["setup"]
+cmds = ["cd project && npm ci --cache /tmp/.npm"]
+
+[phases.build]
+dependsOn = ["install"]
+cmds = ["cd project && npm run build"]
+
+[start]
+cmd = "cd project && npm run start"
+
+[variables]
+NODE_ENV = "production"
