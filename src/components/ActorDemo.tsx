@@ -313,15 +313,10 @@ export class InventoryHandler {
                   </div>
                 </div>
 
-                {/* Actor Nodes (Right Side - Semi-circle layout) */}
-                <div className="absolute right-12 top-1/2 -translate-y-1/2">
-                  <div className="relative w-96 h-80">
+                {/* Actor Nodes (Right Side - Grid layout) */}
+                <div className="absolute right-8 top-1/2 -translate-y-1/2">
+                  <div className="grid grid-cols-2 gap-3" style={{ width: '400px' }}>
                     {currentFlow.actors.map((actor, index) => {
-                      const angle = (index / (currentFlow.actors.length - 1)) * Math.PI - Math.PI / 2;
-                      const radius = 140;
-                      const x = Math.cos(angle) * radius + radius;
-                      const y = Math.sin(angle) * radius + 140;
-
                       const isHighlighted = activeSteps.some(step =>
                         step.highlight?.includes(actor.id) ||
                         (step.highlight?.includes('all') && actor.id !== 'order' && actor.id !== 'collab')
@@ -355,20 +350,25 @@ export class InventoryHandler {
                         return colorMap[color] || 'text-blue-400';
                       };
 
+                      // Calculate grid position (max 3 rows per column)
+                      const row = index % 3;
+                      const col = Math.floor(index / 3);
+
                       return (
                         <div
                           key={actor.id}
-                          className={`absolute p-4 rounded-lg border-2 transition-all duration-500 ${
+                          className={`p-4 rounded-lg border-2 transition-all duration-500 ${
                             getActorColors(actor.color, isHighlighted)
-                          } ${isHighlighted ? 'scale-110 shadow-xl z-10' : ''}`}
+                          } ${isHighlighted ? 'scale-105 shadow-xl z-10' : ''}`}
                           style={{
-                            left: `${x}px`,
-                            top: `${y}px`,
-                            transform: 'translate(-50%, -50%)'
+                            gridColumn: col + 1,
+                            gridRow: row + 1
                           }}
                         >
-                          {React.createElement(actor.icon, { className: `w-7 h-7 ${getIconColor(actor.color)}` })}
-                          <div className="text-xs text-white mt-1 whitespace-nowrap">{actor.label}</div>
+                          <div className="flex items-center gap-3">
+                            {React.createElement(actor.icon, { className: `w-6 h-6 ${getIconColor(actor.color)} flex-shrink-0` })}
+                            <div className="text-sm text-white font-medium">{actor.label}</div>
+                          </div>
                           {isHighlighted && (
                             <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
                           )}
@@ -403,15 +403,26 @@ export class InventoryHandler {
                       const actorIndex = currentFlow.actors.findIndex(a => a.id === actorId);
                       if (actorIndex === -1) return null;
 
-                      const angle = (actorIndex / (currentFlow.actors.length - 1)) * Math.PI - Math.PI / 2;
-                      const radius = 140;
-                      const endX = Math.cos(angle) * radius + radius + 480;
-                      const endY = Math.sin(angle) * radius + 140 + 192;
+                      // Grid position calculation
+                      const row = actorIndex % 3;
+                      const col = Math.floor(actorIndex / 3);
+
+                      // Calculate end position based on grid
+                      const endX = 500 + (col * 200); // Right side actors start at x=500, spaced 200px per column
+                      const endY = 100 + (row * 65); // Vertically spaced 65px apart
+
+                      // Start position (trigger node)
+                      const startX = 150;
+                      const startY = 192;
+
+                      // Control point for curved path
+                      const controlX = (startX + endX) / 2;
+                      const controlY = startY + (index * 25) - 50;
 
                       return (
                         <g key={`${stepIndex}-${index}`}>
                           <path
-                            d={`M 150 192 Q 350 ${192 + (index * 20)} ${endX} ${endY}`}
+                            d={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
                             stroke="url(#gradient)"
                             strokeWidth="3"
                             fill="none"
@@ -420,10 +431,11 @@ export class InventoryHandler {
                             strokeDasharray="5,5"
                           />
                           <text
-                            x="350"
-                            y={192 + (index * 20) - 5}
+                            x={controlX}
+                            y={controlY - 5}
                             fill="#cbd5e1"
                             className="text-xs font-medium"
+                            textAnchor="middle"
                           >
                             {step.event}
                           </text>
@@ -437,7 +449,7 @@ export class InventoryHandler {
                             <animateMotion
                               dur="2s"
                               repeatCount="indefinite"
-                              path={`M 150 192 Q 350 ${192 + (index * 20)} ${endX} ${endY}`}
+                              path={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
                             />
                           </circle>
                         </g>
