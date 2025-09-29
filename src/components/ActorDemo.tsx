@@ -3,7 +3,7 @@ import Section from './ui/Section';
 import SectionTitle from './ui/SectionTitle';
 import {
   Zap, MessageSquare, Package, CreditCard, Bell, BarChart,
-  Search, CheckCircle, Play, Pause,
+  Search, CheckCircle, Play, Pause, ArrowRight,
   Brain, Sparkles, Code, GitBranch
 } from 'lucide-react';
 
@@ -287,12 +287,12 @@ export class InventoryHandler {
               </div>
 
               {/* Animation Container */}
-              <div className="relative h-96 bg-slate-900/30 rounded-lg border border-slate-700/50">
+              <div className="relative h-96 bg-slate-900/30 rounded-lg border border-slate-700/50 overflow-hidden">
 
                 {/* Trigger Node (Left Side) */}
                 <div className="absolute left-12 top-1/2 -translate-y-1/2 z-10">
-                  <div className={`relative p-6 rounded-xl shadow-lg ${
-                    currentStep >= 0 ? 'animate-pulse' : ''
+                  <div className={`relative p-6 rounded-xl shadow-lg transition-all duration-500 ${
+                    currentStep >= 0 ? 'scale-105' : ''
                   } ${
                     currentFlow.trigger.color === 'purple'
                       ? 'bg-gradient-to-br from-purple-500/30 to-purple-600/30 border-2 border-purple-500'
@@ -311,6 +311,27 @@ export class InventoryHandler {
                       <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full animate-ping"></div>
                     )}
                   </div>
+                </div>
+
+                {/* Central Event Display */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                  {currentStep < currentFlow.steps.length && (
+                    <div className="relative">
+                      {/* Connection Lines */}
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="w-64 h-px bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-blue-500/50"></div>
+                      </div>
+
+                      {/* Event Message Box */}
+                      <div className="relative bg-slate-800/90 backdrop-blur-sm border border-blue-500/50 rounded-lg px-6 py-3 shadow-xl">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                          <div className="text-white font-medium">{currentFlow.steps[currentStep].event}</div>
+                          <ArrowRight className="w-4 h-4 text-blue-400 animate-pulse" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Actor Nodes (Right Side - Grid layout) */}
@@ -357,20 +378,26 @@ export class InventoryHandler {
                       return (
                         <div
                           key={actor.id}
-                          className={`p-4 rounded-lg border-2 transition-all duration-500 ${
+                          className={`relative p-4 rounded-lg border-2 transition-all duration-500 ${
                             getActorColors(actor.color, isHighlighted)
-                          } ${isHighlighted ? 'scale-105 shadow-xl z-10' : ''}`}
+                          } ${isHighlighted ? 'scale-105 shadow-2xl z-10 ring-4 ring-opacity-50' : ''}`}
                           style={{
                             gridColumn: col + 1,
-                            gridRow: row + 1
+                            gridRow: row + 1,
+                            boxShadow: isHighlighted ? `0 0 30px ${actor.color === 'blue' ? '#3b82f6' : actor.color === 'green' ? '#10b981' : actor.color === 'purple' ? '#8b5cf6' : '#f59e0b'}40` : 'none'
                           }}
                         >
                           <div className="flex items-center gap-3">
-                            {React.createElement(actor.icon, { className: `w-6 h-6 ${getIconColor(actor.color)} flex-shrink-0` })}
+                            {React.createElement(actor.icon, { className: `w-6 h-6 ${getIconColor(actor.color)} flex-shrink-0 ${isHighlighted ? 'animate-pulse' : ''}` })}
                             <div className="text-sm text-white font-medium">{actor.label}</div>
                           </div>
                           {isHighlighted && (
-                            <div className="absolute -top-2 -right-2 w-4 h-4 bg-green-500 rounded-full animate-ping"></div>
+                            <div className="absolute -top-1 -right-1">
+                              <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                              </span>
+                            </div>
                           )}
                         </div>
                       );
@@ -378,136 +405,26 @@ export class InventoryHandler {
                   </div>
                 </div>
 
-                {/* Dynamic Event Arrows */}
-                <svg className="absolute inset-0 pointer-events-none">
-                  <defs>
-                    <marker
-                      id="arrowhead"
-                      markerWidth="10"
-                      markerHeight="10"
-                      refX="9"
-                      refY="3"
-                      orient="auto"
-                    >
-                      <polygon
-                        points="0 0, 10 3, 0 6"
-                        className="fill-blue-400"
-                      />
-                    </marker>
-                  </defs>
-
-                  {activeSteps.map((step, stepIndex) => {
-                    // Calculate positions for each highlighted actor
-                    const highlighted = step.highlight || [];
-
-                    // If highlighting all actors, just show one event label
-                    const isAllHighlighted = highlighted.includes('all');
-
-                    if (isAllHighlighted) {
-                      // Draw simplified arrows fanning out to all actors with single label
-                      return (
-                        <g key={`${stepIndex}-all`}>
-                          {/* Single event label in the middle */}
-                          <text
-                            x="350"
-                            y="150"
-                            fill="#cbd5e1"
-                            className="text-sm font-medium"
-                            textAnchor="middle"
-                          >
-                            {step.event}
-                          </text>
-
-                          {/* Draw arrow to each actor */}
-                          {currentFlow.actors.map((actor, actorIndex) => {
-                            if (actor.id === 'order' || actor.id === 'collab') return null;
-
-                            const row = actorIndex % 3;
-                            const col = Math.floor(actorIndex / 3);
-                            const endX = 500 + (col * 200);
-                            const endY = 100 + (row * 65);
-
-                            return (
-                              <g key={`${stepIndex}-${actorIndex}`}>
-                                <path
-                                  d={`M 150 192 Q 350 ${180 + (row * 10)} ${endX} ${endY}`}
-                                  stroke="url(#gradient)"
-                                  strokeWidth="2"
-                                  fill="none"
-                                  markerEnd="url(#arrowhead)"
-                                  className="animate-pulse"
-                                  strokeDasharray="5,5"
-                                  opacity="0.8"
-                                />
-                                <circle r="3" fill="#60a5fa" className="animate-pulse">
-                                  <animateMotion
-                                    dur="2s"
-                                    repeatCount="indefinite"
-                                    path={`M 150 192 Q 350 ${180 + (row * 10)} ${endX} ${endY}`}
-                                  />
-                                </circle>
-                              </g>
-                            );
-                          })}
-                        </g>
-                      );
-                    } else {
-                      // For specific actor highlighting, draw individual paths
-                      return highlighted.map((actorId, index) => {
-                        const actorIndex = currentFlow.actors.findIndex(a => a.id === actorId);
-                        if (actorIndex === -1) return null;
-
-                        const row = actorIndex % 3;
-                        const col = Math.floor(actorIndex / 3);
-                        const endX = 500 + (col * 200);
-                        const endY = 100 + (row * 65);
-                        const startX = 150;
-                        const startY = 192;
-
-                        // Spread out control points for multiple arrows
-                        const controlX = (startX + endX) / 2;
-                        const controlY = startY - 30 + (index * 40);
-
-                        return (
-                          <g key={`${stepIndex}-${index}`}>
-                            <path
-                              d={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
-                              stroke="url(#gradient)"
-                              strokeWidth="3"
-                              fill="none"
-                              markerEnd="url(#arrowhead)"
-                              className="animate-pulse"
-                              strokeDasharray="5,5"
-                            />
-                            <text
-                              x={controlX}
-                              y={controlY - 5}
-                              fill="#cbd5e1"
-                              className="text-xs font-medium"
-                              textAnchor="middle"
-                            >
-                              {step.event}
-                            </text>
-                            <circle r="4" fill="#60a5fa" className="animate-pulse">
-                              <animateMotion
-                                dur="2s"
-                                repeatCount="indefinite"
-                                path={`M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`}
-                              />
-                            </circle>
-                          </g>
-                        );
-                      });
-                    }
-                  }).flat()}
-
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.8" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+                {/* Simple Connection Indicators */}
+                {currentStep > 0 && (
+                  <div className="absolute inset-0 pointer-events-none">
+                    {/* Animated dots showing flow direction */}
+                    <div className="absolute left-44 top-1/2 -translate-y-1/2">
+                      <div className="flex gap-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></div>
+                      </div>
+                    </div>
+                    <div className="absolute right-1/3 top-1/2 -translate-y-1/2">
+                      <div className="flex gap-2">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '600ms' }}></div>
+                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '800ms' }}></div>
+                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1000ms' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Metrics Comparison */}
