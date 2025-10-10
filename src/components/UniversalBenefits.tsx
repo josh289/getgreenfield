@@ -19,7 +19,7 @@ const benefitCategories: BenefitCategory[] = [
     title: 'Individual Developers',
     subtitle: 'Amplify your capabilities',
     icon: '👨‍💻',
-    gradient: 'from-blue-600 to-cyan-600',
+    gradient: 'from-cyan-500 to-cyan-600',
     benefits: [
       {
         icon: '🎯',
@@ -47,7 +47,7 @@ const benefitCategories: BenefitCategory[] = [
     title: 'Startups & Growing Companies',
     subtitle: 'Scale without the pain',
     icon: '🚀',
-    gradient: 'from-purple-600 to-pink-600',
+    gradient: 'from-orange-500 to-orange-600',
     benefits: [
       {
         icon: '💰',
@@ -75,7 +75,7 @@ const benefitCategories: BenefitCategory[] = [
     title: 'Enterprise Teams',
     subtitle: 'Transform legacy into advantage',
     icon: '🏢',
-    gradient: 'from-green-600 to-teal-600',
+    gradient: 'from-cyan-500 to-orange-500',
     benefits: [
       {
         icon: '🔗',
@@ -139,15 +139,15 @@ const UniversalBenefits: React.FC = () => {
   }, []);
 
   return (
-    <section id="universal-benefits" className="py-20 bg-slate-950/50">
+    <section id="universal-benefits" className="py-20 bg-black">
       <div className="container mx-auto px-4 md:px-6">
         <div ref={sectionRef} className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">Everyone</span>
+              Built for <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white">Everyone</span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto">
               From individual developers to enterprise teams, Greenfield Platform adapts to your needs and scales with your ambitions.
             </p>
           </div>
@@ -159,7 +159,7 @@ const UniversalBenefits: React.FC = () => {
                 key={categoryIndex}
                 className="benefit-category opacity-0 translate-y-12 transition-all duration-700 ease-out"
               >
-                <div className="h-full bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition-all duration-300">
+                <div className="h-full bg-black/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300">
                   {/* Category Header */}
                   <div className="text-center mb-8">
                     <div className="text-4xl mb-4">{category.icon}</div>
@@ -178,15 +178,15 @@ const UniversalBenefits: React.FC = () => {
                         key={benefitIndex}
                         className="benefit-item opacity-0 translate-x-8 transition-all duration-500 ease-out group"
                       >
-                        <div className="flex items-start space-x-4 p-4 rounded-xl bg-slate-800/30 hover:bg-slate-800/50 transition-all duration-300">
+                        <div className="flex items-start space-x-4 p-4 rounded-xl bg-black/30 hover:bg-black/50 transition-all duration-300">
                           <div className="flex-shrink-0 text-2xl group-hover:scale-110 transition-transform duration-300">
                             {benefit.icon}
                           </div>
                           <div>
-                            <h4 className="text-white font-semibold mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                            <h4 className="text-white font-semibold mb-2 group-hover:text-cyan-300 transition-colors duration-300">
                               {benefit.title}
                             </h4>
-                            <p className="text-slate-400 text-sm leading-relaxed">
+                            <p className="text-gray-300 text-sm leading-relaxed">
                               {benefit.description}
                             </p>
                           </div>
@@ -196,7 +196,7 @@ const UniversalBenefits: React.FC = () => {
                   </div>
 
                   {/* Category Footer */}
-                  <div className="mt-8 pt-6 border-t border-slate-800">
+                  <div className="mt-8 pt-6 border-t border-gray-800">
                     <div className={`h-1 w-full bg-gradient-to-r ${category.gradient} rounded-full opacity-50`}></div>
                   </div>
                 </div>
@@ -206,8 +206,8 @@ const UniversalBenefits: React.FC = () => {
 
           {/* Call to Action */}
           <div className="text-center mt-16">
-            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-900/40 to-purple-900/40 rounded-2xl border border-blue-800/50">
-              <span className="text-slate-300 text-lg font-medium">
+            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-900/40 to-orange-900/40 rounded-2xl border border-cyan-800/50">
+              <span className="text-gray-100 text-lg font-medium">
                 Ready to 10x your development speed?
               </span>
             </div>

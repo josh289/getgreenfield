@@ -66,9 +66,9 @@ const ProofGrid: React.FC = () => {
             key={index}
             className="proof-card opacity-0 translate-y-8 scale-95 transition-all duration-700 ease-out group"
           >
-            <div className="relative p-6 h-full bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl hover:border-blue-600/50 hover:bg-slate-800/50 transition-all duration-300">
+            <div className="relative p-6 h-full bg-black/50 backdrop-blur-sm border border-gray-800 rounded-xl hover:border-cyan-500/50 hover:bg-black/70 transition-all duration-300">
               {/* Background gradient effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-orange-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               {/* Content */}
               <div className="relative z-10">
@@ -78,13 +78,13 @@ const ProofGrid: React.FC = () => {
                 <h3 className="text-lg font-semibold text-white mb-2 leading-tight">
                   {point.title}
                 </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <p className="text-gray-300 text-sm leading-relaxed">
                   {point.description}
                 </p>
               </div>
 
               {/* Animated border effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500 to-orange-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10"></div>
             </div>
           </div>
         ))}
@@ -92,9 +92,9 @@ const ProofGrid: React.FC = () => {
 
       {/* Additional proof statement */}
       <div className="mt-12 text-center">
-        <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-full border border-blue-800/50">
-          <span className="h-2 w-2 rounded-full bg-green-500 mr-3 animate-pulse"></span>
-          <span className="text-slate-300 font-medium">
+        <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-900/30 to-orange-900/30 rounded-full border border-cyan-800/50">
+          <span className="h-2 w-2 rounded-full bg-cyan-500 mr-3 animate-pulse"></span>
+          <span className="text-gray-100 font-medium">
             Transforming how software gets built
           </span>
         </div>

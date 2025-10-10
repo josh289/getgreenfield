@@ -6,53 +6,53 @@ import Layout from '../layouts/Layout.astro';
   title="Get Started - Greenfield Platform"
   description="Getting started guide: 60-second quickstart, installation instructions, first project tutorial, and migration guides."
 >
-  <div class="min-h-screen bg-slate-950 text-white">
+  <div class="min-h-screen bg-black text-white">
     <div class="container mx-auto px-6 py-16">
       <div class="max-w-6xl mx-auto">
         <!-- Hero Section -->
         <div class="text-center mb-16">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-green-600 bg-clip-text text-transparent">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-orange-600 bg-clip-text text-transparent">
             Get Started
           </h1>
-          <p class="text-xl text-slate-300 max-w-3xl mx-auto">
+          <p class="text-xl text-gray-100 max-w-3xl mx-auto">
             From zero to production-ready bounded contexts in 60 seconds
           </p>
         </div>
 
         <!-- Quick Start -->
         <section class="mb-16">
-          <div class="bg-gradient-to-r from-green-900 to-green-800 rounded-lg p-8 mb-8">
-            <h2 class="text-3xl font-bold mb-6 text-green-400">60-Second Quickstart</h2>
+          <div class="bg-gradient-to-r from-gray-900 to-black rounded-lg p-8 mb-8 border border-cyan-500">
+            <h2 class="text-3xl font-bold mb-6 text-cyan-400">60-Second Quickstart</h2>
             <div class="grid md:grid-cols-3 gap-6">
-              <div class="bg-black bg-opacity-20 rounded-lg p-6">
+              <div class="bg-black bg-opacity-40 rounded-lg p-6 border border-gray-800">
                 <div class="flex items-center mb-4">
-                  <div class="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center text-black font-bold mr-3">1</div>
+                  <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-black font-bold mr-3">1</div>
                   <h3 class="text-lg font-semibold">Install</h3>
                 </div>
-                <div class="bg-slate-900 rounded p-3 mb-3">
-                  <code class="text-green-400 text-sm">npm install -g banyan-cli</code>
+                <div class="bg-gray-900 rounded p-3 mb-3">
+                  <code class="text-cyan-400 text-sm">npm install -g banyan-cli</code>
                 </div>
-                <p class="text-green-100 text-sm">One command installs everything you need</p>
+                <p class="text-gray-100 text-sm">One command installs everything you need</p>
               </div>
-              <div class="bg-black bg-opacity-20 rounded-lg p-6">
+              <div class="bg-black bg-opacity-40 rounded-lg p-6 border border-gray-800">
                 <div class="flex items-center mb-4">
-                  <div class="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center text-black font-bold mr-3">2</div>
+                  <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-black font-bold mr-3">2</div>
                   <h3 class="text-lg font-semibold">Create</h3>
                 </div>
-                <div class="bg-slate-900 rounded p-3 mb-3">
-                  <code class="text-green-400 text-sm">banyan create my-app</code>
+                <div class="bg-gray-900 rounded p-3 mb-3">
+                  <code class="text-cyan-400 text-sm">banyan create my-app</code>
                 </div>
-                <p class="text-green-100 text-sm">Generate a new project with example contexts</p>
+                <p class="text-gray-100 text-sm">Generate a new project with example contexts</p>
               </div>
-              <div class="bg-black bg-opacity-20 rounded-lg p-6">
+              <div class="bg-black bg-opacity-40 rounded-lg p-6 border border-gray-800">
                 <div class="flex items-center mb-4">
-                  <div class="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center text-black font-bold mr-3">3</div>
+                  <div class="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-black font-bold mr-3">3</div>
                   <h3 class="text-lg font-semibold">Deploy</h3>
                 </div>
-                <div class="bg-slate-900 rounded p-3 mb-3">
-                  <code class="text-green-400 text-sm">banyan deploy</code>
+                <div class="bg-gray-900 rounded p-3 mb-3">
+                  <code class="text-cyan-400 text-sm">banyan deploy</code>
                 </div>
-                <p class="text-green-100 text-sm">Production deployment with zero configuration</p>
+                <p class="text-gray-100 text-sm">Production deployment with zero configuration</p>
               </div>
             </div>
           </div>
@@ -60,31 +60,31 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Installation Guide -->
         <section class="mb-16">
-          <h2 class="text-3xl font-bold mb-8 text-blue-400">Installation</h2>
+          <h2 class="text-3xl font-bold mb-8 text-cyan-400">Installation</h2>
           <div class="space-y-6">
-            <div class="bg-slate-900 rounded-lg p-8">
-              <h3 class="text-2xl font-semibold mb-4 text-blue-400">Prerequisites</h3>
+            <div class="bg-gray-900 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Prerequisites</h3>
               <div class="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 class="text-lg font-semibold mb-3 text-slate-300">Required</h4>
-                  <ul class="space-y-2 text-slate-400">
+                  <h4 class="text-lg font-semibold mb-3 text-gray-100">Required</h4>
+                  <ul class="space-y-2 text-gray-100">
                     <li class="flex items-center">
-                      <span class="text-green-400 mr-2">✓</span>
+                      <span class="text-cyan-400 mr-2">✓</span>
                       <span>Node.js 18+ or Bun</span>
                     </li>
                     <li class="flex items-center">
-                      <span class="text-green-400 mr-2">✓</span>
+                      <span class="text-cyan-400 mr-2">✓</span>
                       <span>Git</span>
                     </li>
                     <li class="flex items-center">
-                      <span class="text-green-400 mr-2">✓</span>
+                      <span class="text-cyan-400 mr-2">✓</span>
                       <span>Docker (for local development)</span>
                     </li>
                   </ul>
                 </div>
                 <div>
-                  <h4 class="text-lg font-semibold mb-3 text-slate-300">Optional</h4>
-                  <ul class="space-y-2 text-slate-400">
+                  <h4 class="text-lg font-semibold mb-3 text-gray-100">Optional</h4>
+                  <ul class="space-y-2 text-gray-100">
                     <li class="flex items-center">
                       <span class="text-yellow-400 mr-2">○</span>
                       <span>VS Code + Greenfield extension</span>
@@ -98,32 +98,32 @@ import Layout from '../layouts/Layout.astro';
               </div>
             </div>
 
-            <div class="bg-slate-900 rounded-lg p-8">
-              <h3 class="text-2xl font-semibold mb-4 text-green-400">Install Greenfield CLI</h3>
+            <div class="bg-gray-900 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-4 text-cyan-400">Install Greenfield CLI</h3>
               <div class="space-y-4">
                 <div>
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Using npm</h4>
-                  <div class="bg-slate-800 rounded p-4">
-                    <code class="text-green-400">npm install -g @banyan/cli</code>
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Using npm</h4>
+                  <div class="bg-gray-800 rounded p-4">
+                    <code class="text-cyan-400">npm install -g @banyan/cli</code>
                   </div>
                 </div>
                 <div>
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Using yarn</h4>
-                  <div class="bg-slate-800 rounded p-4">
-                    <code class="text-green-400">yarn global add @banyan/cli</code>
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Using yarn</h4>
+                  <div class="bg-gray-800 rounded p-4">
+                    <code class="text-cyan-400">yarn global add @banyan/cli</code>
                   </div>
                 </div>
                 <div>
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Using bun</h4>
-                  <div class="bg-slate-800 rounded p-4">
-                    <code class="text-green-400">bun add -g @banyan/cli</code>
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Using bun</h4>
+                  <div class="bg-gray-800 rounded p-4">
+                    <code class="text-cyan-400">bun add -g @banyan/cli</code>
                   </div>
                 </div>
               </div>
-              <div class="mt-6 p-4 bg-blue-900 bg-opacity-30 rounded border border-blue-500">
-                <h4 class="text-sm font-semibold text-blue-400 mb-2">Verify Installation</h4>
-                <div class="bg-slate-800 rounded p-3">
-                  <code class="text-green-400 text-sm">banyan --version</code>
+              <div class="mt-6 p-4 bg-gray-900 rounded border border-cyan-500">
+                <h4 class="text-sm font-semibold text-cyan-400 mb-2">Verify Installation</h4>
+                <div class="bg-gray-800 rounded p-3">
+                  <code class="text-cyan-400 text-sm">banyan --version</code>
                 </div>
               </div>
             </div>
@@ -132,32 +132,32 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- First Project Tutorial -->
         <section class="mb-16">
-          <h2 class="text-3xl font-bold mb-8 text-purple-400">Your First Project</h2>
+          <h2 class="text-3xl font-bold mb-8 text-cyan-400">Your First Project</h2>
           <div class="space-y-8">
-            <div class="bg-slate-900 rounded-lg p-8">
-              <h3 class="text-2xl font-semibold mb-6 text-purple-400">Create a Simple Todo App</h3>
+            <div class="bg-gray-900 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Create a Simple Todo App</h3>
 
               <div class="space-y-6">
-                <div class="border-l-4 border-purple-400 pl-6">
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Step 1: Initialize Project</h4>
-                  <div class="bg-slate-800 rounded p-4 mb-3">
-                    <code class="text-green-400">banyan create todo-app --template=simple</code>
+                <div class="border-l-4 border-cyan-400 pl-6">
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Step 1: Initialize Project</h4>
+                  <div class="bg-gray-800 rounded p-4 mb-3">
+                    <code class="text-cyan-400">banyan create todo-app --template=simple</code>
                   </div>
-                  <p class="text-slate-400">Creates a new project with a basic bounded context structure</p>
+                  <p class="text-gray-100">Creates a new project with a basic bounded context structure</p>
                 </div>
 
-                <div class="border-l-4 border-blue-400 pl-6">
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Step 2: Add Task Management Context</h4>
-                  <div class="bg-slate-800 rounded p-4 mb-3">
-                    <code class="text-green-400">cd todo-app<br/>banyan add context tasks</code>
+                <div class="border-l-4 border-orange-400 pl-6">
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Step 2: Add Task Management Context</h4>
+                  <div class="bg-gray-800 rounded p-4 mb-3">
+                    <code class="text-cyan-400">cd todo-app<br/>banyan add context tasks</code>
                   </div>
-                  <p class="text-slate-400">Adds a new bounded context for managing tasks</p>
+                  <p class="text-gray-100">Adds a new bounded context for managing tasks</p>
                 </div>
 
-                <div class="border-l-4 border-green-400 pl-6">
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Step 3: Define Task Events</h4>
-                  <div class="bg-slate-800 rounded p-4 mb-3">
-                    <code class="text-green-400 text-sm">
+                <div class="border-l-4 border-cyan-400 pl-6">
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Step 3: Define Task Events</h4>
+                  <div class="bg-gray-800 rounded p-4 mb-3">
+                    <code class="text-cyan-400 text-sm">
                       // contexts/tasks/events.ts<br/>
                       export const TaskCreated = event(&#123;<br/>
                       &nbsp;&nbsp;id: string(),<br/>
@@ -170,13 +170,13 @@ import Layout from '../layouts/Layout.astro';
                       &#125;)
                     </code>
                   </div>
-                  <p class="text-slate-400">Define the events that represent changes in your domain</p>
+                  <p class="text-gray-100">Define the events that represent changes in your domain</p>
                 </div>
 
-                <div class="border-l-4 border-yellow-400 pl-6">
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Step 4: Add Business Logic</h4>
-                  <div class="bg-slate-800 rounded p-4 mb-3">
-                    <code class="text-green-400 text-sm">
+                <div class="border-l-4 border-orange-400 pl-6">
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Step 4: Add Business Logic</h4>
+                  <div class="bg-gray-800 rounded p-4 mb-3">
+                    <code class="text-cyan-400 text-sm">
                       // contexts/tasks/handlers.ts<br/>
                       export const createTask = handler(TaskCreated, async (event) => &#123;<br/>
                       &nbsp;&nbsp;// Validation and business rules<br/>
@@ -187,29 +187,29 @@ import Layout from '../layouts/Layout.astro';
                       &#125;)
                     </code>
                   </div>
-                  <p class="text-slate-400">Business logic is just event handlers - simple and testable</p>
+                  <p class="text-gray-100">Business logic is just event handlers - simple and testable</p>
                 </div>
 
-                <div class="border-l-4 border-red-400 pl-6">
-                  <h4 class="text-lg font-semibold mb-2 text-slate-300">Step 5: Run and Deploy</h4>
-                  <div class="bg-slate-800 rounded p-4 mb-3">
-                    <code class="text-green-400">
+                <div class="border-l-4 border-yellow-400 pl-6">
+                  <h4 class="text-lg font-semibold mb-2 text-gray-100">Step 5: Run and Deploy</h4>
+                  <div class="bg-gray-800 rounded p-4 mb-3">
+                    <code class="text-cyan-400">
                       banyan dev      # Local development<br/>
                       banyan test     # Run tests<br/>
                       banyan deploy   # Deploy to production
                     </code>
                   </div>
-                  <p class="text-slate-400">Your app is now running with automatic API, database, and frontend</p>
+                  <p class="text-gray-100">Your app is now running with automatic API, database, and frontend</p>
                 </div>
               </div>
             </div>
 
-            <div class="bg-slate-900 rounded-lg p-8">
-              <h3 class="text-2xl font-semibold mb-4 text-blue-400">What You Get Automatically</h3>
+            <div class="bg-gray-900 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-4 text-cyan-400">What You Get Automatically</h3>
               <div class="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h4 class="text-lg font-semibold mb-3 text-green-400">Backend</h4>
-                  <ul class="space-y-2 text-slate-400">
+                  <h4 class="text-lg font-semibold mb-3 text-cyan-400">Backend</h4>
+                  <ul class="space-y-2 text-gray-100">
                     <li>• REST API endpoints</li>
                     <li>• GraphQL schema</li>
                     <li>• Event store</li>
@@ -217,8 +217,8 @@ import Layout from '../layouts/Layout.astro';
                   </ul>
                 </div>
                 <div>
-                  <h4 class="text-lg font-semibold mb-3 text-purple-400">Frontend</h4>
-                  <ul class="space-y-2 text-slate-400">
+                  <h4 class="text-lg font-semibold mb-3 text-orange-400">Frontend</h4>
+                  <ul class="space-y-2 text-gray-100">
                     <li>• React components</li>
                     <li>• Type-safe client</li>
                     <li>• Real-time updates</li>
@@ -234,71 +234,71 @@ import Layout from '../layouts/Layout.astro';
         <section class="mb-16">
           <h2 class="text-3xl font-bold mb-8 text-orange-400">Migration Guides</h2>
           <div class="space-y-6">
-            <div class="bg-slate-900 rounded-lg p-8">
+            <div class="bg-gray-900 rounded-lg p-8">
               <h3 class="text-2xl font-semibold mb-4 text-orange-400">From Existing Applications</h3>
               <div class="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h4 class="text-lg font-semibold mb-3 text-blue-400">Gradual Migration Strategy</h4>
-                  <ol class="space-y-3 text-slate-300">
+                  <h4 class="text-lg font-semibold mb-3 text-cyan-400">Gradual Migration Strategy</h4>
+                  <ol class="space-y-3 text-gray-100">
                     <li class="flex items-start">
-                      <span class="text-blue-400 mr-3 font-bold">1.</span>
+                      <span class="text-cyan-400 mr-3 font-bold">1.</span>
                       <span>Identify bounded contexts in existing system</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-blue-400 mr-3 font-bold">2.</span>
+                      <span class="text-cyan-400 mr-3 font-bold">2.</span>
                       <span>Create new Greenfield contexts for new features</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-blue-400 mr-3 font-bold">3.</span>
+                      <span class="text-cyan-400 mr-3 font-bold">3.</span>
                       <span>Set up event bridges between systems</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-blue-400 mr-3 font-bold">4.</span>
+                      <span class="text-cyan-400 mr-3 font-bold">4.</span>
                       <span>Gradually migrate existing functionality</span>
                     </li>
                   </ol>
                 </div>
                 <div>
-                  <h4 class="text-lg font-semibold mb-3 text-green-400">Common Patterns</h4>
+                  <h4 class="text-lg font-semibold mb-3 text-orange-400">Common Patterns</h4>
                   <div class="space-y-3">
-                    <div class="bg-slate-800 rounded p-3">
+                    <div class="bg-gray-800 rounded p-3">
                       <h5 class="font-semibold text-sm text-yellow-400 mb-1">Rails Apps</h5>
-                      <p class="text-slate-400 text-sm">Extract controllers and models into bounded contexts</p>
+                      <p class="text-gray-100 text-sm">Extract controllers and models into bounded contexts</p>
                     </div>
-                    <div class="bg-slate-800 rounded p-3">
-                      <h5 class="font-semibold text-sm text-purple-400 mb-1">React Apps</h5>
-                      <p class="text-slate-400 text-sm">Replace Redux stores with event-driven contexts</p>
+                    <div class="bg-gray-800 rounded p-3">
+                      <h5 class="font-semibold text-sm text-cyan-400 mb-1">React Apps</h5>
+                      <p class="text-gray-100 text-sm">Replace Redux stores with event-driven contexts</p>
                     </div>
-                    <div class="bg-slate-800 rounded p-3">
+                    <div class="bg-gray-800 rounded p-3">
                       <h5 class="font-semibold text-sm text-pink-400 mb-1">Microservices</h5>
-                      <p class="text-slate-400 text-sm">Consolidate related services into single contexts</p>
+                      <p class="text-gray-100 text-sm">Consolidate related services into single contexts</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="bg-slate-900 rounded-lg p-8">
-              <h3 class="text-2xl font-semibold mb-4 text-red-400">Legacy System Integration</h3>
+            <div class="bg-gray-900 rounded-lg p-8">
+              <h3 class="text-2xl font-semibold mb-4 text-orange-400">Legacy System Integration</h3>
               <div class="space-y-4">
-                <div class="bg-slate-800 rounded-lg p-6">
-                  <h4 class="text-lg font-semibold mb-3 text-red-400">Database Integration</h4>
-                  <p class="text-slate-300 mb-3">
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <h4 class="text-lg font-semibold mb-3 text-orange-400">Database Integration</h4>
+                  <p class="text-gray-100 mb-3">
                     Connect existing databases to Greenfield contexts without changing existing systems.
                   </p>
-                  <div class="bg-slate-700 rounded p-3">
-                    <code class="text-green-400 text-sm">
+                  <div class="bg-gray-700 rounded p-3">
+                    <code class="text-cyan-400 text-sm">
                       banyan connect database --type=postgresql --url=$DATABASE_URL
                     </code>
                   </div>
                 </div>
-                <div class="bg-slate-800 rounded-lg p-6">
-                  <h4 class="text-lg font-semibold mb-3 text-blue-400">API Integration</h4>
-                  <p class="text-slate-300 mb-3">
+                <div class="bg-gray-800 rounded-lg p-6">
+                  <h4 class="text-lg font-semibold mb-3 text-cyan-400">API Integration</h4>
+                  <p class="text-gray-100 mb-3">
                     Wrap existing APIs as Greenfield contexts with automatic event generation.
                   </p>
-                  <div class="bg-slate-700 rounded p-3">
-                    <code class="text-green-400 text-sm">
+                  <div class="bg-gray-700 rounded p-3">
+                    <code class="text-cyan-400 text-sm">
                       banyan wrap api --openapi=./api-spec.json
                     </code>
                   </div>
@@ -310,32 +310,32 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Next Steps -->
         <section class="mb-16">
-          <h2 class="text-3xl font-bold mb-8 text-green-400">Next Steps</h2>
+          <h2 class="text-3xl font-bold mb-8 text-cyan-400">Next Steps</h2>
           <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-slate-900 rounded-lg p-6">
-              <h3 class="text-xl font-semibold mb-3 text-blue-400">Learn the Concepts</h3>
-              <p class="text-slate-300 mb-4">
+            <div class="bg-gray-900 rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-3 text-cyan-400">Learn the Concepts</h3>
+              <p class="text-gray-100 mb-4">
                 Understand bounded contexts and event-driven architecture in depth.
               </p>
-              <a href="/breakthrough" class="text-blue-400 hover:text-blue-300 font-semibold">
+              <a href="/breakthrough" class="text-cyan-400 hover:text-cyan-300 font-semibold">
                 Read the Breakthrough →
               </a>
             </div>
-            <div class="bg-slate-900 rounded-lg p-6">
-              <h3 class="text-xl font-semibold mb-3 text-purple-400">Explore the Platform</h3>
-              <p class="text-slate-300 mb-4">
+            <div class="bg-gray-900 rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-3 text-orange-400">Explore the Platform</h3>
+              <p class="text-gray-100 mb-4">
                 Deep dive into the technical architecture and pattern library.
               </p>
-              <a href="/platform" class="text-purple-400 hover:text-purple-300 font-semibold">
+              <a href="/platform" class="text-orange-400 hover:text-orange-300 font-semibold">
                 Explore Platform →
               </a>
             </div>
-            <div class="bg-slate-900 rounded-lg p-6">
-              <h3 class="text-xl font-semibold mb-3 text-green-400">See Real Results</h3>
-              <p class="text-slate-300 mb-4">
+            <div class="bg-gray-900 rounded-lg p-6">
+              <h3 class="text-xl font-semibold mb-3 text-cyan-400">See Real Results</h3>
+              <p class="text-gray-100 mb-4">
                 Look at case studies and production results from real teams.
               </p>
-              <a href="/proof" class="text-green-400 hover:text-green-300 font-semibold">
+              <a href="/proof" class="text-cyan-400 hover:text-cyan-300 font-semibold">
                 See the Proof →
               </a>
             </div>
@@ -344,16 +344,16 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Support Section -->
         <section class="text-center">
-          <div class="bg-gradient-to-r from-blue-600 to-green-600 rounded-lg p-8">
+          <div class="bg-gradient-to-r from-cyan-600 to-orange-600 rounded-lg p-8">
             <h2 class="text-2xl font-bold mb-4">Need Help Getting Started?</h2>
             <p class="text-lg mb-6 opacity-90">
               Join our community of developers building the future of software development.
             </p>
             <div class="space-x-4">
-              <a href="#" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-slate-100 transition-colors">
+              <a href="#" class="inline-block bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                 Join Discord
               </a>
-              <a href="#" class="inline-block border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+              <a href="#" class="inline-block border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
                 View Docs
               </a>
             </div>

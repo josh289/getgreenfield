@@ -174,7 +174,7 @@ export class InventoryHandler {
             title="See Actors in Action"
             subtitle="Watch how AI builds perfect event-driven systems with bounded contexts"
             align="center"
-            accent="blue"
+            accent="cyan"
           />
         </div>
 
@@ -191,8 +191,8 @@ export class InventoryHandler {
                 }}
                 className={`px-6 py-3 rounded-lg border transition-all duration-300 ${
                   activeFlow === key
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 border-transparent text-white'
-                    : 'bg-slate-800/50 border-slate-600 text-slate-300 hover:border-blue-500/50'
+                    ? 'bg-cyan-500 border-transparent text-black font-semibold'
+                    : 'bg-black/50 border-gray-700 text-gray-300 hover:border-cyan-500/50'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -206,19 +206,19 @@ export class InventoryHandler {
 
         {/* Interactive Visualization */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-          <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-700/50 overflow-hidden">
+          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-800/50 overflow-hidden">
 
             {/* Header */}
-            <div className="bg-slate-800/50 px-6 py-4 border-b border-slate-700/50">
+            <div className="bg-black/50 px-6 py-4 border-b border-gray-800/50">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-white">{currentFlow.title}</h3>
-                  <p className="text-slate-400">{currentFlow.description}</p>
+                  <p className="text-gray-300">{currentFlow.description}</p>
                 </div>
                 <div className="flex gap-4">
                   <button
                     onClick={handlePlayPause}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
                   >
                     {isAnimating ? (
                       <>
@@ -234,7 +234,7 @@ export class InventoryHandler {
                   </button>
                   <button
                     onClick={() => setShowCode(!showCode)}
-                    className="px-4 py-2 border border-slate-600 text-slate-300 rounded-lg hover:border-blue-500 transition-colors"
+                    className="px-4 py-2 border border-gray-700 text-gray-300 rounded-lg hover:border-cyan-500 transition-colors"
                   >
                     {showCode ? 'Hide' : 'Show'} Code
                   </button>
@@ -250,7 +250,7 @@ export class InventoryHandler {
 
                 {/* Event Timeline - Left Side */}
                 <div className="space-y-2">
-                  <div className="text-xs font-bold text-slate-400 mb-4 uppercase tracking-wider px-2">
+                  <div className="text-xs font-bold text-gray-400 mb-4 uppercase tracking-wider px-2">
                     Event Flow ({currentStep + 1}/{currentFlow.steps.length})
                   </div>
                   {currentFlow.steps.map((step, index) => (
@@ -259,19 +259,19 @@ export class InventoryHandler {
                       onClick={() => setCurrentStep(index)}
                       className={`w-full text-left p-3 rounded-lg border-2 transition-all duration-300 ${
                         index === currentStep
-                          ? 'bg-gradient-to-r from-blue-500/30 to-purple-500/30 border-blue-500 shadow-lg shadow-blue-500/20 scale-105'
+                          ? 'bg-cyan-500/20 border-cyan-500 shadow-lg shadow-cyan-500/20 scale-105'
                           : index < currentStep
-                          ? 'bg-slate-800/30 border-green-600/50 opacity-70'
-                          : 'bg-slate-800/20 border-slate-700/50 opacity-50'
+                          ? 'bg-black/30 border-orange-500/50 opacity-70'
+                          : 'bg-black/20 border-gray-800/50 opacity-50'
                       }`}
                     >
                       <div className="flex items-start gap-2">
                         <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 ${
                           index === currentStep
-                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white animate-pulse'
+                            ? 'bg-cyan-500 text-black animate-pulse'
                             : index < currentStep
-                            ? 'bg-green-500 text-white'
-                            : 'bg-slate-700 text-slate-500'
+                            ? 'bg-orange-500 text-white'
+                            : 'bg-gray-800 text-gray-600'
                         }`}>
                           {index < currentStep ? '✓' : index + 1}
                         </div>
@@ -280,15 +280,15 @@ export class InventoryHandler {
                             index === currentStep
                               ? 'text-white'
                               : index < currentStep
-                              ? 'text-slate-400'
-                              : 'text-slate-500'
+                              ? 'text-gray-300'
+                              : 'text-gray-500'
                           }`}>
                             {step.event}
                           </div>
                           {index === currentStep && (
                             <div className="flex items-center gap-1 mt-1.5">
-                              <Zap className="w-3 h-3 text-purple-400 animate-pulse" />
-                              <span className="text-[10px] text-purple-300 font-semibold uppercase">Active Now</span>
+                              <Zap className="w-3 h-3 text-cyan-400 animate-pulse" />
+                              <span className="text-[10px] text-cyan-300 font-semibold uppercase">Active Now</span>
                             </div>
                           )}
                         </div>
@@ -298,7 +298,7 @@ export class InventoryHandler {
                 </div>
 
                 {/* Animation Container - Right Side */}
-              <div className="relative h-96 bg-slate-900/30 rounded-lg border border-slate-700/50 overflow-hidden">
+              <div className="relative h-96 bg-black/30 rounded-lg border border-gray-800/50 overflow-hidden">
 
                 {/* Trigger Node (Left Side) */}
                 <div className="absolute left-8 top-1/2 -translate-y-1/2 z-10">
@@ -306,20 +306,20 @@ export class InventoryHandler {
                     currentStep >= 0 ? 'scale-105' : ''
                   } ${
                     currentFlow.trigger.color === 'purple'
-                      ? 'bg-gradient-to-br from-purple-500/30 to-purple-600/30 border-2 border-purple-500'
+                      ? 'bg-gradient-to-br from-cyan-500/30 to-cyan-600/30 border-2 border-cyan-500'
                       : currentFlow.trigger.color === 'blue'
-                      ? 'bg-gradient-to-br from-blue-500/30 to-blue-600/30 border-2 border-blue-500'
-                      : 'bg-gradient-to-br from-green-500/30 to-green-600/30 border-2 border-green-500'
+                      ? 'bg-gradient-to-br from-cyan-500/30 to-cyan-600/30 border-2 border-cyan-500'
+                      : 'bg-gradient-to-br from-orange-500/30 to-orange-600/30 border-2 border-orange-500'
                   }`}>
                     {React.createElement(currentFlow.trigger.icon, {
                       className: `w-10 h-10 ${
-                        currentFlow.trigger.color === 'purple' ? 'text-purple-400' :
-                        currentFlow.trigger.color === 'blue' ? 'text-blue-400' : 'text-green-400'
+                        currentFlow.trigger.color === 'purple' ? 'text-cyan-400' :
+                        currentFlow.trigger.color === 'blue' ? 'text-cyan-400' : 'text-orange-400'
                       }`
                     })}
                     <div className="text-sm text-white mt-2 font-medium">{currentFlow.trigger.label}</div>
                     {currentStep === 0 && (
-                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-blue-500 rounded-full animate-ping"></div>
+                      <div className="absolute -top-2 -right-2 w-4 h-4 bg-cyan-500 rounded-full animate-ping"></div>
                     )}
                   </div>
                 </div>
@@ -336,31 +336,31 @@ export class InventoryHandler {
                       );
 
                       const getActorColors = (color: string, isHighlighted: boolean) => {
-                        if (!isHighlighted) return 'bg-slate-800/50 border-slate-600/50 opacity-60';
+                        if (!isHighlighted) return 'bg-black/50 border-gray-700/50 opacity-60';
 
                         const colorMap: Record<string, string> = {
-                          blue: 'bg-gradient-to-br from-blue-500/40 to-blue-600/40 border-blue-500',
-                          green: 'bg-gradient-to-br from-green-500/40 to-green-600/40 border-green-500',
-                          purple: 'bg-gradient-to-br from-purple-500/40 to-purple-600/40 border-purple-500',
+                          blue: 'bg-gradient-to-br from-cyan-500/40 to-cyan-600/40 border-cyan-500',
+                          green: 'bg-gradient-to-br from-orange-500/40 to-orange-600/40 border-orange-500',
+                          purple: 'bg-gradient-to-br from-cyan-500/40 to-cyan-600/40 border-cyan-500',
                           orange: 'bg-gradient-to-br from-orange-500/40 to-orange-600/40 border-orange-500',
-                          red: 'bg-gradient-to-br from-red-500/40 to-red-600/40 border-red-500',
-                          yellow: 'bg-gradient-to-br from-yellow-500/40 to-yellow-600/40 border-yellow-500',
-                          teal: 'bg-gradient-to-br from-teal-500/40 to-teal-600/40 border-teal-500'
+                          red: 'bg-gradient-to-br from-orange-500/40 to-orange-600/40 border-orange-500',
+                          yellow: 'bg-gradient-to-br from-orange-500/40 to-orange-600/40 border-orange-500',
+                          teal: 'bg-gradient-to-br from-cyan-500/40 to-cyan-600/40 border-cyan-500'
                         };
                         return colorMap[color] || colorMap.blue;
                       };
 
                       const getIconColor = (color: string) => {
                         const colorMap: Record<string, string> = {
-                          blue: 'text-blue-400',
-                          green: 'text-green-400',
-                          purple: 'text-purple-400',
+                          blue: 'text-cyan-400',
+                          green: 'text-orange-400',
+                          purple: 'text-cyan-400',
                           orange: 'text-orange-400',
-                          red: 'text-red-400',
-                          yellow: 'text-yellow-400',
-                          teal: 'text-teal-400'
+                          red: 'text-orange-400',
+                          yellow: 'text-orange-400',
+                          teal: 'text-cyan-400'
                         };
-                        return colorMap[color] || 'text-blue-400';
+                        return colorMap[color] || 'text-cyan-400';
                       };
 
                       // Calculate grid position (max 3 rows per column)
@@ -376,7 +376,7 @@ export class InventoryHandler {
                           style={{
                             gridColumn: col + 1,
                             gridRow: row + 1,
-                            boxShadow: isHighlighted ? `0 0 30px ${actor.color === 'blue' ? '#3b82f6' : actor.color === 'green' ? '#10b981' : actor.color === 'purple' ? '#8b5cf6' : '#f59e0b'}40` : 'none'
+                            boxShadow: isHighlighted ? `0 0 30px ${actor.color === 'blue' || actor.color === 'purple' || actor.color === 'teal' ? '#06b6d4' : '#f97316'}40` : 'none'
                           }}
                         >
                           <div className="flex items-center gap-2">
@@ -386,8 +386,8 @@ export class InventoryHandler {
                           {isHighlighted && (
                             <div className="absolute -top-1 -right-1">
                               <span className="relative flex h-3 w-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
                               </span>
                             </div>
                           )}
@@ -403,16 +403,16 @@ export class InventoryHandler {
                     {/* Animated dots showing flow direction */}
                     <div className="absolute left-32 top-1/2 -translate-y-1/2">
                       <div className="flex gap-2">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></div>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></div>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></div>
+                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '200ms' }}></div>
+                        <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '400ms' }}></div>
                       </div>
                     </div>
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                       <div className="flex gap-2">
-                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '600ms' }}></div>
-                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '800ms' }}></div>
-                        <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '1000ms' }}></div>
+                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '600ms' }}></div>
+                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '800ms' }}></div>
+                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '1000ms' }}></div>
                       </div>
                     </div>
                   </div>
@@ -424,24 +424,24 @@ export class InventoryHandler {
 
               {/* Metrics Comparison */}
               <div className="mt-8 grid grid-cols-2 gap-6">
-                <div className="p-4 bg-red-900/20 border border-red-700 rounded-lg">
-                  <h4 className="text-red-400 font-semibold mb-3">Traditional Monolithic</h4>
+                <div className="p-4 bg-orange-900/20 border border-orange-700 rounded-lg">
+                  <h4 className="text-orange-400 font-semibold mb-3">Traditional Monolithic</h4>
                   <div className="space-y-2">
                     {Object.entries(currentFlow.metrics.traditional).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-sm">
-                        <span className="text-slate-400 capitalize">{key}:</span>
-                        <span className="text-red-300">{value}</span>
+                        <span className="text-gray-400 capitalize">{key}:</span>
+                        <span className="text-orange-300">{value}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="p-4 bg-green-900/20 border border-green-700 rounded-lg">
-                  <h4 className="text-green-400 font-semibold mb-3">Actor Architecture</h4>
+                <div className="p-4 bg-cyan-900/20 border border-cyan-700 rounded-lg">
+                  <h4 className="text-cyan-400 font-semibold mb-3">Actor Architecture</h4>
                   <div className="space-y-2">
                     {Object.entries(currentFlow.metrics.actors).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-sm">
-                        <span className="text-slate-400 capitalize">{key}:</span>
-                        <span className="text-green-300">{value}</span>
+                        <span className="text-gray-400 capitalize">{key}:</span>
+                        <span className="text-cyan-300">{value}</span>
                       </div>
                     ))}
                   </div>
@@ -454,23 +454,23 @@ export class InventoryHandler {
                   <h4 className="text-lg font-semibold text-white">Actor Implementation (Auto-Generated by AI)</h4>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-slate-950/50 rounded-lg p-4">
-                      <h5 className="text-blue-400 font-medium mb-2">Service Contract</h5>
-                      <pre className="text-xs text-slate-300 overflow-x-auto">
+                    <div className="bg-black/50 rounded-lg p-4">
+                      <h5 className="text-cyan-400 font-medium mb-2">Service Contract</h5>
+                      <pre className="text-xs text-gray-300 overflow-x-auto">
                         <code>{sampleCode.contract}</code>
                       </pre>
                     </div>
 
-                    <div className="bg-slate-950/50 rounded-lg p-4">
-                      <h5 className="text-green-400 font-medium mb-2">Command Handler</h5>
-                      <pre className="text-xs text-slate-300 overflow-x-auto">
+                    <div className="bg-black/50 rounded-lg p-4">
+                      <h5 className="text-orange-400 font-medium mb-2">Command Handler</h5>
+                      <pre className="text-xs text-gray-300 overflow-x-auto">
                         <code>{sampleCode.handler}</code>
                       </pre>
                     </div>
 
-                    <div className="bg-slate-950/50 rounded-lg p-4">
-                      <h5 className="text-purple-400 font-medium mb-2">Event Handler</h5>
-                      <pre className="text-xs text-slate-300 overflow-x-auto">
+                    <div className="bg-black/50 rounded-lg p-4">
+                      <h5 className="text-cyan-400 font-medium mb-2">Event Handler</h5>
+                      <pre className="text-xs text-gray-300 overflow-x-auto">
                         <code>{sampleCode.event}</code>
                       </pre>
                     </div>
@@ -480,27 +480,27 @@ export class InventoryHandler {
             </div>
 
             {/* AI Benefits Footer */}
-            <div className="bg-gradient-to-r from-purple-900/20 to-blue-900/20 border-t border-slate-700 p-6">
+            <div className="bg-gradient-to-r from-cyan-900/20 to-black/20 border-t border-gray-800 p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <Brain className="w-8 h-8 text-purple-400" />
+                  <Brain className="w-8 h-8 text-cyan-400" />
                   <div>
                     <div className="text-white font-semibold">AI builds this perfectly every time</div>
-                    <div className="text-slate-400 text-sm">No hallucinations • No context loss • 100% accuracy</div>
+                    <div className="text-gray-300 text-sm">No hallucinations • No context loss • 100% accuracy</div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-6 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-green-400">90%</div>
-                    <div className="text-xs text-slate-400">Less Code</div>
+                    <div className="text-2xl font-bold text-cyan-400">90%</div>
+                    <div className="text-xs text-gray-400">Less Code</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-blue-400">100x</div>
-                    <div className="text-xs text-slate-400">Faster</div>
+                    <div className="text-2xl font-bold text-orange-400">100x</div>
+                    <div className="text-xs text-gray-400">Faster</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-purple-400">0</div>
-                    <div className="text-xs text-slate-400">AI Errors</div>
+                    <div className="text-2xl font-bold text-cyan-400">0</div>
+                    <div className="text-xs text-gray-400">AI Errors</div>
                   </div>
                 </div>
               </div>
@@ -511,25 +511,25 @@ export class InventoryHandler {
         {/* Key Benefits */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-4 bg-slate-800/30 border border-slate-700 rounded-lg text-center">
-              <CheckCircle className="w-8 h-8 text-green-400 mx-auto mb-2" />
+            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
+              <CheckCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">Perfect AI Context</h4>
-              <p className="text-slate-400 text-sm mt-1">Every actor under 1000 lines</p>
+              <p className="text-gray-300 text-sm mt-1">Every actor under 1000 lines</p>
             </div>
-            <div className="p-4 bg-slate-800/30 border border-slate-700 rounded-lg text-center">
-              <Sparkles className="w-8 h-8 text-purple-400 mx-auto mb-2" />
+            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
+              <Sparkles className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">No Hallucinations</h4>
-              <p className="text-slate-400 text-sm mt-1">AI never loses track</p>
+              <p className="text-gray-300 text-sm mt-1">AI never loses track</p>
             </div>
-            <div className="p-4 bg-slate-800/30 border border-slate-700 rounded-lg text-center">
-              <Zap className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
+            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-orange-500/50 transition-colors">
+              <Zap className="w-8 h-8 text-orange-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">Event Choreography</h4>
-              <p className="text-slate-400 text-sm mt-1">Automatic parallel processing</p>
+              <p className="text-gray-300 text-sm mt-1">Automatic parallel processing</p>
             </div>
-            <div className="p-4 bg-slate-800/30 border border-slate-700 rounded-lg text-center">
-              <GitBranch className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
+              <GitBranch className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">Infinite Scale</h4>
-              <p className="text-slate-400 text-sm mt-1">Add actors without complexity</p>
+              <p className="text-gray-300 text-sm mt-1">Add actors without complexity</p>
             </div>
           </div>
         </div>

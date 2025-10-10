@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import Button from './ui/Button';
-import ProofGrid from './ProofGrid';
 
 interface HeroProps {
   onEarlyAccess: () => void;
@@ -29,56 +27,126 @@ const Hero: React.FC<HeroProps> = ({ onEarlyAccess }) => {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToProof = () => {
-    const proofSection = document.getElementById('proof-section');
-    if (proofSection) {
-      proofSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('demo-section');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div ref={heroRef} className="relative min-h-screen flex items-center pt-20 pb-16">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/3 -left-1/4 w-1/2 h-1/2 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-1/3 h-1/3 bg-purple-600/10 rounded-full blur-3xl"></div>
-      </div>
+    <div ref={heroRef} className="relative flex items-center justify-center" style={{ minHeight: '900px' }}>
+      {/* Radial gradient glow background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle at 50% 40%, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.08) 30%, transparent 60%)'
+        }}
+      ></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-100">
-            <span className="inline-block px-4 py-2 text-sm font-medium text-blue-400 bg-blue-900/30 rounded-full mb-8 border border-blue-800">
-              Greenfield Platform
-            </span>
-          </div>
-
-          <h1 className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
-              Unlock AI's full potential
-            </span><br />
-            for software development
+        <div className="max-w-[1100px] mx-auto text-center" style={{ marginTop: '250px' }}>
+          {/* Massive headline with text shadow */}
+          <h1
+            className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-800 delay-100 font-extrabold text-white mb-8"
+            style={{
+              fontSize: 'clamp(48px, 6vw, 80px)',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              textShadow: '0 4px 30px rgba(255, 107, 53, 0.3)'
+            }}
+          >
+            Unlock AI's Full Potential<br />
+            for Software Development
           </h1>
 
-          <p className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300 text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-12 leading-relaxed">
-            AI can finally build complete systems. Bounded contexts prevent hallucinations.
-            Ship production-ready software 100x faster with AI that actually works.
+          {/* Simplified subheadline */}
+          <p
+            className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-800 delay-200 text-[#a0a0a0] max-w-[600px] mx-auto"
+            style={{
+              fontSize: '22px',
+              fontWeight: 400,
+              marginBottom: '60px'
+            }}
+          >
+            Bounded contexts prevent hallucinations.
           </p>
 
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-            <Button size="lg" onClick={onEarlyAccess} className="px-8 py-4 text-lg">
-              Unlock AI Development
-            </Button>
-            <Button variant="outline" size="lg" onClick={scrollToProof} className="px-8 py-4 text-lg">
-              See the Proof
-            </Button>
+          {/* Two CTAs side by side */}
+          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-800 delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 mb-[180px]">
+            {/* Primary CTA - Cyan background, black text */}
+            <button
+              onClick={onEarlyAccess}
+              className="group relative"
+              style={{
+                background: '#00d9ff',
+                color: '#000000',
+                padding: '20px 48px',
+                borderRadius: '8px',
+                fontSize: '18px',
+                fontWeight: 600,
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 14px 0 rgba(0, 217, 255, 0.25)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#00c4e6';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px 0 rgba(0, 217, 255, 0.35)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#00d9ff';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 14px 0 rgba(0, 217, 255, 0.25)';
+              }}
+            >
+              Join Early Access
+            </button>
+
+            {/* Secondary CTA - Transparent with white border */}
+            <button
+              onClick={scrollToDemo}
+              className="group relative"
+              style={{
+                background: 'transparent',
+                color: '#ffffff',
+                padding: '18px 48px',
+                border: '2px solid #252525',
+                borderRadius: '8px',
+                fontSize: '18px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#00d9ff';
+                e.currentTarget.style.color = '#00d9ff';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 217, 255, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#252525';
+                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              See It In Action
+            </button>
           </div>
 
-          <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-500">
-            <ProofGrid />
-          </div>
+          {/* Social proof */}
+          <p
+            className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-800 delay-400 text-center"
+            style={{
+              fontSize: '14px',
+              color: '#666666'
+            }}
+          >
+            Serving 30,000+ users in production
+          </p>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent"></div>
     </div>
   );
 };

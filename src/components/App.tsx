@@ -10,7 +10,6 @@ import HowItWorks from './HowItWorks';
 import UseCases from './UseCases';
 import Features from './Features';
 import PatternShowcase from './PatternShowcase';
-import QuickstartGenerator from './QuickstartGenerator';
 import Philosophy from './Philosophy';
 import AlphaProgram from './AlphaProgram';
 import CallToAction from './CallToAction';
@@ -30,7 +29,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-slate-900 text-white">
+    <div className="min-h-screen bg-black text-white">
       <Navbar onEarlyAccess={handleOpenModal} />
       <main>
         <Hero onEarlyAccess={handleOpenModal} />
@@ -42,7 +41,6 @@ const App: React.FC = () => {
         <UseCases />
         <Features />
         <PatternShowcase />
-        <QuickstartGenerator />
         <Philosophy />
         <AlphaProgram onJoinWaitlist={handleOpenModal} />
         <CallToAction onJoinWaitlist={handleOpenModal} />
@@ -57,13 +55,13 @@ const App: React.FC = () => {
         <EarlyAccessForm onClose={handleCloseModal} />
       </Modal>
       
-      <Toaster 
+      <Toaster
         position="bottom-center"
         toastOptions={{
           style: {
-            background: '#1e293b',
-            color: '#f1f5f9',
-            border: '1px solid #334155'
+            background: '#0a0a0a',
+            color: '#ffffff',
+            border: '1px solid #252525'
           }
         }}
       />

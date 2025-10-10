@@ -85,55 +85,55 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="name" className="block text-sm font-medium text-gray-100 mb-1">
           Name
         </label>
         <input
           type="text"
           id="name"
           required
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.name}
           onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
         />
       </div>
-      
+
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-gray-100 mb-1">
           Email
         </label>
         <input
           type="email"
           id="email"
           required
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.email}
           onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
         />
       </div>
-      
+
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="company" className="block text-sm font-medium text-gray-100 mb-1">
           Company
         </label>
         <input
           type="text"
           id="company"
           required
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.company}
           onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
         />
       </div>
-      
+
       <div>
-        <label htmlFor="teamSize" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="teamSize" className="block text-sm font-medium text-gray-100 mb-1">
           Team Size
         </label>
         <select
           id="teamSize"
           required
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.teamSize}
           onChange={(e) => setFormData(prev => ({ ...prev, teamSize: e.target.value }))}
         >
@@ -144,9 +144,9 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           <option value="21+">21+ people</option>
         </select>
       </div>
-      
+
       <div>
-        <label htmlFor="currentAIUse" className="block text-sm font-medium text-slate-300 mb-1">
+        <label htmlFor="currentAIUse" className="block text-sm font-medium text-gray-100 mb-1">
           Current AI Use
         </label>
         <textarea
@@ -154,16 +154,16 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           required
           rows={3}
           placeholder="Tell us how your team currently uses AI tools..."
-          className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all resize-none"
           value={formData.currentAIUse}
           onChange={(e) => setFormData(prev => ({ ...prev, currentAIUse: e.target.value }))}
         />
       </div>
-      
+
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#00d9ff] hover:bg-[#00d9ff]/90 text-black px-4 py-3 rounded-md font-semibold transition-all hover:shadow-[0_0_30px_rgba(0,217,255,0.5)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
       >
         {isSubmitting ? 'Joining Waitlist...' : 'Join the Waitlist'}
       </button>

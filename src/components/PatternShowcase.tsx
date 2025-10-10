@@ -43,7 +43,7 @@ const PatternShowcase: React.FC = () => {
     authentication: {
       name: 'Authentication',
       icon: <Shield className="w-5 h-5" />,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'from-cyan-500 to-cyan-600',
       patterns: [
         {
           name: 'OAuth2 + JWT',
@@ -134,7 +134,7 @@ export class SocialLoginContext {
     payment: {
       name: 'Payment',
       icon: <CreditCard className="w-5 h-5" />,
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-orange-500 to-orange-600',
       patterns: [
         {
           name: 'Stripe Integration',
@@ -203,7 +203,7 @@ export class SubscriptionContext {
     dataProcessing: {
       name: 'Data Processing',
       icon: <Database className="w-5 h-5" />,
-      color: 'from-purple-500 to-pink-500',
+      color: 'from-cyan-500 to-orange-500',
       patterns: [
         {
           name: 'Event Sourcing',
@@ -267,7 +267,7 @@ export class DataPipelineContext {
     communication: {
       name: 'Communication',
       icon: <MessageSquare className="w-5 h-5" />,
-      color: 'from-orange-500 to-red-500',
+      color: 'from-cyan-500 to-orange-500',
       patterns: [
         {
           name: 'Real-time Chat',
@@ -337,7 +337,7 @@ export class EmailContext {
       case 'Low': return 'text-green-400 bg-green-400/20';
       case 'Medium': return 'text-yellow-400 bg-yellow-400/20';
       case 'High': return 'text-red-400 bg-red-400/20';
-      default: return 'text-slate-400 bg-slate-400/20';
+      default: return 'text-gray-400 bg-gray-400/20';
     }
   };
 
@@ -364,8 +364,8 @@ export class EmailContext {
                 }}
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg border transition-all duration-300 ${
                   selectedCategory === key
-                    ? `bg-gradient-to-r ${category.color} text-white border-transparent`
-                    : 'bg-slate-800/50 border-slate-600 text-slate-300 hover:border-slate-500'
+                    ? `bg-gradient-to-r ${category.color} text-black font-semibold border-transparent`
+                    : 'bg-black/50 border-gray-700 text-gray-300 hover:border-cyan-500/50'
                 }`}
               >
                 {category.icon}
@@ -391,8 +391,8 @@ export class EmailContext {
                   onClick={() => setSelectedPattern(index)}
                   className={`w-full text-left p-4 rounded-lg border transition-all duration-300 ${
                     selectedPattern === index
-                      ? `bg-gradient-to-r ${currentCategory.color}/20 border-${currentCategory.color.split(' ')[1].replace('to-', '')}/50`
-                      : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50'
+                      ? `bg-cyan-500/20 border-cyan-500/50`
+                      : 'bg-black/50 border-gray-800/50 hover:border-gray-700/50'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-2">
@@ -402,14 +402,14 @@ export class EmailContext {
                       <span className="text-sm">{pattern.rating}</span>
                     </div>
                   </div>
-                  <p className="text-slate-400 text-sm mb-3">{pattern.description}</p>
+                  <p className="text-gray-300 text-sm mb-3">{pattern.description}</p>
 
                   <div className="flex items-center gap-4 text-xs">
                     <span className={`px-2 py-1 rounded-full ${getComplexityColor(pattern.complexity)}`}>
                       {pattern.complexity}
                     </span>
-                    <span className="text-slate-500">{pattern.loc} LOC</span>
-                    <span className="text-green-400">{pattern.reusability}% reusable</span>
+                    <span className="text-gray-500">{pattern.loc} LOC</span>
+                    <span className="text-cyan-400">{pattern.reusability}% reusable</span>
                   </div>
                 </button>
               ))}
@@ -418,16 +418,16 @@ export class EmailContext {
 
           {/* Pattern Details */}
           <div className="lg:col-span-2">
-            <div className="bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-700/50 overflow-hidden">
+            <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-800/50 overflow-hidden">
 
               {/* Header */}
-              <div className="p-6 border-b border-slate-700/50">
+              <div className="p-6 border-b border-gray-800/50">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-2">{currentPattern.name}</h3>
-                    <p className="text-slate-400">{currentPattern.description}</p>
+                    <p className="text-gray-300">{currentPattern.description}</p>
                   </div>
-                  <button className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
+                  <button className="flex items-center gap-2 px-4 py-2 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300">
                     <Download className="w-4 h-4" />
                     Add to Project
                   </button>
@@ -438,7 +438,7 @@ export class EmailContext {
                   {currentPattern.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-slate-800/50 text-slate-300 rounded-full text-sm border border-slate-700/50"
+                      className="px-3 py-1 bg-black/50 text-gray-300 rounded-full text-sm border border-gray-700/50"
                     >
                       {tag}
                     </span>
@@ -449,33 +449,33 @@ export class EmailContext {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-white">{currentPattern.rating}</div>
-                    <div className="text-slate-400 text-sm">Rating</div>
+                    <div className="text-gray-400 text-sm">Rating</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-white">{currentPattern.loc}</div>
-                    <div className="text-slate-400 text-sm">Lines of Code</div>
+                    <div className="text-gray-400 text-sm">Lines of Code</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-white">{currentPattern.reusability}%</div>
-                    <div className="text-slate-400 text-sm">Reusability</div>
+                    <div className="text-gray-400 text-sm">Reusability</div>
                   </div>
                   <div className="text-center">
                     <div className={`text-2xl font-bold ${getComplexityColor(currentPattern.complexity).split(' ')[0]}`}>
                       {currentPattern.complexity}
                     </div>
-                    <div className="text-slate-400 text-sm">Complexity</div>
+                    <div className="text-gray-400 text-sm">Complexity</div>
                   </div>
                 </div>
               </div>
 
               {/* Features */}
-              <div className="p-6 border-b border-slate-700/50">
+              <div className="p-6 border-b border-gray-700/50">
                 <h4 className="text-lg font-semibold text-white mb-4">What's Included</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {currentPattern.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                      <span className="text-slate-300">{feature}</span>
+                      <Check className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                      <span className="text-gray-300">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -484,11 +484,11 @@ export class EmailContext {
               {/* Code Preview */}
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <Code className="w-5 h-5 text-green-400" />
+                  <Code className="w-5 h-5 text-cyan-400" />
                   <h4 className="text-lg font-semibold text-white">Code Preview</h4>
                 </div>
-                <div className="bg-slate-950/50 rounded-lg p-4 overflow-x-auto">
-                  <pre className="text-sm text-slate-300">
+                <div className="bg-black/50 rounded-lg p-4 overflow-x-auto">
+                  <pre className="text-sm text-gray-300">
                     <code>{currentPattern.code}</code>
                   </pre>
                 </div>
@@ -499,31 +499,31 @@ export class EmailContext {
 
         {/* Benefits */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
-          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl p-8 border border-blue-500/20">
+          <div className="bg-gradient-to-r from-cyan-500/10 to-orange-500/10 rounded-xl p-8 border border-cyan-500/20">
             <h3 className="text-xl font-semibold text-white mb-6 text-center">
               Why Use Greenfield Patterns?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-6 h-6 text-black" />
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2">10x Faster Development</h4>
-                <p className="text-slate-400">Skip the research and implementation. Get production-ready code instantly.</p>
+                <p className="text-gray-300">Skip the research and implementation. Get production-ready code instantly.</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-6 h-6 text-black" />
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2">Battle-Tested Quality</h4>
-                <p className="text-slate-400">Every pattern is used in production by thousands of developers.</p>
+                <p className="text-gray-300">Every pattern is used in production by thousands of developers.</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-black" />
                 </div>
                 <h4 className="text-lg font-semibold text-white mb-2">Team Consistency</h4>
-                <p className="text-slate-400">Everyone uses the same proven patterns. No more reinventing the wheel.</p>
+                <p className="text-gray-300">Everyone uses the same proven patterns. No more reinventing the wheel.</p>
               </div>
             </div>
           </div>
@@ -531,10 +531,10 @@ export class EmailContext {
 
         {/* CTA */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12 text-center">
-          <p className="text-slate-400 mb-6">
+          <p className="text-gray-300 mb-6">
             Get access to 200+ production-ready patterns across all major categories
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 font-semibold">
+          <button className="px-8 py-4 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300">
             Browse Full Pattern Library
           </button>
         </div>

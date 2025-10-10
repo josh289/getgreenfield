@@ -46,7 +46,7 @@ const UseCases = () => {
         '99.9% uptime from deployment'
       ],
       link: '/solutions/new',
-      gradient: 'from-blue-500 to-purple-600'
+      gradient: 'from-cyan-500 to-cyan-600'
     },
     {
       icon: <RefreshCw className="w-8 h-8" />,
@@ -65,7 +65,7 @@ const UseCases = () => {
         'Modern developer experience on legacy code'
       ],
       link: '/solutions/legacy',
-      gradient: 'from-teal-500 to-cyan-600'
+      gradient: 'from-cyan-500 to-orange-500'
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
@@ -84,7 +84,7 @@ const UseCases = () => {
         'Linear productivity scaling with team size'
       ],
       link: '/solutions/teams',
-      gradient: 'from-green-500 to-emerald-600'
+      gradient: 'from-cyan-500 to-cyan-600'
     },
     {
       icon: <Building className="w-8 h-8" />,
@@ -103,7 +103,7 @@ const UseCases = () => {
         'Cost reduction of 70% on infrastructure'
       ],
       link: '/solutions/enterprise',
-      gradient: 'from-orange-500 to-red-600'
+      gradient: 'from-orange-500 to-orange-600'
     }
   ];
 
@@ -118,8 +118,8 @@ const UseCases = () => {
       <div className={`
         relative overflow-hidden rounded-2xl border transition-all duration-300
         ${isActive
-          ? 'border-blue-500/50 bg-slate-800/50'
-          : 'border-slate-700/50 bg-slate-800/30 hover:border-slate-600/50'
+          ? 'border-cyan-500/50 bg-gray-800/50'
+          : 'border-gray-700/50 bg-gray-800/30 hover:border-gray-600/50'
         }
       `}>
         {/* Background Gradient */}
@@ -141,12 +141,12 @@ const UseCases = () => {
             </div>
             <div>
               <h3 className="text-xl font-bold text-white mb-1">{useCase.title}</h3>
-              <p className="text-blue-400 text-sm font-medium">{useCase.subtitle}</p>
+              <p className="text-cyan-400 text-sm font-medium">{useCase.subtitle}</p>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-slate-300 mb-6 leading-relaxed">{useCase.description}</p>
+          <p className="text-gray-100 mb-6 leading-relaxed">{useCase.description}</p>
 
           {/* Benefits or Outcomes based on active state */}
           {isActive ? (
@@ -156,10 +156,10 @@ const UseCases = () => {
                   <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
                   Key Benefits
                 </h4>
-                <ul className="space-y-1 text-sm text-slate-300">
+                <ul className="space-y-1 text-sm text-gray-100">
                   {useCase.benefits.map((benefit: string, i: number) => (
                     <li key={i} className="flex items-center">
-                      <ArrowRight className="w-3 h-3 mr-2 text-blue-400" />
+                      <ArrowRight className="w-3 h-3 mr-2 text-cyan-400" />
                       {benefit}
                     </li>
                   ))}
@@ -168,13 +168,13 @@ const UseCases = () => {
 
               <div>
                 <h4 className="text-white font-semibold mb-2 flex items-center">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                  <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
                   Proven Outcomes
                 </h4>
-                <ul className="space-y-1 text-sm text-slate-300">
+                <ul className="space-y-1 text-sm text-gray-100">
                   {useCase.outcomes.map((outcome: string, i: number) => (
                     <li key={i} className="flex items-center">
-                      <ArrowRight className="w-3 h-3 mr-2 text-green-400" />
+                      <ArrowRight className="w-3 h-3 mr-2 text-orange-400" />
                       {outcome}
                     </li>
                   ))}
@@ -197,12 +197,12 @@ const UseCases = () => {
           ) : (
             <div className="space-y-2">
               {useCase.benefits.slice(0, 2).map((benefit: string, i: number) => (
-                <div key={i} className="flex items-center text-sm text-slate-400">
-                  <ArrowRight className="w-3 h-3 mr-2 text-blue-500" />
+                <div key={i} className="flex items-center text-sm text-gray-300">
+                  <ArrowRight className="w-3 h-3 mr-2 text-cyan-500" />
                   {benefit}
                 </div>
               ))}
-              <p className="text-xs text-slate-500 mt-2">Click to see more details</p>
+              <p className="text-xs text-gray-500 mt-2">Click to see more details</p>
             </div>
           )}
         </div>
@@ -238,36 +238,36 @@ const UseCases = () => {
 
           {/* Summary Section */}
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300">
-            <div className="text-center bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-2xl p-8 border border-blue-500/20">
+            <div className="text-center bg-gradient-to-r from-cyan-500/10 to-orange-500/10 rounded-2xl p-8 border border-cyan-500/20">
               <div className="max-w-4xl mx-auto">
                 <h3 className="text-3xl font-bold mb-4 text-white">
                   One platform.
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"> Every use case.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white"> Every use case.</span>
                 </h3>
-                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                <p className="text-lg text-gray-100 mb-8 leading-relaxed">
                   Whether you're building the next unicorn startup or modernizing a Fortune 500 enterprise system,
                   Greenfield provides the same breakthrough development experience.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                  <div className="bg-slate-800/30 rounded-xl p-6">
+                  <div className="bg-black/30 rounded-xl p-6">
                     <h4 className="text-xl font-semibold text-white mb-3">For Startups</h4>
-                    <p className="text-slate-300 text-sm mb-3">
+                    <p className="text-gray-100 text-sm mb-3">
                       Build production-ready products in weeks, not months.
                       Compete with enterprise resources using a small team.
                     </p>
-                    <div className="text-green-400 text-sm font-medium">
+                    <div className="text-cyan-400 text-sm font-medium">
                       → MVP to market in 1 week
                     </div>
                   </div>
 
-                  <div className="bg-slate-800/30 rounded-xl p-6">
+                  <div className="bg-black/30 rounded-xl p-6">
                     <h4 className="text-xl font-semibold text-white mb-3">For Enterprise</h4>
-                    <p className="text-slate-300 text-sm mb-3">
+                    <p className="text-gray-100 text-sm mb-3">
                       Transform legacy systems without business risk.
                       Achieve startup agility at enterprise scale.
                     </p>
-                    <div className="text-blue-400 text-sm font-medium">
+                    <div className="text-orange-400 text-sm font-medium">
                       → 20-year systems feel new
                     </div>
                   </div>
