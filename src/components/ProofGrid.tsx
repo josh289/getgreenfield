@@ -66,7 +66,7 @@ const ProofGrid: React.FC = () => {
             key={index}
             className="proof-card opacity-0 translate-y-8 scale-95 transition-all duration-700 ease-out group"
           >
-            <div className="relative p-6 h-full bg-black/50 backdrop-blur-sm border border-gray-800 rounded-xl hover:border-cyan-500/50 hover:bg-black/70 transition-all duration-300">
+            <div className="relative p-6 h-full bg-black/50 backdrop-blur-sm border border-gray-400 rounded-xl hover:border-cyan-500/50 hover:bg-black/70 transition-all duration-300">
               {/* Background gradient effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-orange-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 

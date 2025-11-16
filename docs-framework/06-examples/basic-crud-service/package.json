@@ -1,0 +1,31 @@
+{
+  "name": "@banyanai/todo-service-example",
+  "version": "1.0.0",
+  "description": "Basic CRUD service example demonstrating platform fundamentals",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "biome check .",
+    "lint:fix": "biome check --fix ."
+  },
+  "dependencies": {
+    "@banyanai/platform-base-service": "workspace:*",
+    "@banyanai/platform-core": "workspace:*",
+    "@banyanai/platform-contract-system": "workspace:*",
+    "@banyanai/platform-event-sourcing": "workspace:*",
+    "@banyanai/platform-telemetry": "workspace:*",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^20.17.0",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

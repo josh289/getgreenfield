@@ -92,7 +92,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           type="text"
           id="name"
           required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.name}
           onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
         />
@@ -106,7 +106,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           type="email"
           id="email"
           required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.email}
           onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
         />
@@ -120,7 +120,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           type="text"
           id="company"
           required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.company}
           onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
         />
@@ -133,7 +133,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         <select
           id="teamSize"
           required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
           value={formData.teamSize}
           onChange={(e) => setFormData(prev => ({ ...prev, teamSize: e.target.value }))}
         >
@@ -154,7 +154,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           required
           rows={3}
           placeholder="Tell us how your team currently uses AI tools..."
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-800 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all resize-none"
+          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all resize-none"
           value={formData.currentAIUse}
           onChange={(e) => setFormData(prev => ({ ...prev, currentAIUse: e.target.value }))}
         />

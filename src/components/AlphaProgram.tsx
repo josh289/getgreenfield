@@ -63,7 +63,7 @@ const AlphaProgram: React.FC<AlphaProgramProps> = ({ onJoinWaitlist }) => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-24">
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-100">
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 h-full hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.15)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-400 h-full hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.15)] hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center mb-4">
                 <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
                 <h3 className="text-xl font-semibold text-white">Early Access Benefits</h3>
@@ -80,7 +80,7 @@ const AlphaProgram: React.FC<AlphaProgramProps> = ({ onJoinWaitlist }) => {
           </div>
 
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-200">
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 h-full hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.15)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-400 h-full hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.15)] hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center mb-4">
                 <Users className="w-6 h-6 text-cyan-500 mr-2" />
                 <h3 className="text-xl font-semibold text-white">Perfect For</h3>
@@ -97,7 +97,7 @@ const AlphaProgram: React.FC<AlphaProgramProps> = ({ onJoinWaitlist }) => {
           </div>
 
           <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-300">
-            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-800 h-full hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.15)] hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 border border-gray-400 h-full hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.15)] hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center mb-4">
                 <MessageSquare className="w-6 h-6 text-cyan-500 mr-2" />
                 <h3 className="text-xl font-semibold text-white">Your Commitment</h3>
@@ -115,7 +115,7 @@ const AlphaProgram: React.FC<AlphaProgramProps> = ({ onJoinWaitlist }) => {
         </div>
 
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 delay-400 mt-24">
-          <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black border border-gray-800 p-10 text-center relative overflow-hidden hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.2)] hover:-translate-y-1 transition-all duration-300">
+          <div className="rounded-xl bg-gradient-to-r from-gray-900 to-black border border-gray-400 p-10 text-center relative overflow-hidden hover:border-cyan-500 hover:shadow-[0_10px_40px_rgba(0,217,255,0.2)] hover:-translate-y-1 transition-all duration-300">
             <div className="absolute top-0 right-0 h-full w-1/2 overflow-hidden rounded-r-xl opacity-10">
               <div className="absolute top-0 -right-12 w-full h-full bg-gradient-to-br from-cyan-500/30 to-orange-500/20"></div>
             </div>

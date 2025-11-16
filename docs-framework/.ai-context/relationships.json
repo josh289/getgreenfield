@@ -1,0 +1,629 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-15",
+  "description": "Document relationship graph for AI-powered navigation",
+
+  "00-getting-started/01-installation.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "00-getting-started/02-your-first-service.md",
+      "00-getting-started/03-calling-apis.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/platform-overview.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/creating-services.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/service-wont-start.md",
+      "05-troubleshooting/by-symptom/build-failures.md"
+    ]
+  },
+
+  "00-getting-started/02-your-first-service.md": {
+    "prerequisites": [
+      "00-getting-started/01-installation.md"
+    ],
+    "nextSteps": [
+      "00-getting-started/03-calling-apis.md",
+      "03-guides/service-development/writing-handlers.md",
+      "03-guides/service-development/defining-contracts.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/cqrs-pattern.md",
+      "02-concepts/architecture/message-bus-architecture.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/creating-services.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/handlers-not-discovered.md",
+      "05-troubleshooting/by-symptom/service-wont-start.md"
+    ]
+  },
+
+  "00-getting-started/03-calling-apis.md": {
+    "prerequisites": [
+      "00-getting-started/02-your-first-service.md"
+    ],
+    "nextSteps": [
+      "03-guides/api-integration/graphql-api.md",
+      "03-guides/api-integration/rest-api.md",
+      "03-guides/service-development/using-service-clients.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/api-gateway.md",
+      "02-concepts/architecture/two-layer-authorization.md"
+    ],
+    "relatedGuides": [
+      "03-guides/security/authentication.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/api-calls-failing.md",
+      "05-troubleshooting/by-symptom/authentication-errors.md"
+    ]
+  },
+
+  "02-concepts/architecture/correlation-and-tracing.md": {
+    "prerequisites": [
+      "02-concepts/architecture/message-bus-architecture.md",
+      "02-concepts/architecture/api-gateway.md"
+    ],
+    "nextSteps": [
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "05-troubleshooting/debugging-tools/correlation-id-tracking.md"
+    ],
+    "relatedConcepts": [
+      "04-reference/message-protocols/w3c-trace-context.md"
+    ],
+    "relatedGuides": [
+      "03-guides/infrastructure/observability.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/debugging-tools/correlation-id-tracking.md"
+    ]
+  },
+
+  "02-concepts/architecture/message-bus-architecture.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "02-concepts/architecture/correlation-and-tracing.md",
+      "03-guides/infrastructure/message-bus.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/cqrs-pattern.md",
+      "02-concepts/architecture/service-discovery.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-component/message-bus-issues.md"
+    ]
+  },
+
+  "02-concepts/architecture/two-layer-authorization.md": {
+    "prerequisites": [
+      "02-concepts/architecture/api-gateway.md"
+    ],
+    "nextSteps": [
+      "03-guides/security/permission-based-authorization.md",
+      "03-guides/security/policy-based-authorization.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/api-gateway.md"
+    ],
+    "relatedGuides": [
+      "03-guides/security/authentication.md",
+      "03-guides/security/rbac.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/authentication-errors.md"
+    ]
+  },
+
+  "02-concepts/patterns/cqrs-pattern.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "03-guides/service-development/writing-handlers.md",
+      "02-concepts/patterns/event-sourcing-pattern.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/event-sourcing-pattern.md",
+      "02-concepts/patterns/read-model-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/writing-handlers.md",
+      "04-reference/decorators/command-handlers.md",
+      "04-reference/decorators/query-handlers.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/handlers-not-discovered.md"
+    ]
+  },
+
+  "02-concepts/patterns/event-sourcing-pattern.md": {
+    "prerequisites": [
+      "02-concepts/patterns/cqrs-pattern.md"
+    ],
+    "nextSteps": [
+      "03-guides/service-development/data-access-patterns.md",
+      "02-concepts/patterns/aggregate-pattern.md",
+      "02-concepts/patterns/read-model-pattern.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/aggregate-pattern.md",
+      "02-concepts/patterns/domain-event-pattern.md",
+      "02-concepts/patterns/read-model-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/data-access-patterns.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/event-sourcing-issues.md"
+    ]
+  },
+
+  "03-guides/service-development/writing-handlers.md": {
+    "prerequisites": [
+      "00-getting-started/02-your-first-service.md",
+      "02-concepts/patterns/cqrs-pattern.md"
+    ],
+    "nextSteps": [
+      "03-guides/service-development/defining-contracts.md",
+      "03-guides/service-development/testing-services.md",
+      "04-reference/decorators/command-handlers.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/cqrs-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/defining-contracts.md",
+      "03-guides/service-development/using-service-clients.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/handlers-not-discovered.md"
+    ]
+  },
+
+  "03-guides/service-development/defining-contracts.md": {
+    "prerequisites": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "nextSteps": [
+      "03-guides/service-development/using-service-clients.md",
+      "04-reference/decorators/contracts.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/service-discovery.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/contract-errors.md",
+      "05-troubleshooting/by-component/contract-system-issues.md"
+    ]
+  },
+
+  "03-guides/service-development/using-service-clients.md": {
+    "prerequisites": [
+      "03-guides/service-development/defining-contracts.md"
+    ],
+    "nextSteps": [
+      "03-guides/service-development/data-access-patterns.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/message-bus-architecture.md",
+      "02-concepts/architecture/correlation-and-tracing.md"
+    ],
+    "relatedGuides": [
+      "04-reference/platform-packages/client-system.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/api-calls-failing.md",
+      "05-troubleshooting/by-component/message-bus-issues.md"
+    ]
+  },
+
+  "03-guides/service-development/data-access-patterns.md": {
+    "prerequisites": [
+      "03-guides/service-development/writing-handlers.md",
+      "02-concepts/patterns/event-sourcing-pattern.md"
+    ],
+    "nextSteps": [
+      "04-reference/decorators/event-sourcing.md",
+      "02-concepts/patterns/aggregate-pattern.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/event-sourcing-pattern.md",
+      "02-concepts/patterns/aggregate-pattern.md",
+      "02-concepts/patterns/read-model-pattern.md"
+    ],
+    "relatedGuides": [
+      "04-reference/platform-packages/event-sourcing.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/event-sourcing-issues.md",
+      "05-troubleshooting/by-component/read-model-issues.md"
+    ]
+  },
+
+  "03-guides/service-development/testing-services.md": {
+    "prerequisites": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "nextSteps": [],
+    "relatedConcepts": [],
+    "relatedGuides": [
+      "04-reference/platform-packages/test-utils.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/test-failures.md"
+    ]
+  },
+
+  "03-guides/security/authentication.md": {
+    "prerequisites": [
+      "00-getting-started/03-calling-apis.md"
+    ],
+    "nextSteps": [
+      "03-guides/security/permission-based-authorization.md",
+      "03-guides/security/policy-based-authorization.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/two-layer-authorization.md",
+      "02-concepts/architecture/api-gateway.md"
+    ],
+    "relatedGuides": [
+      "03-guides/security/external-auth-providers.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/authentication-errors.md",
+      "05-troubleshooting/by-component/auth-service-issues.md"
+    ]
+  },
+
+  "03-guides/security/policy-based-authorization.md": {
+    "prerequisites": [
+      "03-guides/security/authentication.md",
+      "02-concepts/architecture/two-layer-authorization.md"
+    ],
+    "nextSteps": [
+      "04-reference/decorators/authorization.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/two-layer-authorization.md"
+    ],
+    "relatedGuides": [
+      "03-guides/security/permission-based-authorization.md",
+      "03-guides/security/rbac.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/authentication-errors.md"
+    ]
+  },
+
+  "04-reference/decorators/command-handlers.md": {
+    "prerequisites": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "nextSteps": [
+      "04-reference/decorators/query-handlers.md",
+      "04-reference/decorators/event-handlers.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/cqrs-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/handlers-not-discovered.md"
+    ]
+  },
+
+  "04-reference/decorators/event-sourcing.md": {
+    "prerequisites": [
+      "02-concepts/patterns/event-sourcing-pattern.md",
+      "03-guides/service-development/data-access-patterns.md"
+    ],
+    "nextSteps": [],
+    "relatedConcepts": [
+      "02-concepts/patterns/aggregate-pattern.md",
+      "02-concepts/patterns/read-model-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/data-access-patterns.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/event-sourcing-issues.md"
+    ]
+  },
+
+  "04-reference/decorators/authorization.md": {
+    "prerequisites": [
+      "03-guides/security/policy-based-authorization.md"
+    ],
+    "nextSteps": [],
+    "relatedConcepts": [
+      "02-concepts/architecture/two-layer-authorization.md"
+    ],
+    "relatedGuides": [
+      "03-guides/security/policy-based-authorization.md",
+      "03-guides/security/rbac.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/authentication-errors.md"
+    ]
+  },
+
+  "04-reference/platform-packages/base-service.md": {
+    "prerequisites": [
+      "00-getting-started/02-your-first-service.md"
+    ],
+    "nextSteps": [
+      "04-reference/platform-packages/cqrs.md",
+      "04-reference/platform-packages/message-bus-client.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/platform-overview.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/creating-services.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-component/base-service-issues.md",
+      "05-troubleshooting/by-symptom/service-wont-start.md"
+    ]
+  },
+
+  "05-troubleshooting/by-symptom/handlers-not-discovered.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "03-guides/service-development/writing-handlers.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/cqrs-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/writing-handlers.md",
+      "04-reference/decorators/command-handlers.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/debugging-tools/log-analysis.md",
+      "05-troubleshooting/by-component/base-service-issues.md"
+    ]
+  },
+
+  "05-troubleshooting/by-symptom/service-wont-start.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "00-getting-started/02-your-first-service.md"
+    ],
+    "relatedConcepts": [],
+    "relatedGuides": [
+      "03-guides/service-development/creating-services.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/debugging-tools/log-analysis.md",
+      "05-troubleshooting/by-component/base-service-issues.md",
+      "05-troubleshooting/by-component/message-bus-issues.md"
+    ]
+  },
+
+  "05-troubleshooting/by-symptom/api-calls-failing.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "00-getting-started/03-calling-apis.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/api-gateway.md",
+      "02-concepts/architecture/correlation-and-tracing.md"
+    ],
+    "relatedGuides": [
+      "03-guides/api-integration/graphql-api.md",
+      "03-guides/api-integration/rest-api.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/debugging-tools/correlation-id-tracking.md",
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "05-troubleshooting/by-component/api-gateway-issues.md"
+    ]
+  },
+
+  "05-troubleshooting/by-symptom/authentication-errors.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "03-guides/security/authentication.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/two-layer-authorization.md"
+    ],
+    "relatedGuides": [
+      "03-guides/security/authentication.md",
+      "03-guides/security/policy-based-authorization.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-component/auth-service-issues.md",
+      "05-troubleshooting/by-component/api-gateway-issues.md"
+    ]
+  },
+
+  "05-troubleshooting/by-component/message-bus-issues.md": {
+    "prerequisites": [],
+    "nextSteps": [],
+    "relatedConcepts": [
+      "02-concepts/architecture/message-bus-architecture.md"
+    ],
+    "relatedGuides": [
+      "03-guides/infrastructure/message-bus.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/debugging-tools/rabbitmq-management.md",
+      "05-troubleshooting/by-symptom/service-wont-start.md"
+    ]
+  },
+
+  "05-troubleshooting/by-component/read-model-issues.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "02-concepts/patterns/read-model-pattern.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/patterns/read-model-pattern.md",
+      "02-concepts/patterns/event-sourcing-pattern.md"
+    ],
+    "relatedGuides": [
+      "03-guides/service-development/data-access-patterns.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/event-sourcing-issues.md",
+      "05-troubleshooting/debugging-tools/log-analysis.md"
+    ]
+  },
+
+  "05-troubleshooting/debugging-tools/jaeger-tracing.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "05-troubleshooting/debugging-tools/correlation-id-tracking.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/correlation-and-tracing.md"
+    ],
+    "relatedGuides": [
+      "03-guides/infrastructure/observability.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/performance-issues.md",
+      "05-troubleshooting/by-symptom/api-calls-failing.md"
+    ]
+  },
+
+  "05-troubleshooting/debugging-tools/correlation-id-tracking.md": {
+    "prerequisites": [],
+    "nextSteps": [
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "02-concepts/architecture/correlation-and-tracing.md"
+    ],
+    "relatedConcepts": [
+      "02-concepts/architecture/correlation-and-tracing.md",
+      "04-reference/message-protocols/w3c-trace-context.md"
+    ],
+    "relatedGuides": [
+      "03-guides/infrastructure/observability.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/debugging-tools/log-analysis.md",
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md"
+    ]
+  },
+
+  "05-troubleshooting/common-errors/error-catalog.md": {
+    "prerequisites": [],
+    "nextSteps": [],
+    "relatedConcepts": [],
+    "relatedGuides": [],
+    "troubleshooting": [
+      "05-troubleshooting/by-symptom/",
+      "05-troubleshooting/by-component/",
+      "05-troubleshooting/debugging-tools/"
+    ]
+  },
+
+  "learningPaths": {
+    "beginner": {
+      "description": "Recommended path for beginners",
+      "sequence": [
+        "00-getting-started/01-installation.md",
+        "00-getting-started/02-your-first-service.md",
+        "02-concepts/patterns/cqrs-pattern.md",
+        "03-guides/service-development/writing-handlers.md",
+        "00-getting-started/03-calling-apis.md",
+        "03-guides/service-development/defining-contracts.md"
+      ]
+    },
+    "intermediate": {
+      "description": "Recommended path for intermediate users",
+      "sequence": [
+        "02-concepts/patterns/event-sourcing-pattern.md",
+        "03-guides/service-development/data-access-patterns.md",
+        "02-concepts/architecture/two-layer-authorization.md",
+        "03-guides/security/policy-based-authorization.md",
+        "03-guides/service-development/using-service-clients.md",
+        "02-concepts/architecture/correlation-and-tracing.md"
+      ]
+    },
+    "advanced": {
+      "description": "Recommended path for advanced users",
+      "sequence": [
+        "02-concepts/architecture/message-bus-architecture.md",
+        "02-concepts/patterns/saga-pattern.md",
+        "04-reference/message-protocols/w3c-trace-context.md",
+        "03-guides/infrastructure/observability.md",
+        "05-troubleshooting/debugging-tools/jaeger-tracing.md"
+      ]
+    }
+  },
+
+  "topicClusters": {
+    "handlers": {
+      "core": [
+        "03-guides/service-development/writing-handlers.md",
+        "02-concepts/patterns/cqrs-pattern.md"
+      ],
+      "reference": [
+        "04-reference/decorators/command-handlers.md",
+        "04-reference/decorators/query-handlers.md",
+        "04-reference/decorators/event-handlers.md"
+      ],
+      "troubleshooting": [
+        "05-troubleshooting/by-symptom/handlers-not-discovered.md"
+      ]
+    },
+    "eventSourcing": {
+      "core": [
+        "02-concepts/patterns/event-sourcing-pattern.md",
+        "03-guides/service-development/data-access-patterns.md"
+      ],
+      "reference": [
+        "04-reference/decorators/event-sourcing.md",
+        "04-reference/platform-packages/event-sourcing.md"
+      ],
+      "troubleshooting": [
+        "05-troubleshooting/by-symptom/event-sourcing-issues.md",
+        "05-troubleshooting/by-component/read-model-issues.md"
+      ]
+    },
+    "tracing": {
+      "core": [
+        "02-concepts/architecture/correlation-and-tracing.md"
+      ],
+      "practical": [
+        "05-troubleshooting/debugging-tools/correlation-id-tracking.md",
+        "05-troubleshooting/debugging-tools/jaeger-tracing.md"
+      ],
+      "reference": [
+        "04-reference/message-protocols/w3c-trace-context.md"
+      ]
+    },
+    "security": {
+      "core": [
+        "02-concepts/architecture/two-layer-authorization.md"
+      ],
+      "guides": [
+        "03-guides/security/authentication.md",
+        "03-guides/security/permission-based-authorization.md",
+        "03-guides/security/policy-based-authorization.md"
+      ],
+      "reference": [
+        "04-reference/decorators/authorization.md"
+      ],
+      "troubleshooting": [
+        "05-troubleshooting/by-symptom/authentication-errors.md",
+        "05-troubleshooting/by-component/auth-service-issues.md"
+      ]
+    }
+  }
+}

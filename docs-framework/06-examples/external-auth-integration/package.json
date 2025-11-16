@@ -1,0 +1,28 @@
+{
+  "name": "@banyanai/external-auth-example",
+  "version": "1.0.0",
+  "description": "External authentication integration example (Auth0/OIDC)",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@banyanai/platform-base-service": "workspace:*",
+    "@banyanai/platform-core": "workspace:*",
+    "@banyanai/platform-contract-system": "workspace:*",
+    "@banyanai/platform-message-bus-client": "workspace:*",
+    "@banyanai/platform-telemetry": "workspace:*",
+    "jsonwebtoken": "^9.0.2",
+    "jwk-to-pem": "^2.0.5",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.17.0",
+    "typescript": "^5.7.2"
+  }
+}

@@ -192,7 +192,7 @@ export class InventoryHandler {
                 className={`px-6 py-3 rounded-lg border transition-all duration-300 ${
                   activeFlow === key
                     ? 'bg-cyan-500 border-transparent text-black font-semibold'
-                    : 'bg-black/50 border-gray-700 text-gray-300 hover:border-cyan-500/50'
+                    : 'bg-black/50 border-gray-400 text-gray-100 hover:border-cyan-500/50'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -206,14 +206,14 @@ export class InventoryHandler {
 
         {/* Interactive Visualization */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-800/50 overflow-hidden">
+          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
 
             {/* Header */}
-            <div className="bg-black/50 px-6 py-4 border-b border-gray-800/50">
+            <div className="bg-black/50 px-6 py-4 border-b border-gray-400/80">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-white">{currentFlow.title}</h3>
-                  <p className="text-gray-300">{currentFlow.description}</p>
+                  <p className="text-gray-100">{currentFlow.description}</p>
                 </div>
                 <div className="flex gap-4">
                   <button
@@ -234,7 +234,7 @@ export class InventoryHandler {
                   </button>
                   <button
                     onClick={() => setShowCode(!showCode)}
-                    className="px-4 py-2 border border-gray-700 text-gray-300 rounded-lg hover:border-cyan-500 transition-colors"
+                    className="px-4 py-2 border border-gray-400 text-gray-100 rounded-lg hover:border-cyan-500 transition-colors"
                   >
                     {showCode ? 'Hide' : 'Show'} Code
                   </button>
@@ -250,7 +250,7 @@ export class InventoryHandler {
 
                 {/* Event Timeline - Left Side */}
                 <div className="space-y-2">
-                  <div className="text-xs font-bold text-gray-400 mb-4 uppercase tracking-wider px-2">
+                  <div className="text-xs font-bold text-gray-200 mb-4 uppercase tracking-wider px-2">
                     Event Flow ({currentStep + 1}/{currentFlow.steps.length})
                   </div>
                   {currentFlow.steps.map((step, index) => (
@@ -261,8 +261,8 @@ export class InventoryHandler {
                         index === currentStep
                           ? 'bg-cyan-500/20 border-cyan-500 shadow-lg shadow-cyan-500/20 scale-105'
                           : index < currentStep
-                          ? 'bg-black/30 border-orange-500/50 opacity-70'
-                          : 'bg-black/20 border-gray-800/50 opacity-50'
+                          ? 'bg-black/30 border-orange-500/50 opacity-90'
+                          : 'bg-black/30 border-gray-400 opacity-85'
                       }`}
                     >
                       <div className="flex items-start gap-2">
@@ -271,7 +271,7 @@ export class InventoryHandler {
                             ? 'bg-cyan-500 text-black animate-pulse'
                             : index < currentStep
                             ? 'bg-orange-500 text-white'
-                            : 'bg-gray-800 text-gray-600'
+                            : 'bg-gray-600 text-gray-100'
                         }`}>
                           {index < currentStep ? '✓' : index + 1}
                         </div>
@@ -280,8 +280,8 @@ export class InventoryHandler {
                             index === currentStep
                               ? 'text-white'
                               : index < currentStep
-                              ? 'text-gray-300'
-                              : 'text-gray-500'
+                              ? 'text-gray-200'
+                              : 'text-gray-100'
                           }`}>
                             {step.event}
                           </div>
@@ -298,7 +298,7 @@ export class InventoryHandler {
                 </div>
 
                 {/* Animation Container - Right Side */}
-              <div className="relative h-96 bg-black/30 rounded-lg border border-gray-800/50 overflow-hidden">
+              <div className="relative h-96 bg-black/30 rounded-lg border border-gray-400/80 overflow-hidden">
 
                 {/* Trigger Node (Left Side) */}
                 <div className="absolute left-8 top-1/2 -translate-y-1/2 z-10">
@@ -336,7 +336,7 @@ export class InventoryHandler {
                       );
 
                       const getActorColors = (color: string, isHighlighted: boolean) => {
-                        if (!isHighlighted) return 'bg-black/50 border-gray-700/50 opacity-60';
+                        if (!isHighlighted) return 'bg-black/50 border-gray-400/50 opacity-60';
 
                         const colorMap: Record<string, string> = {
                           blue: 'bg-gradient-to-br from-cyan-500/40 to-cyan-600/40 border-cyan-500',
@@ -429,7 +429,7 @@ export class InventoryHandler {
                   <div className="space-y-2">
                     {Object.entries(currentFlow.metrics.traditional).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-sm">
-                        <span className="text-gray-400 capitalize">{key}:</span>
+                        <span className="text-gray-200 capitalize">{key}:</span>
                         <span className="text-orange-300">{value}</span>
                       </div>
                     ))}
@@ -440,7 +440,7 @@ export class InventoryHandler {
                   <div className="space-y-2">
                     {Object.entries(currentFlow.metrics.actors).map(([key, value]) => (
                       <div key={key} className="flex justify-between text-sm">
-                        <span className="text-gray-400 capitalize">{key}:</span>
+                        <span className="text-gray-200 capitalize">{key}:</span>
                         <span className="text-cyan-300">{value}</span>
                       </div>
                     ))}
@@ -456,21 +456,21 @@ export class InventoryHandler {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-black/50 rounded-lg p-4">
                       <h5 className="text-cyan-400 font-medium mb-2">Service Contract</h5>
-                      <pre className="text-xs text-gray-300 overflow-x-auto">
+                      <pre className="text-xs text-gray-100 overflow-x-auto">
                         <code>{sampleCode.contract}</code>
                       </pre>
                     </div>
 
                     <div className="bg-black/50 rounded-lg p-4">
                       <h5 className="text-orange-400 font-medium mb-2">Command Handler</h5>
-                      <pre className="text-xs text-gray-300 overflow-x-auto">
+                      <pre className="text-xs text-gray-100 overflow-x-auto">
                         <code>{sampleCode.handler}</code>
                       </pre>
                     </div>
 
                     <div className="bg-black/50 rounded-lg p-4">
                       <h5 className="text-cyan-400 font-medium mb-2">Event Handler</h5>
-                      <pre className="text-xs text-gray-300 overflow-x-auto">
+                      <pre className="text-xs text-gray-100 overflow-x-auto">
                         <code>{sampleCode.event}</code>
                       </pre>
                     </div>
@@ -480,27 +480,27 @@ export class InventoryHandler {
             </div>
 
             {/* AI Benefits Footer */}
-            <div className="bg-gradient-to-r from-cyan-900/20 to-black/20 border-t border-gray-800 p-6">
+            <div className="bg-gradient-to-r from-cyan-900/20 to-black/20 border-t border-gray-400 p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <Brain className="w-8 h-8 text-cyan-400" />
                   <div>
                     <div className="text-white font-semibold">AI builds this perfectly every time</div>
-                    <div className="text-gray-300 text-sm">No hallucinations • No context loss • 100% accuracy</div>
+                    <div className="text-gray-100 text-sm">No hallucinations • No context loss • 100% accuracy</div>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-6 text-center">
                   <div>
                     <div className="text-2xl font-bold text-cyan-400">90%</div>
-                    <div className="text-xs text-gray-400">Less Code</div>
+                    <div className="text-xs text-gray-200">Less Code</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-orange-400">100x</div>
-                    <div className="text-xs text-gray-400">Faster</div>
+                    <div className="text-xs text-gray-200">Faster</div>
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-cyan-400">0</div>
-                    <div className="text-xs text-gray-400">AI Errors</div>
+                    <div className="text-xs text-gray-200">AI Errors</div>
                   </div>
                 </div>
               </div>
@@ -511,25 +511,25 @@ export class InventoryHandler {
         {/* Key Benefits */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
+            <div className="p-4 bg-black/30 border border-gray-400 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
               <CheckCircle className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">Perfect AI Context</h4>
-              <p className="text-gray-300 text-sm mt-1">Every actor under 1000 lines</p>
+              <p className="text-gray-100 text-sm mt-1">Every actor under 1000 lines</p>
             </div>
-            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
+            <div className="p-4 bg-black/30 border border-gray-400 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
               <Sparkles className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">No Hallucinations</h4>
-              <p className="text-gray-300 text-sm mt-1">AI never loses track</p>
+              <p className="text-gray-100 text-sm mt-1">AI never loses track</p>
             </div>
-            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-orange-500/50 transition-colors">
+            <div className="p-4 bg-black/30 border border-gray-400 rounded-lg text-center hover:border-orange-500/50 transition-colors">
               <Zap className="w-8 h-8 text-orange-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">Event Choreography</h4>
-              <p className="text-gray-300 text-sm mt-1">Automatic parallel processing</p>
+              <p className="text-gray-100 text-sm mt-1">Automatic parallel processing</p>
             </div>
-            <div className="p-4 bg-black/30 border border-gray-800 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
+            <div className="p-4 bg-black/30 border border-gray-400 rounded-lg text-center hover:border-cyan-500/50 transition-colors">
               <GitBranch className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
               <h4 className="text-white font-semibold">Infinite Scale</h4>
-              <p className="text-gray-300 text-sm mt-1">Add actors without complexity</p>
+              <p className="text-gray-100 text-sm mt-1">Add actors without complexity</p>
             </div>
           </div>
         </div>

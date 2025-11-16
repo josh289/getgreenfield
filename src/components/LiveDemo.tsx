@@ -566,7 +566,7 @@ export class OrderFailureHandler {
                 className={`px-6 py-3 rounded-lg border transition-all duration-300 ${
                   selectedExample === index
                     ? 'bg-cyan-500 border-cyan-500 text-black font-semibold'
-                    : 'bg-black/50 border-gray-700 text-gray-300 hover:border-cyan-500/50'
+                    : 'bg-black/50 border-gray-400 text-gray-100 hover:border-cyan-500/50'
                 }`}
               >
                 {example.title}
@@ -577,16 +577,16 @@ export class OrderFailureHandler {
 
         {/* Demo Interface */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-800/50 overflow-hidden">
+          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
 
             {/* Header */}
-            <div className="bg-black/50 px-6 py-4 border-b border-gray-800/50">
+            <div className="bg-black/50 px-6 py-4 border-b border-gray-400/80">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-1">
                     {currentExample.title}
                   </h3>
-                  <p className="text-gray-300">
+                  <p className="text-gray-100">
                     {currentExample.description}
                   </p>
                 </div>
@@ -613,13 +613,13 @@ export class OrderFailureHandler {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
 
               {/* Input Side */}
-              <div className="p-6 border-r border-gray-800/50">
+              <div className="p-6 border-r border-gray-400/80">
                 <div className="flex items-center gap-2 mb-4">
                   <Box className="w-5 h-5 text-orange-400" />
                   <h4 className="text-lg font-semibold text-white">Legacy Code</h4>
                   <button
                     onClick={() => handleCopy(currentExample.input, 'input')}
-                    className="ml-auto p-2 text-gray-400 hover:text-white transition-colors"
+                    className="ml-auto p-2 text-gray-200 hover:text-white transition-colors"
                   >
                     {copiedStates.input ? (
                       <span className="text-cyan-400 text-sm">Copied!</span>
@@ -629,7 +629,7 @@ export class OrderFailureHandler {
                   </button>
                 </div>
                 <div className="bg-black/50 rounded-lg p-4 overflow-x-auto">
-                  <pre className="text-sm text-gray-300 whitespace-pre-wrap">
+                  <pre className="text-sm text-gray-100 whitespace-pre-wrap">
                     <code>{currentExample.input}</code>
                   </pre>
                 </div>
@@ -644,9 +644,9 @@ export class OrderFailureHandler {
 
                 {!showOutput && !isProcessing && (
                   <div className="bg-black/30 rounded-lg p-8 text-center">
-                    <p className="text-gray-400 mb-4">Click "Try it yourself" to see the actor transformation</p>
+                    <p className="text-gray-200 mb-4">Click "Try it yourself" to see the actor transformation</p>
                     <div className="w-16 h-16 mx-auto bg-black/50 rounded-lg flex items-center justify-center">
-                      <Play className="w-8 h-8 text-gray-500" />
+                      <Play className="w-8 h-8 text-gray-200" />
                     </div>
                   </div>
                 )}
@@ -656,15 +656,15 @@ export class OrderFailureHandler {
                     <div className="w-16 h-16 mx-auto bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
                       <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin" />
                     </div>
-                    <p className="text-gray-400">Transforming to Actor Services...</p>
+                    <p className="text-gray-200">Transforming to Actor Services...</p>
                     <div className="mt-4 space-y-2">
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-200">
                         📝 Generating Actor Service Contract
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-200">
                         ⚡ Creating Command, Query & Event handlers
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-200">
                         🚀 Enabling event choreography
                       </div>
                     </div>
@@ -685,11 +685,11 @@ export class OrderFailureHandler {
                             <div className="flex items-start justify-between mb-2">
                               <div>
                                 <h6 className="text-white font-medium">{context.name}</h6>
-                                <p className="text-gray-300 text-sm">{context.description}</p>
+                                <p className="text-gray-100 text-sm">{context.description}</p>
                               </div>
                               <button
                                 onClick={() => handleCopy(context.code, `context-${index}`)}
-                                className="p-1 text-gray-400 hover:text-white transition-colors"
+                                className="p-1 text-gray-200 hover:text-white transition-colors"
                               >
                                 {copiedStates[`context-${index}`] ? (
                                   <span className="text-cyan-400 text-xs">✓</span>
@@ -698,7 +698,7 @@ export class OrderFailureHandler {
                                 )}
                               </button>
                             </div>
-                            <pre className="text-xs text-gray-300 bg-black/50 rounded p-2 overflow-x-auto">
+                            <pre className="text-xs text-gray-100 bg-black/50 rounded p-2 overflow-x-auto">
                               <code>{context.code}</code>
                             </pre>
                           </div>
@@ -731,19 +731,19 @@ export class OrderFailureHandler {
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <div className="text-cyan-400 font-semibold">✓ 90% Less Code</div>
-                          <div className="text-gray-400">Just handlers, no infrastructure</div>
+                          <div className="text-gray-200">Just handlers, no infrastructure</div>
                         </div>
                         <div>
                           <div className="text-orange-400 font-semibold">✓ Event Choreography</div>
-                          <div className="text-gray-400">Actors react independently</div>
+                          <div className="text-gray-200">Actors react independently</div>
                         </div>
                         <div>
                           <div className="text-cyan-400 font-semibold">✓ Type-Safe Contracts</div>
-                          <div className="text-gray-400">Compile-time API validation</div>
+                          <div className="text-gray-200">Compile-time API validation</div>
                         </div>
                         <div>
                           <div className="text-orange-400 font-semibold">✓ Auto Scaling</div>
-                          <div className="text-gray-400">Platform handles everything</div>
+                          <div className="text-gray-200">Platform handles everything</div>
                         </div>
                       </div>
                     </div>
@@ -756,7 +756,7 @@ export class OrderFailureHandler {
 
         {/* CTA */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12 text-center">
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-100 mb-6">
             This is just a preview. The full Greenfield platform includes automated actor generation,
             service contract creation, and complete event choreography.
           </p>

@@ -4,7 +4,7 @@ import logo from '../assets/greenfield-logo.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-gray-800/50 py-20">
+    <footer className="bg-[#0a0a0a] border-t border-gray-400/80 py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand Section */}
@@ -17,27 +17,27 @@ const Footer: React.FC = () => {
                 style={{ maxWidth: '500px' }}
               />
             </div>
-            <p className="text-gray-300 mb-8 max-w-md leading-relaxed">
+            <p className="text-gray-100 mb-8 max-w-md leading-relaxed">
               The AI-native workspace where every project builds organizational intelligence.
             </p>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+                className="text-gray-200 hover:text-cyan-400 transition-colors duration-300"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+                className="text-gray-200 hover:text-cyan-400 transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+                className="text-gray-200 hover:text-cyan-400 transition-colors duration-300"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                    className="text-gray-100 hover:text-cyan-400 transition-colors duration-300"
                   >
                     {item.name}
                   </a>
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                    className="text-gray-100 hover:text-cyan-400 transition-colors duration-300"
                   >
                     {item.name}
                   </a>
@@ -95,21 +95,21 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-gray-800/50 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+        <div className="mt-16 pt-8 border-t border-gray-400/80 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-200 text-sm">
             &copy; {new Date().getFullYear()} Greenfield Platform. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex items-center space-x-6">
             <a
               href="#"
-              className="text-sm text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+              className="text-sm text-gray-200 hover:text-cyan-400 transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <span className="text-gray-700">•</span>
             <a
               href="#"
-              className="text-sm text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+              className="text-sm text-gray-200 hover:text-cyan-400 transition-colors duration-300"
             >
               Terms of Service
             </a>

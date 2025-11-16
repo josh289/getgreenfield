@@ -1,0 +1,27 @@
+{
+  "name": "@banyanai/order-service-example",
+  "version": "1.0.0",
+  "description": "Event-sourced order management service example",
+  "type": "module",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@banyanai/platform-base-service": "workspace:*",
+    "@banyanai/platform-core": "workspace:*",
+    "@banyanai/platform-contract-system": "workspace:*",
+    "@banyanai/platform-event-sourcing": "workspace:*",
+    "@banyanai/platform-domain-modeling": "workspace:*",
+    "@banyanai/platform-telemetry": "workspace:*",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^20.17.0",
+    "typescript": "^5.7.2"
+  }
+}

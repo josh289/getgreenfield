@@ -236,7 +236,7 @@ const QuickstartGenerator: React.FC = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-black rounded-lg border border-gray-700 shadow-xl z-10 overflow-hidden">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-black rounded-lg border border-gray-400 shadow-xl z-10 overflow-hidden">
                 {Object.entries(frameworks).map(([key, framework]) => (
                   <button
                     key={key}
@@ -251,7 +251,7 @@ const QuickstartGenerator: React.FC = () => {
                     <span className="text-xl">{framework.icon}</span>
                     <div>
                       <div className="text-white font-medium">{framework.name}</div>
-                      <div className="text-gray-400 text-sm">{framework.description}</div>
+                      <div className="text-gray-200 text-sm">{framework.description}</div>
                     </div>
                   </button>
                 ))}
@@ -263,28 +263,28 @@ const QuickstartGenerator: React.FC = () => {
         {/* Quick Stats */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-800">
+            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-400">
               <Zap className="w-6 h-6 text-orange-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">2 min</div>
-              <div className="text-gray-400 text-sm">Setup time</div>
+              <div className="text-gray-200 text-sm">Setup time</div>
             </div>
-            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-800">
+            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-400">
               <Package className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">0</div>
-              <div className="text-gray-400 text-sm">Config files</div>
+              <div className="text-gray-200 text-sm">Config files</div>
             </div>
-            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-800">
+            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-400">
               <Code className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">100%</div>
-              <div className="text-gray-400 text-sm">AI Ready</div>
+              <div className="text-gray-200 text-sm">AI Ready</div>
             </div>
           </div>
         </div>
 
         {/* Commands */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
-          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-800/50 overflow-hidden">
-            <div className="bg-black/50 px-6 py-4 border-b border-gray-800/50">
+          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
+            <div className="bg-black/50 px-6 py-4 border-b border-gray-400/80">
               <div className="flex items-center gap-3">
                 <Terminal className="w-5 h-5 text-cyan-400" />
                 <h3 className="text-lg font-semibold text-white">
@@ -305,12 +305,12 @@ const QuickstartGenerator: React.FC = () => {
                     </div>
                     <div className="flex-1">
                       <h4 className="text-white font-medium mb-1">{cmd.step}</h4>
-                      <p className="text-gray-300 text-sm">{cmd.description}</p>
+                      <p className="text-gray-100 text-sm">{cmd.description}</p>
                     </div>
                   </div>
 
                   <div className="ml-12">
-                    <div className="flex items-center gap-2 bg-black/50 rounded-lg p-4 border border-gray-800/50 group-hover:border-cyan-500/30 transition-colors">
+                    <div className="flex items-center gap-2 bg-black/50 rounded-lg p-4 border border-gray-400/80 group-hover:border-cyan-500/30 transition-colors">
                       <div className="flex-1">
                         <code className="text-cyan-400 font-mono text-sm">
                           {cmd.command}
@@ -318,7 +318,7 @@ const QuickstartGenerator: React.FC = () => {
                       </div>
                       <button
                         onClick={() => handleCopy(cmd.command, `cmd-${index}`)}
-                        className="p-2 text-gray-400 hover:text-white transition-colors rounded-md hover:bg-gray-800/50"
+                        className="p-2 text-gray-200 hover:text-white transition-colors rounded-md hover:bg-gray-800/50"
                         title="Copy command"
                       >
                         {copiedCommands[`cmd-${index}`] ? (
@@ -347,21 +347,21 @@ const QuickstartGenerator: React.FC = () => {
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Perfect Bounded Contexts</div>
-                    <div className="text-gray-300 text-sm">Each feature is isolated and self-contained</div>
+                    <div className="text-gray-100 text-sm">Each feature is isolated and self-contained</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Event-Driven Communication</div>
-                    <div className="text-gray-300 text-sm">Contexts communicate through clean events</div>
+                    <div className="text-gray-100 text-sm">Contexts communicate through clean events</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Pattern Library Integration</div>
-                    <div className="text-gray-300 text-sm">Reusable patterns from day one</div>
+                    <div className="text-gray-100 text-sm">Reusable patterns from day one</div>
                   </div>
                 </div>
               </div>
@@ -370,21 +370,21 @@ const QuickstartGenerator: React.FC = () => {
                   <div className="w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">AI-Optimized Structure</div>
-                    <div className="text-gray-300 text-sm">Perfect for Claude, Cursor, and AI tools</div>
+                    <div className="text-gray-100 text-sm">Perfect for Claude, Cursor, and AI tools</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Zero Configuration</div>
-                    <div className="text-gray-300 text-sm">No complex setup or build configuration</div>
+                    <div className="text-gray-100 text-sm">No complex setup or build configuration</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Instant Team Onboarding</div>
-                    <div className="text-gray-300 text-sm">New developers productive in hours</div>
+                    <div className="text-gray-100 text-sm">New developers productive in hours</div>
                   </div>
                 </div>
               </div>
@@ -394,7 +394,7 @@ const QuickstartGenerator: React.FC = () => {
 
         {/* CTA */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12 text-center">
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-100 mb-6">
             Ready to experience development without complexity?
           </p>
           <button className="px-8 py-4 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300">

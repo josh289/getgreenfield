@@ -1,0 +1,379 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-15",
+  "description": "Query pattern matching rules for AI agents navigating Banyan Platform documentation",
+
+  "errorPatterns": {
+    "description": "Patterns for error-based queries",
+    "regex": "^.*(error|exception|failed|broken|not working|Error:|ERROR|Exception|FAILED).*$",
+    "keywords": [
+      "error",
+      "exception",
+      "failed",
+      "failure",
+      "broken",
+      "not working",
+      "doesn't work",
+      "isn't working",
+      "crash",
+      "crashed"
+    ],
+    "errorCodes": [
+      "HANDLER_NOT_DISCOVERED",
+      "UNSATISFIABLE_PARAMETERS",
+      "SERVICE_NOT_REGISTERED",
+      "AUTHENTICATION_FAILED",
+      "AUTHORIZATION_FAILED",
+      "CONTRACT_VALIDATION_FAILED",
+      "MESSAGE_BUS_CONNECTION_ERROR",
+      "MESSAGE_BUS_CONNECTION_FAILED",
+      "EVENT_STORE_ERROR",
+      "HANDLER_EXECUTION_ERROR",
+      "PERMISSION_DENIED",
+      "INVALID_CONTRACT",
+      "AGGREGATE_NOT_FOUND",
+      "CONCURRENCY_CONFLICT",
+      "SAGA_COMPENSATION_FAILED",
+      "READ_MODEL_PROJECTION_LAG",
+      "CORRELATION_ID_MISSING"
+    ],
+    "route": "05-troubleshooting/common-errors/error-catalog.md",
+    "searchStrategy": "by-error",
+    "secondaryRoutes": [
+      "DOCUMENTATION_MAP.json:byError",
+      "05-troubleshooting/by-symptom/",
+      "05-troubleshooting/by-component/"
+    ],
+    "responseTemplate": "error-based"
+  },
+
+  "taskPatterns": {
+    "description": "Patterns for task-oriented queries",
+    "regex": "^(How do I|How to|I want to|I need to|Steps to|Guide for|Create|Implement|Setup|Add|Configure).*$",
+    "keywords": [
+      "how do i",
+      "how to",
+      "i want to",
+      "i need to",
+      "steps to",
+      "guide for",
+      "tutorial for",
+      "create",
+      "implement",
+      "setup",
+      "add",
+      "configure",
+      "install",
+      "deploy",
+      "build"
+    ],
+    "route": "DOCUMENTATION_MAP.json:byTask",
+    "searchStrategy": "by-task",
+    "secondaryRoutes": [
+      "03-guides/",
+      "01-tutorials/",
+      "00-getting-started/"
+    ],
+    "responseTemplate": "task-based"
+  },
+
+  "conceptPatterns": {
+    "description": "Patterns for conceptual/explanatory queries",
+    "regex": "^(What is|Explain|Tell me about|Describe|What are|How does.*work|Difference between).*$",
+    "keywords": [
+      "what is",
+      "what are",
+      "explain",
+      "tell me about",
+      "describe",
+      "how does",
+      "how it works",
+      "why",
+      "difference between",
+      "compare",
+      "vs",
+      "versus"
+    ],
+    "route": "02-concepts/",
+    "searchStrategy": "by-concept",
+    "secondaryRoutes": [
+      "DOCUMENTATION_MAP.json:concepts",
+      "00-getting-started/",
+      "03-guides/"
+    ],
+    "responseTemplate": "concept-based"
+  },
+
+  "debuggingPatterns": {
+    "description": "Patterns for debugging/symptom-based queries",
+    "regex": "^(Why isn't|Why doesn't|Why won't|Not working|Doesn't work|Can't|Unable to|Debugging|Debug).*$",
+    "keywords": [
+      "why isn't",
+      "why doesn't",
+      "why won't",
+      "not working",
+      "doesn't work",
+      "can't",
+      "unable to",
+      "debugging",
+      "debug",
+      "troubleshoot",
+      "diagnose",
+      "investigate",
+      "not showing",
+      "not appearing",
+      "missing"
+    ],
+    "route": "05-troubleshooting/by-symptom/",
+    "searchStrategy": "by-symptom",
+    "secondaryRoutes": [
+      "05-troubleshooting/debugging-tools/",
+      "05-troubleshooting/by-component/",
+      "DOCUMENTATION_MAP.json:bySymptom"
+    ],
+    "responseTemplate": "debugging"
+  },
+
+  "referencePatterns": {
+    "description": "Patterns for API/reference queries",
+    "regex": "^.*(parameters?|options?|arguments?|API|syntax|signature|reference|decorator|configuration).*$",
+    "keywords": [
+      "parameters",
+      "parameter",
+      "options",
+      "option",
+      "arguments",
+      "argument",
+      "api",
+      "syntax",
+      "signature",
+      "reference",
+      "decorator",
+      "configuration",
+      "config",
+      "settings",
+      "props",
+      "properties"
+    ],
+    "decorators": [
+      "@Command",
+      "@Query",
+      "@DomainEvent",
+      "@Sensitive",
+      "@CommandHandler",
+      "@QueryHandler",
+      "@EventSubscriptionHandler",
+      "@Aggregate",
+      "@ReadModel",
+      "@MapFromEvent",
+      "@EventHandler",
+      "@RequirePolicy"
+    ],
+    "route": "04-reference/",
+    "searchStrategy": "by-reference",
+    "secondaryRoutes": [
+      "DOCUMENTATION_MAP.json:byDecorator",
+      "DOCUMENTATION_MAP.json:byPackage",
+      "04-reference/decorators/",
+      "04-reference/platform-packages/"
+    ],
+    "responseTemplate": "reference"
+  },
+
+  "patternPriority": {
+    "description": "Priority order when multiple patterns match",
+    "order": [
+      "errorPatterns",
+      "debuggingPatterns",
+      "taskPatterns",
+      "referencePatterns",
+      "conceptPatterns"
+    ],
+    "reasoning": {
+      "errorPatterns": "Errors are immediate problems requiring urgent resolution",
+      "debuggingPatterns": "Debugging indicates active investigation of issues",
+      "taskPatterns": "Tasks are action-oriented and time-sensitive",
+      "referencePatterns": "Reference queries are specific lookups",
+      "conceptPatterns": "Concepts are for learning and understanding"
+    }
+  },
+
+  "compoundPatterns": {
+    "description": "Handling queries that match multiple patterns",
+    "examples": [
+      {
+        "query": "How do I fix HANDLER_NOT_DISCOVERED error?",
+        "matches": ["errorPatterns", "taskPatterns"],
+        "strategy": "Prioritize errorPatterns, then include task-based solution",
+        "response": "Start with error explanation, then provide fix steps"
+      },
+      {
+        "query": "What parameters does @CommandHandler take?",
+        "matches": ["referencePatterns", "conceptPatterns"],
+        "strategy": "Prioritize referencePatterns, include concept context",
+        "response": "Provide parameter reference, then explain usage"
+      },
+      {
+        "query": "Why isn't event sourcing working and how do I implement it?",
+        "matches": ["debuggingPatterns", "taskPatterns"],
+        "strategy": "Prioritize debuggingPatterns for immediate issue",
+        "response": "Debug current issue first, then guide on proper implementation"
+      }
+    ],
+    "rules": {
+      "errorPlusTask": "Address error first, then provide task solution",
+      "conceptPlusTask": "Provide task steps, include concept for understanding",
+      "debuggingPlusReference": "Debug with reference to correct parameters",
+      "referencePlusConcept": "Show reference, explain concept behind it"
+    }
+  },
+
+  "skillLevelDetection": {
+    "description": "Detecting user skill level from query patterns",
+    "beginner": {
+      "indicators": [
+        "how do i get started",
+        "basic",
+        "simple",
+        "first",
+        "installation",
+        "setup",
+        "tutorial",
+        "what is"
+      ],
+      "recommendedSections": [
+        "00-getting-started/",
+        "01-tutorials/beginner/",
+        "02-concepts/"
+      ]
+    },
+    "intermediate": {
+      "indicators": [
+        "integrate",
+        "connect",
+        "implement",
+        "event sourcing",
+        "saga",
+        "authorization",
+        "how does X work"
+      ],
+      "recommendedSections": [
+        "03-guides/",
+        "02-concepts/patterns/",
+        "01-tutorials/intermediate/"
+      ]
+    },
+    "advanced": {
+      "indicators": [
+        "optimize",
+        "performance",
+        "architecture",
+        "custom implementation",
+        "internals",
+        "advanced"
+      ],
+      "recommendedSections": [
+        "02-concepts/architecture/",
+        "01-tutorials/advanced/",
+        "04-reference/"
+      ]
+    }
+  },
+
+  "contextualTriggers": {
+    "description": "Special triggers requiring contextual routing",
+    "correlation": {
+      "triggers": ["correlation id", "correlation-id", "correlationId", "tracking request", "trace request"],
+      "primary": "02-concepts/architecture/correlation-and-tracing.md",
+      "practical": "05-troubleshooting/debugging-tools/correlation-id-tracking.md",
+      "advanced": "04-reference/message-protocols/w3c-trace-context.md"
+    },
+    "handlers": {
+      "triggers": ["handler", "command handler", "query handler", "event handler", "handler discovery"],
+      "reference": "04-reference/decorators/",
+      "guide": "03-guides/service-development/writing-handlers.md",
+      "troubleshooting": "05-troubleshooting/by-symptom/handlers-not-discovered.md"
+    },
+    "jaeger": {
+      "triggers": ["jaeger", "tracing", "distributed tracing", "trace analysis", "performance analysis"],
+      "primary": "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "concept": "02-concepts/architecture/correlation-and-tracing.md"
+    },
+    "messageBus": {
+      "triggers": ["message bus", "rabbitmq", "messaging", "inter-service communication"],
+      "concept": "02-concepts/architecture/message-bus-architecture.md",
+      "guide": "03-guides/infrastructure/message-bus.md",
+      "troubleshooting": "05-troubleshooting/by-component/message-bus-issues.md"
+    },
+    "eventSourcing": {
+      "triggers": ["event sourcing", "event store", "aggregate", "domain events"],
+      "concept": "02-concepts/patterns/event-sourcing-pattern.md",
+      "guide": "03-guides/service-development/data-access-patterns.md",
+      "reference": "04-reference/decorators/event-sourcing.md"
+    },
+    "authorization": {
+      "triggers": ["authorization", "permissions", "policy", "rbac", "access control"],
+      "concept": "02-concepts/architecture/two-layer-authorization.md",
+      "guide": "03-guides/security/policy-based-authorization.md",
+      "reference": "04-reference/decorators/authorization.md"
+    }
+  },
+
+  "negativePatterns": {
+    "description": "Patterns that should NOT trigger certain routes",
+    "examples": [
+      {
+        "pattern": "What is not event sourcing",
+        "avoid": "Event sourcing guides",
+        "route": "Conceptual explanation of alternatives"
+      },
+      {
+        "pattern": "Why not use X",
+        "context": "Asking about alternatives or design decisions",
+        "route": "Architecture concepts and design rationale"
+      }
+    ]
+  },
+
+  "responseGuidelines": {
+    "errorBased": {
+      "structure": ["Quick fix", "Root cause", "Prevention", "Related resources"],
+      "codeExamples": true,
+      "linkToTroubleshooting": true
+    },
+    "taskBased": {
+      "structure": ["Prerequisites", "Step-by-step", "Code examples", "Common issues", "Next steps"],
+      "codeExamples": true,
+      "linkToConcepts": true
+    },
+    "conceptBased": {
+      "structure": ["Brief summary", "Problem solved", "How it works", "Benefits", "When to use", "Practical application"],
+      "codeExamples": false,
+      "linkToGuides": true
+    },
+    "debugging": {
+      "structure": ["Symptom identification", "Diagnostic steps", "Solutions", "Prevention"],
+      "codeExamples": true,
+      "linkToTools": true
+    },
+    "reference": {
+      "structure": ["Syntax/signature", "Parameters", "Examples", "Common patterns"],
+      "codeExamples": true,
+      "linkToGuides": true
+    }
+  },
+
+  "fallbackStrategy": {
+    "description": "What to do when no pattern matches clearly",
+    "steps": [
+      "Search DOCUMENTATION_MAP.json for keyword matches",
+      "Check file frontmatter aliases and commonQuestions",
+      "Look for partial matches in concept/guide titles",
+      "Ask user for clarification with suggested options"
+    ],
+    "clarificationPrompt": {
+      "template": "I can help with that. Are you:\n1. Seeing an error?\n2. Trying to accomplish a task?\n3. Trying to understand a concept?\n4. Debugging an issue?\n5. Looking for API reference?",
+      "followUp": "Please let me know which category best describes your question."
+    }
+  }
+}
