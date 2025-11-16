@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
           <nav>
             <ul className="flex space-x-8">
               {[
-                { name: 'Docs', href: '/docs' },
+                { name: 'Docs', href: '/00-getting-started/readme/' },
                 { name: 'The Breakthrough', href: '#breakthrough' },
                 { name: 'Platform', href: '#how-it-works' },
                 { name: 'Use Cases', href: '#use-cases' },
@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ onEarlyAccess }) => {
           <nav className="container mx-auto px-4 py-6">
             <ul className="flex flex-col space-y-4">
               {[
-                { name: 'Docs', href: '/docs' },
+                { name: 'Docs', href: '/00-getting-started/readme/' },
                 { name: 'The Breakthrough', href: '#breakthrough' },
                 { name: 'Platform', href: '#how-it-works' },
                 { name: 'Use Cases', href: '#use-cases' },
