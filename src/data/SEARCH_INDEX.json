@@ -1,0 +1,516 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-11-15",
+  "indexedDocuments": 47,
+  "description": "Full-text search index for AI agents to quickly locate relevant documentation",
+
+  "documents": [
+    {
+      "path": "00-getting-started/01-installation.md",
+      "title": "Installation",
+      "category": "getting-started",
+      "difficulty": "beginner",
+      "excerpt": "Setup development environment with Docker Compose, install platform CLI, and verify installation",
+      "keywords": ["installation", "setup", "docker", "docker-compose", "devbox", "cli", "getting started"],
+      "topics": ["setup", "installation", "development environment"],
+      "primaryPurpose": "Initial platform setup and installation"
+    },
+    {
+      "path": "00-getting-started/02-your-first-service.md",
+      "title": "Your First Service",
+      "category": "getting-started",
+      "difficulty": "beginner",
+      "excerpt": "Create your first microservice using BaseService.start() and implement a simple command handler",
+      "keywords": ["first service", "quickstart", "baseservice", "command handler", "microservice", "tutorial"],
+      "topics": ["service creation", "handlers", "quickstart"],
+      "primaryPurpose": "Create first microservice"
+    },
+    {
+      "path": "00-getting-started/03-calling-apis.md",
+      "title": "Calling APIs",
+      "category": "getting-started",
+      "difficulty": "beginner",
+      "excerpt": "Make API calls through the API Gateway using GraphQL and REST endpoints",
+      "keywords": ["api", "graphql", "rest", "api gateway", "http", "requests", "authentication"],
+      "topics": ["api calls", "graphql", "rest", "api gateway"],
+      "primaryPurpose": "Learn to call platform APIs"
+    },
+    {
+      "path": "02-concepts/architecture/correlation-and-tracing.md",
+      "title": "Correlation ID and Distributed Tracing Architecture",
+      "category": "concepts",
+      "difficulty": "intermediate",
+      "excerpt": "AsyncLocalStorage-based automatic correlation ID propagation for end-to-end request tracing",
+      "keywords": ["correlation id", "tracing", "distributed tracing", "asynclocalstorage", "observability", "request tracking", "opentelemetry"],
+      "topics": ["architecture", "tracing", "observability", "correlation"],
+      "primaryPurpose": "Understand correlation ID architecture and automatic propagation"
+    },
+    {
+      "path": "02-concepts/architecture/message-bus-architecture.md",
+      "title": "Message Bus Architecture",
+      "category": "concepts",
+      "difficulty": "intermediate",
+      "excerpt": "RabbitMQ-based message bus for exclusive service-to-service communication",
+      "keywords": ["message bus", "rabbitmq", "messaging", "service communication", "architecture", "async communication"],
+      "topics": ["architecture", "message bus", "rabbitmq"],
+      "primaryPurpose": "Understand message bus communication pattern"
+    },
+    {
+      "path": "02-concepts/architecture/two-layer-authorization.md",
+      "title": "Two-Layer Authorization",
+      "category": "concepts",
+      "difficulty": "intermediate",
+      "excerpt": "Permission-based authorization at API Gateway and policy-based authorization at service handlers",
+      "keywords": ["authorization", "permissions", "policies", "security", "rbac", "access control"],
+      "topics": ["architecture", "security", "authorization"],
+      "primaryPurpose": "Understand two-layer authorization model"
+    },
+    {
+      "path": "02-concepts/patterns/cqrs-pattern.md",
+      "title": "CQRS Pattern",
+      "category": "concepts",
+      "difficulty": "intermediate",
+      "excerpt": "Command Query Responsibility Segregation - separate commands that modify state from queries that read state",
+      "keywords": ["cqrs", "command", "query", "pattern", "architecture", "separation of concerns"],
+      "topics": ["patterns", "cqrs", "architecture"],
+      "primaryPurpose": "Understand CQRS pattern implementation"
+    },
+    {
+      "path": "02-concepts/patterns/event-sourcing-pattern.md",
+      "title": "Event Sourcing Pattern",
+      "category": "concepts",
+      "difficulty": "advanced",
+      "excerpt": "Store state as sequence of events rather than current state snapshots",
+      "keywords": ["event sourcing", "events", "aggregate", "event store", "pattern", "domain events"],
+      "topics": ["patterns", "event sourcing", "data management"],
+      "primaryPurpose": "Understand event sourcing pattern"
+    },
+    {
+      "path": "03-guides/service-development/creating-services.md",
+      "title": "Creating Services",
+      "category": "guides",
+      "difficulty": "beginner",
+      "excerpt": "Step-by-step guide to creating new microservices with BaseService",
+      "keywords": ["create service", "microservice", "baseservice", "service development", "setup"],
+      "topics": ["service development", "service creation"],
+      "primaryPurpose": "Create new microservices"
+    },
+    {
+      "path": "03-guides/service-development/writing-handlers.md",
+      "title": "Writing Handlers",
+      "category": "guides",
+      "difficulty": "beginner",
+      "excerpt": "Write command, query, and event handlers with proper decorators and conventions",
+      "keywords": ["handlers", "command handler", "query handler", "event handler", "decorators", "cqrs"],
+      "topics": ["service development", "handlers", "cqrs"],
+      "primaryPurpose": "Implement command, query, and event handlers"
+    },
+    {
+      "path": "03-guides/service-development/defining-contracts.md",
+      "title": "Defining Contracts",
+      "category": "guides",
+      "difficulty": "intermediate",
+      "excerpt": "Define type-safe contracts for commands, queries, and events with validation",
+      "keywords": ["contracts", "validation", "types", "command", "query", "event", "type safety"],
+      "topics": ["service development", "contracts", "type safety"],
+      "primaryPurpose": "Define type-safe service contracts"
+    },
+    {
+      "path": "03-guides/service-development/using-service-clients.md",
+      "title": "Using Service Clients",
+      "category": "guides",
+      "difficulty": "intermediate",
+      "excerpt": "Call other services using auto-generated type-safe clients",
+      "keywords": ["service clients", "inter-service communication", "type safety", "client generation"],
+      "topics": ["service development", "service communication"],
+      "primaryPurpose": "Call other services with type-safe clients"
+    },
+    {
+      "path": "03-guides/service-development/data-access-patterns.md",
+      "title": "Data Access Patterns",
+      "category": "guides",
+      "difficulty": "intermediate",
+      "excerpt": "Implement event sourcing, aggregates, and read models in services",
+      "keywords": ["event sourcing", "aggregate", "read model", "data access", "projections"],
+      "topics": ["service development", "data management", "event sourcing"],
+      "primaryPurpose": "Implement event sourcing and data access patterns"
+    },
+    {
+      "path": "03-guides/service-development/testing-services.md",
+      "title": "Testing Services",
+      "category": "guides",
+      "difficulty": "intermediate",
+      "excerpt": "Test handlers, contracts, and service integration with Jest",
+      "keywords": ["testing", "jest", "unit tests", "integration tests", "test utils", "mocking"],
+      "topics": ["service development", "testing", "quality"],
+      "primaryPurpose": "Test microservices and handlers"
+    },
+    {
+      "path": "03-guides/api-integration/server-sent-events.md",
+      "title": "Server-Sent Events",
+      "category": "guides",
+      "difficulty": "intermediate",
+      "excerpt": "Real-time updates using Server-Sent Events (SSE)",
+      "keywords": ["sse", "server-sent events", "real-time", "streaming", "events"],
+      "topics": ["api integration", "real-time", "events"],
+      "primaryPurpose": "Implement real-time updates with SSE"
+    },
+    {
+      "path": "04-reference/decorators/command-handlers.md",
+      "title": "Command Handler Decorators",
+      "category": "reference",
+      "difficulty": "intermediate",
+      "excerpt": "Complete reference for @CommandHandler decorator and command handler patterns",
+      "keywords": ["@CommandHandler", "decorator", "command", "handler", "reference", "api"],
+      "topics": ["reference", "decorators", "commands"],
+      "primaryPurpose": "Reference for command handler decorators"
+    },
+    {
+      "path": "04-reference/platform-packages/base-service.md",
+      "title": "BaseService Package",
+      "category": "reference",
+      "difficulty": "intermediate",
+      "excerpt": "BaseService.start() API reference and configuration options",
+      "keywords": ["baseservice", "service startup", "configuration", "package", "api reference"],
+      "topics": ["reference", "packages", "service startup"],
+      "primaryPurpose": "Reference for BaseService package"
+    },
+    {
+      "path": "04-reference/platform-packages/saga-framework.md",
+      "title": "Saga Framework Package",
+      "category": "reference",
+      "difficulty": "advanced",
+      "excerpt": "Distributed transaction management with saga pattern",
+      "keywords": ["saga", "distributed transactions", "compensation", "orchestration", "transactions"],
+      "topics": ["reference", "packages", "sagas"],
+      "primaryPurpose": "Reference for saga framework"
+    },
+    {
+      "path": "04-reference/rest-api/overview.md",
+      "title": "REST API Overview",
+      "category": "reference",
+      "difficulty": "beginner",
+      "excerpt": "REST API endpoints, authentication, and request/response formats",
+      "keywords": ["rest", "api", "http", "endpoints", "authentication", "reference"],
+      "topics": ["reference", "rest api", "http"],
+      "primaryPurpose": "REST API reference documentation"
+    },
+    {
+      "path": "04-reference/rest-api/endpoints.md",
+      "title": "REST API Endpoints",
+      "category": "reference",
+      "difficulty": "beginner",
+      "excerpt": "Complete list of REST API endpoints with examples",
+      "keywords": ["rest", "endpoints", "api", "routes", "http methods"],
+      "topics": ["reference", "rest api", "endpoints"],
+      "primaryPurpose": "REST endpoint reference"
+    },
+    {
+      "path": "04-reference/graphql-api/overview.md",
+      "title": "GraphQL API Overview",
+      "category": "reference",
+      "difficulty": "beginner",
+      "excerpt": "GraphQL schema, queries, mutations, and subscriptions",
+      "keywords": ["graphql", "api", "schema", "queries", "mutations", "subscriptions"],
+      "topics": ["reference", "graphql", "api"],
+      "primaryPurpose": "GraphQL API reference"
+    },
+    {
+      "path": "04-reference/websocket-api/overview.md",
+      "title": "WebSocket API Overview",
+      "category": "reference",
+      "difficulty": "intermediate",
+      "excerpt": "WebSocket API for real-time bidirectional communication",
+      "keywords": ["websocket", "ws", "real-time", "bidirectional", "streaming"],
+      "topics": ["reference", "websocket", "real-time"],
+      "primaryPurpose": "WebSocket API reference"
+    },
+    {
+      "path": "04-reference/message-protocols/w3c-trace-context.md",
+      "title": "W3C Trace Context",
+      "category": "reference",
+      "difficulty": "advanced",
+      "excerpt": "W3C Trace Context standard implementation for distributed tracing",
+      "keywords": ["w3c", "trace context", "tracing", "distributed tracing", "standard"],
+      "topics": ["reference", "tracing", "standards"],
+      "primaryPurpose": "W3C Trace Context reference"
+    },
+    {
+      "path": "04-reference/authentication.md",
+      "title": "Authentication Reference",
+      "category": "reference",
+      "difficulty": "intermediate",
+      "excerpt": "Authentication mechanisms, token formats, and security best practices",
+      "keywords": ["authentication", "auth", "tokens", "jwt", "security", "credentials"],
+      "topics": ["reference", "authentication", "security"],
+      "primaryPurpose": "Authentication system reference"
+    },
+    {
+      "path": "05-troubleshooting/common-errors/error-catalog.md",
+      "title": "Error Catalog",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Complete catalog of platform errors with causes and solutions",
+      "keywords": ["errors", "exceptions", "error codes", "troubleshooting", "debugging", "solutions"],
+      "topics": ["troubleshooting", "errors"],
+      "primaryPurpose": "Reference for all platform errors"
+    },
+    {
+      "path": "05-troubleshooting/by-symptom/handlers-not-discovered.md",
+      "title": "Handlers Not Discovered",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Troubleshoot when command, query, or event handlers are not being discovered",
+      "keywords": ["handler discovery", "handlers not found", "zero handlers", "handler registration", "troubleshooting"],
+      "topics": ["troubleshooting", "handlers", "discovery"],
+      "primaryPurpose": "Fix handler discovery issues"
+    },
+    {
+      "path": "05-troubleshooting/by-symptom/service-wont-start.md",
+      "title": "Service Won't Start",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Diagnose and fix service startup failures",
+      "keywords": ["startup", "service startup", "won't start", "initialization", "crash", "troubleshooting"],
+      "topics": ["troubleshooting", "service startup"],
+      "primaryPurpose": "Fix service startup issues"
+    },
+    {
+      "path": "05-troubleshooting/by-symptom/api-calls-failing.md",
+      "title": "API Calls Failing",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Debug failed API calls to the API Gateway",
+      "keywords": ["api failures", "api errors", "http errors", "404", "500", "api troubleshooting"],
+      "topics": ["troubleshooting", "api", "http"],
+      "primaryPurpose": "Fix failed API calls"
+    },
+    {
+      "path": "05-troubleshooting/by-symptom/authentication-errors.md",
+      "title": "Authentication Errors",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Resolve authentication and authorization failures",
+      "keywords": ["authentication", "authorization", "auth errors", "401", "403", "permissions", "troubleshooting"],
+      "topics": ["troubleshooting", "authentication", "security"],
+      "primaryPurpose": "Fix authentication issues"
+    },
+    {
+      "path": "05-troubleshooting/by-symptom/build-failures.md",
+      "title": "Build Failures",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Resolve TypeScript compilation and build errors",
+      "keywords": ["build", "compilation", "typescript", "build errors", "tsc", "troubleshooting"],
+      "topics": ["troubleshooting", "build", "compilation"],
+      "primaryPurpose": "Fix build and compilation errors"
+    },
+    {
+      "path": "05-troubleshooting/by-component/api-gateway-issues.md",
+      "title": "API Gateway Issues",
+      "category": "troubleshooting",
+      "difficulty": "intermediate",
+      "excerpt": "Troubleshoot API Gateway routing, authentication, and performance",
+      "keywords": ["api gateway", "routing", "gateway issues", "proxy", "troubleshooting"],
+      "topics": ["troubleshooting", "api gateway", "components"],
+      "primaryPurpose": "Fix API Gateway issues"
+    },
+    {
+      "path": "05-troubleshooting/by-component/message-bus-issues.md",
+      "title": "Message Bus Issues",
+      "category": "troubleshooting",
+      "difficulty": "intermediate",
+      "excerpt": "Debug RabbitMQ connection, publishing, and consumption issues",
+      "keywords": ["message bus", "rabbitmq", "connection", "amqp", "messaging issues", "troubleshooting"],
+      "topics": ["troubleshooting", "message bus", "rabbitmq"],
+      "primaryPurpose": "Fix message bus issues"
+    },
+    {
+      "path": "05-troubleshooting/by-component/service-discovery-issues.md",
+      "title": "Service Discovery Issues",
+      "category": "troubleshooting",
+      "difficulty": "intermediate",
+      "excerpt": "Resolve service registration and discovery problems",
+      "keywords": ["service discovery", "service registration", "discovery issues", "troubleshooting"],
+      "topics": ["troubleshooting", "service discovery", "components"],
+      "primaryPurpose": "Fix service discovery issues"
+    },
+    {
+      "path": "05-troubleshooting/by-component/read-model-issues.md",
+      "title": "Read Model Issues",
+      "category": "troubleshooting",
+      "difficulty": "intermediate",
+      "excerpt": "Debug read model projections and synchronization lag",
+      "keywords": ["read model", "projections", "projection lag", "event sourcing", "troubleshooting"],
+      "topics": ["troubleshooting", "read models", "event sourcing"],
+      "primaryPurpose": "Fix read model and projection issues"
+    },
+    {
+      "path": "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "title": "Jaeger Tracing",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Use Jaeger UI for distributed tracing and performance analysis",
+      "keywords": ["jaeger", "tracing", "distributed tracing", "performance", "trace analysis", "debugging"],
+      "topics": ["troubleshooting", "debugging tools", "tracing"],
+      "primaryPurpose": "Use Jaeger for debugging and performance analysis"
+    },
+    {
+      "path": "05-troubleshooting/debugging-tools/correlation-id-tracking.md",
+      "title": "Correlation ID Tracking",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Track requests across services using correlation IDs",
+      "keywords": ["correlation id", "request tracking", "debugging", "logs", "tracing"],
+      "topics": ["troubleshooting", "debugging tools", "correlation"],
+      "primaryPurpose": "Track requests with correlation IDs"
+    },
+    {
+      "path": "05-troubleshooting/debugging-tools/rabbitmq-management.md",
+      "title": "RabbitMQ Management",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Use RabbitMQ Management UI to inspect queues, exchanges, and messages",
+      "keywords": ["rabbitmq", "management ui", "queues", "exchanges", "messages", "debugging"],
+      "topics": ["troubleshooting", "debugging tools", "rabbitmq"],
+      "primaryPurpose": "Debug message bus with RabbitMQ Management"
+    },
+    {
+      "path": "05-troubleshooting/debugging-tools/log-analysis.md",
+      "title": "Log Analysis",
+      "category": "troubleshooting",
+      "difficulty": "beginner",
+      "excerpt": "Analyze service logs for debugging and troubleshooting",
+      "keywords": ["logs", "logging", "log analysis", "debugging", "docker logs"],
+      "topics": ["troubleshooting", "debugging tools", "logging"],
+      "primaryPurpose": "Analyze logs for debugging"
+    },
+    {
+      "path": "06-examples/basic-crud-service/README.md",
+      "title": "Basic CRUD Service Example",
+      "category": "examples",
+      "difficulty": "beginner",
+      "excerpt": "Complete example of a CRUD service with command and query handlers",
+      "keywords": ["example", "crud", "tutorial", "sample code", "handlers"],
+      "topics": ["examples", "crud", "service development"],
+      "primaryPurpose": "Learn from CRUD service example"
+    },
+    {
+      "path": "06-examples/event-sourced-service/README.md",
+      "title": "Event Sourced Service Example",
+      "category": "examples",
+      "difficulty": "advanced",
+      "excerpt": "Complete example of event sourcing with aggregates and read models",
+      "keywords": ["example", "event sourcing", "aggregate", "read model", "tutorial"],
+      "topics": ["examples", "event sourcing", "advanced"],
+      "primaryPurpose": "Learn event sourcing from example"
+    },
+    {
+      "path": "06-examples/external-auth-integration/README.md",
+      "title": "External Auth Integration Example",
+      "category": "examples",
+      "difficulty": "intermediate",
+      "excerpt": "Integrate external authentication providers (OAuth, SAML)",
+      "keywords": ["example", "authentication", "oauth", "saml", "external auth"],
+      "topics": ["examples", "authentication", "integration"],
+      "primaryPurpose": "Learn external auth integration"
+    }
+  ],
+
+  "keywords": {
+    "correlation id": [
+      "02-concepts/architecture/correlation-and-tracing.md",
+      "05-troubleshooting/debugging-tools/correlation-id-tracking.md",
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md"
+    ],
+    "handlers": [
+      "03-guides/service-development/writing-handlers.md",
+      "04-reference/decorators/command-handlers.md",
+      "05-troubleshooting/by-symptom/handlers-not-discovered.md"
+    ],
+    "event sourcing": [
+      "02-concepts/patterns/event-sourcing-pattern.md",
+      "03-guides/service-development/data-access-patterns.md",
+      "06-examples/event-sourced-service/README.md"
+    ],
+    "authentication": [
+      "02-concepts/architecture/two-layer-authorization.md",
+      "04-reference/authentication.md",
+      "05-troubleshooting/by-symptom/authentication-errors.md"
+    ],
+    "message bus": [
+      "02-concepts/architecture/message-bus-architecture.md",
+      "05-troubleshooting/by-component/message-bus-issues.md"
+    ],
+    "jaeger": [
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "02-concepts/architecture/correlation-and-tracing.md"
+    ],
+    "api": [
+      "00-getting-started/03-calling-apis.md",
+      "04-reference/rest-api/overview.md",
+      "04-reference/graphql-api/overview.md",
+      "05-troubleshooting/by-symptom/api-calls-failing.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/common-errors/error-catalog.md",
+      "05-troubleshooting/by-symptom/service-wont-start.md",
+      "05-troubleshooting/debugging-tools/log-analysis.md"
+    ]
+  },
+
+  "categoryIndex": {
+    "getting-started": [
+      "00-getting-started/01-installation.md",
+      "00-getting-started/02-your-first-service.md",
+      "00-getting-started/03-calling-apis.md"
+    ],
+    "concepts": [
+      "02-concepts/architecture/correlation-and-tracing.md",
+      "02-concepts/architecture/message-bus-architecture.md",
+      "02-concepts/architecture/two-layer-authorization.md",
+      "02-concepts/patterns/cqrs-pattern.md",
+      "02-concepts/patterns/event-sourcing-pattern.md"
+    ],
+    "guides": [
+      "03-guides/service-development/creating-services.md",
+      "03-guides/service-development/writing-handlers.md",
+      "03-guides/service-development/defining-contracts.md",
+      "03-guides/service-development/using-service-clients.md",
+      "03-guides/service-development/data-access-patterns.md",
+      "03-guides/service-development/testing-services.md"
+    ],
+    "reference": [
+      "04-reference/decorators/command-handlers.md",
+      "04-reference/platform-packages/base-service.md",
+      "04-reference/rest-api/overview.md",
+      "04-reference/graphql-api/overview.md"
+    ],
+    "troubleshooting": [
+      "05-troubleshooting/common-errors/error-catalog.md",
+      "05-troubleshooting/by-symptom/handlers-not-discovered.md",
+      "05-troubleshooting/by-symptom/service-wont-start.md",
+      "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "05-troubleshooting/debugging-tools/correlation-id-tracking.md"
+    ],
+    "examples": [
+      "06-examples/basic-crud-service/README.md",
+      "06-examples/event-sourced-service/README.md",
+      "06-examples/external-auth-integration/README.md"
+    ]
+  },
+
+  "difficultyIndex": {
+    "beginner": 18,
+    "intermediate": 21,
+    "advanced": 8
+  },
+
+  "searchStrategies": {
+    "exact": "Use for exact error codes or decorator names",
+    "keyword": "Use for topic-based search across keywords field",
+    "fuzzy": "Use for partial matches in title or excerpt",
+    "category": "Use to browse by documentation category",
+    "difficulty": "Use to filter by user skill level"
+  }
+}

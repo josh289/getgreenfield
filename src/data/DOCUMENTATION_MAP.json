@@ -1,0 +1,365 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-15",
+  "baseUrl": "/docs-new",
+  "description": "Machine-readable documentation index for AI agents navigating the Banyan Platform documentation",
+
+  "index": {
+    "byTask": {
+      "createService": "00-getting-started/02-your-first-service.md",
+      "createFirstCommand": "00-getting-started/03-your-first-command.md",
+      "defineContract": "03-guides/service-development/defining-contracts.md",
+      "handleAuthentication": "03-guides/security/authentication.md",
+      "implementAuthorization": "03-guides/security/policy-based-authorization.md",
+      "useEventSourcing": "03-guides/data-management/event-sourcing.md",
+      "addEventSourcing": "03-guides/service-development/data-access-patterns.md",
+      "createReadModel": "03-guides/data-management/read-models.md",
+      "callOtherServices": "03-guides/service-development/service-clients.md",
+      "implementSaga": "03-guides/service-development/distributed-transactions.md",
+      "testHandlers": "03-guides/service-development/testing-handlers.md",
+      "setupLocalDev": "00-getting-started/01-installation.md",
+      "exposeGraphQL": "03-guides/api-integration/graphql-api.md",
+      "exposeREST": "03-guides/api-integration/rest-api.md",
+      "handleErrors": "03-guides/service-development/error-handling.md",
+      "implementCaching": "03-guides/data-management/caching.md",
+      "useMessageBus": "03-guides/infrastructure/message-bus.md",
+      "addTelemetry": "03-guides/infrastructure/observability.md",
+      "deployService": "03-guides/infrastructure/deployment.md",
+      "implementPolicy": "03-guides/security/policy-based-authorization.md",
+      "debugCorrelationId": "05-troubleshooting/debugging-tools/correlation-id-tracking.md",
+      "fixHandlerDiscovery": "05-troubleshooting/by-symptom/handlers-not-discovered.md",
+      "optimizeReadModel": "05-troubleshooting/by-component/read-model-issues.md",
+      "setupJaeger": "05-troubleshooting/debugging-tools/jaeger-tracing.md",
+      "writeHandlers": "03-guides/service-development/writing-handlers.md",
+      "testServices": "03-guides/service-development/testing-services.md"
+    },
+
+    "byDecorator": {
+      "@Command": "04-reference/decorators/contracts.md#command",
+      "@Query": "04-reference/decorators/contracts.md#query",
+      "@DomainEvent": "04-reference/decorators/contracts.md#domain-event",
+      "@Sensitive": "04-reference/decorators/contracts.md#sensitive",
+      "@CommandHandler": "04-reference/decorators/command-handlers.md#commandhandler",
+      "@QueryHandler": "04-reference/decorators/query-handlers.md#queryhandler",
+      "@EventSubscriptionHandler": "04-reference/decorators/event-handlers.md#eventsubscriptionhandler",
+      "@Aggregate": "04-reference/decorators/event-sourcing.md#aggregate",
+      "@ReadModel": "04-reference/decorators/event-sourcing.md#readmodel",
+      "@MapFromEvent": "04-reference/decorators/event-sourcing.md#mapfromevent",
+      "@EventHandler": "04-reference/decorators/event-sourcing.md#eventhandler",
+      "@RequirePolicy": "04-reference/decorators/authorization.md#requirepolicy"
+    },
+
+    "byPackage": {
+      "@banyanai/platform-core": "04-reference/platform-packages/core.md",
+      "@banyanai/platform-domain-modeling": "04-reference/platform-packages/domain-modeling.md",
+      "@banyanai/platform-contract-system": "04-reference/platform-packages/contract-system.md",
+      "@banyanai/platform-telemetry": "04-reference/platform-packages/telemetry.md",
+      "@banyanai/platform-message-bus-client": "04-reference/platform-packages/message-bus-client.md",
+      "@banyanai/platform-cqrs": "04-reference/platform-packages/cqrs.md",
+      "@banyanai/platform-event-sourcing": "04-reference/platform-packages/event-sourcing.md",
+      "@banyanai/platform-client-system": "04-reference/platform-packages/client-system.md",
+      "@banyanai/platform-base-service": "04-reference/platform-packages/base-service.md",
+      "@banyanai/platform-saga-framework": "04-reference/platform-packages/saga-framework.md",
+      "@banyanai/platform-job-queue": "04-reference/platform-packages/job-queue.md",
+      "@banyanai/platform-test-utils": "04-reference/platform-packages/test-utils.md"
+    },
+
+    "byService": {
+      "api-gateway": "04-reference/platform-services/api-gateway.md",
+      "auth-service": "04-reference/platform-services/auth-service.md",
+      "service-discovery": "04-reference/platform-services/service-discovery.md"
+    },
+
+    "byError": {
+      "HANDLER_NOT_DISCOVERED": "05-troubleshooting/common-errors/error-catalog.md#handler-not-discovered",
+      "UNSATISFIABLE_PARAMETERS": "05-troubleshooting/common-errors/error-catalog.md#unsatisfiable-parameters",
+      "SERVICE_NOT_REGISTERED": "05-troubleshooting/common-errors/error-catalog.md#service-not-registered",
+      "AUTHENTICATION_FAILED": "05-troubleshooting/common-errors/error-catalog.md#authentication-failed",
+      "AUTHORIZATION_FAILED": "05-troubleshooting/common-errors/error-catalog.md#authorization-failed",
+      "CONTRACT_VALIDATION_FAILED": "05-troubleshooting/common-errors/error-catalog.md#contract-validation-failed",
+      "MESSAGE_BUS_CONNECTION_ERROR": "05-troubleshooting/common-errors/error-catalog.md#message-bus-connection-error",
+      "MESSAGE_BUS_CONNECTION_FAILED": "05-troubleshooting/by-component/message-bus-issues.md",
+      "EVENT_STORE_ERROR": "05-troubleshooting/common-errors/error-catalog.md#event-store-error",
+      "HANDLER_EXECUTION_ERROR": "05-troubleshooting/common-errors/error-catalog.md#handler-execution-error",
+      "PERMISSION_DENIED": "05-troubleshooting/common-errors/error-catalog.md#permission-denied",
+      "INVALID_CONTRACT": "05-troubleshooting/common-errors/error-catalog.md#invalid-contract",
+      "AGGREGATE_NOT_FOUND": "05-troubleshooting/common-errors/error-catalog.md#aggregate-not-found",
+      "CONCURRENCY_CONFLICT": "05-troubleshooting/common-errors/error-catalog.md#concurrency-conflict",
+      "SAGA_COMPENSATION_FAILED": "05-troubleshooting/common-errors/error-catalog.md#saga-compensation-failed",
+      "READ_MODEL_PROJECTION_LAG": "05-troubleshooting/by-component/read-model-issues.md",
+      "CORRELATION_ID_MISSING": "05-troubleshooting/debugging-tools/correlation-id-tracking.md"
+    },
+
+    "bySymptom": {
+      "serviceWontStart": "05-troubleshooting/by-symptom/service-wont-start.md",
+      "handlersNotDiscovered": "05-troubleshooting/by-symptom/handlers-not-discovered.md",
+      "apiCallsFailing": "05-troubleshooting/by-symptom/api-calls-failing.md",
+      "authenticationErrors": "05-troubleshooting/by-symptom/authentication-errors.md",
+      "buildFailures": "05-troubleshooting/by-symptom/build-failures.md",
+      "testFailures": "05-troubleshooting/by-symptom/test-failures.md",
+      "messageBusIssues": "05-troubleshooting/by-symptom/message-bus-issues.md",
+      "eventSourcingIssues": "05-troubleshooting/by-symptom/event-sourcing-issues.md",
+      "performanceIssues": "05-troubleshooting/by-symptom/performance-issues.md",
+      "contractErrors": "05-troubleshooting/by-symptom/contract-errors.md"
+    },
+
+    "byComponent": {
+      "apiGateway": "05-troubleshooting/by-component/api-gateway-issues.md",
+      "authService": "05-troubleshooting/by-component/auth-service-issues.md",
+      "serviceDiscovery": "05-troubleshooting/by-component/service-discovery-issues.md",
+      "messageBus": "05-troubleshooting/by-component/message-bus-issues.md",
+      "eventStore": "05-troubleshooting/by-component/event-store-issues.md",
+      "contractSystem": "05-troubleshooting/by-component/contract-system-issues.md",
+      "baseService": "05-troubleshooting/by-component/base-service-issues.md"
+    },
+
+    "learningPaths": {
+      "beginner": [
+        "00-getting-started/01-installation.md",
+        "00-getting-started/02-your-first-service.md",
+        "00-getting-started/03-your-first-command.md",
+        "01-tutorials/beginner/todo-service.md",
+        "01-tutorials/beginner/user-management-service.md"
+      ],
+      "intermediate": [
+        "01-tutorials/intermediate/event-sourcing-service.md",
+        "01-tutorials/intermediate/multi-service-integration.md",
+        "03-guides/service-development/service-clients.md",
+        "03-guides/data-management/event-sourcing.md",
+        "03-guides/security/policy-based-authorization.md"
+      ],
+      "advanced": [
+        "01-tutorials/advanced/saga-orchestration.md",
+        "01-tutorials/advanced/custom-read-models.md",
+        "01-tutorials/advanced/performance-optimization.md",
+        "03-guides/service-development/distributed-transactions.md"
+      ]
+    },
+
+    "concepts": {
+      "architecture": {
+        "overview": "02-concepts/architecture/platform-overview.md",
+        "messageBus": "02-concepts/architecture/message-bus-architecture.md",
+        "eventSourcing": "02-concepts/architecture/event-sourcing-architecture.md",
+        "twoLayerAuth": "02-concepts/architecture/two-layer-authorization.md",
+        "serviceDiscovery": "02-concepts/architecture/service-discovery.md",
+        "apiGateway": "02-concepts/architecture/api-gateway.md"
+      },
+      "patterns": {
+        "cqrs": "02-concepts/patterns/cqrs-pattern.md",
+        "eventSourcing": "02-concepts/patterns/event-sourcing-pattern.md",
+        "saga": "02-concepts/patterns/saga-pattern.md",
+        "readModels": "02-concepts/patterns/read-model-pattern.md",
+        "aggregates": "02-concepts/patterns/aggregate-pattern.md",
+        "domainEvents": "02-concepts/patterns/domain-event-pattern.md"
+      },
+      "infrastructure": {
+        "messageBus": "02-concepts/infrastructure/message-bus.md",
+        "eventStore": "02-concepts/infrastructure/event-store.md",
+        "caching": "02-concepts/infrastructure/caching.md",
+        "telemetry": "02-concepts/infrastructure/telemetry.md",
+        "deployment": "02-concepts/infrastructure/deployment.md"
+      }
+    },
+
+    "guides": {
+      "serviceDevelopment": {
+        "overview": "03-guides/service-development/overview.md",
+        "creatingServices": "03-guides/service-development/creating-services.md",
+        "definingContracts": "03-guides/service-development/defining-contracts.md",
+        "commandHandlers": "03-guides/service-development/command-handlers.md",
+        "queryHandlers": "03-guides/service-development/query-handlers.md",
+        "eventHandlers": "03-guides/service-development/event-handlers.md",
+        "serviceClients": "03-guides/service-development/service-clients.md",
+        "errorHandling": "03-guides/service-development/error-handling.md",
+        "testingHandlers": "03-guides/service-development/testing-handlers.md",
+        "distributedTransactions": "03-guides/service-development/distributed-transactions.md"
+      },
+      "dataManagement": {
+        "overview": "03-guides/data-management/overview.md",
+        "eventSourcing": "03-guides/data-management/event-sourcing.md",
+        "aggregates": "03-guides/data-management/aggregates.md",
+        "readModels": "03-guides/data-management/read-models.md",
+        "caching": "03-guides/data-management/caching.md",
+        "projections": "03-guides/data-management/projections.md"
+      },
+      "security": {
+        "overview": "03-guides/security/overview.md",
+        "authentication": "03-guides/security/authentication.md",
+        "permissionBasedAuth": "03-guides/security/permission-based-authorization.md",
+        "policyBasedAuth": "03-guides/security/policy-based-authorization.md",
+        "rbac": "03-guides/security/rbac.md",
+        "externalAuth": "03-guides/security/external-auth-providers.md"
+      },
+      "apiIntegration": {
+        "overview": "03-guides/api-integration/overview.md",
+        "graphqlApi": "03-guides/api-integration/graphql-api.md",
+        "restApi": "03-guides/api-integration/rest-api.md",
+        "apiContracts": "03-guides/api-integration/api-contracts.md",
+        "apiSecurity": "03-guides/api-integration/api-security.md"
+      },
+      "infrastructure": {
+        "overview": "03-guides/infrastructure/overview.md",
+        "messageBus": "03-guides/infrastructure/message-bus.md",
+        "observability": "03-guides/infrastructure/observability.md",
+        "deployment": "03-guides/infrastructure/deployment.md",
+        "scalability": "03-guides/infrastructure/scalability.md",
+        "monitoring": "03-guides/infrastructure/monitoring.md"
+      }
+    },
+
+    "reference": {
+      "decorators": {
+        "contracts": "04-reference/decorators/contracts.md",
+        "commandHandlers": "04-reference/decorators/command-handlers.md",
+        "queryHandlers": "04-reference/decorators/query-handlers.md",
+        "eventHandlers": "04-reference/decorators/event-handlers.md",
+        "eventSourcing": "04-reference/decorators/event-sourcing.md",
+        "authorization": "04-reference/decorators/authorization.md"
+      },
+      "platformPackages": {
+        "core": "04-reference/platform-packages/core.md",
+        "domainModeling": "04-reference/platform-packages/domain-modeling.md",
+        "contractSystem": "04-reference/platform-packages/contract-system.md",
+        "telemetry": "04-reference/platform-packages/telemetry.md",
+        "messageBusClient": "04-reference/platform-packages/message-bus-client.md",
+        "cqrs": "04-reference/platform-packages/cqrs.md",
+        "eventSourcing": "04-reference/platform-packages/event-sourcing.md",
+        "clientSystem": "04-reference/platform-packages/client-system.md",
+        "baseService": "04-reference/platform-packages/base-service.md",
+        "sagaFramework": "04-reference/platform-packages/saga-framework.md",
+        "jobQueue": "04-reference/platform-packages/job-queue.md",
+        "testUtils": "04-reference/platform-packages/test-utils.md"
+      },
+      "platformServices": {
+        "apiGateway": "04-reference/platform-services/api-gateway.md",
+        "authService": "04-reference/platform-services/auth-service.md",
+        "serviceDiscovery": "04-reference/platform-services/service-discovery.md"
+      },
+      "messageProtocols": {
+        "overview": "04-reference/message-protocols/overview.md",
+        "commands": "04-reference/message-protocols/commands.md",
+        "queries": "04-reference/message-protocols/queries.md",
+        "events": "04-reference/message-protocols/events.md",
+        "routing": "04-reference/message-protocols/routing.md"
+      },
+      "graphqlApi": {
+        "overview": "04-reference/graphql-api/overview.md",
+        "queries": "04-reference/graphql-api/queries.md",
+        "mutations": "04-reference/graphql-api/mutations.md",
+        "subscriptions": "04-reference/graphql-api/subscriptions.md",
+        "schema": "04-reference/graphql-api/schema.md"
+      },
+      "restApi": {
+        "overview": "04-reference/rest-api/overview.md",
+        "endpoints": "04-reference/rest-api/endpoints.md",
+        "authentication": "04-reference/rest-api/authentication.md",
+        "errors": "04-reference/rest-api/errors.md"
+      }
+    },
+
+    "examples": {
+      "todoService": "06-examples/todo-service.md",
+      "userManagement": "06-examples/user-management.md",
+      "orderProcessing": "06-examples/order-processing.md",
+      "inventoryManagement": "06-examples/inventory-management.md",
+      "notificationService": "06-examples/notification-service.md",
+      "paymentProcessing": "06-examples/payment-processing.md"
+    }
+  },
+
+  "quickReference": {
+    "commonCommands": [
+      {
+        "task": "Create a new service",
+        "command": "npx @banyanai/platform-cli create my-service",
+        "reference": "00-getting-started/02-your-first-service.md"
+      },
+      {
+        "task": "Start development environment",
+        "command": "docker compose up",
+        "reference": "00-getting-started/01-installation.md"
+      },
+      {
+        "task": "Build all packages",
+        "command": "pnpm run build",
+        "reference": "03-guides/service-development/overview.md"
+      },
+      {
+        "task": "Run tests",
+        "command": "pnpm run test",
+        "reference": "03-guides/service-development/testing-handlers.md"
+      },
+      {
+        "task": "Run quality checks",
+        "command": "./platform/scripts/quality-check-all.sh",
+        "reference": "03-guides/service-development/overview.md"
+      }
+    ],
+
+    "commonPatterns": [
+      {
+        "pattern": "Command Handler",
+        "usage": "Process commands that modify state",
+        "reference": "03-guides/service-development/command-handlers.md",
+        "example": "06-examples/user-management.md#create-user-command"
+      },
+      {
+        "pattern": "Query Handler",
+        "usage": "Retrieve data without side effects",
+        "reference": "03-guides/service-development/query-handlers.md",
+        "example": "06-examples/user-management.md#get-user-query"
+      },
+      {
+        "pattern": "Event Handler",
+        "usage": "React to domain events from other services",
+        "reference": "03-guides/service-development/event-handlers.md",
+        "example": "06-examples/notification-service.md#user-created-handler"
+      },
+      {
+        "pattern": "Read Model",
+        "usage": "Optimized view of aggregate data",
+        "reference": "03-guides/data-management/read-models.md",
+        "example": "06-examples/order-processing.md#order-summary-read-model"
+      },
+      {
+        "pattern": "Saga",
+        "usage": "Coordinate distributed transactions",
+        "reference": "03-guides/service-development/distributed-transactions.md",
+        "example": "06-examples/payment-processing.md#order-saga"
+      }
+    ]
+  },
+
+  "metaInformation": {
+    "totalDocuments": 85,
+    "documentsByCategory": {
+      "gettingStarted": 3,
+      "tutorials": 7,
+      "concepts": 15,
+      "guides": 28,
+      "reference": 25,
+      "troubleshooting": 12,
+      "examples": 6
+    },
+    "decoratorsCovered": 12,
+    "packagesCovered": 12,
+    "servicesCovered": 3,
+    "errorsCovered": 14,
+    "generatedAt": "2025-01-15T00:00:00.000Z",
+    "maintainer": "Banyan Platform Team",
+    "schemaVersion": "1.0.0"
+  },
+
+  "metadata": {
+    "totalDocuments": 57,
+    "lastValidated": "2025-01-15",
+    "documentationVersion": "1.0.0",
+    "platformVersion": "1.0.116+",
+    "coveragePercentage": 67,
+    "aiOptimized": true,
+    "indexGeneratedAt": "2025-11-15T00:00:00.000Z",
+    "queryPatternsSupported": ["error-based", "task-based", "concept-based", "debugging", "reference"],
+    "semanticSearchEnabled": true
+  }
+}

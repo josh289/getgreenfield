@@ -1,0 +1,119 @@
+/* Black/Cyan theme for Starlight matching landing page */
+
+/* Logo size control */
+.site-title img {
+  max-height: 8rem !important;
+  width: auto !important;
+}
+
+:root {
+  --sl-color-accent-low: #00d9ff;
+  --sl-color-accent: #00d9ff;
+  --sl-color-accent-high: #00a3cc;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #e5e7eb;
+  --sl-color-gray-2: #d1d5db;
+  --sl-color-gray-3: #9ca3af;
+  --sl-color-gray-4: #6b7280;
+  --sl-color-gray-5: #4b5563;
+  --sl-color-gray-6: #252525;
+  --sl-color-black: #0a0a0a;
+  --sl-color-bg: #000000;
+  --sl-color-bg-nav: rgba(0, 0, 0, 0.95);
+  --sl-color-bg-sidebar: rgba(0, 0, 0, 0.9);
+  --sl-color-bg-inline-code: rgba(0, 217, 255, 0.1);
+}
+
+/* Dark theme colors */
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #00d9ff;
+  --sl-color-accent: #00d9ff;
+  --sl-color-accent-high: #00a3cc;
+  --sl-color-text: #e5e7eb;
+  --sl-color-text-accent: #00d9ff;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #e5e7eb;
+  --sl-color-gray-2: #d1d5db;
+  --sl-color-gray-3: #9ca3af;
+  --sl-color-gray-4: #6b7280;
+  --sl-color-gray-5: #4b5563;
+  --sl-color-gray-6: #252525;
+  --sl-color-black: #0a0a0a;
+  --sl-color-bg: #000000;
+  --sl-color-bg-nav: rgba(0, 0, 0, 0.95);
+  --sl-color-bg-sidebar: rgba(0, 0, 0, 0.9);
+}
+
+/* Override Starlight's default background */
+body {
+  background-color: #000000;
+}
+
+/* Navigation header */
+.header {
+  background-color: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid #9ca3af;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-right: 1px solid #252525;
+}
+
+/* Code blocks */
+pre {
+  background-color: #0a0a0a !important;
+  border: 1px solid #252525 !important;
+  border-radius: 0.5rem;
+}
+
+code {
+  background-color: rgba(0, 217, 255, 0.1);
+  color: #00d9ff;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+/* Links */
+a {
+  color: #00d9ff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 217, 255, 0.3);
+  transition: border-color 0.2s;
+}
+
+a:hover {
+  border-bottom-color: #00d9ff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid #00d9ff;
+  background-color: rgba(0, 217, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Tables */
+table {
+  border: 1px solid #252525;
+}
+
+thead {
+  border-bottom: 1px solid #252525;
+}
+
+tbody tr {
+  border-bottom: 1px solid #252525;
+}
+
+th {
+  color: #ffffff;
+  font-weight: 600;
+}
