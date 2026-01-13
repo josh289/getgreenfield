@@ -2,45 +2,45 @@
 
 /* Background Gradients */
 .bg-gradient-banyan-primary {
-  background: linear-gradient(135deg, #000000 0%, #000000 100%);
+  background: linear-gradient(135deg, #0f1612 0%, #0f1612 100%);
 }
 
 .bg-gradient-banyan-secondary {
-  background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+  background: linear-gradient(135deg, #1a2520 0%, #0f1612 100%);
 }
 
 .bg-gradient-banyan-hero {
-  background: linear-gradient(180deg, #000000 0%, #000000 50%, #0a0a0a 100%);
+  background: linear-gradient(180deg, #0f1612 0%, #0f1612 50%, #1a2520 100%);
 }
 
 .bg-gradient-banyan-card {
-  background: linear-gradient(145deg, rgba(10, 10, 10, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(145deg, rgba(26, 37, 32, 0.5) 0%, rgba(15, 22, 18, 0.8) 100%);
 }
 
 /* Text Gradients */
 .text-gradient-banyan {
-  background: linear-gradient(135deg, #00d9ff 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #50c878 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-cyan-white {
-  background: linear-gradient(135deg, #00d9ff 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #50c878 0%, #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-cyan-orange {
-  background: linear-gradient(135deg, #00d9ff 0%, #ff6b35 100%);
+  background: linear-gradient(135deg, #50c878 0%, #f4d03f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-white-cyan {
-  background: linear-gradient(135deg, #ffffff 0%, #00d9ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #50c878 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -49,7 +49,7 @@
 /* Border Gradients */
 .border-gradient-banyan {
   border: 1px solid transparent;
-  background: linear-gradient(135deg, rgba(0, 217, 255, 0.3) 0%, rgba(0, 217, 255, 0.3) 100%) border-box;
+  background: linear-gradient(135deg, rgba(80, 200, 120, 0.3) 0%, rgba(80, 200, 120, 0.3) 100%) border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: destination-out;
   mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
@@ -62,8 +62,8 @@
 }
 
 .hover-gradient-banyan:hover {
-  background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0, 217, 255, 0.1) 100%);
-  border-color: rgba(0, 217, 255, 0.5);
+  background: linear-gradient(135deg, rgba(80, 200, 120, 0.1) 0%, rgba(80, 200, 120, 0.1) 100%);
+  border-color: rgba(80, 200, 120, 0.5);
 }
 
 /* Animation Classes */
@@ -90,10 +90,10 @@
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 20px rgba(80, 200, 120, 0.3);
   }
   to {
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 40px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 30px rgba(80, 200, 120, 0.6), 0 0 40px rgba(80, 200, 120, 0.3);
   }
 }
 
@@ -179,44 +179,44 @@
 }
 
 .glass-effect {
-  background: rgba(10, 10, 10, 0.3);
+  background: rgba(26, 37, 32, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(80, 200, 120, 0.1);
 }
 
 .neon-border {
-  border: 1px solid rgba(0, 217, 255, 0.5);
-  box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+  border: 1px solid rgba(80, 200, 120, 0.5);
+  box-shadow: 0 0 10px rgba(80, 200, 120, 0.3);
 }
 
 .neon-border:hover {
-  border-color: rgba(0, 217, 255, 0.8);
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+  border-color: rgba(80, 200, 120, 0.8);
+  box-shadow: 0 0 20px rgba(80, 200, 120, 0.5);
 }
 
 /* Radial Gradient Glow Classes for Hero */
 .radial-glow-cyan {
-  background: radial-gradient(circle at center, rgba(0, 217, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(80, 200, 120, 0.15) 0%, transparent 70%);
 }
 
 .radial-glow-orange {
-  background: radial-gradient(circle at center, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(244, 208, 63, 0.15) 0%, transparent 70%);
 }
 
 .radial-glow-cyan-lg {
-  background: radial-gradient(ellipse at center, rgba(0, 217, 255, 0.2) 0%, transparent 50%);
+  background: radial-gradient(ellipse at center, rgba(80, 200, 120, 0.2) 0%, transparent 50%);
 }
 
 .radial-glow-orange-lg {
-  background: radial-gradient(ellipse at center, rgba(255, 107, 53, 0.2) 0%, transparent 50%);
+  background: radial-gradient(ellipse at center, rgba(244, 208, 63, 0.2) 0%, transparent 50%);
 }
 
 /* Card Shadows with Cyan Glow */
 .card-shadow-cyan {
   box-shadow:
-    0 0 20px rgba(0, 217, 255, 0.1),
-    0 4px 6px rgba(0, 0, 0, 0.5);
+    0 0 20px rgba(80, 200, 120, 0.1),
+    0 4px 6px rgba(15, 22, 18, 0.5);
 }
 
 .card-shadow-cyan-hover {
@@ -225,14 +225,14 @@
 
 .card-shadow-cyan-hover:hover {
   box-shadow:
-    0 0 30px rgba(0, 217, 255, 0.2),
-    0 8px 12px rgba(0, 0, 0, 0.6);
+    0 0 30px rgba(80, 200, 120, 0.2),
+    0 8px 12px rgba(15, 22, 18, 0.6);
 }
 
 .card-shadow-orange {
   box-shadow:
-    0 0 20px rgba(255, 107, 53, 0.1),
-    0 4px 6px rgba(0, 0, 0, 0.5);
+    0 0 20px rgba(244, 208, 63, 0.1),
+    0 4px 6px rgba(15, 22, 18, 0.5);
 }
 
 .card-shadow-orange-hover {
@@ -241,8 +241,8 @@
 
 .card-shadow-orange-hover:hover {
   box-shadow:
-    0 0 30px rgba(255, 107, 53, 0.2),
-    0 8px 12px rgba(0, 0, 0, 0.6);
+    0 0 30px rgba(244, 208, 63, 0.2),
+    0 8px 12px rgba(15, 22, 18, 0.6);
 }
 
 /* Status Indicators */
@@ -252,12 +252,50 @@
 }
 
 .status-processing {
-  background: linear-gradient(135deg, #ff6b35 0%, #ff5722 100%);
-  box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+  background: linear-gradient(135deg, #f4d03f 0%, #f4d03f 100%);
+  box-shadow: 0 0 15px rgba(244, 208, 63, 0.4);
   animation: pulse-soft 2s infinite;
 }
 
 .status-error {
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+/* Evergreen Organic Motion */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(80, 200, 120, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(80, 200, 120, 0.5);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes grow-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-breathe {
+  animation: breathe 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-grow-in {
+  animation: grow-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }

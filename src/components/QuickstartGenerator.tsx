@@ -33,7 +33,7 @@ const QuickstartGenerator: React.FC = () => {
       name: 'React',
       icon: '⚛️',
       description: 'Modern React with TypeScript',
-      color: 'from-cyan-500 to-cyan-600',
+      color: 'from-[#50c878] to-[#3da85f]',
       commands: [
         {
           step: '1. Install Greenfield CLI',
@@ -61,7 +61,7 @@ const QuickstartGenerator: React.FC = () => {
       name: 'Vue',
       icon: '🟢',
       description: 'Vue 3 with Composition API',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-[#f4d03f] to-[#d4b82f]',
       commands: [
         {
           step: '1. Install Greenfield CLI',
@@ -89,7 +89,7 @@ const QuickstartGenerator: React.FC = () => {
       name: 'Node.js',
       icon: '🟩',
       description: 'Backend API with Express',
-      color: 'from-cyan-500 to-orange-500',
+      color: 'from-[#50c878] to-[#f4d03f]',
       commands: [
         {
           step: '1. Install Greenfield CLI',
@@ -117,7 +117,7 @@ const QuickstartGenerator: React.FC = () => {
       name: 'Python',
       icon: '🐍',
       description: 'FastAPI with async support',
-      color: 'from-orange-500 to-orange-600',
+      color: 'from-[#f4d03f] to-[#d4b82f]',
       commands: [
         {
           step: '1. Install Greenfield CLI',
@@ -173,7 +173,7 @@ const QuickstartGenerator: React.FC = () => {
       name: 'Microservices',
       icon: '🔧',
       description: 'Multi-service architecture',
-      color: 'from-cyan-500 to-orange-500',
+      color: 'from-[#50c878] to-[#f4d03f]',
       commands: [
         {
           step: '1. Install Greenfield CLI',
@@ -236,7 +236,7 @@ const QuickstartGenerator: React.FC = () => {
             </button>
 
             {isDropdownOpen && (
-              <div className="absolute top-full left-0 right-0 mt-2 bg-black rounded-lg border border-gray-400 shadow-xl z-10 overflow-hidden">
+              <div className="absolute top-full left-0 right-0 mt-2 bg-[#1a2e1a] rounded-lg border border-gray-400 shadow-xl z-10 overflow-hidden">
                 {Object.entries(frameworks).map(([key, framework]) => (
                   <button
                     key={key}
@@ -244,8 +244,8 @@ const QuickstartGenerator: React.FC = () => {
                       setSelectedFramework(key);
                       setIsDropdownOpen(false);
                     }}
-                    className={`w-full flex items-center gap-3 px-6 py-4 text-left hover:bg-gray-800 transition-colors ${
-                      selectedFramework === key ? 'bg-gray-800' : ''
+                    className={`w-full flex items-center gap-3 px-6 py-4 text-left hover:bg-[#2d4a2d] transition-colors ${
+                      selectedFramework === key ? 'bg-[#2d4a2d]' : ''
                     }`}
                   >
                     <span className="text-xl">{framework.icon}</span>
@@ -263,18 +263,18 @@ const QuickstartGenerator: React.FC = () => {
         {/* Quick Stats */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-400">
-              <Zap className="w-6 h-6 text-orange-400 mx-auto mb-2" />
+            <div className="bg-[#1a2e1a]/50 rounded-lg p-4 text-center border border-gray-400">
+              <Zap className="w-6 h-6 text-[#f4d03f] mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">2 min</div>
               <div className="text-gray-200 text-sm">Setup time</div>
             </div>
-            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-400">
-              <Package className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
+            <div className="bg-[#1a2e1a]/50 rounded-lg p-4 text-center border border-gray-400">
+              <Package className="w-6 h-6 text-[#50c878] mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">0</div>
               <div className="text-gray-200 text-sm">Config files</div>
             </div>
-            <div className="bg-black/50 rounded-lg p-4 text-center border border-gray-400">
-              <Code className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
+            <div className="bg-[#1a2e1a]/50 rounded-lg p-4 text-center border border-gray-400">
+              <Code className="w-6 h-6 text-[#50c878] mx-auto mb-2" />
               <div className="text-2xl font-bold text-white">100%</div>
               <div className="text-gray-200 text-sm">AI Ready</div>
             </div>
@@ -283,14 +283,14 @@ const QuickstartGenerator: React.FC = () => {
 
         {/* Commands */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
-          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
-            <div className="bg-black/50 px-6 py-4 border-b border-gray-400/80">
+          <div className="bg-[#1a2e1a]/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
+            <div className="bg-[#1a2e1a]/50 px-6 py-4 border-b border-gray-400/80">
               <div className="flex items-center gap-3">
-                <Terminal className="w-5 h-5 text-cyan-400" />
+                <Terminal className="w-5 h-5 text-[#50c878]" />
                 <h3 className="text-lg font-semibold text-white">
                   Quickstart Commands
                 </h3>
-                <span className="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-full text-sm">
+                <span className="px-3 py-1 bg-[#50c878]/20 text-[#50c878] rounded-full text-sm">
                   {currentFramework.name}
                 </span>
               </div>
@@ -300,7 +300,7 @@ const QuickstartGenerator: React.FC = () => {
               {currentFramework.commands.map((cmd, index) => (
                 <div key={index} className="group">
                   <div className="flex items-start gap-4 mb-3">
-                    <div className="flex-shrink-0 w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center text-black text-sm font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#50c878] rounded-full flex items-center justify-center text-black text-sm font-bold">
                       {index + 1}
                     </div>
                     <div className="flex-1">
@@ -310,19 +310,19 @@ const QuickstartGenerator: React.FC = () => {
                   </div>
 
                   <div className="ml-12">
-                    <div className="flex items-center gap-2 bg-black/50 rounded-lg p-4 border border-gray-400/80 group-hover:border-cyan-500/30 transition-colors">
+                    <div className="flex items-center gap-2 bg-[#1a2e1a]/50 rounded-lg p-4 border border-gray-400/80 group-hover:border-[#50c878]/30 transition-colors">
                       <div className="flex-1">
-                        <code className="text-cyan-400 font-mono text-sm">
+                        <code className="text-[#50c878] font-mono text-sm">
                           {cmd.command}
                         </code>
                       </div>
                       <button
                         onClick={() => handleCopy(cmd.command, `cmd-${index}`)}
-                        className="p-2 text-gray-200 hover:text-white transition-colors rounded-md hover:bg-gray-800/50"
+                        className="p-2 text-gray-200 hover:text-white transition-colors rounded-md hover:bg-[#2d4a2d]/50"
                         title="Copy command"
                       >
                         {copiedCommands[`cmd-${index}`] ? (
-                          <Check className="w-4 h-4 text-cyan-400" />
+                          <Check className="w-4 h-4 text-[#50c878]" />
                         ) : (
                           <Copy className="w-4 h-4" />
                         )}
@@ -337,28 +337,28 @@ const QuickstartGenerator: React.FC = () => {
 
         {/* What You Get */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
-          <div className="bg-gradient-to-r from-cyan-500/10 to-orange-500/10 rounded-xl p-8 border border-cyan-500/20">
+          <div className="bg-gradient-to-r from-[#50c878]/10 to-[#f4d03f]/10 rounded-xl p-8 border border-[#50c878]/20">
             <h3 className="text-xl font-semibold text-white mb-6 text-center">
               What you get out of the box
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-[#50c878] rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Perfect Bounded Contexts</div>
                     <div className="text-gray-100 text-sm">Each feature is isolated and self-contained</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-[#50c878] rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Event-Driven Communication</div>
                     <div className="text-gray-100 text-sm">Contexts communicate through clean events</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-[#50c878] rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Pattern Library Integration</div>
                     <div className="text-gray-100 text-sm">Reusable patterns from day one</div>
@@ -367,21 +367,21 @@ const QuickstartGenerator: React.FC = () => {
               </div>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-[#f4d03f] rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">AI-Optimized Structure</div>
                     <div className="text-gray-100 text-sm">Perfect for Claude, Cursor, and AI tools</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-[#f4d03f] rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Zero Configuration</div>
                     <div className="text-gray-100 text-sm">No complex setup or build configuration</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
+                  <div className="w-2 h-2 bg-[#f4d03f] rounded-full mt-2"></div>
                   <div>
                     <div className="text-white font-medium">Instant Team Onboarding</div>
                     <div className="text-gray-100 text-sm">New developers productive in hours</div>
@@ -397,7 +397,7 @@ const QuickstartGenerator: React.FC = () => {
           <p className="text-gray-100 mb-6">
             Ready to experience development without complexity?
           </p>
-          <button className="px-8 py-4 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300">
+          <button className="px-8 py-4 bg-[#50c878] text-black font-semibold rounded-lg hover:bg-[#3da85f] transition-all duration-300">
             Get Early Access Now
           </button>
         </div>

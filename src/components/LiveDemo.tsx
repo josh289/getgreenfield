@@ -565,8 +565,8 @@ export class OrderFailureHandler {
                 onClick={() => setSelectedExample(index)}
                 className={`px-6 py-3 rounded-lg border transition-all duration-300 ${
                   selectedExample === index
-                    ? 'bg-cyan-500 border-cyan-500 text-black font-semibold'
-                    : 'bg-black/50 border-gray-400 text-gray-100 hover:border-cyan-500/50'
+                    ? 'bg-[#50c878] border-[#50c878] text-black font-semibold'
+                    : 'bg-[#1a2e1a]/50 border-gray-400 text-gray-100 hover:border-[#50c878]/50'
                 }`}
               >
                 {example.title}
@@ -577,10 +577,10 @@ export class OrderFailureHandler {
 
         {/* Demo Interface */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700">
-          <div className="bg-black/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
+          <div className="bg-[#1a2e1a]/50 backdrop-blur-sm rounded-xl border border-gray-400/80 overflow-hidden">
 
             {/* Header */}
-            <div className="bg-black/50 px-6 py-4 border-b border-gray-400/80">
+            <div className="bg-[#1a2e1a]/50 px-6 py-4 border-b border-gray-400/80">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-white mb-1">
@@ -593,7 +593,7 @@ export class OrderFailureHandler {
                 <button
                   onClick={handleRunDemo}
                   disabled={isProcessing}
-                  className="flex items-center gap-2 px-6 py-3 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-6 py-3 bg-[#50c878] text-black font-semibold rounded-lg hover:bg-[#3da85f] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isProcessing ? (
                     <>
@@ -615,20 +615,20 @@ export class OrderFailureHandler {
               {/* Input Side */}
               <div className="p-6 border-r border-gray-400/80">
                 <div className="flex items-center gap-2 mb-4">
-                  <Box className="w-5 h-5 text-orange-400" />
+                  <Box className="w-5 h-5 text-[#f4d03f]" />
                   <h4 className="text-lg font-semibold text-white">Legacy Code</h4>
                   <button
                     onClick={() => handleCopy(currentExample.input, 'input')}
                     className="ml-auto p-2 text-gray-200 hover:text-white transition-colors"
                   >
                     {copiedStates.input ? (
-                      <span className="text-cyan-400 text-sm">Copied!</span>
+                      <span className="text-[#50c878] text-sm">Copied!</span>
                     ) : (
                       <Copy className="w-4 h-4" />
                     )}
                   </button>
                 </div>
-                <div className="bg-black/50 rounded-lg p-4 overflow-x-auto">
+                <div className="bg-[#1a2e1a]/50 rounded-lg p-4 overflow-x-auto">
                   <pre className="text-sm text-gray-100 whitespace-pre-wrap">
                     <code>{currentExample.input}</code>
                   </pre>
@@ -638,23 +638,23 @@ export class OrderFailureHandler {
               {/* Output Side */}
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <Zap className="w-5 h-5 text-cyan-400" />
+                  <Zap className="w-5 h-5 text-[#50c878]" />
                   <h4 className="text-lg font-semibold text-white">Greenfield Architecture</h4>
                 </div>
 
                 {!showOutput && !isProcessing && (
-                  <div className="bg-black/30 rounded-lg p-8 text-center">
+                  <div className="bg-[#1a2e1a]/30 rounded-lg p-8 text-center">
                     <p className="text-gray-200 mb-4">Click "Try it yourself" to see the actor transformation</p>
-                    <div className="w-16 h-16 mx-auto bg-black/50 rounded-lg flex items-center justify-center">
+                    <div className="w-16 h-16 mx-auto bg-[#1a2e1a]/50 rounded-lg flex items-center justify-center">
                       <Play className="w-8 h-8 text-gray-200" />
                     </div>
                   </div>
                 )}
 
                 {isProcessing && (
-                  <div className="bg-black/30 rounded-lg p-8 text-center">
-                    <div className="w-16 h-16 mx-auto bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
-                      <RefreshCw className="w-8 h-8 text-cyan-400 animate-spin" />
+                  <div className="bg-[#1a2e1a]/30 rounded-lg p-8 text-center">
+                    <div className="w-16 h-16 mx-auto bg-[#50c878]/20 rounded-lg flex items-center justify-center mb-4">
+                      <RefreshCw className="w-8 h-8 text-[#50c878] animate-spin" />
                     </div>
                     <p className="text-gray-200">Transforming to Actor Services...</p>
                     <div className="mt-4 space-y-2">
@@ -675,13 +675,13 @@ export class OrderFailureHandler {
                   <div className="space-y-6">
                     {/* Bounded Contexts */}
                     <div>
-                      <h5 className="text-md font-semibold text-cyan-400 mb-3 flex items-center gap-2">
+                      <h5 className="text-md font-semibold text-[#50c878] mb-3 flex items-center gap-2">
                         <Box className="w-4 h-4" />
                         Actor Service Components ({currentExample.output.contexts.length})
                       </h5>
                       <div className="space-y-3">
                         {currentExample.output.contexts.map((context, index) => (
-                          <div key={index} className="bg-black/50 rounded-lg p-4 border border-cyan-500/20">
+                          <div key={index} className="bg-[#1a2e1a]/50 rounded-lg p-4 border border-[#50c878]/20">
                             <div className="flex items-start justify-between mb-2">
                               <div>
                                 <h6 className="text-white font-medium">{context.name}</h6>
@@ -692,13 +692,13 @@ export class OrderFailureHandler {
                                 className="p-1 text-gray-200 hover:text-white transition-colors"
                               >
                                 {copiedStates[`context-${index}`] ? (
-                                  <span className="text-cyan-400 text-xs">✓</span>
+                                  <span className="text-[#50c878] text-xs">✓</span>
                                 ) : (
                                   <Copy className="w-3 h-3" />
                                 )}
                               </button>
                             </div>
-                            <pre className="text-xs text-gray-100 bg-black/50 rounded p-2 overflow-x-auto">
+                            <pre className="text-xs text-gray-100 bg-[#1a2e1a]/50 rounded p-2 overflow-x-auto">
                               <code>{context.code}</code>
                             </pre>
                           </div>
@@ -708,16 +708,16 @@ export class OrderFailureHandler {
 
                     {/* Event Flow */}
                     <div>
-                      <h5 className="text-md font-semibold text-orange-400 mb-3 flex items-center gap-2">
+                      <h5 className="text-md font-semibold text-[#f4d03f] mb-3 flex items-center gap-2">
                         <GitBranch className="w-4 h-4" />
                         Message Bus Event Flow
                       </h5>
-                      <div className="bg-black/50 rounded-lg p-4 border border-orange-500/20">
+                      <div className="bg-[#1a2e1a]/50 rounded-lg p-4 border border-[#f4d03f]/20">
                         <div className="flex flex-wrap gap-2">
                           {currentExample.output.events.map((event, index) => (
                             <span
                               key={index}
-                              className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm border border-orange-500/30"
+                              className="px-3 py-1 bg-[#f4d03f]/20 text-[#f4d03f]/80 rounded-full text-sm border border-[#f4d03f]/30"
                             >
                               {event}
                             </span>
@@ -727,22 +727,22 @@ export class OrderFailureHandler {
                     </div>
 
                     {/* Benefits */}
-                    <div className="bg-gradient-to-r from-cyan-500/10 to-orange-500/10 rounded-lg p-4 border border-cyan-500/20">
+                    <div className="bg-gradient-to-r from-[#50c878]/10 to-[#f4d03f]/10 rounded-lg p-4 border border-[#50c878]/20">
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <div className="text-cyan-400 font-semibold">✓ 90% Less Code</div>
+                          <div className="text-[#50c878] font-semibold">✓ 90% Less Code</div>
                           <div className="text-gray-200">Just handlers, no infrastructure</div>
                         </div>
                         <div>
-                          <div className="text-orange-400 font-semibold">✓ Event Choreography</div>
+                          <div className="text-[#f4d03f] font-semibold">✓ Event Choreography</div>
                           <div className="text-gray-200">Actors react independently</div>
                         </div>
                         <div>
-                          <div className="text-cyan-400 font-semibold">✓ Type-Safe Contracts</div>
+                          <div className="text-[#50c878] font-semibold">✓ Type-Safe Contracts</div>
                           <div className="text-gray-200">Compile-time API validation</div>
                         </div>
                         <div>
-                          <div className="text-orange-400 font-semibold">✓ Auto Scaling</div>
+                          <div className="text-[#f4d03f] font-semibold">✓ Auto Scaling</div>
                           <div className="text-gray-200">Platform handles everything</div>
                         </div>
                       </div>
@@ -760,7 +760,7 @@ export class OrderFailureHandler {
             This is just a preview. The full Greenfield platform includes automated actor generation,
             service contract creation, and complete event choreography.
           </p>
-          <button className="px-8 py-4 bg-cyan-500 text-black font-semibold rounded-lg hover:bg-cyan-400 transition-all duration-300">
+          <button className="px-8 py-4 bg-[#50c878] text-black font-semibold rounded-lg hover:bg-[#3da85f] transition-all duration-300">
             Get Early Access to Greenfield
           </button>
         </div>

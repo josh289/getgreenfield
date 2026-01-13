@@ -4,7 +4,7 @@ import logo from '../assets/greenfield-logo.png';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0a0a0a] border-t border-gray-400/80 py-20">
+    <footer className="bg-[#0f1612] border-t border-[#243b2f] py-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand Section */}
@@ -17,27 +17,27 @@ const Footer: React.FC = () => {
                 style={{ maxWidth: '500px' }}
               />
             </div>
-            <p className="text-gray-100 mb-8 max-w-md leading-relaxed">
+            <p className="text-[#c5d9cd] mb-8 max-w-md leading-relaxed">
               The AI-native workspace where every project builds organizational intelligence.
             </p>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-200 hover:text-cyan-400 transition-colors duration-300"
+                className="text-[#9db5a5] hover:text-[#50c878] transition-colors duration-300"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-200 hover:text-cyan-400 transition-colors duration-300"
+                className="text-[#9db5a5] hover:text-[#50c878] transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-gray-200 hover:text-cyan-400 transition-colors duration-300"
+                className="text-[#9db5a5] hover:text-[#50c878] transition-colors duration-300"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
 
           {/* Product Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-[#e8f4ed] uppercase tracking-wider mb-4">
               Product
             </h3>
             <ul className="space-y-3">
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-gray-100 hover:text-cyan-400 transition-colors duration-300"
+                    className="text-[#c5d9cd] hover:text-[#50c878] transition-colors duration-300"
                   >
                     {item.name}
                   </a>
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
 
           {/* Solutions Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-100 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-[#e8f4ed] uppercase tracking-wider mb-4">
               Solutions
             </h3>
             <ul className="space-y-3">
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className="text-gray-100 hover:text-cyan-400 transition-colors duration-300"
+                    className="text-[#c5d9cd] hover:text-[#50c878] transition-colors duration-300"
                   >
                     {item.name}
                   </a>
@@ -95,21 +95,21 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-gray-400/80 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-200 text-sm">
+        <div className="mt-16 pt-8 border-t border-[#243b2f] flex flex-col md:flex-row justify-between items-center">
+          <p className="text-[#9db5a5] text-sm">
             &copy; {new Date().getFullYear()} Greenfield Platform. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex items-center space-x-6">
             <a
               href="#"
-              className="text-sm text-gray-200 hover:text-cyan-400 transition-colors duration-300"
+              className="text-sm text-[#9db5a5] hover:text-[#50c878] transition-colors duration-300"
             >
               Privacy Policy
             </a>
-            <span className="text-gray-700">•</span>
+            <span className="text-[#243b2f]">•</span>
             <a
               href="#"
-              className="text-sm text-gray-200 hover:text-cyan-400 transition-colors duration-300"
+              className="text-sm text-[#9db5a5] hover:text-[#50c878] transition-colors duration-300"
             >
               Terms of Service
             </a>

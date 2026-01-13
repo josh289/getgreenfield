@@ -51,15 +51,15 @@ const Features: React.FC = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-lg p-8 border border-[#252525] bg-black/40 hover:border-[#00d9ff] transition-all duration-300 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-lg p-8 border border-[#243b2f] bg-[#0f1612]/40 hover:border-[#50c878] transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Cyan glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00d9ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Sprout glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#50c878]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                 <div className="relative z-10">
                   {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg mb-6 bg-black/50 border border-[#252525] group-hover:border-[#00d9ff] group-hover:bg-[#00d9ff]/10 transition-all duration-300">
-                    <div className="text-[#00d9ff] transition-all duration-300 group-hover:scale-110">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg mb-6 bg-[#1a2520]/50 border border-[#243b2f] group-hover:border-[#50c878] group-hover:bg-[#50c878]/10 transition-all duration-300">
+                    <div className="text-[#50c878] transition-all duration-300 group-hover:scale-110">
                       {feature.icon}
                     </div>
                   </div>

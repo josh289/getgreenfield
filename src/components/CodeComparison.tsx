@@ -139,8 +139,8 @@ export class CreateUserHandler
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-orange-900/30 rounded-lg border border-orange-700/50">
-                    <Code className="w-5 h-5 text-orange-400" />
+                  <div className="p-2 bg-[#f4d03f]/20 rounded-lg border border-[#f4d03f]/50">
+                    <Code className="w-5 h-5 text-[#f4d03f]" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white">Traditional Microservices</h3>
@@ -149,10 +149,10 @@ export class CreateUserHandler
                 </div>
               </div>
 
-              <div className="flex-1 bg-black/50 backdrop-blur-sm rounded-xl border border-orange-700/50 overflow-hidden">
-                <div className="bg-orange-900/20 px-4 py-2 border-b border-orange-700/50 flex items-center justify-between">
-                  <span className="text-xs font-mono text-orange-300">order-service.js</span>
-                  <span className="text-xs text-orange-400 font-semibold">~100 lines</span>
+              <div className="flex-1 bg-[#1a2e1a]/50 backdrop-blur-sm rounded-xl border border-[#f4d03f]/50 overflow-hidden">
+                <div className="bg-[#f4d03f]/10 px-4 py-2 border-b border-[#f4d03f]/50 flex items-center justify-between">
+                  <span className="text-xs font-mono text-[#f4d03f]/80">order-service.js</span>
+                  <span className="text-xs text-[#f4d03f] font-semibold">~100 lines</span>
                 </div>
                 <div className="p-4 overflow-x-auto max-h-[600px] overflow-y-auto">
                   <pre className="text-sm leading-relaxed">
@@ -163,16 +163,16 @@ export class CreateUserHandler
 
               {/* Stats */}
               <div className="mt-4 grid grid-cols-3 gap-3">
-                <div className="p-3 bg-orange-900/20 border border-orange-700/50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-orange-400">100+</div>
+                <div className="p-3 bg-[#f4d03f]/10 border border-[#f4d03f]/50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-[#f4d03f]">100+</div>
                   <div className="text-xs text-gray-200">Lines of code</div>
                 </div>
-                <div className="p-3 bg-orange-900/20 border border-orange-700/50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-orange-400">High</div>
+                <div className="p-3 bg-[#f4d03f]/10 border border-[#f4d03f]/50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-[#f4d03f]">High</div>
                   <div className="text-xs text-gray-200">Complexity</div>
                 </div>
-                <div className="p-3 bg-orange-900/20 border border-orange-700/50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-orange-400">Poor</div>
+                <div className="p-3 bg-[#f4d03f]/10 border border-[#f4d03f]/50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-[#f4d03f]">Poor</div>
                   <div className="text-xs text-gray-200">AI Context</div>
                 </div>
               </div>
@@ -182,8 +182,8 @@ export class CreateUserHandler
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-cyan-900/30 rounded-lg border border-cyan-700/50">
-                    <Zap className="w-5 h-5 text-cyan-400" />
+                  <div className="p-2 bg-[#50c878]/20 rounded-lg border border-[#50c878]/50">
+                    <Zap className="w-5 h-5 text-[#50c878]" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white">Greenfield Platform</h3>
@@ -192,10 +192,10 @@ export class CreateUserHandler
                 </div>
               </div>
 
-              <div className="flex-1 bg-black/50 backdrop-blur-sm rounded-xl border border-cyan-700/50 overflow-hidden">
-                <div className="bg-cyan-900/20 px-4 py-2 border-b border-cyan-700/50 flex items-center justify-between">
-                  <span className="text-xs font-mono text-cyan-300">order-actor.ts</span>
-                  <span className="text-xs text-cyan-400 font-semibold">~10 lines</span>
+              <div className="flex-1 bg-[#1a2e1a]/50 backdrop-blur-sm rounded-xl border border-[#50c878]/50 overflow-hidden">
+                <div className="bg-[#50c878]/10 px-4 py-2 border-b border-[#50c878]/50 flex items-center justify-between">
+                  <span className="text-xs font-mono text-[#50c878]/80">order-actor.ts</span>
+                  <span className="text-xs text-[#50c878] font-semibold">~10 lines</span>
                 </div>
                 <div className="p-4 overflow-x-auto max-h-[600px] overflow-y-auto">
                   <pre className="text-sm leading-relaxed">
@@ -206,16 +206,16 @@ export class CreateUserHandler
 
               {/* Stats */}
               <div className="mt-4 grid grid-cols-3 gap-3">
-                <div className="p-3 bg-cyan-900/20 border border-cyan-700/50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-cyan-400">10</div>
+                <div className="p-3 bg-[#50c878]/10 border border-[#50c878]/50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-[#50c878]">10</div>
                   <div className="text-xs text-gray-200">Lines of code</div>
                 </div>
-                <div className="p-3 bg-cyan-900/20 border border-cyan-700/50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-cyan-400">Low</div>
+                <div className="p-3 bg-[#50c878]/10 border border-[#50c878]/50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-[#50c878]">Low</div>
                   <div className="text-xs text-gray-200">Complexity</div>
                 </div>
-                <div className="p-3 bg-cyan-900/20 border border-cyan-700/50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-cyan-400">Perfect</div>
+                <div className="p-3 bg-[#50c878]/10 border border-[#50c878]/50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-[#50c878]">Perfect</div>
                   <div className="text-xs text-gray-200">AI Context</div>
                 </div>
               </div>
@@ -225,30 +225,30 @@ export class CreateUserHandler
 
         {/* Key Differences */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12">
-          <div className="bg-gradient-to-r from-orange-900/20 via-black/50 to-cyan-900/20 rounded-xl border border-gray-400/80 p-8">
+          <div className="bg-gradient-to-r from-[#f4d03f]/10 via-[#1a2e1a]/50 to-[#50c878]/10 rounded-xl border border-gray-400/80 p-8">
             <div className="flex items-center gap-3 mb-6">
-              <TrendingDown className="w-6 h-6 text-cyan-400" />
+              <TrendingDown className="w-6 h-6 text-[#50c878]" />
               <h3 className="text-2xl font-bold text-white">The Platform Does the Heavy Lifting</h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-4 bg-black/50 rounded-lg border border-gray-400">
-                <h4 className="text-cyan-400 font-semibold mb-2">Auto-Routing</h4>
+              <div className="p-4 bg-[#1a2e1a]/50 rounded-lg border border-gray-400">
+                <h4 className="text-[#50c878] font-semibold mb-2">Auto-Routing</h4>
                 <p className="text-sm text-gray-100">HTTP endpoints, gRPC, and GraphQL generated from actors</p>
               </div>
 
-              <div className="p-4 bg-black/50 rounded-lg border border-gray-400">
-                <h4 className="text-cyan-400 font-semibold mb-2">Auth & Validation</h4>
+              <div className="p-4 bg-[#1a2e1a]/50 rounded-lg border border-gray-400">
+                <h4 className="text-[#50c878] font-semibold mb-2">Auth & Validation</h4>
                 <p className="text-sm text-gray-100">Type-safe validation and role-based access control built-in</p>
               </div>
 
-              <div className="p-4 bg-black/50 rounded-lg border border-gray-400">
-                <h4 className="text-cyan-400 font-semibold mb-2">Event Choreography</h4>
+              <div className="p-4 bg-[#1a2e1a]/50 rounded-lg border border-gray-400">
+                <h4 className="text-[#50c878] font-semibold mb-2">Event Choreography</h4>
                 <p className="text-sm text-gray-100">Automatic event publishing and subscription management</p>
               </div>
 
-              <div className="p-4 bg-black/50 rounded-lg border border-gray-400">
-                <h4 className="text-cyan-400 font-semibold mb-2">Observability</h4>
+              <div className="p-4 bg-[#1a2e1a]/50 rounded-lg border border-gray-400">
+                <h4 className="text-[#50c878] font-semibold mb-2">Observability</h4>
                 <p className="text-sm text-gray-100">Distributed tracing, metrics, and logging out of the box</p>
               </div>
             </div>
@@ -257,8 +257,8 @@ export class CreateUserHandler
 
         {/* Bottom CTA */}
         <div className="animate-on-scroll opacity-0 translate-y-8 transition-all duration-700 mt-12 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-900/20 border border-cyan-700/50 rounded-lg">
-            <Zap className="w-5 h-5 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#50c878]/10 border border-[#50c878]/50 rounded-lg">
+            <Zap className="w-5 h-5 text-[#50c878]" />
             <span className="text-white font-medium">Write 90% less code. Ship 10x faster.</span>
           </div>
         </div>
