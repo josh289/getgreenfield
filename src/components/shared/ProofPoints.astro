@@ -1,0 +1,30 @@
+---
+interface Metric {
+  value: string;
+  label: string;
+  detail?: string;
+}
+
+interface Props {
+  metrics: Metric[];
+  columns?: 2 | 3 | 4;
+}
+
+const { metrics, columns = 4 } = Astro.props;
+
+const gridCols = {
+  2: 'grid-cols-1 sm:grid-cols-2',
+  3: 'grid-cols-1 sm:grid-cols-3',
+  4: 'grid-cols-2 md:grid-cols-4',
+};
+---
+
+<div class:list={['grid gap-6', gridCols[columns]]}>
+  {metrics.map((metric, i) => (
+    <div class="text-center p-6 rounded-lg bg-ev-primary border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
+      <div class="text-3xl md:text-4xl font-bold text-sprout mb-2">{metric.value}</div>
+      <div class="text-ev-text font-medium mb-1">{metric.label}</div>
+      {metric.detail && <div class="text-ev-text-muted text-sm">{metric.detail}</div>}
+    </div>
+  ))}
+</div>

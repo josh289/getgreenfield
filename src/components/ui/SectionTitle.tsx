@@ -12,9 +12,9 @@ export default function SectionTitle({ title, subtitle, align = 'left', classNam
 
   return (
     <div className={`mb-12 ${alignmentClass} ${className}`}>
-      <h2 className="mb-4 text-3xl font-bold md:text-4xl text-white">{title}</h2>
+      <h2 className="mb-4 text-3xl font-bold md:text-4xl text-ev-text">{title}</h2>
       {subtitle && (
-        <p className="mx-auto max-w-2xl text-lg text-gray-300">{subtitle}</p>
+        <p className="mx-auto max-w-2xl text-lg text-ev-text-secondary">{subtitle}</p>
       )}
     </div>
   );

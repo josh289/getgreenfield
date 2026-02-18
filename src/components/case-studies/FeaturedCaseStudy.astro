@@ -1,0 +1,52 @@
+---
+import Section from '../shared/Section.astro';
+import { caseStudies } from '../../data/case-studies';
+
+const featured = caseStudies.find((cs) => cs.featured) || caseStudies[0];
+---
+
+<Section background="primary">
+  <div class="max-w-4xl mx-auto">
+    <div class="rounded-lg border border-sprout/20 bg-ev-secondary/30 p-8 md:p-12" data-reveal>
+      <span class="inline-block text-sprout text-sm font-semibold uppercase tracking-wider mb-4">Featured</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-ev-text mb-6">{featured.title}</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <div>
+          <h3 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-3">The Challenge</h3>
+          <p class="text-ev-text-secondary leading-relaxed">{featured.challenge}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-3">The Approach</h3>
+          <p class="text-ev-text-secondary leading-relaxed">{featured.approach}</p>
+        </div>
+      </div>
+
+      <h3 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-4">The Results</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+        {featured.results.map((result) => (
+          <div class="text-center p-4 rounded-md bg-ev-void border border-ev-default">
+            <div class="text-lg font-bold text-sprout mb-1">{result.metric}</div>
+            <div class="text-ev-text-muted text-xs">{result.description}</div>
+          </div>
+        ))}
+      </div>
+
+      {featured.technicalDetails && (
+        <div class="mb-8">
+          <h3 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-3">Technical Details</h3>
+          <div class="flex flex-wrap gap-2">
+            {featured.technicalDetails.map((detail) => (
+              <span class="px-3 py-1 text-xs rounded-full bg-ev-void text-ev-text-muted border border-ev-default">{detail}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div>
+        <h3 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-3">The Outcome</h3>
+        <p class="text-ev-text-secondary leading-relaxed">{featured.outcome}</p>
+      </div>
+    </div>
+  </div>
+</Section>

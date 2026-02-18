@@ -1,0 +1,67 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServicesHero from '../components/services/ServicesHero.astro';
+import BrownfieldProblem from '../components/services/BrownfieldProblem.astro';
+import Section from '../components/shared/Section.astro';
+import SectionTitle from '../components/shared/SectionTitle.astro';
+import Timeline from '../components/shared/Timeline.astro';
+import DeliverablesList from '../components/shared/DeliverablesList.astro';
+import ProofPoints from '../components/shared/ProofPoints.astro';
+import FAQ from '../components/shared/FAQ.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+import { pageSEO } from '../data/seo';
+import { managedTimeline } from '../data/steps/managed-timeline';
+import { managedMetrics } from '../data/proof-points/managed';
+import { managedFAQ } from '../data/faq/managed';
+
+const deliverables = [
+  { title: 'Architecture Documentation', description: 'Complete domain decomposition, service boundaries, data flow diagrams, and deployment topology. Not a PowerPoint. An executable blueprint.' },
+  { title: 'Production TypeScript Microservices', description: 'CQRS with event sourcing, zero infrastructure code, full handler implementations for every command, query, and event in the domain.' },
+  { title: 'Type-Safe Service Contracts', description: 'Every service declares typed input/output contracts validated at compile time. No magic strings. No runtime integration failures.' },
+  { title: 'Two-Layer Authorization', description: 'Permission-based access control at the API gateway. Business-rule policy enforcement inside every handler. Every request passes through both layers.' },
+  { title: 'Comprehensive Test Suites', description: '90%+ test coverage enforced on every service. Unit tests, integration tests, and contract validation tests. Coverage is not a goal — it is a gate.' },
+  { title: 'Distributed Tracing and Observability', description: 'OpenTelemetry instrumentation, Jaeger tracing, Prometheus metrics, Grafana dashboards. You see every request, every event, every failure.' },
+  { title: 'Deployment-Ready Containers', description: 'Docker configurations, infrastructure as code, and deployment documentation. Ready for your CI/CD pipeline.' },
+];
+---
+
+<BaseLayout title={pageSEO['managed-services'].title} description={pageSEO['managed-services'].description}>
+  <ServicesHero />
+  <BrownfieldProblem />
+
+  <Section id="timeline">
+    <SectionTitle
+      eyebrow="The Process"
+      title="A factory, not a staffing agency."
+      subtitle="We do not send you bodies and hope for the best. We run a structured manufacturing process with defined inputs, quality gates, and deliverables at every stage."
+    />
+    <Timeline phases={managedTimeline} />
+  </Section>
+
+  <Section background="primary">
+    <SectionTitle
+      eyebrow="Deliverables"
+      title="We build working systems, not slide decks."
+    />
+    <DeliverablesList deliverables={deliverables} />
+  </Section>
+
+  <Section>
+    <SectionTitle eyebrow="Results" title="Measured. Not estimated." align="center" />
+    <ProofPoints metrics={managedMetrics} columns={4} />
+  </Section>
+
+  <Section background="primary">
+    <SectionTitle eyebrow="FAQ" title="Questions we hear in every first call." align="center" />
+    <FAQ questions={managedFAQ} />
+  </Section>
+
+  <BottomCTA
+    headline="Stop hiring for infrastructure. Start manufacturing software."
+    subtext="We will assess your codebase and tell you exactly what production looks like. No commitment. No sales deck. Just a technical conversation."
+    buttonText="Schedule a Technical Assessment"
+    buttonHref="/contact"
+  />
+</BaseLayout>

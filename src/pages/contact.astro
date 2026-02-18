@@ -1,0 +1,22 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactHero from '../components/contact/ContactHero.astro';
+import ContactForm from '../components/contact/ContactForm.tsx';
+import WhatHappensNext from '../components/contact/WhatHappensNext.astro';
+import AlternativeContact from '../components/contact/AlternativeContact.astro';
+import Section from '../components/shared/Section.astro';
+import { pageSEO } from '../data/seo';
+---
+
+<BaseLayout title={pageSEO.contact.title} description={pageSEO.contact.description}>
+  <ContactHero />
+  <Section padding="sm">
+    <div class="max-w-xl mx-auto" data-reveal>
+      <ContactForm client:visible />
+    </div>
+  </Section>
+  <WhatHappensNext />
+  <AlternativeContact />
+</BaseLayout>

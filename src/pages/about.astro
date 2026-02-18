@@ -1,0 +1,26 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AboutHero from '../components/about/AboutHero.astro';
+import OriginStory from '../components/about/OriginStory.astro';
+import Mission from '../components/about/Mission.astro';
+import Principles from '../components/about/Principles.astro';
+import TeamProfile from '../components/about/TeamProfile.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+import { pageSEO } from '../data/seo';
+---
+
+<BaseLayout title={pageSEO.about.title} description={pageSEO.about.description}>
+  <AboutHero />
+  <OriginStory />
+  <Mission />
+  <Principles />
+  <TeamProfile />
+  <BottomCTA
+    headline="Let us build something."
+    subtext="Whether you have a legacy system that needs modernization or a prototype that needs production infrastructure, the conversation starts the same way. Tell us what you have."
+    buttonText="Work With Us"
+    buttonHref="/contact"
+  />
+</BaseLayout>

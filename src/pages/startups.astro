@@ -1,0 +1,88 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StartupsHero from '../components/startups/StartupsHero.astro';
+import PrototypeTrap from '../components/startups/PrototypeTrap.astro';
+import Section from '../components/shared/Section.astro';
+import SectionTitle from '../components/shared/SectionTitle.astro';
+import Timeline from '../components/shared/Timeline.astro';
+import DeliverablesList from '../components/shared/DeliverablesList.astro';
+import ProofPoints from '../components/shared/ProofPoints.astro';
+import FAQ from '../components/shared/FAQ.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+import { pageSEO } from '../data/seo';
+import { startupsTimeline } from '../data/steps/startups-timeline';
+import { startupMetrics } from '../data/proof-points/startups';
+import { startupFAQ } from '../data/faq/startups';
+
+const deliverables = [
+  { title: 'Investor-Ready Architecture', description: 'Service boundaries, typed contracts, and domain models documented in detail. When due diligence asks "what does the architecture look like," you hand them a blueprint, not a whiteboard sketch.' },
+  { title: 'Production Microservices', description: 'TypeScript with strict mode. CQRS and event sourcing. Zero infrastructure code in your business logic. Built to scale from ten users to ten thousand without rearchitecting.' },
+  { title: 'Security From Day One', description: 'Two-layer authorization on every handler. Permission-based gateway access plus business-rule policy enforcement. Not bolted on later. Built in from the first line of code.' },
+  { title: 'Comprehensive Test Suites', description: '90%+ coverage enforced on every service. When your technical due diligence asks about testing, you show them the coverage reports, not a promise.' },
+  { title: 'Full Observability', description: 'Distributed tracing, metrics, and dashboards. When something breaks at 2 AM (it will), you see exactly where, exactly why, and exactly what happened before and after.' },
+  { title: 'Deployment-Ready Infrastructure', description: 'Containerized services, infrastructure configuration, deployment documentation. Ready for AWS, GCP, Azure, or your own servers. No vendor lock-in.' },
+  { title: 'Onboarding-Ready Documentation', description: 'Architecture docs, service guides, and code that follows strict conventions. Your first engineering hire reads the docs, not the Slack history.' },
+];
+---
+
+<BaseLayout title={pageSEO.startups.title} description={pageSEO.startups.description}>
+  <StartupsHero />
+  <PrototypeTrap />
+
+  <!-- What You Provide / What We Build -->
+  <Section>
+    <SectionTitle
+      title="You build the product. We build the production system."
+      align="center"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" data-reveal data-delay="100">
+      <div class="p-6 rounded-lg bg-ev-primary border border-ev-default">
+        <h3 class="text-lg font-semibold text-ev-text mb-3">What You Provide</h3>
+        <p class="text-ev-text-secondary text-sm leading-relaxed">
+          Your existing codebase, prototype, or technical specification. A few hours of your time during discovery week to explain the domain and validate the architecture. That is it.
+        </p>
+      </div>
+      <div class="p-6 rounded-lg bg-ev-primary border border-ev-default">
+        <h3 class="text-lg font-semibold text-ev-text mb-3">What We Build</h3>
+        <p class="text-ev-text-secondary text-sm leading-relaxed">
+          A complete production system. Microservices architecture with typed contracts. CQRS and event sourcing for every domain. Two-layer authorization. 90%+ test coverage. Distributed tracing. Deployment-ready containers. Documentation your future engineering hires can read on day one.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="timeline" background="primary">
+    <SectionTitle
+      eyebrow="The Partnership"
+      title="How the partnership works."
+    />
+    <Timeline phases={startupsTimeline} />
+  </Section>
+
+  <Section>
+    <SectionTitle
+      eyebrow="Deliverables"
+      title="Everything your investors will ask about. Handled."
+    />
+    <DeliverablesList deliverables={deliverables} />
+  </Section>
+
+  <Section background="primary">
+    <SectionTitle title="Built. Measured. Delivered." align="center" />
+    <ProofPoints metrics={startupMetrics} columns={4} />
+  </Section>
+
+  <Section>
+    <SectionTitle eyebrow="FAQ" title="Questions founders ask." align="center" />
+    <FAQ questions={startupFAQ} />
+  </Section>
+
+  <BottomCTA
+    headline="Ship production. Not another prototype."
+    subtext="Tell us what you have built. We will tell you what production looks like — scope, timeline, and cost. No commitment. Just a straightforward technical conversation."
+    buttonText="Talk to Us About Your Prototype"
+    buttonHref="/contact"
+  />
+</BaseLayout>

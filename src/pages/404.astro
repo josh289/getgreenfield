@@ -1,0 +1,24 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/shared/Button.astro';
+---
+
+<BaseLayout title="Page Not Found - Greenfield Labs" description="This page does not exist." noindex>
+  <section class="min-h-[80vh] flex items-center justify-center py-24">
+    <div class="container mx-auto px-4 text-center">
+      <div class="text-8xl font-bold text-sprout/20 mb-4">404</div>
+      <h1 class="text-3xl md:text-4xl font-bold text-ev-text mb-4">This page does not exist.</h1>
+      <p class="text-ev-text-secondary text-lg max-w-md mx-auto mb-10">
+        Whatever you were looking for, it is not here. But we can help you find what you need.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="primary" size="md" href="/">Go Home</Button>
+        <a href="/contact" class="text-sprout font-medium hover:underline flex items-center justify-center gap-1">
+          Or tell us about your project →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

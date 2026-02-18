@@ -59,6 +59,11 @@ export default {
           900: '#0d1310',
         },
       },
+      borderColor: {
+        'ev-subtle': 'rgba(80, 200, 120, 0.08)',
+        'ev-default': 'rgba(80, 200, 120, 0.15)',
+        'ev-strong': 'rgba(80, 200, 120, 0.25)',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(circle at center, var(--tw-gradient-stops))',
       },

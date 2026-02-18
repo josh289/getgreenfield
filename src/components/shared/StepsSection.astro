@@ -1,0 +1,50 @@
+---
+interface Step {
+  number: number;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  steps: Step[];
+  layout?: 'horizontal' | 'vertical';
+}
+
+const { steps, layout = 'horizontal' } = Astro.props;
+---
+
+{layout === 'horizontal' ? (
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {steps.map((step, i) => (
+      <div class="relative" data-reveal data-delay={String((i + 1) * 100)}>
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 rounded-full bg-sprout/10 border border-sprout/30 flex items-center justify-center text-sprout font-bold mr-3">
+            {step.number}
+          </div>
+          {i < steps.length - 1 && (
+            <div class="hidden md:block flex-1 h-px bg-gradient-to-r from-sprout/30 to-transparent" />
+          )}
+        </div>
+        <h3 class="text-xl font-semibold text-ev-text mb-2">{step.title}</h3>
+        <p class="text-ev-text-secondary">{step.description}</p>
+      </div>
+    ))}
+  </div>
+) : (
+  <div class="space-y-8">
+    {steps.map((step, i) => (
+      <div class="flex gap-6" data-reveal data-delay={String((i + 1) * 100)}>
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-sprout/10 border border-sprout/30 flex items-center justify-center text-sprout font-bold shrink-0">
+            {step.number}
+          </div>
+          {i < steps.length - 1 && <div class="w-px flex-1 bg-sprout/20 mt-2" />}
+        </div>
+        <div class="pb-8">
+          <h3 class="text-xl font-semibold text-ev-text mb-2">{step.title}</h3>
+          <p class="text-ev-text-secondary">{step.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+)}

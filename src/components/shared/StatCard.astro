@@ -1,0 +1,24 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  detail?: string;
+  accent?: 'sprout' | 'gold' | 'coral';
+}
+
+const { value, label, detail, accent = 'sprout' } = Astro.props;
+
+const accentColors = {
+  sprout: 'text-sprout',
+  gold: 'text-gold',
+  coral: 'text-coral',
+};
+---
+
+<div class="text-center p-6 rounded-lg bg-ev-primary border border-ev-default" data-reveal>
+  <div class:list={['text-3xl md:text-4xl font-bold mb-2', accentColors[accent]]}>
+    {value}
+  </div>
+  <div class="text-ev-text font-medium mb-1">{label}</div>
+  {detail && <div class="text-ev-text-muted text-sm">{detail}</div>}
+</div>

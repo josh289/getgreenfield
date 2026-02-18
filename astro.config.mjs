@@ -2,14 +2,25 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
+import node from '@astrojs/node';
 
 export default defineConfig({
+  site: 'https://greenfield-labs.com',
+  output: 'server',
+  adapter: node({ mode: 'standalone' }),
+  vite: {
+    server: {
+      allowedHosts: ['pop-os.tailb95a94.ts.net'],
+    },
+  },
   integrations: [
     react(),
     tailwind(),
+    sitemap(),
     starlight({
-      title: 'Greenfield Platform',
-      description: 'Framework built for AI. Agents trained to build on it. Ship in days, not months.',
+      title: 'Greenfield Labs Docs',
+      description: 'Documentation for Greenfield Labs software manufacturing services.',
       logo: {
         src: './src/assets/greenfield-logo.png',
         replacesTitle: true,
@@ -21,7 +32,7 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/banyanai/banyan-core',
+          href: 'https://github.com/greenfield-labs',
         },
       ],
       defaultLocale: 'root',

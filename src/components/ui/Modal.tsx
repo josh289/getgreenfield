@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -8,18 +8,93 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previouslyFocusedElement = useRef<HTMLElement | null>(null);
+
+  // Capture the element that had focus before the modal opened,
+  // and restore it when the modal closes.
+  useEffect(() => {
+    if (isOpen) {
+      previouslyFocusedElement.current = document.activeElement as HTMLElement;
+    } else if (previouslyFocusedElement.current) {
+      previouslyFocusedElement.current.focus();
+      previouslyFocusedElement.current = null;
+    }
+  }, [isOpen]);
+
+  // Auto-focus the close button when the modal opens.
+  useEffect(() => {
+    if (isOpen && closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, [isOpen]);
+
+  // Trap Tab / Shift+Tab focus within the modal and handle Escape to close.
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
+
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          // Shift+Tab: if focus is on the first element, wrap to the last
+          if (document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          // Tab: if focus is on the last element, wrap to the first
+          if (document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
+      }
+    },
+    [onClose],
+  );
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [isOpen, handleKeyDown]);
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative z-50 w-full max-w-lg rounded-lg bg-black border border-gray-400 p-6 shadow-[0_0_40px_rgba(0,217,255,0.2)]">
+      <div className="fixed inset-0 bg-ev-void/80 backdrop-blur-sm" onClick={onClose} />
+      <div
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        className="relative z-50 w-full max-w-lg rounded-lg bg-ev-void border border-ev-default p-6 shadow-[0_0_40px_rgba(80,200,120,0.2)]"
+      >
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-white">{title}</h2>
+          <h2 id="modal-title" className="text-xl font-semibold text-ev-text">{title}</h2>
           <button
+            ref={closeButtonRef}
             onClick={onClose}
-            className="text-[#00d9ff] hover:text-[#00d9ff]/80 transition-all hover:shadow-[0_0_10px_rgba(0,217,255,0.3)]"
+            aria-label="Close dialog"
+            className="text-sprout hover:text-sprout/80 transition-all hover:shadow-[0_0_10px_rgba(80,200,120,0.3)]"
           >
             <X size={24} />
           </button>

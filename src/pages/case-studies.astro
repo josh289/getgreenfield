@@ -1,0 +1,21 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseStudiesIntro from '../components/case-studies/CaseStudiesIntro.astro';
+import FeaturedCaseStudy from '../components/case-studies/FeaturedCaseStudy.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+import { pageSEO } from '../data/seo';
+---
+
+<BaseLayout title={pageSEO['case-studies'].title} description={pageSEO['case-studies'].description}>
+  <CaseStudiesIntro />
+  <FeaturedCaseStudy />
+
+  <BottomCTA
+    headline="Your project could be next."
+    subtext="Tell us what you are building. We will tell you what the results will look like."
+    buttonText="Get Results Like These"
+    buttonHref="/contact"
+  />
+</BaseLayout>

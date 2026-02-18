@@ -1,8 +1,69 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import App from '../components/App.tsx';
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/home/HomeHero.astro';
+import Section from '../components/shared/Section.astro';
+import SectionTitle from '../components/shared/SectionTitle.astro';
+import ProofPoints from '../components/shared/ProofPoints.astro';
+import StepsSection from '../components/shared/StepsSection.astro';
+import TheProblem from '../components/home/TheProblem.astro';
+import CaseStudyPreview from '../components/home/CaseStudyPreview.astro';
+import TwoPaths from '../components/home/TwoPaths.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+import { pageSEO } from '../data/seo';
+import { homeMetrics, homeProofBar } from '../data/proof-points/home';
+import { homeSteps } from '../data/steps/home';
 ---
 
-<Layout>
-  <App client:load />
-</Layout>
+<BaseLayout title={pageSEO.home.title} description={pageSEO.home.description}>
+  <HomeHero />
+
+  <!-- Social Proof Bar -->
+  <Section background="primary" padding="sm">
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      {homeProofBar.map((item, i) => (
+        <div class="flex flex-col items-center" data-reveal data-delay={String((i + 1) * 100)}>
+          <span class="text-2xl md:text-3xl font-bold text-sprout">{item.value}</span>
+          <span class="text-ev-text-muted text-sm mt-1">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <TheProblem />
+
+  <!-- How It Works -->
+  <Section id="how-it-works">
+    <SectionTitle
+      title="Three steps. Production-ready software."
+      align="center"
+    />
+    <StepsSection steps={homeSteps} layout="horizontal" />
+    <div class="text-center mt-8" data-reveal>
+      <a href="/how-it-works" class="text-sprout font-medium hover:underline transition-colors">
+        Learn more about our process →
+      </a>
+    </div>
+  </Section>
+
+  <!-- Proof Points -->
+  <Section background="primary">
+    <SectionTitle
+      title="No tradeoffs."
+      align="center"
+    />
+    <ProofPoints metrics={homeMetrics} columns={4} />
+  </Section>
+
+  <CaseStudyPreview />
+
+  <TwoPaths />
+
+  <BottomCTA
+    headline="Ready to build?"
+    subtext="Tell us what you have. We will tell you exactly what production looks like — scope, timeline, and cost."
+    buttonText="Start Your Project"
+    buttonHref="/contact"
+  />
+</BaseLayout>

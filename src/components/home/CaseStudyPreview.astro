@@ -1,0 +1,25 @@
+---
+import Section from '../shared/Section.astro';
+import SectionTitle from '../shared/SectionTitle.astro';
+---
+
+<Section background="primary">
+  <SectionTitle
+    eyebrow="Case Study"
+    title="Proof, not promises."
+    align="center"
+  />
+  <div class="max-w-3xl mx-auto" data-reveal>
+    <div class="rounded-lg bg-ev-secondary/50 border border-ev-default p-8">
+      <h3 class="text-2xl md:text-3xl font-bold text-ev-text mb-4">
+        13 microservices. 4 months. One developer.
+      </h3>
+      <p class="text-ev-text-secondary leading-relaxed mb-6">
+        We took an early-stage platform from prototype to production: 13 services, 385 handlers, 469 tests, full distributed tracing, two-layer authorization on every endpoint. The architecture was designed to scale from day one.
+      </p>
+      <a href="/case-studies" class="text-sprout font-medium hover:underline transition-colors">
+        Read the full case study →
+      </a>
+    </div>
+  </div>
+</Section>

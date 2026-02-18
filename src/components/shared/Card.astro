@@ -1,0 +1,28 @@
+---
+interface Props {
+  variant?: 'default' | 'glass';
+  hover?: boolean;
+  accent?: 'sprout' | 'gold' | 'coral';
+  class?: string;
+}
+
+const { variant = 'default', hover = true, accent, class: className = '' } = Astro.props;
+
+const accentBorder = {
+  sprout: 'border-t-2 border-t-sprout',
+  gold: 'border-t-2 border-t-gold',
+  coral: 'border-t-2 border-t-coral',
+};
+---
+
+<div
+  class:list={[
+    'rounded-lg p-6 border border-ev-default',
+    variant === 'glass' ? 'bg-ev-primary/50 backdrop-blur-sm' : 'bg-ev-primary',
+    hover && 'hover:border-ev-strong hover:shadow-lg transition-all duration-300',
+    accent && accentBorder[accent],
+    className,
+  ]}
+>
+  <slot />
+</div>

@@ -1,0 +1,32 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvergreenHero from '../components/evergreen/EvergreenHero.astro';
+import EvergreenVision from '../components/evergreen/EvergreenVision.astro';
+import EvergreenCapabilities from '../components/evergreen/EvergreenCapabilities.astro';
+import Section from '../components/shared/Section.astro';
+import EarlyAccessForm from '../components/ui/EarlyAccessForm.tsx';
+import { pageSEO } from '../data/seo';
+---
+
+<BaseLayout title={pageSEO.evergreen.title} description={pageSEO.evergreen.description}>
+  <EvergreenHero />
+  <EvergreenVision />
+  <EvergreenCapabilities />
+
+  <Section background="primary">
+    <div class="max-w-lg mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-ev-text mb-4" data-reveal>Be first on the production floor.</h2>
+      <p class="text-ev-text-secondary mb-8" data-reveal data-delay="100">
+        Evergreen is in active development. We are selecting early access partners who want to operate the assembly line themselves. If that sounds like your team, leave your email and we will be in touch.
+      </p>
+      <div class="text-left" data-reveal data-delay="200">
+        <EarlyAccessForm client:visible />
+      </div>
+      <p class="text-ev-text-muted text-sm mt-6" data-reveal data-delay="300">
+        Not ready to wait? We build production services now. <a href="/contact" class="text-sprout hover:underline">Talk to us about a managed engagement.</a>
+      </p>
+    </div>
+  </Section>
+</BaseLayout>

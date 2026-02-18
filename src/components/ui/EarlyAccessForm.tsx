@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { toast } from 'react-hot-toast';
 
 interface FormData {
   email: string;
@@ -11,6 +10,8 @@ interface FormData {
 
 const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState<FormData>({
     email: '',
     name: '',
@@ -22,61 +23,35 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSuccessMessage('');
+    setErrorMessage('');
 
     try {
-      // For Astro, client-side env vars need PUBLIC_ prefix
-      const apiKey = import.meta.env.PUBLIC_AIRTABLE_API_KEY;
-
-      // Log for debugging (remove in production)
-      console.log('Environment check:', {
-        hasApiKey: !!apiKey,
-        envKeys: Object.keys(import.meta.env)
-      });
-
-      if (!apiKey) {
-        throw new Error('Airtable API key is missing. Please set PUBLIC_AIRTABLE_API_KEY in Railway.');
-      }
-
-      const response = await fetch(`https://api.airtable.com/v0/app1Ls9AR0d1AeOo5/Table%201`, {
+      const response = await fetch('/api/early-access', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          records: [{
-            fields: {
-              'Full Name': formData.name,
-              'Email': formData.email,
-              'Company': formData.company || '',
-              'Team Size': formData.teamSize || '',
-              'Current AI Use': formData.currentAIUse || ''
-            }
-          }]
-        })
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || '',
+          teamSize: formData.teamSize || '',
+          currentAIUse: formData.currentAIUse || '',
+        }),
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        let errorData;
-        try {
-          errorData = JSON.parse(errorText);
-        } catch {
-          errorData = { error: { message: errorText } };
-        }
-        console.error('Airtable API Error:', {
-          status: response.status,
-          statusText: response.statusText,
-          error: errorData
-        });
-        throw new Error(errorData.error?.message || `Failed to submit form (Status: ${response.status})`);
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to submit form');
       }
-      
-      toast.success('Welcome to the Greenfield Platform waitlist! We\'ll notify you when early access is available.');
-      onClose?.();
+
+      setSuccessMessage("Welcome to the Greenfield Platform waitlist! We'll notify you when early access is available.");
+      setTimeout(() => {
+        onClose?.();
+      }, 2500);
     } catch (error) {
-      console.error('Form submission error:', error);
-      toast.error(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -84,56 +59,66 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {successMessage && (
+        <div className="p-3 rounded-md bg-sprout/20 border border-sprout/40 text-sprout text-sm">
+          {successMessage}
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="p-3 rounded-md bg-coral/20 border border-coral/40 text-coral text-sm">
+          {errorMessage}
+        </div>
+      )}
+
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-100 mb-1">
+        <label htmlFor="name" className="block text-sm font-medium text-ev-text mb-1">
           Name
         </label>
         <input
           type="text"
           id="name"
           required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
           value={formData.name}
           onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-100 mb-1">
+        <label htmlFor="email" className="block text-sm font-medium text-ev-text mb-1">
           Email
         </label>
         <input
           type="email"
           id="email"
           required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
           value={formData.email}
           onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
         />
       </div>
 
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-gray-100 mb-1">
+        <label htmlFor="company" className="block text-sm font-medium text-ev-text mb-1">
           Company
         </label>
         <input
           type="text"
           id="company"
-          required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
           value={formData.company}
           onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
         />
       </div>
 
       <div>
-        <label htmlFor="teamSize" className="block text-sm font-medium text-gray-100 mb-1">
+        <label htmlFor="teamSize" className="block text-sm font-medium text-ev-text mb-1">
           Team Size
         </label>
         <select
           id="teamSize"
-          required
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all"
+          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
           value={formData.teamSize}
           onChange={(e) => setFormData(prev => ({ ...prev, teamSize: e.target.value }))}
         >
@@ -146,15 +131,14 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
       </div>
 
       <div>
-        <label htmlFor="currentAIUse" className="block text-sm font-medium text-gray-100 mb-1">
+        <label htmlFor="currentAIUse" className="block text-sm font-medium text-ev-text mb-1">
           Current AI Use
         </label>
         <textarea
           id="currentAIUse"
-          required
           rows={3}
           placeholder="Tell us how your team currently uses AI tools..."
-          className="w-full px-3 py-2 bg-gray-900 border border-gray-400 rounded-md text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00d9ff] focus:border-[#00d9ff] transition-all resize-none"
+          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text placeholder:text-ev-text-muted focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all resize-none"
           value={formData.currentAIUse}
           onChange={(e) => setFormData(prev => ({ ...prev, currentAIUse: e.target.value }))}
         />
@@ -163,7 +147,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#00d9ff] hover:bg-[#00d9ff]/90 text-black px-4 py-3 rounded-md font-semibold transition-all hover:shadow-[0_0_30px_rgba(0,217,255,0.5)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+        className="w-full bg-sprout hover:bg-sprout/90 text-ev-text-inverse px-4 py-3 rounded-md font-semibold transition-all hover:shadow-[0_0_30px_rgba(80,200,120,0.5)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
       >
         {isSubmitting ? 'Joining Waitlist...' : 'Join the Waitlist'}
       </button>

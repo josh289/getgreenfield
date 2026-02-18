@@ -15,12 +15,12 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-md font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#50c878]/50 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:pointer-events-none';
+  const baseStyles = 'inline-flex items-center justify-center rounded-md font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:ring-offset-2 focus:ring-offset-ev-void disabled:opacity-50 disabled:pointer-events-none';
 
   const variantStyles = {
-    primary: 'bg-[#50c878] text-black hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_20px_rgba(80,200,120,0.3)] hover:shadow-[0_0_30px_rgba(80,200,120,0.5)]',
-    secondary: 'bg-transparent border-2 border-[#50c878] text-white hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_20px_rgba(80,200,120,0.2)]',
-    outline: 'bg-transparent border-2 border-[#50c878] text-white hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_20px_rgba(80,200,120,0.2)]'
+    primary: 'bg-sprout text-ev-text-inverse hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_20px_rgba(80,200,120,0.3)] hover:shadow-[0_0_30px_rgba(80,200,120,0.5)]',
+    secondary: 'bg-transparent border-2 border-sprout text-ev-text hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_20px_rgba(80,200,120,0.2)]',
+    outline: 'bg-transparent border-2 border-sprout text-ev-text hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_20px_rgba(80,200,120,0.2)]'
   };
 
   const sizeStyles = {

@@ -1,0 +1,29 @@
+---
+interface Deliverable {
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+interface Props {
+  deliverables: Deliverable[];
+}
+
+const { deliverables } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {deliverables.map((item, i) => (
+    <div class="flex gap-4 p-5 rounded-lg bg-ev-primary border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
+      <div class="w-8 h-8 rounded-md bg-sprout/10 border border-sprout/30 flex items-center justify-center text-sprout shrink-0">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <div>
+        <h4 class="font-semibold text-ev-text mb-1">{item.title}</h4>
+        <p class="text-ev-text-secondary text-sm">{item.description}</p>
+      </div>
+    </div>
+  ))}
+</div>

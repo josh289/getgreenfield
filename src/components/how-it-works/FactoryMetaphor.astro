@@ -1,0 +1,41 @@
+---
+import Section from '../shared/Section.astro';
+import SectionTitle from '../shared/SectionTitle.astro';
+---
+
+<Section id="factory" background="primary">
+  <SectionTitle
+    title="Why we call it manufacturing."
+  />
+  <div class="max-w-3xl space-y-4 mb-12" data-reveal data-delay="100">
+    <p class="text-ev-text-secondary leading-relaxed">
+      Traditional software development is artisanal. Every project is treated as unique. Every team reinvents the architecture. Quality depends on whoever happens to be writing the code that week. Timelines are estimates that everyone knows are fiction.
+    </p>
+    <p class="text-ev-text-secondary leading-relaxed">
+      Manufacturing is different. Manufacturing has blueprints. Assembly lines. Quality gates. Standardized components. Predictable throughput.
+    </p>
+    <p class="text-ev-text-secondary leading-relaxed">
+      We apply the manufacturing model to software. The architecture patterns are standardized. The quality gates are automated. The assembly line is deterministic. The output is predictable: production-grade microservices, every time.
+    </p>
+  </div>
+
+  <h3 class="text-xl font-semibold text-ev-text mb-6" data-reveal data-delay="200">Three layers make this work:</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+    <div class="p-6 rounded-lg bg-ev-secondary/50 border border-sprout/20 border-t-2 border-t-sprout" data-reveal data-delay="100">
+      <div class="text-sprout font-mono text-sm mb-3">The Factory</div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Greenfield Labs</h3>
+      <p class="text-ev-text-secondary text-sm">The company. The engineering team that runs the operation and takes responsibility for the output.</p>
+    </div>
+    <div class="p-6 rounded-lg bg-ev-secondary/50 border border-gold/20 border-t-2 border-t-gold" data-reveal data-delay="200">
+      <div class="text-gold font-mono text-sm mb-3">The Production Floor</div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Greenfield</h3>
+      <p class="text-ev-text-secondary text-sm">The platform and framework that standardizes how microservices are built — typed contracts, CQRS, event sourcing, two-layer authorization, zero infrastructure code. Every service built on Greenfield follows the same proven patterns.</p>
+    </div>
+    <div class="p-6 rounded-lg bg-ev-secondary/50 border border-violet/20 border-t-2 border-t-violet" data-reveal data-delay="300">
+      <div class="text-violet font-mono text-sm mb-3">The Assembly Line</div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Evergreen</h3>
+      <p class="text-ev-text-secondary text-sm">The system that transforms blueprints into verified production services — AI-assisted code generation combined with deterministic quality enforcement. Automated test generation, contract validation, authorization scaffolding, and coverage verification.</p>
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,26 @@
+---
+export const prerender = true;
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HowItWorksHero from '../components/how-it-works/HowItWorksHero.astro';
+import FactoryMetaphor from '../components/how-it-works/FactoryMetaphor.astro';
+import FourPhases from '../components/how-it-works/FourPhases.astro';
+import PipelineDiagram from '../components/how-it-works/PipelineDiagram.astro';
+import TechnicalDepth from '../components/how-it-works/TechnicalDepth.astro';
+import BottomCTA from '../components/shared/BottomCTA.astro';
+import { pageSEO } from '../data/seo';
+---
+
+<BaseLayout title={pageSEO['how-it-works'].title} description={pageSEO['how-it-works'].description}>
+  <HowItWorksHero />
+  <FactoryMetaphor />
+  <FourPhases />
+  <PipelineDiagram />
+  <TechnicalDepth />
+  <BottomCTA
+    headline="Seen enough? Let us talk about your project."
+    subtext="We will assess your codebase and give you a blueprint — scope, timeline, and cost. No commitment required."
+    buttonText="Start Your Project"
+    buttonHref="/contact"
+  />
+</BaseLayout>

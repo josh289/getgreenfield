@@ -1,0 +1,28 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  headline?: string;
+  subtext?: string;
+  buttonText?: string;
+  buttonHref?: string;
+}
+
+const {
+  headline = 'Ready to build something great?',
+  subtext = 'Let\'s talk about your project and find the right path forward.',
+  buttonText = 'Get Started',
+  buttonHref = '/contact',
+} = Astro.props;
+---
+
+<section class="py-24 md:py-32 bg-ev-void relative overflow-hidden">
+  <div class="absolute inset-0 radial-glow-cyan opacity-30" />
+  <div class="container mx-auto px-4 md:px-6 text-center relative z-10">
+    <h2 class="text-3xl md:text-5xl font-bold text-ev-text mb-6" data-reveal>{headline}</h2>
+    <p class="text-lg text-ev-text-secondary max-w-2xl mx-auto mb-10" data-reveal data-delay="100">{subtext}</p>
+    <div data-reveal data-delay="200">
+      <Button variant="primary" size="lg" href={buttonHref}>{buttonText}</Button>
+    </div>
+  </div>
+</section>

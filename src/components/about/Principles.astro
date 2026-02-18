@@ -1,0 +1,24 @@
+---
+import Section from '../shared/Section.astro';
+import SectionTitle from '../shared/SectionTitle.astro';
+
+const principles = [
+  { title: 'Blueprints Before Code', description: 'Nothing gets built without an approved architecture blueprint. The blueprint defines every service boundary, every typed contract, every authorization rule, and every integration point. You review it. You approve it. Then we build against it.' },
+  { title: 'Quality Is a Gate, Not a Goal', description: '90%+ test coverage is not a target we aspire to. It is a gate that every service must pass before it ships. Strict TypeScript compilation, contract validation, authorization verification, and tracing validation are the same. If the gate is red, the service does not ship.' },
+  { title: 'Own the Output', description: 'You own everything we build. Source code, documentation, configurations, test suites. No retained licenses. No proprietary dependencies. No lock-in. The goal is your independence, not your dependence.' },
+  { title: 'No Infrastructure in Business Logic', description: 'Services contain only domain logic. Messaging, persistence, caching, tracing, and monitoring are handled by the platform. This is not a preference. It is an architecture rule enforced at every level.' },
+  { title: 'Measure Everything. Claim Nothing.', description: 'We do not say "fast." We say "3 weeks." We do not say "high quality." We say "90%+ coverage enforced on every service." We do not say "affordable." We show you the scope and the cost upfront. Numbers over adjectives. Always.' },
+];
+---
+
+<Section background="primary">
+  <SectionTitle eyebrow="Principles" title="How we work." align="center" />
+  <div class="max-w-3xl mx-auto space-y-6">
+    {principles.map((principle, i) => (
+      <div class="p-6 rounded-lg bg-ev-void border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
+        <h3 class="text-lg font-semibold text-ev-text mb-2">{principle.title}</h3>
+        <p class="text-ev-text-secondary text-sm">{principle.description}</p>
+      </div>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,111 @@
+---
+import Section from '../shared/Section.astro';
+import SectionTitle from '../shared/SectionTitle.astro';
+---
+
+<Section id="four-phases">
+  <SectionTitle
+    title="Four phases. No mystery."
+  />
+  <div class="max-w-3xl space-y-8">
+    <!-- Phase 1 -->
+    <div class="rounded-lg border border-ev-default bg-ev-primary p-6 md:p-8" data-reveal data-delay="100">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-sprout font-mono text-sm font-bold">Phase 1</span>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/10 text-sprout border border-sprout/20">Week 1</span>
+      </div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Discovery</h3>
+      <p class="text-ev-text-secondary leading-relaxed mb-4">
+        We start by understanding what you have and what production demands. This phase produces the blueprint that everything else is built against.
+      </p>
+      <div class="mb-4">
+        <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
+        <ul class="space-y-1 text-ev-text-secondary text-sm">
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Codebase assessment and domain analysis</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Service boundary identification</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Domain model decomposition</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Typed service contract definitions</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Architecture blueprint production</li>
+        </ul>
+      </div>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> A complete architecture blueprint with service boundaries, typed contracts, domain models, and a deployment topology diagram. You review it. You approve it. Nothing is built until we agree.</p>
+      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> 4-6 hours with a domain expert.</p>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="rounded-lg border border-ev-default bg-ev-primary p-6 md:p-8" data-reveal data-delay="200">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-sprout font-mono text-sm font-bold">Phase 2</span>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/10 text-sprout border border-sprout/20">End of Week 1 into Week 2</span>
+      </div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Architecture</h3>
+      <p class="text-ev-text-secondary leading-relaxed mb-4">
+        The approved blueprint is translated into executable architecture scaffolding. Service skeletons, contract definitions, and infrastructure configuration are generated from the blueprint.
+      </p>
+      <div class="mb-4">
+        <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
+        <ul class="space-y-1 text-ev-text-secondary text-sm">
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Service project generation from blueprint</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Contract system scaffolding</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Authorization layer configuration</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Event sourcing schema definitions</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Infrastructure configuration (messaging, persistence, caching, tracing)</li>
+        </ul>
+      </div>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Compilable service skeletons with typed contracts, authorization scaffolding, and infrastructure configuration. The architecture is real and verifiable — not a document, but code that compiles and passes type checks.</p>
+      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Blueprint approval review (1-2 hours).</p>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="rounded-lg border border-ev-default bg-ev-primary p-6 md:p-8" data-reveal data-delay="300">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-sprout font-mono text-sm font-bold">Phase 3</span>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/10 text-sprout border border-sprout/20">Weeks 2-3</span>
+      </div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Build</h3>
+      <p class="text-ev-text-secondary leading-relaxed mb-4">
+        Production business logic is implemented against the architecture scaffolding. Every handler, every event, every query — built and tested.
+      </p>
+      <div class="mb-4">
+        <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
+        <ul class="space-y-1 text-ev-text-secondary text-sm">
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Command handler implementation</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Query handler implementation</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Event handler implementation</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Read model projections</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Integration between services</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Test suite development (unit, integration, contract)</li>
+        </ul>
+      </div>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Functioning production microservices with complete business logic. Every handler implemented, every service communicating through typed contracts, every test passing.</p>
+      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Progress visibility throughout. No blockers waiting on you.</p>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="rounded-lg border border-ev-default bg-ev-primary p-6 md:p-8" data-reveal data-delay="400">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-sprout font-mono text-sm font-bold">Phase 4</span>
+        <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/10 text-sprout border border-sprout/20">Weeks 3-4</span>
+      </div>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Quality and Delivery</h3>
+      <p class="text-ev-text-secondary leading-relaxed mb-4">
+        Every service passes through automated quality gates. Nothing ships until every gate is green.
+      </p>
+      <div class="mb-4">
+        <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
+        <ul class="space-y-1 text-ev-text-secondary text-sm">
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>90%+ test coverage verification (branches, functions, lines, statements)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Strict TypeScript compilation (no errors, no warnings)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Contract validation (all service interfaces verified)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Authorization verification (two-layer auth on every handler)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Distributed tracing verification (every request traceable end-to-end)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Integration testing across service boundaries</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Performance validation</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Documentation generation</li>
+        </ul>
+      </div>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Production-ready microservices, complete documentation, deployment configurations, and a full system walkthrough. You own everything.</p>
+      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Final review and walkthrough (2-4 hours).</p>
+    </div>
+  </div>
+</Section>

@@ -1,0 +1,122 @@
+---
+import { headerLinks } from '../../data/navigation';
+import logo from '../../assets/greenfield-logo.png';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4">
+  <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+    <a href="/" class="flex items-center">
+      <img
+        src={logo.src}
+        alt="Greenfield Labs"
+        class="h-24 w-auto object-contain transition-all duration-300 header-logo"
+        style="max-width: 500px;"
+      />
+    </a>
+
+    <nav class="hidden md:flex items-center space-x-8">
+      {headerLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-ev-text-secondary hover:text-sprout transition-colors duration-300 font-medium text-sm',
+            { 'text-sprout': currentPath.startsWith(link.href) },
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center rounded-md font-semibold px-6 py-2.5 text-sm bg-sprout text-ev-text-inverse hover:-translate-y-0.5 active:translate-y-0 shadow-[0_0_20px_rgba(80,200,120,0.3)] hover:shadow-[0_0_30px_rgba(80,200,120,0.5)] transition-all duration-300"
+      >
+        Get Started
+      </a>
+    </nav>
+
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-ev-text hover:text-sprout transition-colors duration-300"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg class="h-6 w-6 menu-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg class="h-6 w-6 menu-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-ev-void/98 backdrop-blur-md border-b border-ev-default shadow-2xl">
+    <nav class="container mx-auto px-4 py-6">
+      <ul class="flex flex-col space-y-4">
+        {headerLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'block text-ev-text-secondary hover:text-sprout transition-colors duration-300 py-2 font-medium hover:pl-2',
+                { 'text-sprout': currentPath.startsWith(link.href) },
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li class="pt-4">
+          <a
+            href="/contact"
+            class="block w-full text-center rounded-md font-semibold px-6 py-3 bg-sprout text-ev-text-inverse hover:shadow-[0_0_30px_rgba(80,200,120,0.5)] transition-all duration-300"
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpen = menuBtn?.querySelector('.menu-open');
+  const menuClose = menuBtn?.querySelector('.menu-close');
+
+  // Scroll-based header styling
+  function updateHeader() {
+    if (!header) return;
+    if (window.scrollY > 10) {
+      header.classList.remove('bg-transparent', 'py-4');
+      header.classList.add('bg-ev-void/95', 'backdrop-blur-md', 'py-1', 'border-b', 'border-ev-default');
+    } else {
+      header.classList.add('bg-transparent', 'py-4');
+      header.classList.remove('bg-ev-void/95', 'backdrop-blur-md', 'py-1', 'border-b', 'border-ev-default');
+    }
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+
+  // Mobile menu toggle
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden') === false;
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    menuOpen?.classList.toggle('hidden', isOpen);
+    menuClose?.classList.toggle('hidden', !isOpen);
+  });
+
+  // Close mobile menu on link click
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      menuOpen?.classList.remove('hidden');
+      menuClose?.classList.add('hidden');
+    });
+  });
+</script>
