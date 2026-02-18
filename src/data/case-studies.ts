@@ -16,7 +16,7 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'prototype-to-production',
-    title: 'From prototype to 13 production microservices in 4 months.',
+    title: 'From prototype to 13 production microservices in 15 weeks.',
     client: 'Early-Stage Platform',
     industry: 'Technology',
     service: 'startup',
@@ -28,7 +28,7 @@ export const caseStudies: CaseStudy[] = [
       { metric: '385 handlers', description: 'Command, query, and event handlers' },
       { metric: 'Due diligence ready', description: 'Passed technical review on delivery' },
       { metric: '90%+ coverage', description: 'On every service' },
-      { metric: '4 months', description: 'Single developer timeline' },
+      { metric: '15 weeks', description: 'Single developer timeline' },
       { metric: '75% reduction', description: 'Cost vs. in-house team' },
     ],
     technicalDetails: [
@@ -41,7 +41,7 @@ export const caseStudies: CaseStudy[] = [
       'Docker containerization for every service',
       'Biome for linting and formatting enforcement',
     ],
-    outcome: 'The platform moved from prototype to production-ready architecture in four months. The delivered system included complete documentation, deployment configurations, and architecture walkthroughs. The codebase was designed for the client\'s future engineering hires to read, maintain, and extend from day one.',
+    outcome: 'The platform moved from prototype to production-ready architecture in fifteen weeks. The delivered system included complete documentation, deployment configurations, and architecture walkthroughs. The codebase was designed for the client\'s future engineering hires to read, maintain, and extend from day one.',
     featured: true,
   },
 ];
