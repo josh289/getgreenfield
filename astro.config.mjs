@@ -13,6 +13,9 @@ export default defineConfig({
     server: {
       allowedHosts: ['pop-os.tailb95a94.ts.net'],
     },
+    ssr: {
+      noExternal: ['@fontsource/ibm-plex-sans', '@fontsource-variable/jetbrains-mono'],
+    },
   },
   integrations: [
     react(),
