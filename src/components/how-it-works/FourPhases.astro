@@ -16,20 +16,20 @@ import SectionTitle from '../shared/SectionTitle.astro';
       </div>
       <h3 class="text-xl font-semibold text-ev-text mb-3">Discovery</h3>
       <p class="text-ev-text-secondary leading-relaxed mb-4">
-        We start by understanding what you have and what production demands. This phase produces the blueprint that everything else is built against.
+        We start by mapping your domain. Not your tech stack — your domain. Actors, capabilities, events, service boundaries. A discovery agent runs the elicitation and only asks when it cannot infer the answer.
       </p>
       <div class="mb-4">
         <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
         <ul class="space-y-1 text-ev-text-secondary text-sm">
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Codebase assessment and domain analysis</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Service boundary identification</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Domain model decomposition</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Typed service contract definitions</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Domain mapping: actors, capabilities, events, service boundaries</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Codebase pattern analysis, runs in parallel to discovery</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Ambiguity resolution before architecture begins — edge cases surfaced, not deferred</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Typed service contract drafts</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Architecture blueprint production</li>
         </ul>
       </div>
-      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> A complete architecture blueprint with service boundaries, typed contracts, domain models, and a deployment topology diagram. You review it. You approve it. Nothing is built until we agree.</p>
-      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> 4-6 hours with a domain expert.</p>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> A complete domain model: every actor, capability, event, and service boundary. The agent asks questions when it genuinely cannot infer the answer. Not at every step. When it needs you. You review it. You approve it. Nothing is built until we agree.</p>
+      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> 4-6 hours with a domain expert, asynchronous.</p>
     </div>
 
     <!-- Phase 2 -->
@@ -38,22 +38,22 @@ import SectionTitle from '../shared/SectionTitle.astro';
         <span class="text-sprout font-mono text-sm font-bold">Phase 2</span>
         <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/5 text-sprout border border-sprout/10">End of Week 1 into Week 2</span>
       </div>
-      <h3 class="text-xl font-semibold text-ev-text mb-3">Architecture</h3>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Architecture and Specification</h3>
       <p class="text-ev-text-secondary leading-relaxed mb-4">
-        The approved blueprint is translated into executable architecture scaffolding. Service skeletons, contract definitions, and infrastructure configuration are generated from the blueprint.
+        The blueprint gets built before a line of implementation code is written. Domain models become context maps and interaction diagrams. Every significant technical decision gets an Architecture Decision Record — not a meeting note, a documented trade-off. Workflows are derived from the event chains in the architecture, not drawn by hand. Feature scenarios are generated for every handler: happy path, validation failures, authorization failures, edge cases. The assembly line does not start until the spec is complete and you have approved it.
       </p>
       <div class="mb-4">
         <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
         <ul class="space-y-1 text-ev-text-secondary text-sm">
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Service project generation from blueprint</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Contract system scaffolding</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Authorization layer configuration</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Event sourcing schema definitions</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Infrastructure configuration (messaging, persistence, caching, tracing)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>DDD context maps, service interaction diagrams, service internals documentation</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Architecture Decision Records for every significant technical decision — trade-offs documented, not discussed</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>BPMN workflow definitions derived from event chains, not drawn by hand</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Feature files for every handler: happy path, validation failures, authorization failures, edge cases</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Service specifications with exact handler code templates — the source of truth for everything built in Phase 3</li>
         </ul>
       </div>
-      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Compilable service skeletons with typed contracts, authorization scaffolding, and infrastructure configuration. The architecture is real and verifiable. Not a document, but code that compiles and passes type checks.</p>
-      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Blueprint approval review (1-2 hours).</p>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Context maps. Interaction diagrams. Architecture Decision Records for every significant choice. Workflow definitions derived from your event model. Feature scenarios covering every handler. Service specs with exact implementation templates. The entire system, fully defined, before a single line of business logic is written. You review it. You approve it. The assembly line does not start until you do.</p>
+      <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Architecture review (1-2 hours). You approve before implementation proceeds.</p>
     </div>
 
     <!-- Phase 3 -->
@@ -62,22 +62,23 @@ import SectionTitle from '../shared/SectionTitle.astro';
         <span class="text-sprout font-mono text-sm font-bold">Phase 3</span>
         <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/5 text-sprout border border-sprout/10">Weeks 2-3</span>
       </div>
-      <h3 class="text-xl font-semibold text-ev-text mb-3">Build</h3>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Implementation</h3>
       <p class="text-ev-text-secondary leading-relaxed mb-4">
-        Production business logic is implemented against the architecture scaffolding. Every handler, every event, every query, built and tested.
+        The spec becomes code. Every handler is implemented against the exact templates defined in Phase 2. Not inferred. Not improvised. Implemented to spec. Before quality gates run, a pattern validator checks every handler against the canonical templates using AST analysis. Wrong decorator: fail. Wrong base class: fail. Wrong signature: fail.
       </p>
       <div class="mb-4">
         <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
         <ul class="space-y-1 text-ev-text-secondary text-sm">
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Pattern validation: every handler checked against canonical templates by AST analysis before quality gates run</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Command handler implementation</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Query handler implementation</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Event handler implementation</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Read model projections</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Integration between services</li>
-          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Test suite development (unit, integration, contract)</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Tests implemented against the feature scenarios from Phase 2</li>
         </ul>
       </div>
-      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Functioning production microservices with complete business logic. Every handler implemented, every service communicating through typed contracts, every test passing.</p>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Functioning production microservices built against the approved spec. Every handler at the canonical template. Every feature scenario tested. Services communicating through typed contracts. Directly into the quality loop — no handoff, no review gate.</p>
       <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Progress visibility throughout. No blockers waiting on you.</p>
     </div>
 
@@ -87,13 +88,15 @@ import SectionTitle from '../shared/SectionTitle.astro';
         <span class="text-sprout font-mono text-sm font-bold">Phase 4</span>
         <span class="px-2 py-0.5 text-xs rounded-full bg-sprout/5 text-sprout border border-sprout/10">Weeks 3-4</span>
       </div>
-      <h3 class="text-xl font-semibold text-ev-text mb-3">Quality and Delivery</h3>
+      <h3 class="text-xl font-semibold text-ev-text mb-3">Verified Delivery</h3>
       <p class="text-ev-text-secondary leading-relaxed mb-4">
-        Every service passes through automated quality gates. Nothing ships until every gate is green.
+        Quality is not a checklist you run once at the end. It is a loop. Gates run, failures get fixed, gates run again — automatically, up to ten iterations. When the agent claims all gates pass, the system reruns them independently. The claim does not ship the service. The verified result does.
       </p>
       <div class="mb-4">
         <h4 class="text-sm font-semibold text-ev-text uppercase tracking-wider mb-2">What happens</h4>
         <ul class="space-y-1 text-ev-text-secondary text-sm">
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Spec compliance: every handler validated against the service specification from Phase 2</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Automated quality loop: fix, rerun, repeat — up to ten iterations</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>90%+ test coverage verification (branches, functions, lines, statements)</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Strict TypeScript compilation (no errors, no warnings)</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Contract validation (all service interfaces verified)</li>
@@ -102,9 +105,10 @@ import SectionTitle from '../shared/SectionTitle.astro';
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Integration testing across service boundaries</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Performance validation</li>
           <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Documentation generation</li>
+          <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sprout mt-1.5 shrink-0"></span>Trust But Verify: when all gates are claimed passing, the system runs them again — exit is blocked until the result is verified, not self-reported</li>
         </ul>
       </div>
-      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Production-ready microservices, complete documentation, deployment configurations, and a full system walkthrough. You own everything.</p>
+      <p class="text-ev-text-secondary text-sm mb-2"><strong class="text-ev-text">What you receive:</strong> Services that have passed a verified quality loop, not a self-reported one. Production-ready microservices, complete documentation, deployment configurations, and a full system walkthrough. You own everything.</p>
       <p class="text-ev-text-muted text-sm"><strong>Your involvement:</strong> Final review and walkthrough (2-4 hours).</p>
     </div>
   </div>

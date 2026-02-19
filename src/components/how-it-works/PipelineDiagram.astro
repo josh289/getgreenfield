@@ -3,6 +3,7 @@ import Section from '../shared/Section.astro';
 import SectionTitle from '../shared/SectionTitle.astro';
 
 const gates = [
+  { name: 'Spec Compliance', description: 'Every handler present. Every contract matched. No deviations from the approved spec.' },
   { name: 'TypeScript Strict Compilation', description: 'No errors. No warnings. No \'any\' types.' },
   { name: 'Contract Validation', description: 'All typed service contracts verified at compile time.' },
   { name: 'Two-Layer Auth Verification', description: 'Permission checks at gateway. Policy checks in handlers.' },
@@ -10,6 +11,7 @@ const gates = [
   { name: 'Coverage Gates', description: '90%+ branches, functions, lines, and statements. Enforced.' },
   { name: 'Tracing Verification', description: 'Every request path traced end-to-end through OpenTelemetry.' },
   { name: 'Lint and Format', description: 'Biome enforcement. Consistent code style across all services.' },
+  { name: 'Trust But Verify', description: 'When the agent says all gates pass, the system runs them again. The session cannot exit until the result is verified. Not claimed. Verified.' },
 ];
 ---
 
@@ -19,7 +21,7 @@ const gates = [
   />
   <div class="max-w-3xl">
     <p class="text-ev-text-secondary leading-relaxed mb-8" data-reveal>
-      Every service passes through the same automated verification pipeline before it ships. These are not optional checks. They are gates. If a service does not pass, it does not ship.
+      Every service passes through the same automated verification pipeline before it ships. These are not optional checks. They are gates. If a service does not pass, it does not ship. The pipeline runs inside a loop. It does not stop when the agent says it is done. It stops when the gates actually pass.
     </p>
     <div class="relative">
       <!-- Source -->
@@ -56,7 +58,7 @@ const gates = [
       </div>
     </div>
     <p class="text-ev-text font-medium mt-8 text-center" data-reveal>
-      No exceptions. No waivers. No "we will fix it later." If the gate is red, the service does not ship.
+      No exceptions. No waivers. No self-reported completion. If the gate is red, the service does not ship.
     </p>
   </div>
 </Section>

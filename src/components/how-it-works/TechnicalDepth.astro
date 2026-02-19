@@ -8,6 +8,14 @@ const topics = [
     content: 'Commands and queries are separated at the architecture level. Every state change is an immutable event stored in PostgreSQL. You get a complete audit trail, temporal queries, and the ability to rebuild any projection from the event stream. Read models are eventually consistent, projected from the event store through dedicated event handlers.',
   },
   {
+    title: 'Multi-Agent Coordination',
+    content: 'Each phase of the workflow runs a specialized agent. Code explorers analyze the existing codebase in parallel before architecture begins. The architecture planner builds DDD artifacts and records every significant decision. A workflow synthesizer derives process definitions from event chains — not from documentation written separately. Feature and spec agents run in parallel to produce everything the implementation agent needs. The implementation agent reads the spec. It does not improvise. A validator checks every handler using AST analysis before quality gates run. Each agent has a defined scope. None of them freelance outside it.',
+  },
+  {
+    title: 'Spec-Driven Development',
+    content: 'No handler gets written until the spec says exactly what it should look like. Not pseudocode. Not a description. A TypeScript template: the decorator, the base class, the method signature, the import path. The implementation agent reads the spec and builds to it. When it is done, a pattern validator checks every handler using AST analysis. Wrong decorator. Wrong base class. Wrong signature. Fail. Fix it. Run again.',
+  },
+  {
     title: 'Type-Safe Contract System',
     content: 'Services declare typed input/output contracts using TypeScript const types. Contracts are validated at compile time, not runtime. No magic strings. When a service changes its contract, every consumer knows at compile time. Validation decorators define runtime schemas without build-time code generation.',
   },
@@ -22,6 +30,10 @@ const topics = [
   {
     title: 'Observability Built In',
     content: 'OpenTelemetry instrumentation on every service. Jaeger for distributed tracing. Prometheus for metrics collection. Grafana for dashboards. Every request is traceable across service boundaries. Every event is logged. Every error has context.',
+  },
+  {
+    title: 'BPMN Workflow Synthesis',
+    content: 'Workflow diagrams are derived from the architecture, not drawn alongside it. After the architecture phase produces interaction maps and event chains, a workflow synthesizer reads those artifacts and generates BPMN definitions. If the event chain changes, the workflow definition changes. Documentation cannot drift from the architecture because it is generated from the architecture.',
   },
 ];
 ---
