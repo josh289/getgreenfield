@@ -18,10 +18,10 @@ const { phases } = Astro.props;
   {phases.map((phase, i) => (
     <div class="relative flex gap-6" data-reveal data-delay={String((i + 1) * 100)}>
       <div class="flex flex-col items-center">
-        <div class="w-12 h-12 rounded-full bg-sprout/10 border border-sprout/30 flex items-center justify-center text-sprout font-bold text-sm shrink-0">
+        <div class="w-12 h-12 rounded-full bg-sprout/5 border border-sprout/20 flex items-center justify-center text-sprout font-bold text-sm shrink-0">
           {phase.phase.replace('Phase ', '')}
         </div>
-        {i < phases.length - 1 && <div class="w-px flex-1 bg-sprout/20 mt-2" />}
+        {i < phases.length - 1 && <div class="w-px flex-1 bg-sprout/5 mt-2" />}
       </div>
       <div class="pb-8 flex-1">
         <div class="flex flex-wrap items-baseline gap-3 mb-2">

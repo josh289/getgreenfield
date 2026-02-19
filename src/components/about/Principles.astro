@@ -15,7 +15,7 @@ const principles = [
   <SectionTitle eyebrow="Principles" title="How we work." align="center" />
   <div class="max-w-3xl mx-auto space-y-6">
     {principles.map((principle, i) => (
-      <div class="p-6 rounded-lg bg-ev-void border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
+      <div class="p-6 rounded-xl bg-ev-void border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
         <h3 class="text-lg font-semibold text-ev-text mb-2">{principle.title}</h3>
         <p class="text-ev-text-secondary text-sm">{principle.description}</p>
       </div>

@@ -1,0 +1,35 @@
+---
+import { testimonials } from '../../data/social-proof';
+---
+
+<section class="py-20 bg-ev-secondary">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-ev-text mb-4">What Our Clients Say</h2>
+      <p class="text-ev-text-secondary max-w-2xl mx-auto">
+        Teams that built with us and now build without us.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map((t) => (
+        <div class="flex flex-col bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <svg class="w-8 h-8 text-sprout/30 mb-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.998 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.986z" />
+          </svg>
+          <blockquote class="text-ev-text-secondary leading-relaxed mb-6 flex-1">
+            "{t.quote}"
+          </blockquote>
+          <div class="flex items-center gap-3 pt-4 border-t border-ev-subtle">
+            <div class="w-10 h-10 rounded-full bg-sprout/5 flex items-center justify-center flex-shrink-0">
+              <span class="text-sm font-semibold text-sprout">{t.initials}</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-ev-text">{t.name}</p>
+              <p class="text-xs text-ev-text-muted">{t.title}, {t.company}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -8,10 +8,30 @@ interface FormData {
   currentAIUse?: string;
 }
 
+interface FieldErrors {
+  name?: string;
+  email?: string;
+}
+
+const validateField = (field: keyof FieldErrors, value: string): string | undefined => {
+  switch (field) {
+    case 'name':
+      return value.trim() ? undefined : 'Name is required.';
+    case 'email':
+      if (!value.trim()) return 'Email is required.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address.';
+      return undefined;
+    default:
+      return undefined;
+  }
+};
+
 const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [formData, setFormData] = useState<FormData>({
     email: '',
     name: '',
@@ -19,6 +39,12 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
     teamSize: '',
     currentAIUse: ''
   });
+
+  const handleBlur = (field: keyof FieldErrors) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+    const error = validateField(field, formData[field]);
+    setFieldErrors(prev => ({ ...prev, [field]: error }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,17 +83,38 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
     }
   };
 
+  const inputClass = "w-full px-3 py-2 bg-white border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all";
+  const inputErrorClass = "w-full px-3 py-2 bg-white border border-coral rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-coral/50 focus:border-coral transition-all";
+
+  const getInputClass = (field: keyof FieldErrors) =>
+    touched[field] && fieldErrors[field] ? inputErrorClass : inputClass;
+
+  const FieldError = ({ field }: { field: keyof FieldErrors }) => {
+    if (!touched[field] || !fieldErrors[field]) return null;
+    return (
+      <p role="alert" className="text-coral text-xs mt-1 flex items-center gap-1">
+        <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+        </svg>
+        {fieldErrors[field]}
+      </p>
+    );
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       {successMessage && (
-        <div className="p-3 rounded-md bg-sprout/20 border border-sprout/40 text-sprout text-sm">
+        <div role="status" className="p-3 rounded-md bg-sprout/5 border border-sprout/8 text-sprout text-sm">
           {successMessage}
         </div>
       )}
 
       {errorMessage && (
-        <div className="p-3 rounded-md bg-coral/20 border border-coral/40 text-coral text-sm">
-          {errorMessage}
+        <div role="alert" className="p-3 rounded-md bg-coral/5 border border-coral/8 text-coral text-sm flex items-center gap-1.5">
+          <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+          </svg>
+          <span><span className="font-semibold">Error:</span> {errorMessage}</span>
         </div>
       )}
 
@@ -79,10 +126,13 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           type="text"
           id="name"
           required
-          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
+          className={getInputClass('name')}
           value={formData.name}
           onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+          onBlur={() => handleBlur('name')}
+          aria-invalid={touched.name && !!fieldErrors.name}
         />
+        <FieldError field="name" />
       </div>
 
       <div>
@@ -93,10 +143,13 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           type="email"
           id="email"
           required
-          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
+          className={getInputClass('email')}
           value={formData.email}
           onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+          onBlur={() => handleBlur('email')}
+          aria-invalid={touched.email && !!fieldErrors.email}
         />
+        <FieldError field="email" />
       </div>
 
       <div>
@@ -106,7 +159,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         <input
           type="text"
           id="company"
-          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
+          className={inputClass}
           value={formData.company}
           onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
         />
@@ -118,7 +171,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
         </label>
         <select
           id="teamSize"
-          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all"
+          className={inputClass}
           value={formData.teamSize}
           onChange={(e) => setFormData(prev => ({ ...prev, teamSize: e.target.value }))}
         >
@@ -138,7 +191,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
           id="currentAIUse"
           rows={3}
           placeholder="Tell us how your team currently uses AI tools..."
-          className="w-full px-3 py-2 bg-ev-void border border-ev-default rounded-md text-ev-text placeholder:text-ev-text-muted focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:border-sprout transition-all resize-none"
+          className={`${inputClass} placeholder:text-ev-text-muted resize-none`}
           value={formData.currentAIUse}
           onChange={(e) => setFormData(prev => ({ ...prev, currentAIUse: e.target.value }))}
         />
@@ -147,7 +200,7 @@ const EarlyAccessForm: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-sprout hover:bg-sprout/90 text-ev-text-inverse px-4 py-3 rounded-md font-semibold transition-all hover:shadow-[0_0_30px_rgba(80,200,120,0.5)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+        className="w-full bg-sprout hover:bg-sprout/90 text-ev-text-inverse px-4 py-3 rounded-md font-semibold transition-all cursor-pointer hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none focus:outline-none focus:ring-2 focus:ring-sprout/50 focus:ring-offset-2 focus:ring-offset-ev-void"
       >
         {isSubmitting ? 'Joining Waitlist...' : 'Join the Waitlist'}
       </button>

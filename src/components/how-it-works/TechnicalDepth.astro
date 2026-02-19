@@ -9,7 +9,7 @@ const topics = [
   },
   {
     title: 'Type-Safe Contract System',
-    content: 'Services declare typed input/output contracts using TypeScript const types. Contracts are validated at compile time — not runtime. No magic strings. When a service changes its contract, every consumer knows at compile time. Validation decorators define runtime schemas without build-time code generation.',
+    content: 'Services declare typed input/output contracts using TypeScript const types. Contracts are validated at compile time, not runtime. No magic strings. When a service changes its contract, every consumer knows at compile time. Validation decorators define runtime schemas without build-time code generation.',
   },
   {
     title: 'Two-Layer Authorization',
@@ -17,7 +17,7 @@ const topics = [
   },
   {
     title: 'Zero Infrastructure Code',
-    content: 'Services contain only domain logic. A service starts with one line: BaseService.start({ name: \'my-service\', version: \'1.0.0\' }). RabbitMQ messaging, PostgreSQL persistence, Redis caching, OpenTelemetry tracing, Prometheus metrics — all provided by the platform. Handlers are auto-discovered by folder convention: /commands/, /queries/, /events/.',
+    content: 'Services contain only domain logic. A service starts with one line: BaseService.start({ name: \'my-service\', version: \'1.0.0\' }). RabbitMQ messaging, PostgreSQL persistence, Redis caching, OpenTelemetry tracing, Prometheus metrics, all provided by the platform. Handlers are auto-discovered by folder convention: /commands/, /queries/, /events/.',
   },
   {
     title: 'Observability Built In',
@@ -34,7 +34,7 @@ const topics = [
   />
   <div class="space-y-4 max-w-3xl">
     {topics.map((topic, i) => (
-      <details class="group rounded-lg border border-ev-default bg-ev-primary overflow-hidden" data-reveal data-delay={String((i + 1) * 100)}>
+      <details class="group rounded-xl border border-ev-default bg-ev-primary overflow-hidden" data-reveal data-delay={String((i + 1) * 100)}>
         <summary class="flex items-center justify-between cursor-pointer px-6 py-4 text-ev-text font-medium hover:text-sprout transition-colors">
           <span>{topic.title}</span>
           <svg class="w-5 h-5 text-ev-text-muted shrink-0 ml-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

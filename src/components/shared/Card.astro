@@ -10,15 +10,15 @@ const { variant = 'default', hover = true, accent, class: className = '' } = Ast
 
 const accentBorder = {
   sprout: 'border-t-2 border-t-sprout',
-  gold: 'border-t-2 border-t-gold',
+  gold: 'border-t-2 border-t-sprout',
   coral: 'border-t-2 border-t-coral',
 };
 ---
 
 <div
   class:list={[
-    'rounded-lg p-6 border border-ev-default',
-    variant === 'glass' ? 'bg-ev-primary/50 backdrop-blur-sm' : 'bg-ev-primary',
+    'rounded-xl p-6 border border-ev-default shadow-sm',
+    variant === 'glass' ? 'bg-white shadow-sm' : 'bg-ev-primary',
     hover && 'hover:border-ev-strong hover:shadow-lg transition-all duration-300',
     accent && accentBorder[accent],
     className,

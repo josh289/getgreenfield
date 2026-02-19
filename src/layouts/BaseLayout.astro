@@ -2,6 +2,11 @@
 import SEOHead from '../components/global/SEOHead.astro';
 import Header from '../components/global/Header.astro';
 import Footer from '../components/global/Footer.astro';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-sans/700.css';
+import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import '../styles/gradients.css';
 
@@ -31,16 +36,14 @@ const { title, description, ogImage, canonicalUrl, structuredData, noindex } = A
       structuredData={structuredData}
       noindex={noindex}
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts self-hosted via @fontsource -->
   </head>
-  <body class="bg-ev-void font-sans text-ev-text">
+  <body class="bg-ev-void font-sans text-ev-text antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-sprout focus:text-ev-text-inverse focus:rounded-md focus:font-semibold focus:outline-none focus:ring-2 focus:ring-sprout/50">
+      Skip to main content
+    </a>
     <Header />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />

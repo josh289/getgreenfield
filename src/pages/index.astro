@@ -3,12 +3,15 @@ export const prerender = true;
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeHero from '../components/home/HomeHero.astro';
+import LogoGrid from '../components/shared/LogoGrid.astro';
 import Section from '../components/shared/Section.astro';
 import SectionTitle from '../components/shared/SectionTitle.astro';
 import ProofPoints from '../components/shared/ProofPoints.astro';
 import StepsSection from '../components/shared/StepsSection.astro';
 import TheProblem from '../components/home/TheProblem.astro';
+import TestimonialSection from '../components/shared/TestimonialSection.astro';
 import CaseStudyPreview from '../components/home/CaseStudyPreview.astro';
+import CredentialsBadges from '../components/shared/CredentialsBadges.astro';
 import TwoPaths from '../components/home/TwoPaths.astro';
 import BottomCTA from '../components/shared/BottomCTA.astro';
 import { pageSEO } from '../data/seo';
@@ -18,6 +21,8 @@ import { homeSteps } from '../data/steps/home';
 
 <BaseLayout title={pageSEO.home.title} description={pageSEO.home.description}>
   <HomeHero />
+
+  <LogoGrid />
 
   <TheProblem />
 
@@ -44,13 +49,17 @@ import { homeSteps } from '../data/steps/home';
     <ProofPoints metrics={homeMetrics} columns={4} />
   </Section>
 
+  <TestimonialSection />
+
   <CaseStudyPreview />
+
+  <CredentialsBadges />
 
   <TwoPaths />
 
   <BottomCTA
     headline="Ready to build?"
-    subtext="Tell us what you have. We will tell you exactly what production looks like — scope, timeline, and cost."
+    subtext="Tell us what you have. We will tell you exactly what production looks like: scope, timeline, and cost."
     buttonText="Start Your Project"
     buttonHref="/contact"
   />

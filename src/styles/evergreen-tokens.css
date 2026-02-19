@@ -1,70 +1,71 @@
 :root {
-  /* COLORS - BACKGROUNDS (Pre-Dawn Forest) */
-  --bg-void: #0f1612;
-  --bg-primary: #1a2520;
-  --bg-secondary: #243b2f;
-  --bg-tertiary: #2d4a3e;
-  --bg-elevated: #3a5a4d;
+  /* COLORS - BACKGROUNDS (Light Mode) */
+  --bg-void: #FFFFFF;
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #F1F5F9;
+  --bg-tertiary: #E2E8F0;
+  --bg-elevated: #FFFFFF;
 
-  /* COLORS - TEXT (Morning Dew) */
-  --text-primary: #e8f4ed;
-  --text-secondary: #c5d9cd;
-  --text-muted: #9db5a5;
-  --text-inverse: #0d1310;
+  /* COLORS - TEXT (Dark on Light) */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-inverse: #FFFFFF;
 
   /* COLORS - ACCENT SPROUT (Primary Interactive) */
   --accent-sprout: #50c878;
-  --accent-sprout-dim: rgba(80, 200, 120, 0.15);
-  --accent-sprout-glow: rgba(80, 200, 120, 0.4);
+  --accent-sprout-dim: rgba(80,200,120,0.08);
+  --accent-sprout-glow: rgba(80,200,120,0.15);
+  --accent-sprout-text: #2E8B57;
   --accent-sprout-gradient-end: #3da861;
 
   /* COLORS - ACCENT GOLD (Info & Highlight) */
   --accent-gold: #f4d03f;
   --accent-gold-dim: rgba(244, 208, 63, 0.15);
-  --accent-gold-glow: rgba(244, 208, 63, 0.35);
+  --accent-gold-glow: none;
 
   /* COLORS - ACCENT CORAL (Error & Danger) */
   --accent-coral: #ff6b6b;
   --accent-coral-dim: rgba(255, 107, 107, 0.15);
-  --accent-coral-glow: rgba(255, 107, 107, 0.35);
+  --accent-coral-glow: none;
 
   /* COLORS - ACCENT AMBER (Warning & Attention) */
   --accent-amber: #ff9f40;
   --accent-amber-dim: rgba(255, 159, 64, 0.15);
-  --accent-amber-glow: rgba(255, 159, 64, 0.35);
+  --accent-amber-glow: none;
 
   /* COLORS - ACCENT VIOLET (Special/Premium/AI) */
   --accent-violet: #9b6dff;
   --accent-violet-dim: rgba(155, 109, 255, 0.15);
-  --accent-violet-glow: rgba(155, 109, 255, 0.35);
+  --accent-violet-glow: none;
 
   /* COLORS - ACCENT BLUE (Info, Secondary) */
   --accent-blue: #6eb8e0;
   --accent-blue-dim: rgba(110, 184, 224, 0.15);
-  --accent-blue-glow: rgba(110, 184, 224, 0.35);
+  --accent-blue-glow: none;
 
-  /* COLORS - BORDERS (Forest Mist) */
-  --border-subtle: rgba(157, 181, 165, 0.1);
-  --border-default: rgba(157, 181, 165, 0.2);
-  --border-strong: rgba(157, 181, 165, 0.35);
+  /* COLORS - BORDERS (Slate scale) */
+  --border-subtle: #F1F5F9;
+  --border-default: #E2E8F0;
+  --border-strong: #CBD5E1;
   --border-focus: var(--accent-sprout);
 
   /* TYPOGRAPHY - FONT FAMILIES */
   --font-ui: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, monospace;
 
-  /* SHADOWS (Warm forest shadows with green tint) */
-  --shadow-sm: 0 1px 2px rgba(13, 19, 16, 0.3);
-  --shadow-md: 0 4px 8px rgba(13, 19, 16, 0.35);
-  --shadow-lg: 0 10px 20px rgba(13, 19, 16, 0.4);
-  --shadow-xl: 0 20px 40px rgba(13, 19, 16, 0.45);
+  /* SHADOWS (Light mode, subtle depth) */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
 
-  /* GLOW EFFECTS (Bioluminescent) */
-  --glow-sprout: 0 0 20px rgba(80, 200, 120, 0.4);
-  --glow-sprout-strong: 0 0 30px rgba(80, 200, 120, 0.6);
-  --glow-gold: 0 0 20px rgba(244, 208, 63, 0.35);
-  --glow-coral: 0 0 20px rgba(255, 107, 107, 0.35);
-  --glow-violet: 0 0 20px rgba(155, 109, 255, 0.35);
+  /* GLOW EFFECTS (Disabled for light mode) */
+  --glow-sprout: none;
+  --glow-sprout-strong: none;
+  --glow-gold: none;
+  --glow-coral: none;
+  --glow-violet: none;
 
   /* TRANSITIONS */
   --transition-fast: 0.1s cubic-bezier(0.4, 0, 0.2, 1);

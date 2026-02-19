@@ -1,12 +1,18 @@
-/* Evergreen theme for Starlight matching landing page */
+/* Evergreen theme for Starlight docs pages only */
 
-/* Logo size control */
+/* Logo size control - only applies to Starlight's .site-title */
 .site-title img {
   max-height: 8rem !important;
   width: auto !important;
 }
 
-:root {
+/*
+ * Starlight variables scoped to [data-has-sidebar] so they
+ * don't bleed into the landing pages. Starlight sets
+ * body { background-color: var(--sl-color-bg) } globally,
+ * so we must NOT define --sl-color-bg on :root.
+ */
+[data-has-sidebar] {
   --sl-color-accent-low: #50c878;
   --sl-color-accent: #50c878;
   --sl-color-accent-high: #3da861;
@@ -22,10 +28,12 @@
   --sl-color-bg-nav: rgba(0, 0, 0, 0.95);
   --sl-color-bg-sidebar: rgba(0, 0, 0, 0.9);
   --sl-color-bg-inline-code: rgba(80, 200, 120, 0.1);
+  --sl-color-text: #e5e7eb;
+  --sl-color-text-accent: #50c878;
 }
 
-/* Dark theme colors */
-:root[data-theme='dark'] {
+/* Starlight dark theme */
+[data-has-sidebar][data-theme='dark'] {
   --sl-color-accent-low: #50c878;
   --sl-color-accent: #50c878;
   --sl-color-accent-high: #3da861;
@@ -44,31 +52,26 @@
   --sl-color-bg-sidebar: rgba(0, 0, 0, 0.9);
 }
 
-/* Override Starlight's default background */
-body {
-  background-color: #000000;
-}
+/* === All rules below scoped to Starlight pages only === */
 
-/* Navigation header */
-.header {
+[data-has-sidebar] .header {
   background-color: rgba(0, 0, 0, 0.95);
   border-bottom: 1px solid #9ca3af;
 }
 
-/* Sidebar */
-.sidebar {
+[data-has-sidebar] .sidebar {
   background-color: rgba(0, 0, 0, 0.9);
   border-right: 1px solid #252525;
 }
 
 /* Code blocks */
-pre {
+[data-has-sidebar] pre {
   background-color: #0a0a0a !important;
   border: 1px solid #252525 !important;
   border-radius: 0.5rem;
 }
 
-code {
+[data-has-sidebar] code {
   background-color: rgba(80, 200, 120, 0.1);
   color: #50c878;
   padding: 0.125rem 0.375rem;
@@ -76,24 +79,29 @@ code {
 }
 
 /* Links */
-a {
+[data-has-sidebar] a {
   color: #50c878;
   text-decoration: none;
   border-bottom: 1px solid rgba(80, 200, 120, 0.3);
   transition: border-color 0.2s;
 }
 
-a:hover {
+[data-has-sidebar] a:hover {
   border-bottom-color: #50c878;
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+[data-has-sidebar] h1,
+[data-has-sidebar] h2,
+[data-has-sidebar] h3,
+[data-has-sidebar] h4,
+[data-has-sidebar] h5,
+[data-has-sidebar] h6 {
   color: #ffffff;
 }
 
 /* Blockquotes */
-blockquote {
+[data-has-sidebar] blockquote {
   border-left: 4px solid #50c878;
   background-color: rgba(80, 200, 120, 0.05);
   padding: 1rem 1.5rem;
@@ -101,19 +109,19 @@ blockquote {
 }
 
 /* Tables */
-table {
+[data-has-sidebar] table {
   border: 1px solid #252525;
 }
 
-thead {
+[data-has-sidebar] thead {
   border-bottom: 1px solid #252525;
 }
 
-tbody tr {
+[data-has-sidebar] tbody tr {
   border-bottom: 1px solid #252525;
 }
 
-th {
+[data-has-sidebar] th {
   color: #ffffff;
   font-weight: 600;
 }

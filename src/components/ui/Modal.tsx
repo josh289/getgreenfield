@@ -80,13 +80,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="fixed inset-0 bg-ev-void/80 backdrop-blur-sm" onClick={onClose} />
+      <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
       <div
         ref={modalRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="relative z-50 w-full max-w-lg rounded-lg bg-ev-void border border-ev-default p-6 shadow-[0_0_40px_rgba(80,200,120,0.2)]"
+        className="relative z-50 w-full max-w-lg rounded-xl bg-white border border-ev-default p-6 shadow-xl"
       >
         <div className="flex items-center justify-between mb-4">
           <h2 id="modal-title" className="text-xl font-semibold text-ev-text">{title}</h2>
@@ -94,7 +94,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             ref={closeButtonRef}
             onClick={onClose}
             aria-label="Close dialog"
-            className="text-sprout hover:text-sprout/80 transition-all hover:shadow-[0_0_10px_rgba(80,200,120,0.3)]"
+            className="text-sprout hover:text-sprout/80 transition-all"
           >
             <X size={24} />
           </button>

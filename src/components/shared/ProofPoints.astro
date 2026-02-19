@@ -21,10 +21,50 @@ const gridCols = {
 
 <div class:list={['grid gap-6', gridCols[columns]]}>
   {metrics.map((metric, i) => (
-    <div class="text-center p-6 rounded-lg bg-ev-primary border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
-      <div class="text-3xl md:text-4xl font-bold text-sprout mb-2">{metric.value}</div>
+    <div class="text-center p-6 rounded-xl bg-ev-primary border border-ev-default" data-reveal data-delay={String((i + 1) * 100)}>
+      <div class="text-3xl md:text-4xl font-bold text-sprout mb-2" data-countup={metric.value}>{metric.value}</div>
       <div class="text-ev-text font-medium mb-1">{metric.label}</div>
       {metric.detail && <div class="text-ev-text-muted text-sm">{metric.detail}</div>}
     </div>
   ))}
 </div>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    const counters = document.querySelectorAll<HTMLElement>('[data-countup]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          const final = el.dataset.countup || '';
+          // Extract numeric portion and suffix (e.g., "98%" -> 98, "%")
+          const match = final.match(/^([<>~]?)(\d+(?:\.\d+)?)(.*)/);
+          if (match) {
+            const prefix = match[1];
+            const num = parseFloat(match[2]);
+            const suffix = match[3];
+            const duration = 1200;
+            const start = performance.now();
+            const isFloat = match[2].includes('.');
+
+            function animate(now: number) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              // Ease-out cubic
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = eased * num;
+              el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.round(current).toString()) + suffix;
+              if (progress < 1) requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+          }
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach((el) => observer.observe(el));
+  }
+</script>

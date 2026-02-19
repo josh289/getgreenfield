@@ -20,6 +20,4 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  @apply bg-black text-white;
-}
+/* body styles now handled by BaseLayout + evergreen-tokens */

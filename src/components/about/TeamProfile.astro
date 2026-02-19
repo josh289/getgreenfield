@@ -8,8 +8,8 @@ import { team } from '../../data/team';
   <SectionTitle title="Who builds the factory." align="center" />
   <div class="max-w-2xl mx-auto">
     {team.map((member) => (
-      <div class="text-center p-8 rounded-lg bg-ev-primary border border-ev-default" data-reveal>
-        <div class="w-20 h-20 rounded-full bg-sprout/10 border-2 border-sprout/30 flex items-center justify-center text-sprout text-2xl font-bold mx-auto mb-4">
+      <div class="text-center p-8 rounded-xl bg-ev-primary border border-ev-default" data-reveal>
+        <div class="w-20 h-20 rounded-full bg-sprout/5 border-2 border-sprout/20 flex items-center justify-center text-sprout text-2xl font-bold mx-auto mb-4">
           {member.name.split(' ').map(n => n[0]).join('')}
         </div>
         <h3 class="text-xl font-semibold text-ev-text mb-1">{member.name}</h3>

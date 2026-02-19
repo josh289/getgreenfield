@@ -3,19 +3,13 @@ import Section from '../shared/Section.astro';
 import SectionTitle from '../shared/SectionTitle.astro';
 
 const capabilities = [
-  { title: 'Blueprint-to-Service Generation', description: 'Define your architecture blueprint and typed contracts. Evergreen generates production microservices with CQRS, event sourcing, and zero infrastructure code.', accent: 'sprout' },
-  { title: 'Automated Test Generation', description: 'Every generated handler gets corresponding test suites. Unit tests, integration tests, and contract validation tests — generated and executed automatically.', accent: 'gold' },
-  { title: 'Contract Validation', description: 'Typed input/output contracts are enforced at compile time. When a service changes its contract, every consumer is validated before anything ships.', accent: 'violet' },
-  { title: 'Authorization Scaffolding', description: 'Two-layer authorization generated for every handler. Permission-based gateway access and business-rule policy enforcement — configured, not coded.', accent: 'sprout' },
-  { title: 'Quality Gate Pipeline', description: 'The same gates we enforce in every engagement: 90%+ coverage, strict TypeScript compilation, contract validation, authorization verification, tracing validation. Automated. Non-negotiable.', accent: 'gold' },
-  { title: 'Service Composition', description: 'Build new services that integrate with existing ones through the contract system. Evergreen understands your service topology and generates the correct integration points.', accent: 'violet' },
+  { title: 'Blueprint-to-Service Generation', description: 'Define your architecture blueprint and typed contracts. Evergreen generates production microservices with CQRS, event sourcing, and zero infrastructure code.' },
+  { title: 'Automated Test Generation', description: 'Every generated handler gets corresponding test suites. Unit tests, integration tests, and contract validation tests, generated and executed automatically.' },
+  { title: 'Contract Validation', description: 'Typed input/output contracts are enforced at compile time. When a service changes its contract, every consumer is validated before anything ships.' },
+  { title: 'Authorization Scaffolding', description: 'Two-layer authorization generated for every handler. Permission-based gateway access and business-rule policy enforcement, configured, not coded.' },
+  { title: 'Quality Gate Pipeline', description: 'The same gates we enforce in every engagement: 90%+ coverage, strict TypeScript compilation, contract validation, authorization verification, tracing validation. Automated. Non-negotiable.' },
+  { title: 'Service Composition', description: 'Build new services that integrate with existing ones through the contract system. Evergreen understands your service topology and generates the correct integration points.' },
 ];
-
-const accentColors: Record<string, { bg: string; border: string; text: string }> = {
-  sprout: { bg: 'bg-sprout/10', border: 'border-sprout/20', text: 'text-sprout' },
-  gold: { bg: 'bg-gold/10', border: 'border-gold/20', text: 'text-gold' },
-  violet: { bg: 'bg-violet/10', border: 'border-violet/20', text: 'text-violet' },
-};
 ---
 
 <Section>
@@ -26,9 +20,9 @@ const accentColors: Record<string, { bg: string; border: string; text: string }>
   />
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
     {capabilities.map((cap, i) => (
-      <div class="p-6 rounded-lg bg-ev-primary border border-ev-default hover:border-ev-strong transition-all duration-300" data-reveal data-delay={String((i + 1) * 100)}>
-        <div class:list={['w-8 h-8 rounded-md flex items-center justify-center mb-4', accentColors[cap.accent].bg, `border ${accentColors[cap.accent].border}`]}>
-          <div class:list={['w-2 h-2 rounded-full', accentColors[cap.accent].text === 'text-sprout' ? 'bg-sprout' : accentColors[cap.accent].text === 'text-gold' ? 'bg-gold' : 'bg-violet']}></div>
+      <div class="p-6 rounded-xl bg-ev-primary border border-ev-default hover:border-ev-strong transition-all duration-300" data-reveal data-delay={String((i + 1) * 100)}>
+        <div class="w-8 h-8 rounded-md flex items-center justify-center mb-4 bg-sprout/5 border border-sprout/10">
+          <div class="w-2 h-2 rounded-full bg-sprout"></div>
         </div>
         <h3 class="text-lg font-semibold text-ev-text mb-2">{cap.title}</h3>
         <p class="text-ev-text-secondary text-sm">{cap.description}</p>

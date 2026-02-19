@@ -8,14 +8,14 @@ interface Props {
 const { code, filename, language } = Astro.props;
 ---
 
-<div class="rounded-lg overflow-hidden border border-ev-default bg-[#0a0a0a]">
+<div class="rounded-xl overflow-hidden border border-[rgba(80,200,120,0.15)] bg-[#1a2520]">
   {filename && (
-    <div class="px-4 py-2 bg-ev-primary border-b border-ev-default text-ev-text-muted text-sm font-mono flex items-center gap-2">
+    <div class="px-4 py-2 bg-[#1a2520] border-b border-[rgba(80,200,120,0.15)] text-[#a8c4b3] text-sm font-mono flex items-center gap-2">
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
       </svg>
       {filename}
     </div>
   )}
-  <pre class="p-4 overflow-x-auto text-sm leading-relaxed"><code class="font-mono text-ev-text">{code}</code></pre>
+  <pre class="p-4 overflow-x-auto text-sm leading-relaxed"><code class="font-mono text-[#e8f4ed]">{code}</code></pre>
 </div>
